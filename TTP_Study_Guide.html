@@ -428,7 +428,423 @@ strong { color: var(--text-heading); }
       <text x="38" y="494" fill="#94a3b8" font-size="9">TTP path</text>
     </svg>
   </div>
-  
+
+<h4 style="color:#93c5fd;margin-top:32px;">Detailed Molecular Mechanism</h4>
+<div style="margin:24px 0;text-align:center;overflow-x:auto;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <!-- Drop shadow filter -->
+    <filter id="ac_shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <!-- Glow effect -->
+    <filter id="ac_glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Cleavage flash -->
+    <filter id="ac_flash">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Vessel wall gradient - normal -->
+    <linearGradient id="ac_vesselNormal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d6a4f"/>
+      <stop offset="100%" stop-color="#1b4332"/>
+    </linearGradient>
+    <!-- Vessel wall gradient - TTP -->
+    <linearGradient id="ac_vesselTTP" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9d0208"/>
+      <stop offset="100%" stop-color="#6a040f"/>
+    </linearGradient>
+    <!-- Lumen gradient normal -->
+    <linearGradient id="ac_lumenNormal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8f3dc"/>
+      <stop offset="100%" stop-color="#b7e4c7"/>
+    </linearGradient>
+    <!-- Lumen gradient TTP -->
+    <linearGradient id="ac_lumenTTP" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd7d7"/>
+      <stop offset="100%" stop-color="#ffb3b3"/>
+    </linearGradient>
+    <!-- RBC gradient -->
+    <radialGradient id="ac_rbcGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="60%" stop-color="#e03131"/>
+      <stop offset="100%" stop-color="#c92a2a"/>
+    </radialGradient>
+    <!-- Platelet gradient -->
+    <radialGradient id="ac_plateletGrad" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#b197fc"/>
+      <stop offset="100%" stop-color="#7048e8"/>
+    </radialGradient>
+    <!-- ADAMTS13 gradient -->
+    <radialGradient id="ac_adamts13Grad" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#74c0fc"/>
+      <stop offset="100%" stop-color="#1c7ed6"/>
+    </radialGradient>
+    <!-- Weibel-Palade body -->
+    <linearGradient id="ac_wpBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9775fa"/>
+      <stop offset="100%" stop-color="#6741d9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="600" fill="#1e293b" rx="8"/>
+
+  <!-- Title -->
+  <text x="480" y="32" fill="#e2e8f0" font-size="20" font-weight="bold" text-anchor="middle">ADAMTS13 / von Willebrand Factor Pathway â€” Normal vs TTP</text>
+
+  <!-- ==================== NORMAL TRACK (TOP) ==================== -->
+  <g id="ac_normal-track">
+    <title>Normal ADAMTS13/vWF Pathway</title>
+
+    <!-- Section label -->
+    <rect x="10" y="48" width="110" height="26" rx="6" fill="#2d6a4f" opacity="0.9"/>
+    <text x="65" y="66" fill="#d8f3dc" font-size="13" font-weight="bold" text-anchor="middle">NORMAL</text>
+
+    <!-- Vessel wall - bottom endothelial layer -->
+    <rect x="30" y="230" width="900" height="22" rx="4" fill="url(#ac_vesselNormal)" filter="url(#ac_shadow)"/>
+    <!-- Vessel wall - top endothelial layer -->
+    <rect x="30" y="72" width="900" height="22" rx="4" fill="url(#ac_vesselNormal)" filter="url(#ac_shadow)"/>
+
+    <!-- Lumen -->
+    <rect x="30" y="94" width="900" height="136" fill="url(#ac_lumenNormal)" opacity="0.25"/>
+
+    <!-- Flow arrows in lumen -->
+    <g fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.5">
+      <path d="M50,140 L120,140" marker-end="url(#ac_arrowGreen)"/>
+      <path d="M50,170 L120,170" marker-end="url(#ac_arrowGreen)"/>
+      <path d="M50,200 L120,200" marker-end="url(#ac_arrowGreen)"/>
+    </g>
+    <defs>
+      <marker id="ac_arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L8,3 L0,6" fill="#52b788"/>
+      </marker>
+    </defs>
+    <text x="55" y="158" fill="#52b788" font-size="9" opacity="0.7">FLOW</text>
+
+    <!-- ---- STEP 1: Endothelial cells with Weibel-Palade bodies ---- -->
+    <g transform="translate(60,230)">
+      <!-- Endothelial cell -->
+      <rect x="0" y="-2" width="80" height="22" rx="10" fill="#40916c" stroke="#2d6a4f" stroke-width="1.5"/>
+      <!-- Nucleus -->
+      <ellipse cx="40" cy="9" rx="16" ry="6" fill="#1b4332" opacity="0.7"/>
+      <!-- Weibel-Palade bodies -->
+      <ellipse cx="18" cy="5" rx="5" ry="3" fill="url(#ac_wpBody)" stroke="#7950f2" stroke-width="0.5"/>
+      <ellipse cx="62" cy="5" rx="5" ry="3" fill="url(#ac_wpBody)" stroke="#7950f2" stroke-width="0.5"/>
+    </g>
+    <!-- More endothelial cells along bottom -->
+    <g transform="translate(145,230)">
+      <rect x="0" y="-2" width="75" height="22" rx="10" fill="#40916c" stroke="#2d6a4f" stroke-width="1.5"/>
+      <ellipse cx="38" cy="9" rx="15" ry="6" fill="#1b4332" opacity="0.7"/>
+    </g>
+
+    <!-- Label: Endothelial cells -->
+    <text x="100" y="268" fill="#95d5b2" font-size="9" text-anchor="middle">Endothelial cells</text>
+    <text x="100" y="278" fill="#95d5b2" font-size="8" text-anchor="middle">(Weibel-Palade bodies)</text>
+
+    <!-- ---- STEP 2: vWF release arrow ---- -->
+    <path d="M100,228 C100,215 100,210 105,200" fill="none" stroke="#9775fa" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="118" y="215" fill="#b197fc" font-size="8" transform="rotate(-70,118,215)">vWF release</text>
+
+    <!-- ---- STEP 3: UL-vWF multimer strand across lumen ---- -->
+    <path d="M130,195 C145,185 155,200 170,190 C185,180 195,200 210,190 C225,180 235,200 250,190 C265,180 275,200 290,190 C305,180 315,195 330,190"
+          fill="none" stroke="#9775fa" stroke-width="3" stroke-linecap="round" opacity="0.9" filter="url(#ac_glow)"/>
+    <text x="230" y="178" fill="#c4b5fd" font-size="9" text-anchor="middle" font-weight="bold">UL-vWF multimer</text>
+
+    <!-- ---- STEP 4: ADAMTS13 enzyme (pac-man shape) ---- -->
+    <g transform="translate(355,180)" filter="url(#ac_shadow)">
+      <title>ADAMTS13 metalloprotease</title>
+      <!-- Pac-man body -->
+      <path d="M0,0 A18,18 0 1 1 0,36 L12,18 Z" fill="url(#ac_adamts13Grad)" stroke="#1864ab" stroke-width="1.5"/>
+      <!-- Eye -->
+      <circle cx="-4" cy="10" r="2.5" fill="#1e293b"/>
+      <!-- Active site teeth -->
+      <line x1="10" y1="14" x2="14" y2="16" stroke="#1e293b" stroke-width="1.5"/>
+      <line x1="10" y1="22" x2="14" y2="20" stroke="#1e293b" stroke-width="1.5"/>
+    </g>
+    <text x="365" y="228" fill="#74c0fc" font-size="10" text-anchor="middle" font-weight="bold">ADAMTS13</text>
+    <!-- Arrow showing approach -->
+    <path d="M350,195 L338,192" fill="none" stroke="#74c0fc" stroke-width="1.5" marker-end="url(#ac_arrowBlue)"/>
+    <defs>
+      <marker id="ac_arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L8,3 L0,6" fill="#74c0fc"/>
+      </marker>
+    </defs>
+
+    <!-- ---- STEP 5: Cleavage event (scissors + flash) ---- -->
+    <g transform="translate(420,175)">
+      <!-- Flash/star effect -->
+      <polygon points="0,-12 3,-4 12,-4 5,2 7,11 0,6 -7,11 -5,2 -12,-4 -3,-4" fill="#ffd43b" opacity="0.9" filter="url(#ac_flash)"/>
+      <text x="0" y="28" fill="#ffd43b" font-size="9" text-anchor="middle" font-weight="bold">CLEAVE!</text>
+    </g>
+    <!-- Scissors icon -->
+    <g transform="translate(440,168)" fill="none" stroke="#ffd43b" stroke-width="1.8">
+      <path d="M0,0 L10,8 M0,16 L10,8"/>
+      <circle cx="-2" cy="-2" r="4" fill="none"/>
+      <circle cx="-2" cy="18" r="4" fill="none"/>
+    </g>
+
+    <!-- ---- STEP 6: Normal sized vWF fragments ---- -->
+    <path d="M475,190 C485,185 490,195 500,190" fill="none" stroke="#9775fa" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+    <path d="M510,185 C520,180 525,190 535,185" fill="none" stroke="#9775fa" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+    <path d="M490,200 C500,195 505,205 515,200" fill="none" stroke="#9775fa" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+    <text x="510" y="215" fill="#c4b5fd" font-size="8" text-anchor="middle">Normal vWF fragments</text>
+
+    <!-- ---- STEP 7: Platelets flowing freely ---- -->
+    <!-- Platelet 1 -->
+    <ellipse cx="600" cy="140" rx="8" ry="5" fill="url(#ac_plateletGrad)" filter="url(#ac_shadow)" transform="rotate(-15,600,140)"/>
+    <!-- Platelet 2 -->
+    <ellipse cx="640" cy="170" rx="7" ry="4.5" fill="url(#ac_plateletGrad)" filter="url(#ac_shadow)" transform="rotate(10,640,170)"/>
+    <!-- Platelet 3 -->
+    <ellipse cx="680" cy="150" rx="8" ry="5" fill="url(#ac_plateletGrad)" filter="url(#ac_shadow)" transform="rotate(-5,680,150)"/>
+    <!-- Platelet 4 -->
+    <ellipse cx="720" cy="185" rx="7" ry="4.5" fill="url(#ac_plateletGrad)" filter="url(#ac_shadow)"/>
+    <text x="660" y="130" fill="#b197fc" font-size="9" text-anchor="middle">Platelets flow freely</text>
+
+    <!-- Normal RBCs flowing -->
+    <!-- RBC (biconcave disc - side view as oval with indent) -->
+    <g transform="translate(750,155)">
+      <ellipse cx="0" cy="0" rx="12" ry="7" fill="url(#ac_rbcGrad)" filter="url(#ac_shadow)"/>
+      <ellipse cx="0" cy="0" rx="5" ry="3" fill="#c92a2a" opacity="0.4"/>
+    </g>
+    <g transform="translate(790,175)">
+      <ellipse cx="0" cy="0" rx="11" ry="6.5" fill="url(#ac_rbcGrad)" filter="url(#ac_shadow)"/>
+      <ellipse cx="0" cy="0" rx="4.5" ry="2.8" fill="#c92a2a" opacity="0.4"/>
+    </g>
+    <g transform="translate(830,145)">
+      <ellipse cx="0" cy="0" rx="12" ry="7" fill="url(#ac_rbcGrad)" filter="url(#ac_shadow)"/>
+      <ellipse cx="0" cy="0" rx="5" ry="3" fill="#c92a2a" opacity="0.4"/>
+    </g>
+    <text x="800" y="130" fill="#ffa8a8" font-size="9" text-anchor="middle">Normal RBCs</text>
+
+    <!-- Result box -->
+    <rect x="855" y="96" width="70" height="50" rx="6" fill="#2d6a4f" opacity="0.8" stroke="#52b788" stroke-width="1"/>
+    <text x="890" y="113" fill="#d8f3dc" font-size="8" text-anchor="middle" font-weight="bold">RESULT:</text>
+    <text x="890" y="125" fill="#d8f3dc" font-size="7" text-anchor="middle">Normal</text>
+    <text x="890" y="135" fill="#d8f3dc" font-size="7" text-anchor="middle">hemostasis</text>
+    <text x="890" y="145" fill="#52b788" font-size="7" text-anchor="middle">No clots</text>
+
+    <!-- Step labels along bottom of normal track -->
+    <g fill="#95d5b2" font-size="8" text-anchor="middle" opacity="0.8">
+      <text x="100" y="245"><tspan font-weight="bold">1.</tspan> vWF stored</text>
+      <text x="230" y="175"><tspan font-weight="bold">2.</tspan> UL-vWF released</text>
+      <text x="380" y="165"><tspan font-weight="bold">3.</tspan> ADAMTS13 cleaves</text>
+      <text x="510" y="230"><tspan font-weight="bold">4.</tspan> Fragments</text>
+      <text x="660" y="210"><tspan font-weight="bold">5.</tspan> No aggregation</text>
+    </g>
+  </g>
+
+  <!-- Divider -->
+  <line x1="30" y1="290" x2="930" y2="290" stroke="#475569" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="480" y="305" fill="#94a3b8" font-size="11" text-anchor="middle" font-style="italic">vs</text>
+
+  <!-- ==================== TTP TRACK (BOTTOM) ==================== -->
+  <g id="ac_ttp-track">
+    <title>TTP â€” ADAMTS13 Deficiency Pathway</title>
+
+    <!-- Section label -->
+    <rect x="10" y="312" width="110" height="26" rx="6" fill="#9d0208" opacity="0.9"/>
+    <text x="65" y="330" fill="#ffd7d7" font-size="13" font-weight="bold" text-anchor="middle">TTP</text>
+
+    <!-- Vessel wall - top -->
+    <rect x="30" y="340" width="900" height="22" rx="4" fill="url(#ac_vesselTTP)" filter="url(#ac_shadow)"/>
+    <!-- Vessel wall - bottom -->
+    <rect x="30" y="520" width="900" height="22" rx="4" fill="url(#ac_vesselTTP)" filter="url(#ac_shadow)"/>
+
+    <!-- Lumen -->
+    <rect x="30" y="362" width="900" height="158" fill="url(#ac_lumenTTP)" opacity="0.15"/>
+
+    <!-- Flow arrows -->
+    <g fill="none" stroke="#e5383b" stroke-width="1.5" opacity="0.4">
+      <path d="M50,400 L110,400" marker-end="url(#ac_arrowRed)"/>
+      <path d="M50,440 L110,440" marker-end="url(#ac_arrowRed)"/>
+      <path d="M50,480 L110,480" marker-end="url(#ac_arrowRed)"/>
+    </g>
+    <defs>
+      <marker id="ac_arrowRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L8,3 L0,6" fill="#e5383b"/>
+      </marker>
+    </defs>
+    <text x="55" y="425" fill="#e5383b" font-size="9" opacity="0.6">FLOW</text>
+    <text x="55" y="436" fill="#e5383b" font-size="7" opacity="0.6">(shear stress)</text>
+
+    <!-- Endothelial cells on bottom wall -->
+    <g transform="translate(60,520)">
+      <rect x="0" y="-2" width="80" height="22" rx="10" fill="#a4161a" stroke="#6a040f" stroke-width="1.5"/>
+      <ellipse cx="40" cy="9" rx="16" ry="6" fill="#6a040f" opacity="0.7"/>
+      <ellipse cx="18" cy="5" rx="5" ry="3" fill="url(#ac_wpBody)" stroke="#7950f2" stroke-width="0.5"/>
+    </g>
+
+    <!-- ---- vWF release ---- -->
+    <path d="M100,518 C100,505 105,495 110,485" fill="none" stroke="#9775fa" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+    <!-- ---- STEP 2: UL-vWF persists (longer, unfurled) ---- -->
+    <path d="M120,475 C140,460 155,485 175,465 C195,450 210,480 230,460 C250,445 265,475 285,455 C305,440 320,470 340,455 C360,440 375,465 395,450 C415,440 430,460 450,450 C470,440 485,460 500,450"
+          fill="none" stroke="#9775fa" stroke-width="3.5" stroke-linecap="round" filter="url(#ac_glow)"/>
+    <text x="310" y="440" fill="#e5dbff" font-size="9" text-anchor="middle" font-weight="bold">Persistent UL-vWF multimer (uncleaved!)</text>
+
+    <!-- ---- STEP 3: ADAMTS13 blocked by antibodies ---- -->
+    <g transform="translate(160,380)">
+      <!-- ADAMTS13 (dimmed/inactive) -->
+      <path d="M0,0 A16,16 0 1 1 0,32 L10,16 Z" fill="#4a6fa1" stroke="#364fc7" stroke-width="1" opacity="0.4"/>
+      <circle cx="-3" cy="9" r="2" fill="#1e293b" opacity="0.4"/>
+      <!-- X over it -->
+      <line x1="-20" y1="-5" x2="20" y2="37" stroke="#e03131" stroke-width="3"/>
+      <line x1="20" y1="-5" x2="-20" y2="37" stroke="#e03131" stroke-width="3"/>
+
+      <!-- Antibody 1 (Y-shape) blocking -->
+      <g transform="translate(-30,-10)">
+        <path d="M0,0 L-8,-15 M0,0 L8,-15 M0,0 L0,15" stroke="#e03131" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="-8" cy="-15" r="3" fill="#e03131"/>
+        <circle cx="8" cy="-15" r="3" fill="#e03131"/>
+        <circle cx="0" cy="15" r="2.5" fill="#ff6b6b"/>
+      </g>
+      <!-- Antibody 2 -->
+      <g transform="translate(35,5)">
+        <path d="M0,0 L-8,-15 M0,0 L8,-15 M0,0 L0,15" stroke="#e03131" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="-8" cy="-15" r="3" fill="#e03131"/>
+        <circle cx="8" cy="-15" r="3" fill="#e03131"/>
+        <circle cx="0" cy="15" r="2.5" fill="#ff6b6b"/>
+      </g>
+    </g>
+    <text x="170" y="430" fill="#ffa8a8" font-size="9" text-anchor="middle" font-weight="bold">Anti-ADAMTS13</text>
+    <text x="170" y="441" fill="#ffa8a8" font-size="9" text-anchor="middle" font-weight="bold">antibodies (IgG)</text>
+    <text x="170" y="365" fill="#ff6b6b" font-size="10" text-anchor="middle" font-weight="bold">ADAMTS13 BLOCKED</text>
+
+    <!-- ---- STEP 5: Platelets binding to vWF via GPIb ---- -->
+    <!-- Platelet stuck to vWF strand -->
+    <g transform="translate(350,450)">
+      <ellipse cx="0" cy="0" rx="10" ry="6" fill="url(#ac_plateletGrad)" filter="url(#ac_shadow)"/>
+      <line x1="0" y1="6" x2="0" y2="12" stroke="#d0bfff" stroke-width="1.5"/>
+      <text x="0" y="22" fill="#d0bfff" font-size="7" text-anchor="middle">GPIb</text>
+    </g>
+    <g transform="translate(390,445)">
+      <ellipse cx="0" cy="0" rx="9" ry="5.5" fill="url(#ac_plateletGrad)" filter="url(#ac_shadow)"/>
+      <line x1="0" y1="5.5" x2="2" y2="12" stroke="#d0bfff" stroke-width="1.5"/>
+    </g>
+    <g transform="translate(420,448)">
+      <ellipse cx="0" cy="0" rx="10" ry="6" fill="url(#ac_plateletGrad)" filter="url(#ac_shadow)"/>
+      <line x1="0" y1="6" x2="-1" y2="11" stroke="#d0bfff" stroke-width="1.5"/>
+    </g>
+    <g transform="translate(455,443)">
+      <ellipse cx="0" cy="0" rx="9" ry="5.5" fill="url(#ac_plateletGrad)" filter="url(#ac_shadow)"/>
+      <line x1="0" y1="5.5" x2="1" y2="13" stroke="#d0bfff" stroke-width="1.5"/>
+    </g>
+    <text x="410" y="430" fill="#d0bfff" font-size="9" text-anchor="middle" font-weight="bold">Platelets bind vWF via GPIb</text>
+
+    <!-- ---- STEP 6: Growing microthrombus ---- -->
+    <g transform="translate(540,440)">
+      <title>Platelet-rich microthrombus (white clot)</title>
+      <!-- Aggregate mass -->
+      <ellipse cx="0" cy="10" rx="40" ry="25" fill="#7048e8" opacity="0.5" filter="url(#ac_shadow)"/>
+      <!-- Individual platelets in aggregate -->
+      <ellipse cx="-15" cy="5" rx="9" ry="5.5" fill="url(#ac_plateletGrad)"/>
+      <ellipse cx="0" cy="0" rx="10" ry="6" fill="url(#ac_plateletGrad)"/>
+      <ellipse cx="15" cy="5" rx="9" ry="5.5" fill="url(#ac_plateletGrad)"/>
+      <ellipse cx="-8" cy="14" rx="9" ry="5.5" fill="url(#ac_plateletGrad)"/>
+      <ellipse cx="8" cy="14" rx="10" ry="6" fill="url(#ac_plateletGrad)"/>
+      <ellipse cx="0" cy="22" rx="9" ry="5" fill="url(#ac_plateletGrad)"/>
+      <ellipse cx="-20" cy="15" rx="8" ry="5" fill="url(#ac_plateletGrad)"/>
+      <ellipse cx="22" cy="12" rx="8" ry="5" fill="url(#ac_plateletGrad)"/>
+      <!-- vWF strands weaving through -->
+      <path d="M-40,5 C-25,0 -15,15 0,10 C15,5 25,18 40,12" fill="none" stroke="#9775fa" stroke-width="2" opacity="0.7"/>
+      <path d="M-35,18 C-20,12 -10,25 5,20 C20,15 30,22 42,20" fill="none" stroke="#9775fa" stroke-width="2" opacity="0.7"/>
+    </g>
+    <text x="540" y="418" fill="#e5dbff" font-size="10" text-anchor="middle" font-weight="bold">MICROTHROMBUS</text>
+    <text x="540" y="490" fill="#d0bfff" font-size="8" text-anchor="middle">(platelet-rich "white clot")</text>
+
+    <!-- ---- STEP 7: RBCs squeezing through and fragmenting ---- -->
+    <!-- Intact RBC approaching -->
+    <g transform="translate(620,400)">
+      <ellipse cx="0" cy="0" rx="12" ry="7" fill="url(#ac_rbcGrad)" filter="url(#ac_shadow)"/>
+      <ellipse cx="0" cy="0" rx="5" ry="3" fill="#c92a2a" opacity="0.4"/>
+    </g>
+    <g transform="translate(630,480)">
+      <ellipse cx="0" cy="0" rx="11" ry="6.5" fill="url(#ac_rbcGrad)" filter="url(#ac_shadow)"/>
+      <ellipse cx="0" cy="0" rx="4.5" ry="2.5" fill="#c92a2a" opacity="0.4"/>
+    </g>
+    <text x="625" y="510" fill="#ffa8a8" font-size="8" text-anchor="middle">Intact RBCs</text>
+
+    <!-- Narrowed passage with shear -->
+    <path d="M595,455 L610,460 L620,455" fill="none" stroke="#ffd43b" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="660" y="458" fill="#ffd43b" font-size="7" text-anchor="middle">SHEAR</text>
+    <text x="660" y="467" fill="#ffd43b" font-size="7" text-anchor="middle">STRESS</text>
+
+    <!-- ---- STEP 8: Schistocytes emerging ---- -->
+    <!-- Schistocyte 1 - helmet cell -->
+    <g transform="translate(710,395)">
+      <path d="M-8,-5 C-8,5 0,8 8,5 L6,-5 Z" fill="#ff6b6b" stroke="#c92a2a" stroke-width="1" filter="url(#ac_shadow)"/>
+    </g>
+    <!-- Schistocyte 2 - triangle fragment -->
+    <g transform="translate(730,420)">
+      <polygon points="0,-7 8,5 -8,5" fill="#ff6b6b" stroke="#c92a2a" stroke-width="1" filter="url(#ac_shadow)"/>
+    </g>
+    <!-- Schistocyte 3 - crescent -->
+    <g transform="translate(750,400)">
+      <path d="M-6,-5 C-2,6 8,6 6,-5 C4,3 -4,3 -6,-5 Z" fill="#ff6b6b" stroke="#c92a2a" stroke-width="1" filter="url(#ac_shadow)"/>
+    </g>
+    <!-- Schistocyte 4 - helmet -->
+    <g transform="translate(720,475)">
+      <path d="M-7,-4 C-7,5 0,7 7,4 L5,-4 Z" fill="#ff6b6b" stroke="#c92a2a" stroke-width="1" filter="url(#ac_shadow)"/>
+    </g>
+    <!-- Schistocyte 5 - triangle -->
+    <g transform="translate(745,465)">
+      <polygon points="0,-6 7,4 -7,4" fill="#ff6b6b" stroke="#c92a2a" stroke-width="1" filter="url(#ac_shadow)"/>
+    </g>
+
+    <text x="735" y="380" fill="#ffa8a8" font-size="10" text-anchor="middle" font-weight="bold">SCHISTOCYTES</text>
+    <text x="735" y="392" fill="#ffa8a8" font-size="8" text-anchor="middle">(helmet cells, fragments)</text>
+    <text x="735" y="498" fill="#ffa8a8" font-size="8" text-anchor="middle">Fragmented RBCs</text>
+
+    <!-- Result box TTP -->
+    <rect x="810" y="370" width="115" height="100" rx="6" fill="#9d0208" opacity="0.8" stroke="#e5383b" stroke-width="1"/>
+    <text x="867" y="388" fill="#ffd7d7" font-size="9" text-anchor="middle" font-weight="bold">TTP PENTAD:</text>
+    <text x="867" y="402" fill="#ffa8a8" font-size="8" text-anchor="middle">1. Thrombocytopenia</text>
+    <text x="867" y="414" fill="#ffa8a8" font-size="8" text-anchor="middle">2. MAHA (schistocytes)</text>
+    <text x="867" y="426" fill="#ffa8a8" font-size="8" text-anchor="middle">3. Neuro symptoms</text>
+    <text x="867" y="438" fill="#ffa8a8" font-size="8" text-anchor="middle">4. Renal (mild)</text>
+    <text x="867" y="450" fill="#ffa8a8" font-size="8" text-anchor="middle">5. Fever</text>
+    <text x="867" y="465" fill="#ffd43b" font-size="7" text-anchor="middle" font-style="italic">(Full pentad rare;</text>
+    <text x="867" y="475" fill="#ffd43b" font-size="7" text-anchor="middle" font-style="italic">don't wait for all 5)</text>
+
+    <!-- Step labels -->
+    <g fill="#ffa8a8" font-size="8" text-anchor="middle" opacity="0.8">
+      <text x="100" y="555"><tspan font-weight="bold">1.</tspan> vWF released</text>
+      <text x="170" y="555"><tspan font-weight="bold">2.</tspan> Ab blocks ADAMTS13</text>
+      <text x="310" y="555"><tspan font-weight="bold">3.</tspan> UL-vWF persists</text>
+      <text x="430" y="555"><tspan font-weight="bold">4.</tspan> Platelets bind</text>
+      <text x="540" y="555"><tspan font-weight="bold">5.</tspan> Thrombus forms</text>
+      <text x="660" y="555"><tspan font-weight="bold">6.</tspan> RBCs shear</text>
+      <text x="740" y="555"><tspan font-weight="bold">7.</tspan> Schistocytes</text>
+    </g>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(30,570)">
+    <rect x="0" y="0" width="900" height="24" rx="4" fill="#0f172a" opacity="0.7"/>
+    <ellipse cx="20" cy="12" rx="8" ry="5" fill="url(#ac_rbcGrad)"/>
+    <text x="35" y="16" fill="#cbd5e1" font-size="8">RBC</text>
+    <ellipse cx="80" cy="12" rx="7" ry="4.5" fill="url(#ac_plateletGrad)"/>
+    <text x="93" y="16" fill="#cbd5e1" font-size="8">Platelet</text>
+    <path d="M155,12 C165,6 170,18 180,12" fill="none" stroke="#9775fa" stroke-width="2.5"/>
+    <text x="188" y="16" fill="#cbd5e1" font-size="8">vWF</text>
+    <path d="M225,12 A8,8 0 1 1 225,28 L232,20 Z" fill="url(#ac_adamts13Grad)" transform="translate(0,-8) scale(0.7)"/>
+    <text x="244" y="16" fill="#cbd5e1" font-size="8">ADAMTS13</text>
+    <g transform="translate(320,5)">
+      <path d="M0,0 L-5,-9 M0,0 L5,-9 M0,0 L0,9" stroke="#e03131" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="-5" cy="-9" r="2" fill="#e03131"/>
+      <circle cx="5" cy="-9" r="2" fill="#e03131"/>
+    </g>
+    <text x="336" y="16" fill="#cbd5e1" font-size="8">Antibody</text>
+    <polygon points="400,7 407,17 393,17" fill="#ff6b6b" stroke="#c92a2a" stroke-width="0.5"/>
+    <text x="415" y="16" fill="#cbd5e1" font-size="8">Schistocyte</text>
+  </g>
+</svg>
+  <div class="img-caption">ADAMTS13/VWF Cascade: Normal cleavage (green) vs TTP pathway (red) — antibody-mediated ADAMTS13 inhibition leads to platelet microthrombi and RBC shearing</div>
+</div>
 
 
   <div class="card">
@@ -630,6 +1046,307 @@ strong { color: var(--text-heading); }
     <div class="tab-content" id="s1-tab5">
       <h3>End-Organ Damage &amp; Hemolysis</h3>
       <p>Microthrombi act as a <strong>mechanical sieve</strong>. RBCs forced through narrowed microvasculature are sheared into <strong>schistocytes</strong>. This is MAHA: mechanical, non-immune (Coombs-negative). The pattern of organ injury in TTP reflects the distribution and shear characteristics of the microvasculature.</p>
+<div style="margin:24px 0;text-align:center;overflow-x:auto;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <filter id="od_shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="od_glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="od_organGlow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="od_rbcGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="60%" stop-color="#e03131"/>
+      <stop offset="100%" stop-color="#c92a2a"/>
+    </radialGradient>
+    <radialGradient id="od_plateletGrad" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#b197fc"/>
+      <stop offset="100%" stop-color="#7048e8"/>
+    </radialGradient>
+    <linearGradient id="od_vesselWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff922b"/>
+      <stop offset="50%" stop-color="#e8590c"/>
+      <stop offset="100%" stop-color="#d9480f"/>
+    </linearGradient>
+    <linearGradient id="od_intimaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffa94d"/>
+      <stop offset="100%" stop-color="#fd7e14"/>
+    </linearGradient>
+    <linearGradient id="od_mediaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8590c"/>
+      <stop offset="100%" stop-color="#c2255c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="500" fill="#1e293b" rx="8"/>
+
+  <!-- Title -->
+  <text x="480" y="30" fill="#e2e8f0" font-size="20" font-weight="bold" text-anchor="middle">TTP: Microthrombi Formation &amp; End-Organ Damage</text>
+
+  <!-- ==================== CENTRAL ARTERIOLE CROSS-SECTION ==================== -->
+  <g id="od_central-vessel" transform="translate(480,250)">
+    <title>Arteriole cross-section with platelet-rich microthrombus</title>
+
+    <!-- Outer vessel wall (media) -->
+    <ellipse cx="0" cy="0" rx="95" ry="85" fill="url(#od_mediaGrad)" filter="url(#od_shadow)"/>
+    <!-- Inner vessel wall (intima) -->
+    <ellipse cx="0" cy="0" rx="78" ry="70" fill="url(#od_intimaGrad)"/>
+    <!-- Endothelial lining -->
+    <ellipse cx="0" cy="0" rx="68" ry="60" fill="#fff5f5" stroke="#ffa94d" stroke-width="1.5"/>
+    <!-- Lumen -->
+    <ellipse cx="0" cy="0" rx="65" ry="57" fill="#fef4f4"/>
+
+    <!-- Layer labels -->
+    <text x="82" y="-55" fill="#1e293b" font-size="7" font-weight="bold" transform="rotate(25,82,-55)">Media</text>
+    <text x="70" y="-42" fill="#1e293b" font-size="7" font-weight="bold" transform="rotate(25,70,-42)">Intima</text>
+
+    <!-- PLATELET AGGREGATE (purple mass) occluding ~60% of lumen -->
+    <g id="od_thrombus">
+      <title>Platelet-rich microthrombus</title>
+      <!-- Main mass shape -->
+      <path d="M-45,-10 C-40,-35 -10,-45 15,-35 C35,-28 45,-10 40,10 C35,30 10,40 -15,35 C-35,28 -50,15 -45,-10 Z"
+            fill="#7048e8" opacity="0.6" filter="url(#od_glow)"/>
+      <!-- Individual platelets in mass -->
+      <ellipse cx="-25" cy="-10" rx="10" ry="6" fill="url(#od_plateletGrad)" transform="rotate(-15,-25,-10)"/>
+      <ellipse cx="-10" cy="-25" rx="9" ry="5.5" fill="url(#od_plateletGrad)" transform="rotate(20,-10,-25)"/>
+      <ellipse cx="10" cy="-18" rx="10" ry="6" fill="url(#od_plateletGrad)" transform="rotate(-10,10,-18)"/>
+      <ellipse cx="25" cy="-8" rx="9" ry="5.5" fill="url(#od_plateletGrad)" transform="rotate(5,25,-8)"/>
+      <ellipse cx="-15" cy="5" rx="10" ry="6" fill="url(#od_plateletGrad)"/>
+      <ellipse cx="5" cy="0" rx="9" ry="5.5" fill="url(#od_plateletGrad)" transform="rotate(-20,5,0)"/>
+      <ellipse cx="-5" cy="15" rx="10" ry="6" fill="url(#od_plateletGrad)" transform="rotate(10,-5,15)"/>
+      <ellipse cx="15" cy="10" rx="9" ry="5.5" fill="url(#od_plateletGrad)"/>
+      <ellipse cx="-20" cy="20" rx="8" ry="5" fill="url(#od_plateletGrad)" transform="rotate(-15,-20,20)"/>
+      <ellipse cx="5" cy="25" rx="9" ry="5" fill="url(#od_plateletGrad)" transform="rotate(15,5,25)"/>
+
+      <!-- vWF strands weaving through thrombus -->
+      <path d="M-45,-5 C-30,-15 -15,0 0,-15 C15,-25 25,-5 40,0" fill="none" stroke="#9775fa" stroke-width="2" opacity="0.8"/>
+      <path d="M-40,10 C-25,0 -10,20 5,5 C20,-5 30,15 42,10" fill="none" stroke="#9775fa" stroke-width="2" opacity="0.8"/>
+      <path d="M-35,25 C-20,15 -5,30 10,20 C25,12 35,25 40,22" fill="none" stroke="#9775fa" stroke-width="1.5" opacity="0.6"/>
+    </g>
+
+    <!-- Flow arrows through narrowed lumen -->
+    <g stroke="#e03131" stroke-width="1" fill="none" opacity="0.6">
+      <path d="M-60,40 L-50,45 L-40,42" marker-end="url(#od_arrowThin)"/>
+      <path d="M40,40 L50,42 L60,38" marker-end="url(#od_arrowThin)"/>
+    </g>
+    <defs>
+      <marker id="od_arrowThin" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+        <path d="M0,0 L6,2.5 L0,5" fill="#e03131"/>
+      </marker>
+    </defs>
+    <text x="0" y="52" fill="#e03131" font-size="7" text-anchor="middle" font-weight="bold">Narrowed lumen</text>
+
+    <!-- Intact RBC on left side -->
+    <g transform="translate(-55,35)">
+      <ellipse cx="0" cy="0" rx="10" ry="6" fill="url(#od_rbcGrad)" filter="url(#od_shadow)"/>
+      <ellipse cx="0" cy="0" rx="4" ry="2.5" fill="#c92a2a" opacity="0.4"/>
+    </g>
+    <text x="-55" y="50" fill="#ffa8a8" font-size="6" text-anchor="middle">Intact RBC</text>
+
+    <!-- Schistocyte fragments on right side -->
+    <g transform="translate(50,35)">
+      <path d="M-5,-4 C-5,4 0,6 5,3 L3,-4 Z" fill="#ff6b6b" stroke="#c92a2a" stroke-width="0.8"/>
+    </g>
+    <g transform="translate(58,28)">
+      <polygon points="0,-5 6,3 -6,3" fill="#ff6b6b" stroke="#c92a2a" stroke-width="0.8"/>
+    </g>
+    <text x="55" y="50" fill="#ffa8a8" font-size="6" text-anchor="middle">Schistocytes</text>
+
+    <!-- Central label -->
+    <text x="0" y="-72" fill="#e5dbff" font-size="10" text-anchor="middle" font-weight="bold">Arteriole with</text>
+    <text x="0" y="-60" fill="#e5dbff" font-size="10" text-anchor="middle" font-weight="bold">Platelet-Rich Thrombus</text>
+  </g>
+
+  <!-- ==================== ORGAN CONNECTIONS ==================== -->
+
+  <!-- BRAIN (top-left) â€” 60-70% -->
+  <g id="od_brain-organ" transform="translate(120,100)">
+    <title>Brain involvement in TTP (60-70%)</title>
+    <!-- Connecting line -->
+    <line x1="100" y1="60" x2="350" y2="175" stroke="#e03131" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.7"/>
+    <!-- Severity badge -->
+    <rect x="170" y="95" width="55" height="18" rx="9" fill="#e03131" filter="url(#od_shadow)"/>
+    <text x="197" y="108" fill="white" font-size="9" text-anchor="middle" font-weight="bold">60-70%</text>
+
+    <!-- Brain shape -->
+    <g filter="url(#od_organGlow)">
+      <path d="M50,10 C20,10 5,30 5,55 C5,75 15,85 30,90 C35,92 40,95 45,95 L55,95 C60,95 65,92 70,90 C85,85 95,75 95,55 C95,30 80,10 50,10 Z"
+            fill="#2b2d42" stroke="#e03131" stroke-width="2"/>
+      <!-- Brain folds/sulci -->
+      <path d="M30,30 C40,25 50,35 60,28" fill="none" stroke="#e03131" stroke-width="1" opacity="0.5"/>
+      <path d="M25,45 C35,40 50,50 65,42 C75,38 85,45 90,50" fill="none" stroke="#e03131" stroke-width="1" opacity="0.5"/>
+      <path d="M20,60 C30,55 45,65 60,58 C70,54 80,60 88,62" fill="none" stroke="#e03131" stroke-width="1" opacity="0.5"/>
+      <path d="M30,75 C40,70 55,78 70,72 C80,68 87,73 90,75" fill="none" stroke="#e03131" stroke-width="1" opacity="0.5"/>
+      <!-- Cerebellum hint -->
+      <path d="M35,88 C40,82 50,85 55,88" fill="none" stroke="#e03131" stroke-width="1" opacity="0.4"/>
+      <!-- Microthrombi dots -->
+      <circle cx="35" cy="35" r="3" fill="#7048e8" opacity="0.8"/>
+      <circle cx="55" cy="50" r="2.5" fill="#7048e8" opacity="0.8"/>
+      <circle cx="70" cy="38" r="2" fill="#7048e8" opacity="0.8"/>
+      <circle cx="45" cy="65" r="3" fill="#7048e8" opacity="0.8"/>
+      <circle cx="65" cy="70" r="2" fill="#7048e8" opacity="0.8"/>
+      <circle cx="30" cy="55" r="2.5" fill="#7048e8" opacity="0.8"/>
+    </g>
+    <text x="50" y="0" fill="#ff8787" font-size="11" text-anchor="middle" font-weight="bold">BRAIN</text>
+    <!-- Labels -->
+    <rect x="-30" y="100" width="160" height="42" rx="4" fill="#0f172a" opacity="0.8" stroke="#e03131" stroke-width="1"/>
+    <text x="50" y="115" fill="#ffa8a8" font-size="8" text-anchor="middle">Fluctuating neuro symptoms</text>
+    <text x="50" y="127" fill="#ffa8a8" font-size="8" text-anchor="middle">Confusion, seizures, coma</text>
+    <text x="50" y="138" fill="#ffd43b" font-size="7" text-anchor="middle" font-style="italic">Most common organ involved</text>
+  </g>
+
+  <!-- HEART (top-right) â€” 25-50% -->
+  <g id="od_heart-organ" transform="translate(730,80)">
+    <title>Cardiac involvement in TTP (25-50%)</title>
+    <!-- Connecting line -->
+    <line x1="40" y1="80" x2="-180" y2="175" stroke="#e03131" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.7"/>
+    <!-- Severity badge -->
+    <rect x="-75" y="105" width="55" height="18" rx="9" fill="#e03131" filter="url(#od_shadow)"/>
+    <text x="-48" y="118" fill="white" font-size="9" text-anchor="middle" font-weight="bold">25-50%</text>
+
+    <!-- Heart shape -->
+    <g filter="url(#od_organGlow)">
+      <path d="M40,30 C40,15 25,5 15,5 C5,5 -5,15 -5,28 C-5,50 40,80 40,80 C40,80 85,50 85,28 C85,15 75,5 65,5 C55,5 40,15 40,30 Z"
+            fill="#2b2d42" stroke="#e03131" stroke-width="2"/>
+      <!-- Coronary artery hint -->
+      <path d="M25,25 C30,35 35,45 38,55" fill="none" stroke="#ff6b6b" stroke-width="1.5" opacity="0.4"/>
+      <path d="M55,25 C50,35 45,45 42,55" fill="none" stroke="#ff6b6b" stroke-width="1.5" opacity="0.4"/>
+      <!-- Microthrombi -->
+      <circle cx="30" cy="35" r="3" fill="#7048e8" opacity="0.8"/>
+      <circle cx="50" cy="40" r="2.5" fill="#7048e8" opacity="0.8"/>
+      <circle cx="40" cy="55" r="2" fill="#7048e8" opacity="0.8"/>
+      <circle cx="25" cy="50" r="2" fill="#7048e8" opacity="0.8"/>
+    </g>
+    <text x="40" y="0" fill="#ff8787" font-size="11" text-anchor="middle" font-weight="bold">HEART</text>
+    <!-- Labels -->
+    <rect x="-25" y="85" width="130" height="42" rx="4" fill="#0f172a" opacity="0.8" stroke="#e03131" stroke-width="1"/>
+    <text x="40" y="100" fill="#ffa8a8" font-size="8" text-anchor="middle">Troponin elevation</text>
+    <text x="40" y="112" fill="#ffa8a8" font-size="8" text-anchor="middle">Sudden cardiac death</text>
+    <text x="40" y="123" fill="#ffd43b" font-size="7" text-anchor="middle" font-style="italic">#1 cause of death in TTP</text>
+  </g>
+
+  <!-- KIDNEY (bottom-left) â€” 50% -->
+  <g id="od_kidney-organ" transform="translate(95,330)">
+    <title>Renal involvement in TTP (50%)</title>
+    <!-- Connecting line -->
+    <line x1="100" y1="15" x2="330" y2="-40" stroke="#fd7e14" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.7"/>
+    <!-- Severity badge -->
+    <rect x="170" y="-12" width="45" height="18" rx="9" fill="#fd7e14" filter="url(#od_shadow)"/>
+    <text x="192" y="1" fill="white" font-size="9" text-anchor="middle" font-weight="bold">50%</text>
+
+    <!-- Kidney shape -->
+    <g filter="url(#od_organGlow)">
+      <path d="M50,5 C25,5 5,25 5,55 C5,80 20,95 50,95 C55,95 58,88 55,80 C52,72 52,40 55,32 C58,24 55,5 50,5 Z"
+            fill="#2b2d42" stroke="#fd7e14" stroke-width="2"/>
+      <!-- Inner medulla hint -->
+      <path d="M25,30 C30,40 30,60 25,70" fill="none" stroke="#fd7e14" stroke-width="1" opacity="0.4"/>
+      <path d="M35,25 C40,40 40,60 35,75" fill="none" stroke="#fd7e14" stroke-width="1" opacity="0.4"/>
+      <!-- Microthrombi (fewer - mild involvement) -->
+      <circle cx="30" cy="45" r="2.5" fill="#7048e8" opacity="0.6"/>
+      <circle cx="40" cy="60" r="2" fill="#7048e8" opacity="0.6"/>
+    </g>
+    <text x="32" y="0" fill="#ffa94d" font-size="11" text-anchor="middle" font-weight="bold">KIDNEY</text>
+    <!-- Labels -->
+    <rect x="-30" y="100" width="170" height="52" rx="4" fill="#0f172a" opacity="0.8" stroke="#fd7e14" stroke-width="1"/>
+    <text x="55" y="115" fill="#ffc078" font-size="8" text-anchor="middle">Usually MILD (Cr 1.5-2.5)</text>
+    <text x="55" y="127" fill="#ffc078" font-size="8" text-anchor="middle">Proteinuria, hematuria</text>
+    <text x="55" y="140" fill="#ffd43b" font-size="8" text-anchor="middle" font-weight="bold">If severe renal failure</text>
+    <text x="55" y="150" fill="#ffd43b" font-size="8" text-anchor="middle" font-weight="bold">â†’ think HUS instead!</text>
+  </g>
+
+  <!-- GI (bottom-center) -->
+  <g id="od_gi-organ" transform="translate(440,385)">
+    <title>GI involvement in TTP</title>
+    <!-- Connecting line -->
+    <line x1="45" y1="-10" x2="45" y2="-95" stroke="#fcc419" stroke-width="2" stroke-dasharray="6,3" opacity="0.6"/>
+
+    <!-- Intestine shape (simplified coiled tube) -->
+    <g filter="url(#od_organGlow)">
+      <path d="M10,15 C10,5 25,5 30,15 C35,25 50,25 50,15 C50,5 65,5 70,15 C75,25 85,25 85,15"
+            fill="none" stroke="#fcc419" stroke-width="3" stroke-linecap="round"/>
+      <path d="M10,35 C10,25 25,25 30,35 C35,45 50,45 50,35 C50,25 65,25 70,35 C75,45 85,45 85,35"
+            fill="none" stroke="#fcc419" stroke-width="3" stroke-linecap="round"/>
+      <path d="M10,55 C10,45 25,45 30,55 C35,65 50,65 50,55 C50,45 65,45 70,55"
+            fill="none" stroke="#fcc419" stroke-width="3" stroke-linecap="round"/>
+      <!-- Stomach hint -->
+      <path d="M5,0 C-5,0 -10,10 -5,20 C0,30 5,25 10,15" fill="#2b2d42" stroke="#fcc419" stroke-width="2"/>
+      <!-- Microthrombi -->
+      <circle cx="40" cy="20" r="2" fill="#7048e8" opacity="0.6"/>
+      <circle cx="60" cy="40" r="2" fill="#7048e8" opacity="0.6"/>
+    </g>
+    <text x="45" y="-15" fill="#fcc419" font-size="11" text-anchor="middle" font-weight="bold">GI</text>
+    <!-- Labels -->
+    <rect x="-15" y="65" width="120" height="32" rx="4" fill="#0f172a" opacity="0.8" stroke="#fcc419" stroke-width="1"/>
+    <text x="45" y="80" fill="#ffe066" font-size="8" text-anchor="middle">Abdominal pain</text>
+    <text x="45" y="92" fill="#ffe066" font-size="8" text-anchor="middle">Nausea, pancreatitis</text>
+  </g>
+
+  <!-- SKIN (bottom-right) -->
+  <g id="od_skin-organ" transform="translate(720,340)">
+    <title>Skin involvement in TTP</title>
+    <!-- Connecting line -->
+    <line x1="5" y1="15" x2="-175" y2="-50" stroke="#fcc419" stroke-width="2" stroke-dasharray="6,3" opacity="0.6"/>
+
+    <!-- Skin rectangle showing petechiae -->
+    <g filter="url(#od_organGlow)">
+      <rect x="0" y="0" width="100" height="70" rx="8" fill="#2b2d42" stroke="#fcc419" stroke-width="2"/>
+      <!-- Skin surface texture -->
+      <rect x="5" y="5" width="90" height="60" rx="6" fill="#ffecd2" opacity="0.15"/>
+      <!-- Petechiae dots (small, scattered) -->
+      <circle cx="15" cy="15" r="2.5" fill="#e03131"/>
+      <circle cx="35" cy="12" r="1.8" fill="#e03131"/>
+      <circle cx="55" cy="18" r="2" fill="#e03131"/>
+      <circle cx="75" cy="14" r="2.5" fill="#e03131"/>
+      <circle cx="25" cy="30" r="2" fill="#e03131"/>
+      <circle cx="45" cy="28" r="1.5" fill="#e03131"/>
+      <circle cx="65" cy="32" r="2.5" fill="#e03131"/>
+      <circle cx="85" cy="25" r="1.8" fill="#e03131"/>
+      <circle cx="20" cy="45" r="2" fill="#e03131"/>
+      <circle cx="40" cy="42" r="2.5" fill="#e03131"/>
+      <circle cx="60" cy="48" r="1.8" fill="#e03131"/>
+      <circle cx="80" cy="44" r="2" fill="#e03131"/>
+      <!-- Larger purpura patches -->
+      <ellipse cx="30" cy="55" rx="8" ry="5" fill="#862e9c" opacity="0.5"/>
+      <ellipse cx="70" cy="58" rx="10" ry="4" fill="#862e9c" opacity="0.5"/>
+    </g>
+    <text x="50" y="-8" fill="#fcc419" font-size="11" text-anchor="middle" font-weight="bold">SKIN</text>
+    <!-- Labels -->
+    <rect x="-5" y="78" width="110" height="32" rx="4" fill="#0f172a" opacity="0.8" stroke="#fcc419" stroke-width="1"/>
+    <text x="50" y="93" fill="#ffe066" font-size="8" text-anchor="middle">Petechiae, purpura</text>
+    <text x="50" y="105" fill="#ffe066" font-size="8" text-anchor="middle">(NOT palpable â€” flat)</text>
+  </g>
+
+  <!-- Center label - mechanism -->
+  <g transform="translate(480,250)">
+    <rect x="-75" y="60" width="150" height="38" rx="6" fill="#0f172a" opacity="0.9" stroke="#7048e8" stroke-width="1"/>
+    <text x="0" y="76" fill="#d0bfff" font-size="8" text-anchor="middle" font-weight="bold">Mechanism: vWF-platelet thrombi</text>
+    <text x="0" y="88" fill="#d0bfff" font-size="8" text-anchor="middle">occlude arterioles â†’ ischemia</text>
+    <text x="0" y="98" fill="#ffd43b" font-size="7" text-anchor="middle" font-style="italic">+ mechanical hemolysis (MAHA)</text>
+  </g>
+
+  <!-- Severity color legend -->
+  <g transform="translate(20,465)">
+    <rect x="0" y="0" width="920" height="28" rx="4" fill="#0f172a" opacity="0.7"/>
+    <text x="15" y="18" fill="#94a3b8" font-size="9" font-weight="bold">SEVERITY:</text>
+    <circle cx="100" cy="14" r="6" fill="#e03131"/>
+    <text x="115" y="18" fill="#ffa8a8" font-size="9">High (Brain, Heart) â€” most dangerous</text>
+    <circle cx="340" cy="14" r="6" fill="#fd7e14"/>
+    <text x="355" y="18" fill="#ffc078" font-size="9">Moderate (Kidney) â€” usually mild in TTP</text>
+    <circle cx="590" cy="14" r="6" fill="#fcc419"/>
+    <text x="605" y="18" fill="#ffe066" font-size="9">Variable (GI, Skin)</text>
+    <circle cx="770" cy="14" r="4" fill="#7048e8"/>
+    <text x="782" y="18" fill="#d0bfff" font-size="9">= microthrombi</text>
+  </g>
+</svg>
+  <div class="img-caption">End-Organ Microthrombi: Central arteriolar occlusion radiating to organ-specific damage patterns with prevalence</div>
+</div>
 
       <h4>Brain (Most Common, 60&ndash;70%)</h4>
       <p>The brain is <strong>preferentially affected</strong> because cerebral arterioles have among the highest shear stress in the body. Microthrombi form in cortical and subcortical arterioles, causing:</p>
@@ -1002,6 +1719,322 @@ strong { color: var(--text-heading); }
     <div class="tab-content" id="s6-tab2">
       <h3>Plasma Exchange (TPE) &mdash; The Cornerstone</h3>
       <p><strong>Without TPE, mortality is &gt;90%.</strong></p>
+<div style="margin:24px 0;text-align:center;overflow-x:auto;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <filter id="tp_shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="tp_glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="tp_rbcGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="60%" stop-color="#e03131"/>
+      <stop offset="100%" stop-color="#c92a2a"/>
+    </radialGradient>
+    <radialGradient id="tp_plateletGrad" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#b197fc"/>
+      <stop offset="100%" stop-color="#7048e8"/>
+    </radialGradient>
+    <radialGradient id="tp_adamts13Grad" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#74c0fc"/>
+      <stop offset="100%" stop-color="#1c7ed6"/>
+    </radialGradient>
+    <linearGradient id="tp_plasmaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd43b"/>
+      <stop offset="100%" stop-color="#f59f00"/>
+    </linearGradient>
+    <linearGradient id="tp_bagGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#51cf66"/>
+      <stop offset="100%" stop-color="#2b8a3e"/>
+    </linearGradient>
+    <marker id="tp_arrowWhite" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7" fill="#e2e8f0"/>
+    </marker>
+    <marker id="tp_arrowRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7" fill="#e03131"/>
+    </marker>
+    <marker id="tp_arrowGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7" fill="#51cf66"/>
+    </marker>
+    <marker id="tp_arrowBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7" fill="#74c0fc"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="450" fill="#1e293b" rx="8"/>
+
+  <!-- Title -->
+  <text x="480" y="30" fill="#e2e8f0" font-size="20" font-weight="bold" text-anchor="middle">Therapeutic Plasma Exchange (TPE) â€” How It Treats TTP</text>
+
+  <!-- Step headers -->
+  <rect x="30" y="42" width="280" height="28" rx="6" fill="#c92a2a" filter="url(#tp_shadow)"/>
+  <text x="170" y="61" fill="white" font-size="13" text-anchor="middle" font-weight="bold">STEP 1: REMOVE</text>
+
+  <rect x="340" y="42" width="280" height="28" rx="6" fill="#2b8a3e" filter="url(#tp_shadow)"/>
+  <text x="480" y="61" fill="white" font-size="13" text-anchor="middle" font-weight="bold">STEP 2: REPLACE</text>
+
+  <rect x="650" y="42" width="280" height="28" rx="6" fill="#1864ab" filter="url(#tp_shadow)"/>
+  <text x="790" y="61" fill="white" font-size="13" text-anchor="middle" font-weight="bold">STEP 3: RESULT</text>
+
+  <!-- ==================== STEP 1: REMOVE ==================== -->
+  <g id="tp_step-remove" transform="translate(30,80)">
+    <title>Step 1: Remove patient plasma containing antibodies and UL-vWF</title>
+
+    <!-- Patient silhouette (left) -->
+    <g transform="translate(30,50)">
+      <!-- Head -->
+      <circle cx="25" cy="10" r="15" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+      <!-- Body -->
+      <path d="M5,25 C5,25 10,30 25,30 C40,30 45,25 45,25 L50,80 L0,80 Z" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+      <!-- Sick indicator -->
+      <text x="25" y="95" fill="#ffa8a8" font-size="8" text-anchor="middle">Patient</text>
+      <text x="25" y="105" fill="#ffa8a8" font-size="7" text-anchor="middle">(sick with TTP)</text>
+    </g>
+
+    <!-- Blood line leaving patient -->
+    <path d="M85,120 C100,120 110,115 130,115" fill="none" stroke="#e03131" stroke-width="4" stroke-linecap="round"/>
+    <path d="M85,120 C100,120 110,125 130,125" fill="none" stroke="#e03131" stroke-width="4" stroke-linecap="round"/>
+    <!-- Arrow -->
+    <path d="M120,120 L135,120" fill="none" stroke="#e03131" stroke-width="2" marker-end="url(#tp_arrowRed)"/>
+
+    <!-- Centrifuge/Separator machine -->
+    <g transform="translate(140,80)">
+      <rect x="0" y="0" width="90" height="100" rx="10" fill="#334155" stroke="#64748b" stroke-width="2" filter="url(#tp_shadow)"/>
+      <!-- Spinning disc -->
+      <circle cx="45" cy="40" r="28" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+      <circle cx="45" cy="40" r="20" fill="#475569"/>
+      <!-- Spinning lines -->
+      <line x1="45" y1="20" x2="45" y2="60" stroke="#94a3b8" stroke-width="1" opacity="0.5"/>
+      <line x1="25" y1="40" x2="65" y2="40" stroke="#94a3b8" stroke-width="1" opacity="0.5"/>
+      <line x1="30" y1="25" x2="60" y2="55" stroke="#94a3b8" stroke-width="1" opacity="0.3"/>
+      <line x1="60" y1="25" x2="30" y2="55" stroke="#94a3b8" stroke-width="1" opacity="0.3"/>
+      <circle cx="45" cy="40" r="4" fill="#e03131"/>
+      <!-- Label -->
+      <text x="45" y="80" fill="#94a3b8" font-size="8" text-anchor="middle">Centrifuge</text>
+      <text x="45" y="92" fill="#94a3b8" font-size="7" text-anchor="middle">Separator</text>
+    </g>
+
+    <!-- Separated plasma going to waste (down) -->
+    <path d="M185,185 L185,210 L185,240" fill="none" stroke="#f59f00" stroke-width="3" stroke-linecap="round"/>
+    <path d="M185,230 L185,245" fill="none" stroke="#f59f00" stroke-width="2" marker-end="url(#tp_arrowWhite)"/>
+
+    <!-- Waste plasma bag -->
+    <g transform="translate(150,248)">
+      <rect x="0" y="0" width="70" height="55" rx="6" fill="#3d1e00" stroke="#f59f00" stroke-width="1.5" opacity="0.8"/>
+      <text x="35" y="12" fill="#ffd43b" font-size="7" text-anchor="middle" font-weight="bold">REMOVED:</text>
+      <!-- Antibodies in waste -->
+      <g transform="translate(15,25)">
+        <path d="M0,0 L-4,-8 M0,0 L4,-8 M0,0 L0,8" stroke="#e03131" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="-4" cy="-8" r="2" fill="#e03131"/>
+        <circle cx="4" cy="-8" r="2" fill="#e03131"/>
+      </g>
+      <g transform="translate(35,28)">
+        <path d="M0,0 L-4,-8 M0,0 L4,-8 M0,0 L0,8" stroke="#e03131" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="-4" cy="-8" r="2" fill="#e03131"/>
+        <circle cx="4" cy="-8" r="2" fill="#e03131"/>
+      </g>
+      <!-- vWF strands in waste -->
+      <path d="M42,22 C48,18 52,26 58,22" fill="none" stroke="#9775fa" stroke-width="2" stroke-linecap="round"/>
+      <path d="M42,32 C48,28 52,36 58,32" fill="none" stroke="#9775fa" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="35" y="50" fill="#ffa8a8" font-size="6" text-anchor="middle">Ab + UL-vWF</text>
+    </g>
+
+    <!-- Description box -->
+    <rect x="5" y="220" width="130" height="55" rx="4" fill="#0f172a" opacity="0.8" stroke="#e03131" stroke-width="1"/>
+    <text x="70" y="235" fill="#ffa8a8" font-size="7.5" text-anchor="middle">Patient plasma removed</text>
+    <text x="70" y="247" fill="#ffa8a8" font-size="7.5" text-anchor="middle">Contains:</text>
+    <text x="70" y="259" fill="#ff8787" font-size="7" text-anchor="middle">Anti-ADAMTS13 antibodies</text>
+    <text x="70" y="270" fill="#d0bfff" font-size="7" text-anchor="middle">+ UL-vWF multimers</text>
+  </g>
+
+  <!-- Large arrow between Step 1 and Step 2 -->
+  <path d="M310,200 L335,200" fill="none" stroke="#e2e8f0" stroke-width="2" marker-end="url(#tp_arrowWhite)"/>
+
+  <!-- ==================== STEP 2: REPLACE ==================== -->
+  <g id="tp_step-replace" transform="translate(340,80)">
+    <title>Step 2: Replace with donor FFP containing functional ADAMTS13</title>
+
+    <!-- FFP Bag (large, prominent) -->
+    <g transform="translate(40,20)">
+      <!-- Bag shape -->
+      <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#tp_bagGrad)" opacity="0.8" filter="url(#tp_shadow)" stroke="#2b8a3e" stroke-width="2"/>
+      <!-- Bag port at top -->
+      <rect x="35" y="-12" width="30" height="15" rx="4" fill="#64748b" stroke="#94a3b8" stroke-width="1"/>
+      <!-- Label on bag -->
+      <text x="50" y="20" fill="white" font-size="11" text-anchor="middle" font-weight="bold">DONOR</text>
+      <text x="50" y="33" fill="white" font-size="11" text-anchor="middle" font-weight="bold">FFP</text>
+      <line x1="10" y1="40" x2="90" y2="40" stroke="white" stroke-width="0.5" opacity="0.5"/>
+
+      <!-- Contents visualization -->
+      <!-- ADAMTS13 enzymes (pac-man shapes, blue) -->
+      <g transform="translate(20,55)">
+        <path d="M0,0 A8,8 0 1 1 0,16 L5,8 Z" fill="url(#tp_adamts13Grad)" stroke="#1864ab" stroke-width="1"/>
+        <circle cx="-2" cy="5" r="1.5" fill="#1e293b"/>
+      </g>
+      <g transform="translate(50,50)">
+        <path d="M0,0 A8,8 0 1 1 0,16 L5,8 Z" fill="url(#tp_adamts13Grad)" stroke="#1864ab" stroke-width="1"/>
+        <circle cx="-2" cy="5" r="1.5" fill="#1e293b"/>
+      </g>
+      <g transform="translate(70,60)">
+        <path d="M0,0 A8,8 0 1 1 0,16 L5,8 Z" fill="url(#tp_adamts13Grad)" stroke="#1864ab" stroke-width="1"/>
+        <circle cx="-2" cy="5" r="1.5" fill="#1e293b"/>
+      </g>
+      <text x="50" y="88" fill="#d8f3dc" font-size="8" text-anchor="middle" font-weight="bold">Functional</text>
+      <text x="50" y="99" fill="#d8f3dc" font-size="8" text-anchor="middle" font-weight="bold">ADAMTS13</text>
+
+      <!-- Normal vWF -->
+      <path d="M15,108 C22,104 28,112 35,108" fill="none" stroke="#d0bfff" stroke-width="2" stroke-linecap="round"/>
+      <path d="M50,108 C57,104 63,112 70,108" fill="none" stroke="#d0bfff" stroke-width="2" stroke-linecap="round"/>
+      <text x="50" y="122" fill="#d0bfff" font-size="7" text-anchor="middle">+ Normal vWF</text>
+    </g>
+
+    <!-- Tubing/line going to patient -->
+    <path d="M145,85 C160,85 180,90 200,100 C220,110 235,130 245,150" fill="none" stroke="#51cf66" stroke-width="4" stroke-linecap="round"/>
+    <path d="M235,140 L245,155" fill="none" stroke="#51cf66" stroke-width="2" marker-end="url(#tp_arrowGreen)"/>
+
+    <!-- Patient silhouette (receiving) -->
+    <g transform="translate(220,155)">
+      <!-- Head -->
+      <circle cx="25" cy="10" r="15" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+      <!-- Body -->
+      <path d="M5,25 C5,25 10,30 25,30 C40,30 45,25 45,25 L50,80 L0,80 Z" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+      <!-- IV in arm -->
+      <line x1="0" y1="50" x2="-15" y2="45" stroke="#51cf66" stroke-width="2"/>
+      <text x="25" y="95" fill="#95d5b2" font-size="8" text-anchor="middle">Patient</text>
+      <text x="25" y="105" fill="#95d5b2" font-size="7" text-anchor="middle">(receiving FFP)</text>
+    </g>
+
+    <!-- Description box -->
+    <rect x="5" y="220" width="270" height="45" rx="4" fill="#0f172a" opacity="0.8" stroke="#2b8a3e" stroke-width="1"/>
+    <text x="140" y="237" fill="#95d5b2" font-size="8" text-anchor="middle" font-weight="bold">Donor FFP infused â€” provides:</text>
+    <text x="140" y="250" fill="#74c0fc" font-size="8" text-anchor="middle">Functional ADAMTS13 enzymes + normal-sized vWF</text>
+    <text x="140" y="262" fill="#ffe066" font-size="7" text-anchor="middle" font-style="italic">1-1.5x plasma volume exchanged daily</text>
+  </g>
+
+  <!-- Large arrow between Step 2 and Step 3 -->
+  <path d="M620,200 L645,200" fill="none" stroke="#e2e8f0" stroke-width="2" marker-end="url(#tp_arrowWhite)"/>
+
+  <!-- ==================== STEP 3: RESULT ==================== -->
+  <g id="tp_step-result" transform="translate(650,80)">
+    <title>Step 3: ADAMTS13 restored, vWF cleaved, microthrombi resolve</title>
+
+    <!-- Restored vessel cross-section -->
+    <g transform="translate(30,20)">
+      <!-- Vessel walls -->
+      <rect x="0" y="0" width="250" height="15" rx="3" fill="#1864ab" opacity="0.6"/>
+      <rect x="0" y="95" width="250" height="15" rx="3" fill="#1864ab" opacity="0.6"/>
+      <!-- Lumen -->
+      <rect x="0" y="15" width="250" height="80" fill="#1864ab" opacity="0.1"/>
+
+      <!-- ADAMTS13 cleaving vWF (normal pathway restored) -->
+      <!-- vWF strand -->
+      <path d="M20,50 C35,42 45,58 60,50 C75,42 85,55 95,50" fill="none" stroke="#9775fa" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- ADAMTS13 at cleavage point -->
+      <g transform="translate(95,42)">
+        <path d="M0,0 A10,10 0 1 1 0,20 L6,10 Z" fill="url(#tp_adamts13Grad)" stroke="#1864ab" stroke-width="1"/>
+        <circle cx="-2" cy="6" r="1.5" fill="#1e293b"/>
+      </g>
+      <!-- Cleavage flash -->
+      <polygon points="108,48 110,44 114,48 112,44 116,46 112,42 114,38 110,42 108,38 110,42 106,40 110,44" fill="#ffd43b" opacity="0.8"/>
+
+      <!-- Cleaved fragments floating -->
+      <path d="M125,45 C130,42 133,48 138,45" fill="none" stroke="#9775fa" stroke-width="2" opacity="0.6"/>
+      <path d="M140,55 C145,52 148,58 153,55" fill="none" stroke="#9775fa" stroke-width="2" opacity="0.6"/>
+
+      <!-- Free-flowing platelets -->
+      <ellipse cx="170" cy="40" rx="7" ry="4.5" fill="url(#tp_plateletGrad)" filter="url(#tp_shadow)"/>
+      <ellipse cx="195" cy="60" rx="6" ry="4" fill="url(#tp_plateletGrad)" filter="url(#tp_shadow)"/>
+      <ellipse cx="220" cy="45" rx="7" ry="4.5" fill="url(#tp_plateletGrad)" filter="url(#tp_shadow)"/>
+
+      <!-- Normal RBCs -->
+      <g transform="translate(180,75)">
+        <ellipse cx="0" cy="0" rx="9" ry="5.5" fill="url(#tp_rbcGrad)"/>
+        <ellipse cx="0" cy="0" rx="3.5" ry="2" fill="#c92a2a" opacity="0.4"/>
+      </g>
+      <g transform="translate(220,70)">
+        <ellipse cx="0" cy="0" rx="9" ry="5.5" fill="url(#tp_rbcGrad)"/>
+        <ellipse cx="0" cy="0" rx="3.5" ry="2" fill="#c92a2a" opacity="0.4"/>
+      </g>
+
+      <!-- Flow arrows -->
+      <path d="M10,55 L30,55" fill="none" stroke="#74c0fc" stroke-width="1" marker-end="url(#tp_arrowBlue)" opacity="0.5"/>
+      <path d="M10,70 L30,70" fill="none" stroke="#74c0fc" stroke-width="1" marker-end="url(#tp_arrowBlue)" opacity="0.5"/>
+    </g>
+
+    <text x="155" y="130" fill="#74c0fc" font-size="9" text-anchor="middle" font-weight="bold">Normal vessel: ADAMTS13 cleaving vWF</text>
+    <text x="155" y="142" fill="#95d5b2" font-size="8" text-anchor="middle">Platelets &amp; RBCs flow freely</text>
+
+    <!-- Platelet count recovery chart -->
+    <g transform="translate(30,155)">
+      <rect x="0" y="0" width="250" height="100" rx="6" fill="#0f172a" opacity="0.8" stroke="#1864ab" stroke-width="1"/>
+      <text x="125" y="16" fill="#74c0fc" font-size="9" text-anchor="middle" font-weight="bold">Platelet Count Recovery</text>
+
+      <!-- Y-axis -->
+      <line x1="40" y1="25" x2="40" y2="85" stroke="#475569" stroke-width="1"/>
+      <text x="35" y="30" fill="#94a3b8" font-size="6" text-anchor="end">200K</text>
+      <text x="35" y="50" fill="#94a3b8" font-size="6" text-anchor="end">150K</text>
+      <text x="35" y="65" fill="#94a3b8" font-size="6" text-anchor="end">80K</text>
+      <text x="35" y="82" fill="#94a3b8" font-size="6" text-anchor="end">15K</text>
+      <!-- Threshold line -->
+      <line x1="40" y1="50" x2="230" y2="50" stroke="#ffd43b" stroke-width="0.8" stroke-dasharray="4,2" opacity="0.6"/>
+      <text x="235" y="53" fill="#ffd43b" font-size="5">150K goal</text>
+
+      <!-- X-axis -->
+      <line x1="40" y1="85" x2="230" y2="85" stroke="#475569" stroke-width="1"/>
+      <text x="60" y="95" fill="#94a3b8" font-size="6" text-anchor="middle">Day 1</text>
+      <text x="120" y="95" fill="#94a3b8" font-size="6" text-anchor="middle">Day 3</text>
+      <text x="180" y="95" fill="#94a3b8" font-size="6" text-anchor="middle">Day 5</text>
+
+      <!-- Recovery curve -->
+      <path d="M60,80 C80,75 100,68 120,63 C140,55 160,48 180,45 C195,42 210,38 220,35"
+            fill="none" stroke="#51cf66" stroke-width="2.5" stroke-linecap="round" filter="url(#tp_glow)"/>
+
+      <!-- Data points -->
+      <circle cx="60" cy="80" r="4" fill="#e03131" stroke="white" stroke-width="1"/>
+      <text x="60" y="76" fill="#ffa8a8" font-size="7" text-anchor="middle" font-weight="bold">15K</text>
+      <circle cx="120" cy="63" r="4" fill="#fcc419" stroke="white" stroke-width="1"/>
+      <text x="120" y="59" fill="#ffe066" font-size="7" text-anchor="middle" font-weight="bold">80K</text>
+      <circle cx="180" cy="45" r="4" fill="#51cf66" stroke="white" stroke-width="1"/>
+      <text x="180" y="41" fill="#95d5b2" font-size="7" text-anchor="middle" font-weight="bold">150K+</text>
+
+      <!-- Up arrow -->
+      <path d="M215,70 L220,30" fill="none" stroke="#51cf66" stroke-width="2"/>
+      <polygon points="220,28 216,36 224,36" fill="#51cf66"/>
+    </g>
+
+    <!-- Description box -->
+    <rect x="5" y="268" width="275" height="42" rx="4" fill="#0f172a" opacity="0.8" stroke="#1864ab" stroke-width="1"/>
+    <text x="142" y="283" fill="#74c0fc" font-size="8" text-anchor="middle" font-weight="bold">ADAMTS13 restored â†’ vWF cleaved â†’</text>
+    <text x="142" y="295" fill="#74c0fc" font-size="8" text-anchor="middle" font-weight="bold">microthrombi resolve â†’ platelets recover</text>
+    <text x="142" y="307" fill="#ffe066" font-size="7" text-anchor="middle" font-style="italic">Continue daily TPE until platelets >150K x2 days</text>
+  </g>
+
+  <!-- Bottom: Key clinical pearls bar -->
+  <g transform="translate(30,380)">
+    <rect x="0" y="0" width="900" height="60" rx="6" fill="#0f172a" opacity="0.8" stroke="#475569" stroke-width="1"/>
+    <text x="450" y="16" fill="#ffd43b" font-size="10" text-anchor="middle" font-weight="bold">CLINICAL PEARLS</text>
+
+    <g fill="#e2e8f0" font-size="8">
+      <circle cx="20" cy="30" r="3" fill="#e03131"/>
+      <text x="30" y="33">Start TPE within 4-8 hours of suspected TTP (don't wait for ADAMTS13 result)</text>
+
+      <circle cx="20" cy="45" r="3" fill="#51cf66"/>
+      <text x="30" y="48">Adjunct: Caplacizumab (anti-vWF nanobody) + steroids + rituximab for refractory cases</text>
+
+      <circle cx="540" cy="30" r="3" fill="#74c0fc"/>
+      <text x="550" y="33">Monitor: Daily CBC, LDH, haptoglobin, retics, smear</text>
+
+      <circle cx="540" cy="45" r="3" fill="#fcc419"/>
+      <text x="550" y="48">Do NOT transfuse platelets (fuel for the fire!) unless life-threatening bleed</text>
+    </g>
+  </g>
+</svg>
+  <div class="img-caption">Plasma Exchange Mechanism: Remove antibodies + UL-vWF → Replace with functional ADAMTS13 → Platelet recovery</div>
+</div>
       <table>
         <tr><th>Parameter</th><th>Detail</th></tr>
         <tr><td><strong>Mechanism</strong></td><td>(1) Removes anti-ADAMTS13 autoantibodies (2) Removes UL-vWF multimers (3) Replaces functional ADAMTS13</td></tr>
