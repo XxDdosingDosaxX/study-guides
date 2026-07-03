@@ -43,6 +43,16 @@ def extract_metadata(filepath):
     with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
 
+    # v2 guides embed an explicit marker comment:  data-contexts:clinic,wards,icu | category:Cardiology
+    contexts = []
+    explicit_category = None
+    ctx_match = re.search(r"data-contexts:\s*([a-z, ]+)", content, re.IGNORECASE)
+    if ctx_match:
+        contexts = [c.strip().lower() for c in ctx_match.group(1).split(",") if c.strip()]
+    cat_match = re.search(r"category:\s*([A-Za-z /&]+)", content)
+    if cat_match:
+        explicit_category = cat_match.group(1).strip()
+
     # Extract title from <title> tag
     title_match = re.search(r"<title>(.*?)(?:\s*[—&].*)?</title>", content, re.IGNORECASE)
     title = title_match.group(1).strip() if title_match else filename.replace("_", " ").replace(".html", "")
@@ -83,8 +93,16 @@ def extract_metadata(filepath):
     category_color = CATEGORY_COLORS["default"]
 
     content_lower = content.lower()
+
+    # Explicit v2 marker wins over heuristics
+    if explicit_category:
+        category = explicit_category
+        key = explicit_category.lower().split()[0].split("/")[0]
+        category_color = CATEGORY_COLORS.get(key, CATEGORY_COLORS["default"])
     # Check more specific categories FIRST (before broad "pulmonary" which matches many guides)
-    if any(w in content_lower for w in ["tbi", "brain hemorrhage", "neurosurg", "craniotomy", "herniation", "epidural hematoma", "subdural hematoma", "subarachnoid"]):
+    if explicit_category:
+        pass  # explicit v2 marker already set category/color above
+    elif any(w in content_lower for w in ["tbi", "brain hemorrhage", "neurosurg", "craniotomy", "herniation", "epidural hematoma", "subdural hematoma", "subarachnoid"]):
         category = "Neurosurgery / Emergency Medicine"
         category_color = CATEGORY_COLORS["neurosurgery"]
     elif any(w in content_lower for w in ["ttp", "hematol", "anemia", "platelet", "coagul", "thrombocyt", "schistocyte", "plasma exchange"]):
@@ -177,7 +195,12 @@ def extract_metadata(filepath):
         "img_count": img_count,
         "video_count": video_count,
         "section_count": section_count,
+        "contexts": contexts,
     }
+
+
+CTX_LABEL = {"clinic": "Clinic", "wards": "Wards", "icu": "ICU"}
+CTX_COLOR = {"clinic": "#14b8a6", "wards": "#3b82f6", "icu": "#f43f5e"}
 
 
 def build_card_html(meta):
@@ -186,13 +209,24 @@ def build_card_html(meta):
         f'          <span class="guide-tag">{escape(t)}</span>' for t in meta["tags"]
     )
 
+    contexts = meta.get("contexts", [])
+    ctx_attr = " ".join(contexts)
+    if contexts:
+        chips = "".join(
+            f'<span class="ctx-chip" style="color:{CTX_COLOR[c]};border-color:{CTX_COLOR[c]}">{CTX_LABEL[c]}</span>'
+            for c in contexts if c in CTX_LABEL
+        )
+        ctx_html = f'\n        <div class="ctx-chips">{chips}</div>'
+    else:
+        ctx_html = ""
+
     return f"""
-    <a href="{escape(meta['filename'])}" class="guide-card" data-keywords="{escape(meta['keywords'])}">
+    <a href="{escape(meta['filename'])}" class="guide-card" data-contexts="{ctx_attr}" data-keywords="{escape(meta['keywords'])}">
       <div class="guide-color-bar" style="background:{meta['gradient']}"></div>
       <div class="guide-content">
         <div class="guide-category" style="color:{meta['category_color']}">{escape(meta['category'])}</div>
         <div class="guide-title">{escape(meta['title'])}</div>
-        <div class="guide-description">{meta['description']}</div>
+        <div class="guide-description">{meta['description']}</div>{ctx_html}
         <div class="guide-tags">
 {tags_html}
         </div>
