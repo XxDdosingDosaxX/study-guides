@@ -523,6 +523,75 @@ tr:last-child td{border-bottom:none}tr:nth-child(even) td{background:rgba(255,25
           </div></div>
       </section>
 
+      <section class="sec" id="c-scores">
+        <div class="sec-head"><span class="pill" style="background:var(--dx)">Scores</span><h2>Risk calculators</h2></div>
+
+        <div class="module accent" style="--m:var(--dx)"><div class="m-head" style="--m:var(--dx)"><span class="m-ico">🧮</span><h3>CHA₂DS₂-VASc — stroke risk in AF (do they need anticoagulation?)</h3></div>
+          <div class="m-body">
+            <p>Most HF patients already score ≥1 — heart failure itself is the "C". Use it whenever HF coexists with atrial fibrillation to decide on anticoagulation.</p>
+            <div class="calc" data-interp="interpChadsvasc">
+              <div class="calc-grid">
+                <div>
+                  <div class="calc-opt sel" data-pts="1" onclick="scoreToggle(this)">Congestive HF / LV dysfunction <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Hypertension <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Diabetes <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="2" onclick="scoreToggle(this)">Prior stroke / TIA / thromboembolism <span style="margin-left:auto;font-weight:700">+2</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Vascular disease (MI, PAD, aortic plaque) <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Female sex <span style="margin-left:auto;font-weight:700">+1</span></div>
+                </div>
+                <div>
+                  <div style="font-size:11.5px;color:var(--muted);margin:2px 0 6px;text-transform:uppercase;letter-spacing:.6px">Age (pick one)</div>
+                  <div class="calc-opt sel" data-pts="0" data-group="age" onclick="scoreToggle(this)">&lt;65 years <span style="margin-left:auto;font-weight:700">0</span></div>
+                  <div class="calc-opt" data-pts="1" data-group="age" onclick="scoreToggle(this)">65–74 years <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="2" data-group="age" onclick="scoreToggle(this)">≥75 years <span style="margin-left:auto;font-weight:700">+2</span></div>
+                </div>
+              </div>
+              <div class="calc-result">
+                <div class="calc-total score-total">1</div>
+                <div style="font-size:13px;margin-top:8px" class="score-interp"></div>
+              </div>
+            </div>
+            <div class="pearl"><span class="lbl"></span>Anticoagulate (DOAC preferred over warfarin unless mechanical valve or moderate–severe mitral stenosis) at <strong>≥2 in men or ≥3 in women</strong>. A score of 1 (men) / 2 (women) is a "consider" zone; a female-sex-only score of 1 does not by itself warrant anticoagulation.</div>
+          </div></div>
+
+        <div class="module accent" style="--m:var(--dx)"><div class="m-head" style="--m:var(--dx)"><span class="m-ico">🩸</span><h3>HAS-BLED — bleeding risk (weigh against the stroke benefit)</h3></div>
+          <div class="m-body">
+            <div class="calc" data-interp="interpHasbled">
+              <div class="calc-grid">
+                <div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Uncontrolled hypertension (SBP &gt;160) <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Abnormal renal function (dialysis, transplant, Cr &gt;2.26) <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Abnormal liver function (cirrhosis; bili &gt;2× + AST/ALT &gt;3×) <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Prior stroke <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Prior major bleed / predisposition <span style="margin-left:auto;font-weight:700">+1</span></div>
+                </div>
+                <div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Labile INR (TTR &lt;60%) <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Elderly (age &gt;65) <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Drugs — antiplatelet / NSAID <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="1" onclick="scoreToggle(this)">Alcohol ≥8 drinks/week <span style="margin-left:auto;font-weight:700">+1</span></div>
+                </div>
+              </div>
+              <div class="calc-result">
+                <div class="calc-total score-total">0</div>
+                <div style="font-size:13px;margin-top:8px" class="score-interp"></div>
+              </div>
+            </div>
+            <div class="pearl"><span class="lbl"></span>A high HAS-BLED (≥3) is a flag to <strong>correct modifiable bleeding risks</strong> (BP, labile INR, alcohol, unnecessary antiplatelets/NSAIDs) and follow more closely — <strong>not</strong> a reason to withhold anticoagulation when the stroke risk warrants it.</div>
+          </div></div>
+
+        <div class="module accent" style="--m:var(--dx)"><div class="m-head" style="--m:var(--dx)"><span class="m-ico">🔗</span><h3>More validated HF scores (open on MDCalc)</h3></div>
+          <div class="m-body">
+            <p>These use continuous nomograms best run on a validated calculator rather than reproduced from memory:</p>
+            <ul>
+              <li><a href="https://www.mdcalc.com/calc/3829/gwtg-heart-failure-risk-score" target="_blank">GWTG-HF Risk Score</a> — in-hospital mortality for an ADHF admission (wards prognosis/disposition).</li>
+              <li><a href="https://www.mdcalc.com/calc/3828/maggic-risk-calculator-heart-failure" target="_blank">MAGGIC Risk Calculator</a> — 1- and 3-year mortality in chronic HF.</li>
+              <li><a href="https://www.mdcalc.com/calc/10426/seattle-heart-failure-model" target="_blank">Seattle Heart Failure Model</a> — survival estimate + effect of adding therapies.</li>
+              <li><a href="https://www.mdcalc.com/calc/78/meld-na-unos-optn" target="_blank">MELD-Na</a> — cardiorenal/cardiac-cirrhosis and transplant/LVAD risk stratification.</li>
+            </ul>
+          </div></div>
+      </section>
+
       <section class="sec" id="c-prevention">
         <div class="sec-head"><span class="pill" style="background:var(--dispo)">Prevent</span><h2>USPSTF A/B &amp; whole-patient prevention</h2></div>
         <div class="module accent" style="--m:var(--dispo)"><div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🛡️</span><h3>Grade A &amp; B screening for the cardiac patient</h3></div>
@@ -983,6 +1052,33 @@ function observeSections(){
   _obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));var l=map['#'+e.target.id];if(l)l.classList.add('active');}});},{rootMargin:'-25% 0px -65% 0px'});
   document.querySelectorAll('.sec[id]').forEach(s=>{if(s.offsetParent!==null||s.dataset.shared||s.id==='references')_obs.observe(s);});
 }
+function scoreToggle(el){
+  var box=el.closest('.calc'); var grp=el.dataset.group;
+  if(grp){ box.querySelectorAll('.calc-opt[data-group="'+grp+'"]').forEach(function(o){o.classList.remove('sel');}); el.classList.add('sel'); }
+  else el.classList.toggle('sel');
+  computeScore(box);
+}
+function computeScore(box){
+  var t=0; box.querySelectorAll('.calc-opt.sel').forEach(function(o){t+=parseInt(o.dataset.pts||'0',10);});
+  box.querySelector('.score-total').textContent=t;
+  var fn=window[box.dataset.interp]; if(fn) fn(t,box);
+}
+var CHADS_STROKE=[0.2,0.6,2.2,3.2,4.8,7.2,9.7,11.2,10.8,12.2];
+function interpChadsvasc(t,box){
+  var col,rec;
+  if(t<=0){col='#34d399';rec='Low risk — no antithrombotic (men).';}
+  else if(t===1){col='#f59e0b';rec='Intermediate — consider anticoagulation (men); female-sex-only = still low.';}
+  else {col='#f43f5e';rec='Anticoagulate (DOAC preferred): score ≥2 (men) / ≥3 (women).';}
+  box.querySelector('.score-total').style.color=col;
+  box.querySelector('.score-interp').innerHTML='<b style="color:'+col+'">'+rec+'</b><br>~'+CHADS_STROKE[Math.min(t,9)]+'%/yr adjusted stroke risk (Friberg 2012).';
+}
+var HASBLED_BLEED=[1.13,1.02,1.88,3.74,8.70,12.5,12.5,12.5,12.5,12.5];
+function interpHasbled(t,box){
+  var col=t>=3?'#f43f5e':(t>=2?'#f59e0b':'#34d399');
+  var lab=t>=3?'High bleeding risk — correct modifiable factors &amp; follow closely (not a contraindication).':'Lower bleeding risk.';
+  box.querySelector('.score-total').style.color=col;
+  box.querySelector('.score-interp').innerHTML='<b style="color:'+col+'">'+lab+'</b><br>~'+HASBLED_BLEED[Math.min(t,9)]+'%/yr major bleeding (Pisters 2010).';
+}
 function copyOsmo(b){try{navigator.clipboard.writeText('Skanda123!');b.textContent='✓';setTimeout(function(){b.innerHTML='&#128273;';},1200);}catch(e){}}
 function toggleTheme(){document.body.classList.toggle('light');try{localStorage.setItem('hf_theme',document.body.classList.contains('light')?'light':'dark');}catch(e){}}
 function toggleRung(h){h.parentElement.classList.toggle('open');}
@@ -1032,6 +1128,7 @@ function selProfile(el){
   try{if(localStorage.getItem('hf_theme')==='light')document.body.classList.add('light');}catch(e){}
   var start='clinic';try{var s=localStorage.getItem('hf_ctx');if(s)start=s;}catch(e){}
   setCtx(start);
+  document.querySelectorAll('.calc[data-interp]').forEach(computeScore);
 })();
 </script>
 </body>
