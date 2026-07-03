@@ -433,6 +433,7 @@ video{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 
     <div class="kicker">Clinical Reference</div>
     <h1>DISEASE_TITLE</h1>
   </div>
+  <button class="iconbtn" onclick="copyOsmo(this)" title="Copy Osmosis login (horoy31882@flownue.com / Skanda123!)">&#128273;</button>
   <button class="iconbtn" onclick="toggleTheme()" title="Theme">&#9789;</button>
 </header>
 
@@ -779,6 +780,14 @@ function observeSections(){
 function toggleTheme(){
   document.body.classList.toggle('light');
   try{ localStorage.setItem('theme', document.body.classList.contains('light')?'light':'dark'); }catch(e){}
+}
+
+/* ============================================================
+   OSMOSIS LOGIN — app-bar key button (click to copy password)
+   ============================================================ */
+function copyOsmo(b){
+  try{ navigator.clipboard.writeText('Skanda123!'); b.textContent='✓';
+       setTimeout(function(){ b.innerHTML='&#128273;'; },1200); }catch(e){}
 }
 
 /* ============================================================
