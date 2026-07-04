@@ -1,0 +1,7 @@
+builder_queue.json
+builder_logs/
+_*.py
+_*.md
+img_*
+*.pyc
+__pycache__/

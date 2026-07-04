@@ -256,6 +256,24 @@ body {
   font-size: 13px;
 }
 
+.builder { max-width: 640px; margin: 0 auto 28px; background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px 18px; box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+.builder-title { font-size: 13px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.builder-row { display: flex; gap: 8px; }
+.builder-input { flex: 1; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--card-border); background: var(--bg); color: var(--text); font-size: 14px; font-family: inherit; outline: none; }
+.builder-input:focus { border-color: #14b8a6; }
+.builder-add { padding: 11px 18px; border-radius: 10px; border: none; background: #14b8a6; color: #03121a; font-weight: 800; font-size: 14px; cursor: pointer; font-family: inherit; white-space: nowrap; }
+.builder-add:hover { filter: brightness(1.08); }
+.builder-hint { font-size: 12px; color: var(--text-muted); margin-top: 8px; min-height: 14px; }
+.builder-queue { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; max-height: 300px; overflow-y: auto; }
+.bq-item { display: flex; align-items: center; gap: 10px; font-size: 12.5px; padding: 6px 10px; border-radius: 8px; background: var(--bg); border: 1px solid var(--card-border); }
+.bq-item .st { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; flex: 0 0 auto; }
+.st.pending { background: rgba(148,163,184,.18); color: #94a3b8; }
+.st.building { background: rgba(245,158,11,.18); color: #f59e0b; }
+.st.done { background: rgba(16,185,129,.18); color: #10b981; }
+.st.error { background: rgba(244,63,94,.18); color: #f43f5e; }
+.builder-off { max-width: 640px; margin: 0 auto 28px; font-size: 12.5px; color: var(--text-muted); text-align: center; line-height: 1.7; }
+.builder-off code { background: var(--card); padding: 2px 6px; border-radius: 5px; border: 1px solid var(--card-border); }
+
 @media (max-width: 600px) {
   .hero h1 { font-size: 32px; }
   .guides-grid { grid-template-columns: 1fr; }
@@ -283,6 +301,20 @@ body {
     <button class="filter-pill" data-ctx="clinic" onclick="setFilter('clinic')">🩺 Clinic</button>
     <button class="filter-pill" data-ctx="wards" onclick="setFilter('wards')">🛏️ Wards</button>
     <button class="filter-pill" data-ctx="icu" onclick="setFilter('icu')">🫀 ICU</button>
+  </div>
+
+  <div class="builder" id="builder" style="display:none">
+    <div class="builder-title">🛠️ Add a diagnosis — Claude builds it locally</div>
+    <div class="builder-row">
+      <input id="newDisease" class="builder-input" placeholder="Diagnosis to build (e.g., DKA, Sepsis, Cirrhosis)..." onkeydown="if(event.key==='Enter')enqueueDisease()">
+      <button class="builder-add" onclick="enqueueDisease()">＋ Build</button>
+    </div>
+    <div class="builder-hint" id="builderHint">Queued diagnoses build one at a time — research → guide → published. Keep this laptop on.</div>
+    <div class="builder-queue" id="builderQueue"></div>
+  </div>
+
+  <div class="builder-off" id="builderOff" style="display:none">
+    To add diseases from here, start the local builder — run <code>start_builder.bat</code> in the study-guides folder and open <a href="http://localhost:8890/">localhost:8890</a>. Or in Claude Code, type <code>/add-disease "Diagnosis"</code>.
   </div>
 
   <div class="stats">
@@ -466,6 +498,53 @@ function toggleTheme() {
   applyTheme();
 }
 applyTheme();
+
+// ===== Local "Add a disease" builder (only active when served by add_disease_builder.py) =====
+var BUILDER = false;
+function detectBuilder() {
+  fetch('/api/queue').then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
+    BUILDER = true;
+    document.getElementById('builder').style.display = 'block';
+    document.getElementById('builderOff').style.display = 'none';
+    renderQueue(d.items || []);
+  }).catch(function(){
+    document.getElementById('builder').style.display = 'none';
+    document.getElementById('builderOff').style.display = 'block';
+  });
+}
+function enqueueDisease() {
+  var i = document.getElementById('newDisease'), v = i.value.trim();
+  if (!v) return;
+  fetch('/api/enqueue', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({disease:v}) })
+    .then(function(r){ return r.json(); }).then(function(d){
+      i.value = '';
+      document.getElementById('builderHint').textContent = d.ok ? ('Queued: ' + v) : ('Not queued: ' + d.msg);
+      pollQueue();
+    }).catch(function(){ document.getElementById('builderHint').textContent = 'Builder not reachable.'; });
+}
+function renderQueue(items) {
+  var el = document.getElementById('builderQueue');
+  var order = { building:0, pending:1, error:2, done:3 };
+  var sorted = items.slice().sort(function(a,b){ return (order[a.status]-order[b.status]); });
+  var done = items.filter(function(x){ return x.status==='done'; }).length;
+  var pend = items.filter(function(x){ return x.status==='pending'; }).length;
+  var bld = items.filter(function(x){ return x.status==='building'; }).length;
+  document.getElementById('builderHint').textContent =
+    bld + ' building · ' + pend + ' queued · ' + done + ' done. One at a time — keep the laptop on.';
+  el.innerHTML = '';
+  sorted.filter(function(x){ return x.status!=='done'; }).slice(0, 20).forEach(function(x){
+    var row = document.createElement('div'); row.className = 'bq-item';
+    var st = document.createElement('span'); st.className = 'st ' + x.status; st.textContent = x.status;
+    var nm = document.createElement('span'); nm.textContent = x.disease; nm.style.flex = '1';
+    row.appendChild(st); row.appendChild(nm); el.appendChild(row);
+  });
+}
+function pollQueue() {
+  if (!BUILDER) return;
+  fetch('/api/queue').then(function(r){ return r.json(); }).then(function(d){ renderQueue(d.items || []); }).catch(function(){});
+}
+detectBuilder();
+setInterval(pollQueue, 5000);
 
 var activeCtx = 'all';
 function setFilter(ctx) {
