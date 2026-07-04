@@ -378,7 +378,18 @@ video{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 
 /* ============================================================
    SVG diagram wrapper
    ============================================================ */
-.svg-wrap{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0;overflow-x:auto}
+/* diagram panels stay dark in both themes so baked-dark SVGs/Mermaid look intentional */
+.svg-wrap{background:#0f1a2e;border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px;margin:12px 0;overflow-x:auto}
+.svg-wrap .cap{font-size:12px;color:#93a3ba;margin-top:8px;text-align:center}
+/* Notes widget */
+.note-input{width:100%;min-height:72px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:14px}
+.note-btn{padding:8px 16px;border-radius:9px;border:1px solid #eab308;background:rgba(234,179,8,.14);color:#eab308;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}
+.note-btn:hover{background:rgba(234,179,8,.22)}
+.note-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.note-card{border:1px solid var(--border);border-left:3px solid #eab308;border-radius:9px;padding:9px 12px;background:var(--card2)}
+.note-meta{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-bottom:4px}
+.note-del{cursor:pointer;color:var(--danger);font-weight:700}
+.note-text{font-size:13.5px;white-space:pre-wrap;word-break:break-word}
 .svg-wrap svg{display:block;margin:0 auto;max-width:100%;height:auto}
 
 /* ============================================================
@@ -700,6 +711,22 @@ video{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 
       </section>
     </div>
 
+    <!-- ===== MY NOTES (shared, per-disease, auto-saved to this browser) ===== -->
+    <section class="sec" id="notes" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:#eab308">Notes</span><h2>My notes</h2></div>
+      <div class="module accent" style="--m:#eab308">
+        <div class="m-head" style="--m:#eab308"><span class="m-ico">&#128221;</span><h3>Personal notes — auto-saved on this device, timestamped</h3></div>
+        <div class="m-body">
+          <textarea id="noteInput" class="note-input" placeholder="Add a note — attending pearls, your own reminders, things to look up..."></textarea>
+          <div style="display:flex;gap:10px;margin-top:8px;align-items:center;flex-wrap:wrap">
+            <button class="note-btn" onclick="addNote()">&#65291; Add note</button>
+            <span style="font-size:11.5px;color:var(--muted)">Saved in this browser only &middot; each note stamped with date &amp; time</span>
+          </div>
+          <div id="noteList" class="note-list"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== REFERENCES (shared) ===== -->
     <section class="sec refs" id="references">
       <div class="sec-head"><span class="pill" style="background:#64748b">Refs</span><h2>Sources &amp; guidelines</h2></div>
@@ -779,7 +806,7 @@ function observeSections(){
    ============================================================ */
 function toggleTheme(){
   document.body.classList.toggle('light');
-  try{ localStorage.setItem('theme', document.body.classList.contains('light')?'light':'dark'); }catch(e){}
+  try{ localStorage.setItem('sg_theme', document.body.classList.contains('light')?'light':'dark'); }catch(e){}
 }
 
 /* ============================================================
@@ -831,11 +858,23 @@ function closeSheet(){ document.getElementById('rail').classList.remove('sheet')
 /* ============================================================
    INIT
    ============================================================ */
+// ============================================================
+// PER-DISEASE NOTES — auto-saved to localStorage, timestamped
+// ============================================================
+var NOTE_KEY='sgnotes_'+(location.pathname.split('/').pop()||'guide');
+function loadNotes(){try{return JSON.parse(localStorage.getItem(NOTE_KEY)||'[]');}catch(e){return[];}}
+function saveNotes(a){try{localStorage.setItem(NOTE_KEY,JSON.stringify(a));}catch(e){}}
+function renderNotes(){var a=loadNotes(),el=document.getElementById('noteList');if(!el)return;el.innerHTML='';a.forEach(function(n,i){var c=document.createElement('div');c.className='note-card';var m=document.createElement('div');m.className='note-meta';var ts=document.createElement('span');ts.textContent=n.ts;var d=document.createElement('span');d.className='note-del';d.textContent='✕';d.addEventListener('click',function(){delNote(i);});m.appendChild(ts);m.appendChild(d);var t=document.createElement('div');t.className='note-text';t.textContent=n.text;c.appendChild(m);c.appendChild(t);el.appendChild(c);});}
+function addNote(){var ta=document.getElementById('noteInput'),v=ta.value.trim();if(!v)return;var a=loadNotes();a.unshift({text:v,ts:new Date().toLocaleString()});saveNotes(a);ta.value='';try{localStorage.removeItem(NOTE_KEY+'_draft');}catch(e){}renderNotes();}
+function delNote(i){var a=loadNotes();a.splice(i,1);saveNotes(a);renderNotes();}
+function initNotes(){var ni=document.getElementById('noteInput');if(ni){try{ni.value=localStorage.getItem(NOTE_KEY+'_draft')||'';}catch(e){}ni.addEventListener('input',function(){try{localStorage.setItem(NOTE_KEY+'_draft',ni.value);}catch(e){}});}renderNotes();}
+
 (function(){
-  try{ if(localStorage.getItem('theme')==='light') document.body.classList.add('light'); }catch(e){}
+  try{ if(localStorage.getItem('sg_theme')==='light') document.body.classList.add('light'); }catch(e){}
   var start='clinic';
   try{ var s=localStorage.getItem('ctx'); if(s) start=s; }catch(e){}
   setCtx(start);
+  initNotes();
 })();
 </script>
 </body>

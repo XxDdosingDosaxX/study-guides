@@ -265,7 +265,7 @@ body {
 </head>
 <body>
 
-<button class="theme-toggle" onclick="document.body.classList.toggle('light-mode');this.textContent=document.body.classList.contains('light-mode')?'\u2600':'\u263E'" title="Toggle theme">&#9790;</button>
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">&#9790;</button>
 
 <div class="container">
   <div class="hero">
@@ -452,6 +452,21 @@ body {
 </div>
 
 <script>
+// Shared theme across all pages (same key the guides use: sg_theme)
+function applyTheme() {
+  var light = false;
+  try { light = localStorage.getItem('sg_theme') === 'light'; } catch(e) {}
+  document.body.classList.toggle('light-mode', light);
+  var b = document.getElementById('themeToggle');
+  if (b) b.textContent = light ? '☀' : '☾';
+}
+function toggleTheme() {
+  var light = !document.body.classList.contains('light-mode');
+  try { localStorage.setItem('sg_theme', light ? 'light' : 'dark'); } catch(e) {}
+  applyTheme();
+}
+applyTheme();
+
 var activeCtx = 'all';
 function setFilter(ctx) {
   activeCtx = ctx;
