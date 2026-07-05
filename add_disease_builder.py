@@ -125,15 +125,21 @@ def worker():
         save_queue(q)
         slug = "".join(c if c.isalnum() else "_" for c in nxt["disease"])[:60]
         logpath = os.path.join(LOG_DIR, slug + ".log")
-        cmd = '"%s" -p %s --dangerously-skip-permissions' % (CLAUDE_CMD, json_arg(build_prompt(nxt["disease"])))
+        promptfile = os.path.join(LOG_DIR, slug + "_prompt.txt")
+        with open(promptfile, "w", encoding="utf-8") as pf:
+            pf.write(build_prompt(nxt["disease"]))
         print("[%s] building: %s" % (now(), nxt["disease"]))
         rc = -1
         try:
-            with open(logpath, "w", encoding="utf-8", errors="ignore") as lf:
-                lf.write("CMD: %s\nSTART: %s\n\n" % (cmd, now()))
+            # Prompt via STDIN (multi-line/quotes safe); flag stays on the command line.
+            with open(logpath, "w", encoding="utf-8", errors="ignore") as lf, \
+                 open(promptfile, "r", encoding="utf-8") as pin:
+                lf.write("CMD: cmd /c %s --dangerously-skip-permissions -p  (prompt via stdin)\nSTART: %s\n\n"
+                         % (CLAUDE_CMD, now()))
                 lf.flush()
-                p = subprocess.run(cmd, cwd=REPO, shell=True, stdout=lf,
-                                   stderr=subprocess.STDOUT, timeout=BUILD_TIMEOUT)
+                p = subprocess.run(["cmd", "/c", CLAUDE_CMD, "--dangerously-skip-permissions", "-p"],
+                                   cwd=REPO, stdin=pin, stdout=lf, stderr=subprocess.STDOUT,
+                                   timeout=BUILD_TIMEOUT)
                 rc = p.returncode
         except subprocess.TimeoutExpired:
             rc = -2
