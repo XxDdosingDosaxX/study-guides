@@ -31,7 +31,26 @@ PORT = 8890
 CLAUDE_CMD = os.path.expanduser(r"~\AppData\Roaming\npm\claude.cmd")
 if not os.path.exists(CLAUDE_CMD):
     CLAUDE_CMD = "claude"
-BUILD_TIMEOUT = 3600  # 60 min per disease
+BUILD_TIMEOUT = 5400  # 90 min per disease
+
+
+def ensure_published(name):
+    """Safety net: if the build wrote/updated a guide but didn't finish publishing
+    (e.g. it timed out after writing the file), finish update_index + commit + push here."""
+    try:
+        st = subprocess.run(["git", "status", "--porcelain"], cwd=REPO,
+                            capture_output=True, text=True, timeout=60).stdout
+        if not any("_Study_Guide.html" in ln for ln in st.splitlines()):
+            return False  # nothing new to publish (build already pushed, or produced nothing)
+        subprocess.run(["python", "update_index.py"], cwd=REPO, timeout=300)
+        subprocess.run(["git", "add", "-A"], cwd=REPO, timeout=60)
+        subprocess.run(["git", "commit", "-m", "Add %s clinical reference (Clinic/Wards/ICU)"
+                        % name.replace('"', "")], cwd=REPO, timeout=120)
+        subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=REPO, timeout=180)
+        r = subprocess.run(["git", "push", "origin", "HEAD:main"], cwd=REPO, timeout=180)
+        return r.returncode == 0
+    except Exception:
+        return False
 
 
 def build_prompt(name):
@@ -146,13 +165,16 @@ def worker():
         except Exception as e:
             with open(logpath, "a", encoding="utf-8") as lf:
                 lf.write("\nEXC: %s\n" % e)
+        # Safety net: publish the guide if the build wrote it but didn't push (e.g. timeout).
+        published = ensure_published(nxt["disease"])
         # reload (queue may have changed via API) and update this item
         q = load_queue()
         for i in q:
             if i["disease"] == nxt["disease"] and i["status"] == "building":
-                i["status"] = "done" if rc == 0 else "error"
+                i["status"] = "done" if (rc == 0 or published) else "error"
                 i["finished"] = now()
                 i["rc"] = rc
+                i["published"] = published
                 break
         save_queue(q)
         print("[%s] %s -> %s (rc=%s)" % (now(), nxt["disease"], "done" if rc == 0 else "error", rc))
