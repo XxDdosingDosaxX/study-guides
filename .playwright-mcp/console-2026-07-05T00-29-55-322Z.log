@@ -1,0 +1,4 @@
+[-13458404ms] [LOG] Document already loaded, running initialization immediately @ chrome-extension://ejkiikneibegknkgimmihdpcbcedgmpo/content-script.js:21
+[-13458404ms] [LOG] Attempting to initialize AdUnit @ chrome-extension://ejkiikneibegknkgimmihdpcbcedgmpo/content-script.js:3
+[-13458401ms] [LOG] AdUnit initialized successfully @ chrome-extension://ejkiikneibegknkgimmihdpcbcedgmpo/content-script.js:5
+[-13456600ms] [LOG] WARNING:StorageManager: settings timeout, using defaults @ chrome-extension://nffaoalbilbmmfgbnbgppjihopabppdk/inject.js:83

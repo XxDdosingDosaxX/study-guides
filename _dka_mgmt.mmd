@@ -1,0 +1,26 @@
+%%{init: {'theme':'base','themeVariables':{'fontSize':'13px','lineColor':'#94a3b8','primaryColor':'#1e293b','primaryTextColor':'#e2e8f0','primaryBorderColor':'#475569'}}}%%
+graph TD
+  S[Confirmed DKA:<br/>glucose 200+, ketones 3.0+,<br/>pH under 7.3 / HCO3 under 18] --> F[Fluids: 0.9% saline<br/>1 L in first hour<br/>15-20 mL/kg/hr]
+  F --> K{Serum potassium?}
+  K -->|under 3.3| K1[Hold insulin,<br/>give KCl 10-20 mEq/hr<br/>until 3.3+]
+  K -->|3.3 to 5.2| K2[Add 20-30 mEq KCl<br/>per litre fluid]
+  K -->|over 5.2| K3[No potassium yet,<br/>recheck in 2 h]
+  K1 --> I[IV insulin infusion<br/>0.1 unit/kg/hr<br/>fixed rate]
+  K2 --> I
+  K3 --> I
+  I --> G{Glucose under<br/>200-250?}
+  G -->|Yes| D[Add D5 to fluids,<br/>keep insulin running<br/>to clear ketones]
+  G -->|No| I
+  D --> R{Resolution:<br/>ketones under 0.6,<br/>pH over 7.3,<br/>HCO3 15+?}
+  R -->|Yes| T[Overlap SC basal insulin<br/>1-2 h before stopping drip,<br/>patient eating]
+  R -->|No| I
+  classDef start fill:#7f1d1d,stroke:#f87171,color:#fee2e2;
+  classDef fluid fill:#1e3a8a,stroke:#60a5fa,color:#dbeafe;
+  classDef ins fill:#065f46,stroke:#34d399,color:#d1fae5;
+  classDef dec fill:#78350f,stroke:#fbbf24,color:#fef3c7;
+  classDef done fill:#334155,stroke:#94a3b8,color:#f1f5f9;
+  class S start;
+  class F,D fluid;
+  class I,K1,K2,K3 ins;
+  class K,G,R dec;
+  class T done;

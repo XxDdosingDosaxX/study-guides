@@ -1,0 +1,3 @@
+[-89128411ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://appstoreconnect.apple.com/access/static/js/container.243b4934f1512a8c.js:1
+[-89128286ms] [WARNING] Metrics config: No config provided via delegate or fetched via init(), using default/cached config values. @ https://appstoreconnect.apple.com/access/static/js/344.d09a59ff782b29d1.js:0
+[-89126435ms] [WARNING] An array is needed to render meta tags @ https://appstoreconnect.apple.com/access/static/js/container.243b4934f1512a8c.js:1
