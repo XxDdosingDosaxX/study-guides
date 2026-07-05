@@ -5,3 +5,6 @@ _*.md
 img_*
 *.pyc
 __pycache__/
+.playwright-mcp/
+*.mmd
+builder_server.out
