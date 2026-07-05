@@ -31,7 +31,7 @@ PORT = 8890
 CLAUDE_CMD = os.path.expanduser(r"~\AppData\Roaming\npm\claude.cmd")
 if not os.path.exists(CLAUDE_CMD):
     CLAUDE_CMD = "claude"
-BUILD_TIMEOUT = 5400  # 90 min per disease
+BUILD_TIMEOUT = 7200  # 2 hr per disease (allow a thorough research pass + full-depth build)
 
 
 def ensure_published(name):
@@ -70,9 +70,15 @@ def build_prompt(name):
         "imaging + lab interpretation, full drug dose ladders (start -> titration increments -> target/max) "
         "for every agent, comorbidity-interaction table + drugs-to-avoid, numeric escalate/downgrade thresholds, "
         "validated MDCalc-style calculators only for scores whose exact points you can verify (link out otherwise), "
-        "Mermaid flowcharts rendered via mermaid.ink (theme 'dark', URL-safe base64, scoped ids) embedded inline, "
+        "THEME-ADAPTIVE diagrams (either inline SVG using the template's --d-* CSS variables — --d-neutral, --d-blue-bg, "
+        "--d-text, --d-line, etc. — so they lighten in light mode, OR Mermaid rendered TWICE: dark (theme 'dark', bgColor 131c30) "
+        "AND light (theme 'default', bgColor f6f9fc), each embedded as <div class='dia dia-dark'>...</div><div class='dia dia-light'>...</div> "
+        "with unique ids; NEVER leave a diagram baked dark-only), "
         "5+ real CC-licensed Wikimedia images base64-embedded with specific source credits, references + a trials table. "
-        "Use current society guidelines; cite sources; never invent a dose.\n"
+        "BE EXHAUSTIVE — do not be lazy. Target ~8,000+ words to the depth of the Heart Failure reference. Research thoroughly with "
+        "WebSearch/WebFetch against the CURRENT major society guideline (name it with its year, e.g. ADA 2024, KDIGO 2024, IDSA, "
+        "ACC/AHA, GOLD) and the landmark trials; cite source URLs in the references and note the source for key doses/thresholds. "
+        "Every dose, threshold, and number must trace to an up-to-date, medical-grade source — never invent one.\n"
         "3. Verify: no leftover __IMG_ tokens, valid JS (node --check the last <script>), no horizontal overflow.\n"
         "4. Run: python update_index.py\n"
         "5. git add -A && git commit -m \"Add " + n + " clinical reference (Clinic/Wards/ICU)\" && git push origin HEAD:main\n"

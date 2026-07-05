@@ -78,11 +78,17 @@
   --ctx:#14b8a6; --ctx-soft:rgba(20,184,166,.14);
   --radius:14px; --tr:.28s ease; --rail:250px;
   --maxw:1080px;
+  /* Diagram palette (dark defaults) — use these in inline SVGs so they adapt to theme.
+     Colored fills are low-alpha tints that read on both light and dark panels. */
+  --d-bg:#0f1a2e; --d-neutral:#18233b; --d-line:#94a3b8; --d-text:#dbe4f0; --d-muted:#93a3ba;
+  --d-red:#f43f5e; --d-green:#34d399; --d-purple:#a78bfa; --d-blue:#38bdf8; --d-amber:#f59e0b;
+  --d-red-bg:rgba(244,63,94,.16); --d-green-bg:rgba(52,211,153,.16); --d-purple-bg:rgba(167,139,250,.16); --d-blue-bg:rgba(56,189,248,.16); --d-amber-bg:rgba(245,158,11,.16);
 }
 .light{
   --bg:#eef2f7; --bg2:#e6ecf3; --card:#ffffff; --card2:#f6f9fc;
   --border:rgba(15,23,42,.10); --border-strong:rgba(15,23,42,.18);
   --text:#1e293b; --muted:#55627a; --heading:#0b1220;
+  --d-bg:#f6f9fc; --d-neutral:#eef2f7; --d-line:#64748b; --d-text:#1e293b; --d-muted:#475569;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -379,7 +385,11 @@ video{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 
    SVG diagram wrapper
    ============================================================ */
 /* diagram panels stay dark in both themes so baked-dark SVGs/Mermaid look intentional */
-.svg-wrap{background:#0f1a2e;border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px;margin:12px 0;overflow-x:auto}
+/* Diagram panel is theme-adaptive. For Mermaid, embed BOTH a dark and a light render
+   toggled by these classes; for inline SVG, use the --d-* variables above. */
+.svg-wrap{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0;overflow-x:auto}
+.dia-dark{display:block}.dia-light{display:none}
+.light .dia-dark{display:none}.light .dia-light{display:block}
 .svg-wrap .cap{font-size:12px;color:#93a3ba;margin-top:8px;text-align:center}
 /* Notes widget */
 .note-input{width:100%;min-height:72px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:14px}
