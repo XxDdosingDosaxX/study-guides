@@ -171,6 +171,23 @@ def worker():
         except Exception as e:
             with open(logpath, "a", encoding="utf-8") as lf:
                 lf.write("\nEXC: %s\n" % e)
+        # If we hit the Claude session/usage limit, don't burn the disease as an error —
+        # requeue it and wait for the limit to reset, then retry.
+        try:
+            with open(logpath, encoding="utf-8", errors="ignore") as lf:
+                tail = lf.read()[-3000:].lower()
+        except Exception:
+            tail = ""
+        if rc != 0 and ("session limit" in tail or "usage limit" in tail or "hit your" in tail):
+            q = load_queue()
+            for i in q:
+                if i["disease"] == nxt["disease"] and i["status"] == "building":
+                    i["status"] = "pending"; i["started"] = None
+                    break
+            save_queue(q)
+            print("[%s] session limit hit on %s — waiting 20 min, then retrying" % (now(), nxt["disease"]))
+            time.sleep(1200)
+            continue
         # Safety net: publish the guide if the build wrote it but didn't push (e.g. timeout).
         published = ensure_published(nxt["disease"])
         # reload (queue may have changed via API) and update this item
