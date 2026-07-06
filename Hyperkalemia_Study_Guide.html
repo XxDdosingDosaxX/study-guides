@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!--
+================================================================================
+  RESIDENCY CLINICAL REFERENCE — DISEASE TEMPLATE v2  (Clinic / Wards / ICU)
+================================================================================
+  PURPOSE
+  -------
+  One self-contained HTML page per disease. A CONTEXT SWITCHER (Clinic / Wards /
+  ICU) at the top reframes the same disease for the care setting you're in.
+  Pathophysiology is shared and always available; everything downstream
+  (workup, drug ladders, escalation, disposition, USPSTF, pressors, vents)
+  swaps per context.
+
+  DESIGN PRINCIPLES (from the user, an incoming IM PGY-1)
+  ------------------------------------------------------
+  * Understand > memorize. Every drug is tied to the mechanism it interrupts,
+    with a plain-language "why it works" and an analogy where useful.
+  * Answer the bedside questions: WHAT to order and WHEN, WHEN to consider x/y/z,
+    WHEN to escalate to ICU / downgrade, first-line -> escalation ladders, and
+    ALTERNATIVES if allergic/intolerant.
+  * Tables organize; pictures teach. Real images only (Radiopaedia / Osmosis /
+    open-access). No AI-generated anatomy.
+  * Guideline-accurate and current. Lives are at stake — cite sources.
+  * Mobile-first. Works offline. Fast to scan at 3am, deep enough to study.
+
+  HOW TO ADD A DISEASE (the /add-disease pipeline fills these)
+  -----------------------------------------------------------
+  1. Copy this file to  <Disease>_Study_Guide.html
+  2. Set <title>, the header title, and the SNAPSHOT one-liner + stat badges.
+  3. Fill the SHARED PATHOPHYSIOLOGY section (SVG + Osmosis + why-meds-work + analogy).
+  4. Fill each of the three CONTEXT PANELS (data-context="clinic|wards|icu")
+     using the MODULE COMPONENTS documented below. Delete modules that don't apply.
+  5. Embed images as base64; every credit links to the SPECIFIC source page.
+  6. Run update_index.py, commit, push. Homepage auto-lists it and tags the
+     contexts it covers (data-contexts attribute on the page card).
+
+  COMPONENT LIBRARY (search these class names)
+  --------------------------------------------
+  .module            colored-header content card (the workhorse)
+  .ladder / .rung    first-line -> escalation accordion (treatment steps)
+  .drug-table        Drug | Dose | Route/Freq | Why it works | If allergic/alt
+  .orderset          Labs / Imaging checklist WITH "when to order"
+  .decision          "When to consider / when to escalate" call-out box
+  .why               pathophysiology-linked "why it works" callout
+  .analogy           plain-language analogy callout
+  .pressor-table     ICU: Agent | Receptors | Dose | Effect | When to pick
+  .vent-card         ICU: mode / initial settings / targets / troubleshooting
+  .dispo-grid        Home / Home health / SNF / IRF / LTAC / Hospice criteria
+  .uspstf-table      Clinic: USPSTF Grade A & B screening for this population
+  .calc              interactive scoring calculator
+  .pearl .redflag .emergency   inline callouts
+  .cmp-table         side-by-side comparison
+  .fig               image with lightbox + source credit
+================================================================================
+-->
+<!-- data-contexts:clinic,wards,icu | category:Nephrology -->
+<title>Hyperkalemia — Clinical Reference (Clinic · Wards · ICU)</title>
+<style>
+/* ============================================================
+   THEME TOKENS
+   ============================================================ */
+:root{
+  --bg:#0b1220; --bg2:#0f172a;
+  --card:#131c30; --card2:#18233b;
+  --border:rgba(255,255,255,.08);
+  --border-strong:rgba(255,255,255,.14);
+  --text:#dbe4f0; --muted:#93a3ba; --heading:#f3f7fc;
+  /* context accents */
+  --clinic:#14b8a6; --wards:#3b82f6; --icu:#f43f5e;
+  /* semantic accents */
+  --assess:#38bdf8; --workup:#22d3ee; --dx:#818cf8; --treat:#34d399;
+  --monitor:#f59e0b; --escalate:#fb7185; --dispo:#a78bfa; --path:#f472b6;
+  --ok:#34d399; --warn:#f59e0b; --danger:#f43f5e; --info:#38bdf8;
+  /* active context accent — updated by JS on switch */
+  --ctx:#14b8a6; --ctx-soft:rgba(20,184,166,.14);
+  --radius:14px; --tr:.28s ease; --rail:250px;
+  --maxw:1080px;
+  /* Diagram palette (dark defaults) — use these in inline SVGs so they adapt to theme.
+     Colored fills are low-alpha tints that read on both light and dark panels. */
+  --d-bg:#0f1a2e; --d-neutral:#18233b; --d-line:#94a3b8; --d-text:#dbe4f0; --d-muted:#93a3ba;
+  --d-red:#f43f5e; --d-green:#34d399; --d-purple:#a78bfa; --d-blue:#38bdf8; --d-amber:#f59e0b;
+  --d-red-bg:rgba(244,63,94,.16); --d-green-bg:rgba(52,211,153,.16); --d-purple-bg:rgba(167,139,250,.16); --d-blue-bg:rgba(56,189,248,.16); --d-amber-bg:rgba(245,158,11,.16);
+}
+.light{
+  --bg:#eef2f7; --bg2:#e6ecf3; --card:#ffffff; --card2:#f6f9fc;
+  --border:rgba(15,23,42,.10); --border-strong:rgba(15,23,42,.18);
+  --text:#1e293b; --muted:#55627a; --heading:#0b1220;
+  --d-bg:#f6f9fc; --d-neutral:#eef2f7; --d-line:#64748b; --d-text:#1e293b; --d-muted:#475569;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,.10), transparent 60%),
+    radial-gradient(1000px 500px at -10% 10%, rgba(244,63,94,.08), transparent 55%),
+    var(--bg);
+  color:var(--text); font-size:15px; line-height:1.65;
+  -webkit-text-size-adjust:100%;
+  transition:background var(--tr),color var(--tr);
+  padding-bottom:60px;
+}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(148,163,184,.35);border-radius:6px}
+
+a{color:#7dd3fc;text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--heading)}
+h2,h3,h4{color:var(--heading);letter-spacing:.2px}
+h3{font-size:17px;margin:16px 0 8px}
+h4{font-size:14.5px;margin:12px 0 6px}
+p{margin:7px 0}
+ul,ol{margin:7px 0 7px 20px}
+li{margin:4px 0}
+
+/* ============================================================
+   TOP APP BAR
+   ============================================================ */
+.appbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; gap:12px;
+  padding:10px 16px; padding-top:max(10px,env(safe-area-inset-top));
+  background:rgba(11,18,32,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.light .appbar{background:rgba(238,242,247,.85)}
+.iconbtn{
+  width:40px;height:40px;flex:0 0 auto;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--border);color:var(--text);
+  cursor:pointer;font-size:19px;transition:var(--tr);text-decoration:none;
+}
+.iconbtn:hover{border-color:var(--ctx);color:var(--ctx);transform:translateY(-1px)}
+.appbar .titlewrap{flex:1 1 auto;min-width:0}
+.appbar .kicker{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.appbar h1{
+  font-size:19px;font-weight:800;line-height:1.15;color:var(--heading);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+/* ============================================================
+   CONTEXT SWITCHER — the centerpiece
+   ============================================================ */
+.ctx-switch{
+  position:sticky; top:60px; z-index:45;
+  background:rgba(11,18,32,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:10px 16px;
+}
+.light .ctx-switch{background:rgba(238,242,247,.85)}
+.ctx-seg{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+  max-width:var(--maxw); margin:0 auto;
+  background:var(--card); border:1px solid var(--border);
+  padding:6px; border-radius:16px;
+}
+.ctx-btn{
+  border:1px solid transparent; background:transparent; color:var(--muted);
+  border-radius:11px; padding:9px 8px; cursor:pointer; font-family:inherit;
+  font-weight:700; font-size:14px; transition:var(--tr);
+  display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.1;
+}
+.ctx-btn .sub{font-size:10.5px;font-weight:600;opacity:.8;letter-spacing:.3px}
+.ctx-btn .ico{font-size:18px}
+.ctx-btn:hover{color:var(--text)}
+.ctx-btn[data-ctx="clinic"].active{background:rgba(20,184,166,.16);border-color:var(--clinic);color:var(--clinic)}
+.ctx-btn[data-ctx="wards"].active{background:rgba(59,130,246,.16);border-color:var(--wards);color:var(--wards)}
+.ctx-btn[data-ctx="icu"].active{background:rgba(244,63,94,.16);border-color:var(--icu);color:var(--icu)}
+
+/* ============================================================
+   LAYOUT — TOC rail + content
+   ============================================================ */
+.shell{display:flex;gap:26px;max-width:var(--maxw);margin:0 auto;padding:0 16px}
+.rail{
+  position:sticky; top:132px; align-self:flex-start;
+  width:var(--rail); flex:0 0 var(--rail); max-height:calc(100vh - 150px);
+  overflow-y:auto; padding:14px 0 30px;
+}
+.rail .rail-h{font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);padding:0 10px 8px}
+.rail a{
+  display:flex;align-items:center;gap:9px;padding:7px 12px;border-radius:9px;
+  color:var(--muted);font-size:12.8px;font-weight:600;border-left:2px solid transparent;
+  transition:var(--tr);
+}
+.rail a:hover{color:var(--text);background:var(--ctx-soft);text-decoration:none}
+.rail a.active{color:var(--heading);background:var(--ctx-soft);border-left-color:var(--ctx)}
+.rail a .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 auto;opacity:.85}
+.rail a.shared{border-left-color:var(--path)}
+.content{flex:1 1 auto;min-width:0;padding:16px 0 40px}
+
+/* ============================================================
+   SNAPSHOT (shared)
+   ============================================================ */
+.snapshot{
+  background:linear-gradient(135deg,var(--card),var(--card2));
+  border:1px solid var(--border-strong); border-radius:var(--radius);
+  padding:18px 20px; margin:8px 0 20px;
+}
+.snapshot .one-liner{font-size:16px;color:var(--heading);font-weight:600}
+.snapshot .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{
+  padding:5px 11px;border-radius:8px;font-size:12px;font-weight:700;
+  background:var(--ctx-soft);color:var(--ctx);border:1px solid var(--border-strong);
+  white-space:nowrap;
+}
+.badge.danger{background:rgba(244,63,94,.14);color:var(--danger);border-color:rgba(244,63,94,.3)}
+.badge.warn{background:rgba(245,158,11,.14);color:var(--warn);border-color:rgba(245,158,11,.3)}
+.badge.ok{background:rgba(52,211,153,.14);color:var(--ok);border-color:rgba(52,211,153,.3)}
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.sec{scroll-margin-top:150px;margin:26px 0}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.sec-head .pill{
+  font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;color:#03121a;background:var(--ctx);
+}
+.sec-head h2{font-size:22px;font-weight:800}
+.context-band{
+  display:inline-flex;align-items:center;gap:7px;margin:2px 0 18px;
+  font-size:12px;font-weight:700;color:var(--ctx);
+  padding:5px 12px;border-radius:999px;background:var(--ctx-soft);border:1px solid var(--border-strong);
+}
+
+/* ============================================================
+   MODULE CARD (the workhorse)
+   ============================================================ */
+.module{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  margin:14px 0; overflow:hidden; box-shadow:0 6px 22px rgba(0,0,0,.18);
+}
+.module > .m-head{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(90deg,var(--m,var(--ctx)),transparent 70%);
+  background-color:rgba(255,255,255,.02);
+}
+.module > .m-head .m-ico{font-size:18px}
+.module > .m-head h3{margin:0;font-size:15.5px;color:var(--heading)}
+.module > .m-head .m-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--muted)}
+.module > .m-body{padding:14px 16px}
+.module.accent{border-left:4px solid var(--m,var(--ctx))}
+
+/* ============================================================
+   TABS (within modules)
+   ============================================================ */
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--border);padding:0 8px;background:rgba(255,255,255,.02)}
+.tab{padding:10px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);
+  font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;font-family:inherit;transition:var(--tr)}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--heading);border-bottom-color:var(--ctx)}
+.panel{display:none;padding:14px 16px;animation:fade .3s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+th{background:rgba(255,255,255,.05);text-align:left;padding:9px 12px;font-size:12px;color:var(--heading);
+  font-weight:700;border-bottom:1px solid var(--border-strong);position:sticky;top:0}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.light th{background:rgba(15,23,42,.05)}
+.drug-table td:nth-child(1){font-weight:700;color:var(--heading);white-space:nowrap}
+.drug-table .why{color:var(--treat)}
+.drug-table .alt{color:var(--warn)}
+
+/* ============================================================
+   MED LADDER / ESCALATION TIERS
+   ============================================================ */
+.ladder{margin:12px 0}
+.rung{border:1px solid var(--border);border-radius:11px;margin:8px 0;overflow:hidden;background:var(--card2)}
+.rung > .r-head{display:flex;align-items:center;gap:11px;padding:12px 14px;cursor:pointer;user-select:none}
+.rung > .r-head:hover{background:rgba(255,255,255,.03)}
+.rung .step{
+  width:30px;height:30px;flex:0 0 auto;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;color:#03121a;background:var(--ctx);
+}
+.rung.first .step{background:var(--ok)}
+.rung.second .step{background:var(--warn)}
+.rung.third .step{background:var(--danger);color:#fff}
+.rung .r-title{font-weight:700;color:var(--heading);font-size:14.5px}
+.rung .r-sub{font-size:12px;color:var(--muted)}
+.rung .chev{margin-left:auto;transition:transform var(--tr);color:var(--muted)}
+.rung.open .chev{transform:rotate(180deg)}
+.rung .r-body{display:none;padding:0 14px 14px 55px}
+.rung.open .r-body{display:block;animation:fade .3s ease}
+
+/* ============================================================
+   CALLOUTS
+   ============================================================ */
+.callout{border-radius:0 11px 11px 0;padding:12px 15px;margin:12px 0;border-left:4px solid var(--info);
+  background:rgba(56,189,248,.08);font-size:13.5px}
+.callout .lbl{font-weight:800;display:block;margin-bottom:3px;font-size:12px;letter-spacing:.4px;text-transform:uppercase}
+.why{border-left-color:var(--treat);background:rgba(52,211,153,.08)}
+.why .lbl{color:var(--treat)}
+.why .lbl::before{content:"⚙  Why it works — "}
+.analogy{border-left-color:#c084fc;background:rgba(192,132,252,.09)}
+.analogy .lbl{color:#c084fc}
+.analogy .lbl::before{content:"🔗  Think of it like — "}
+.pearl{border-left-color:var(--warn);background:rgba(245,158,11,.09)}
+.pearl .lbl{color:var(--warn)}
+.pearl .lbl::before{content:"💡  Clinical pearl — "}
+.redflag{border-left-color:var(--danger);background:rgba(244,63,94,.10)}
+.redflag .lbl{color:var(--danger)}
+.redflag .lbl::before{content:"🚩  Red flag — "}
+.emergency{border-left-color:var(--danger);background:rgba(244,63,94,.14)}
+.emergency .lbl{color:var(--danger)}
+.emergency .lbl::before{content:"⛑  Emergency — "}
+.decision{border-left-color:var(--dx);background:rgba(129,140,248,.10)}
+.decision .lbl{color:var(--dx)}
+.decision .lbl::before{content:"🔀  Decision point — "}
+
+/* ============================================================
+   ORDER SET
+   ============================================================ */
+.orderset{display:grid;gap:8px;margin:10px 0}
+.order-row{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--border);
+  border-radius:10px;background:var(--card2)}
+.order-row .ord-name{font-weight:700;color:var(--heading);min-width:130px;flex:0 0 auto}
+.order-row .ord-when{color:var(--muted);font-size:12.5px}
+.order-row .ord-tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;
+  background:var(--ctx-soft);color:var(--ctx);flex:0 0 auto;align-self:center}
+
+/* ============================================================
+   DISPOSITION GRID
+   ============================================================ */
+.dispo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:12px 0}
+.dispo{border:1px solid var(--border);border-top:3px solid var(--dispo);border-radius:11px;padding:12px 14px;background:var(--card2)}
+.dispo h4{margin:0 0 4px;color:var(--dispo)}
+.dispo .crit{font-size:12.5px;color:var(--muted)}
+
+/* ============================================================
+   VENT CARD (ICU)
+   ============================================================ */
+.vent-card{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.vent-item{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--card2)}
+.vent-item .vk{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+.vent-item .vv{font-size:15px;font-weight:800;color:var(--heading);margin-top:2px}
+.vent-item .vn{font-size:11.5px;color:var(--muted);margin-top:3px}
+
+/* ============================================================
+   USPSTF TABLE (clinic)
+   ============================================================ */
+.uspstf-table .grade{font-weight:800;text-align:center;white-space:nowrap}
+.uspstf-table .grade.A{color:var(--ok)}
+.uspstf-table .grade.B{color:var(--info)}
+
+/* ============================================================
+   FIGURES + LIGHTBOX
+   ============================================================ */
+.fig-row{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}
+.fig{flex:1 1 300px;min-width:0}
+.fig img{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,.3);cursor:zoom-in;display:block}
+.fig .cap{font-size:12px;color:var(--muted);margin-top:6px}
+.fig .credit{font-size:10.5px;color:var(--muted);margin-top:2px}
+video{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(3,7,18,.94);
+  align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox.on{display:flex}
+.lightbox img{max-width:94vw;max-height:92vh;border-radius:8px;object-fit:contain}
+.lightbox .x{position:fixed;top:14px;right:20px;font-size:34px;color:#fff;opacity:.8;cursor:pointer}
+
+/* ============================================================
+   CALCULATOR
+   ============================================================ */
+.calc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin:12px 0}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.calc-opt{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid var(--border);
+  border-radius:9px;margin:6px 0;cursor:pointer;background:var(--card2);transition:var(--tr);font-size:13px}
+.calc-opt:hover{border-color:var(--ctx)}
+.calc-opt.sel{border-color:var(--ctx);background:var(--ctx-soft)}
+.calc-result{text-align:center;margin-top:14px;padding:16px;border:1px solid var(--border);border-radius:11px;background:var(--card2)}
+.calc-total{font-size:40px;font-weight:800;color:var(--ctx)}
+
+/* ============================================================
+   SVG diagram wrapper
+   ============================================================ */
+/* diagram panels stay dark in both themes so baked-dark SVGs/Mermaid look intentional */
+/* Diagram panel is theme-adaptive. For Mermaid, embed BOTH a dark and a light render
+   toggled by these classes; for inline SVG, use the --d-* variables above. */
+.svg-wrap{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0;overflow-x:auto}
+.dia-dark{display:block}.dia-light{display:none}
+.light .dia-dark{display:none}.light .dia-light{display:block}
+.svg-wrap .cap{font-size:12px;color:#93a3ba;margin-top:8px;text-align:center}
+/* Notes widget */
+.note-input{width:100%;min-height:72px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:14px}
+.note-btn{padding:8px 16px;border-radius:9px;border:1px solid #eab308;background:rgba(234,179,8,.14);color:#eab308;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}
+.note-btn:hover{background:rgba(234,179,8,.22)}
+.note-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.note-card{border:1px solid var(--border);border-left:3px solid #eab308;border-radius:9px;padding:9px 12px;background:var(--card2)}
+.note-meta{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-bottom:4px}
+.note-del{cursor:pointer;color:var(--danger);font-weight:700}
+.note-text{font-size:13.5px;white-space:pre-wrap;word-break:break-word}
+.svg-wrap svg{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* ============================================================
+   REFERENCES
+   ============================================================ */
+.refs{margin-top:34px;padding-top:18px;border-top:1px solid var(--border)}
+.refs li{font-size:12.5px;color:var(--muted)}
+
+/* ============================================================
+   CONTEXT PANEL VISIBILITY
+   ============================================================ */
+.ctx-panel{display:none}
+.ctx-panel.active{display:block}
+
+/* ============================================================
+   FLOATING "sections" BUTTON (mobile)
+   ============================================================ */
+.toc-fab{display:none;position:fixed;right:16px;bottom:18px;z-index:60;
+  width:52px;height:52px;border-radius:16px;background:var(--ctx);color:#03121a;border:none;
+  font-size:22px;box-shadow:0 8px 24px rgba(0,0,0,.4);cursor:pointer}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:920px){
+  .rail{display:none}
+  .shell{padding:0 12px}
+  .toc-fab{display:flex;align-items:center;justify-content:center}
+  .ctx-btn .sub{display:none}
+  .appbar h1{font-size:17px}
+  .sec-head h2{font-size:19px}
+  /* mobile TOC sheet */
+  .rail.sheet{display:block;position:fixed;inset:auto 0 0 0;top:auto;width:100%;max-height:66vh;
+    background:var(--card);border-top:1px solid var(--border-strong);border-radius:18px 18px 0 0;
+    padding:16px;z-index:70;box-shadow:0 -10px 40px rgba(0,0,0,.5);flex:none}
+  .rail.sheet .rail-h{display:flex;justify-content:space-between;align-items:center}
+}
+@media(max-width:520px){
+  body{font-size:14.5px}
+  .snapshot{padding:15px}
+  .order-row{flex-direction:column;gap:4px}
+  .order-row .ord-name{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== APP BAR ============================== -->
+<header class="appbar">
+  <a class="iconbtn" href="https://xxddosingdosaxx.github.io/study-guides/" title="Library home">&#8962;</a>
+  <div class="titlewrap">
+    <div class="kicker">Clinical Reference · Nephrology</div>
+    <h1>Hyperkalemia</h1>
+  </div>
+  <button class="iconbtn" onclick="copyOsmo(this)" title="Copy Osmosis login (horoy31882@flownue.com / Skanda123!)">&#128273;</button>
+  <button class="iconbtn" onclick="toggleTheme()" title="Theme">&#9789;</button>
+</header>
+
+<!-- ============================== CONTEXT SWITCHER ============================== -->
+<div class="ctx-switch">
+  <div class="ctx-seg" role="tablist" aria-label="Care setting">
+    <button class="ctx-btn active" data-ctx="clinic" onclick="setCtx('clinic')"><span class="ico">🩺</span>Clinic<span class="sub">Outpatient</span></button>
+    <button class="ctx-btn" data-ctx="wards" onclick="setCtx('wards')"><span class="ico">🛏️</span>Wards<span class="sub">Inpatient floor</span></button>
+    <button class="ctx-btn" data-ctx="icu" onclick="setCtx('icu')"><span class="ico">🫀</span>ICU<span class="sub">Critical care</span></button>
+  </div>
+</div>
+
+<div class="shell">
+  <!-- ============================== TOC RAIL ============================== -->
+  <nav class="rail" id="rail">
+    <div class="rail-h" id="railHead">On this page</div>
+    <div id="railLinks"><!-- rebuilt by JS per context --></div>
+  </nav>
+
+  <!-- ============================== CONTENT ============================== -->
+  <main class="content">
+
+    <!-- ===== SNAPSHOT (shared) ===== -->
+    <section class="snapshot" id="snapshot">
+      <div class="one-liner">Serum potassium above the reference range (&gt;5.0–5.5 mmol/L) — a lab value that becomes a cardiac emergency because a rising extracellular K⁺ depolarizes the resting membrane until the heart's sodium channels stop conducting. The three moves never change: <strong>stabilize the membrane (calcium) → shift K⁺ into cells (insulin/albuterol) → remove K⁺ from the body (diuretic, binder, dialysis)</strong>.</div>
+      <div class="badges">
+        <span class="badge">Mild 5.5–5.9 · Moderate 6.0–6.4 · Severe ≥6.5</span>
+        <span class="badge warn">Get an ECG at K ≥6.0 or any symptom</span>
+        <span class="badge danger">Emergency: ECG changes or K ≥6.5</span>
+        <span class="badge ok">Anchor: Ca gluconate 1 g IV → insulin 10 u + D50</span>
+        <span class="badge">Shift is temporary — recheck K in 1–2 h</span>
+      </div>
+    </section>
+
+    <!-- ===== SHARED PATHOPHYSIOLOGY (always visible, all contexts) ===== -->
+    <section class="sec" id="pathophys" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>Pathophysiology</h2></div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🧬</span><h3>Mechanism — the story</h3></div>
+        <div class="m-body">
+          <p>Narrative pathophysiology. Build the causal chain so downstream drugs make sense.</p>
+          <div class="analogy"><span class="lbl"></span>Plain-language analogy the reader will remember.</div>
+
+          <!-- SVG mechanism diagram -->
+          <div class="svg-wrap">
+            <svg viewBox="0 0 640 200" role="img" aria-label="Mechanism diagram">
+              <text x="320" y="105" fill="#93a3ba" font-size="13" text-anchor="middle">Custom SVG cascade goes here</text>
+            </svg>
+          </div>
+
+          <!-- Osmosis screenshot / clip -->
+          <div class="fig-row">
+            <div class="fig">
+              <img src="https://placehold.co/640x360/131c30/93a3ba?text=Osmosis+pathophys" alt="Pathophysiology">
+              <div class="credit">Image: Osmosis.org — <a href="https://www.osmosis.org/learn/TOPIC?t=SECONDS" target="_blank">Watch on Osmosis (MM:SS)</a></div>
+            </div>
+          </div>
+
+          <!-- Why-meds-work primer: ties each therapy class to the mechanism it interrupts -->
+          <div class="why"><span class="lbl"></span>For each drug class introduced later, name the exact step in the cascade it blocks — this is the through-line of the whole guide.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CLINIC CONTEXT PANEL
+         ============================================================ -->
+    <div class="ctx-panel active" data-context="clinic">
+      <div class="context-band">🩺 Clinic — outpatient optimization &amp; prevention</div>
+
+      <!-- MODULE: recognize -->
+      <section class="sec" id="c-recognize">
+        <div class="sec-head"><span class="pill">Assess</span><h2>When to suspect</h2></div>
+        <div class="module accent" style="--m:var(--assess)">
+          <div class="m-head" style="--m:var(--assess)"><span class="m-ico">🔍</span><h3>Outpatient presentation &amp; risk</h3></div>
+          <div class="m-body"><p>How it shows up in clinic; who is at risk; symptom frequencies.</p></div>
+        </div>
+      </section>
+
+      <!-- MODULE: workup (labs + imaging WITH when) -->
+      <section class="sec" id="c-workup">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Workup</span><h2>What to order &amp; when</h2></div>
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>Labs &amp; imaging</h3></div>
+          <div class="m-body">
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">Test name</span><span class="ord-when">When to order it and what a positive/abnormal result changes.</span><span class="ord-tag">Initial</span></div>
+              <div class="order-row"><span class="ord-name">Imaging</span><span class="ord-when">Trigger for ordering + key finding.</span><span class="ord-tag">If indicated</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE: chronic management — the GDMT ladder + drug tables -->
+      <section class="sec" id="c-manage">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Chronic management</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">💊</span><h3>Stepwise therapy — first-line &rarr; escalation</h3></div>
+          <div class="m-body">
+            <div class="ladder">
+              <div class="rung first open"><div class="r-head" onclick="toggleRung(this)"><span class="step">1</span><div><div class="r-title">First-line</div><div class="r-sub">The anchor therapy and why.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <div class="why"><span class="lbl"></span>Mechanism link.</div>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Drug</th><th>Start</th><th>Target / Freq</th><th>Why it works</th><th>If allergic / intolerant</th></tr></thead>
+                    <tbody><tr><td>Agent</td><td>dose</td><td>dose</td><td class="why">mechanism</td><td class="alt">alternative</td></tr></tbody>
+                  </table></div>
+                </div>
+              </div>
+              <div class="rung second"><div class="r-head" onclick="toggleRung(this)"><span class="step">2</span><div><div class="r-title">If inadequate — add / escalate</div><div class="r-sub">Next agent(s).</div></div><span class="chev">▾</span></div>
+                <div class="r-body"><p>Escalation detail.</p></div>
+              </div>
+              <div class="rung third"><div class="r-head" onclick="toggleRung(this)"><span class="step">3</span><div><div class="r-title">Refractory / specialist</div><div class="r-sub">Devices, referral, advanced options.</div></div><span class="chev">▾</span></div>
+                <div class="r-body"><p>Advanced detail.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE: monitoring -->
+      <section class="sec" id="c-monitor">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Monitor</span><h2>Titration &amp; follow-up</h2></div>
+        <div class="module accent" style="--m:var(--monitor)">
+          <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">📈</span><h3>What to recheck, and when</h3></div>
+          <div class="m-body"><p>Lab recheck cadence after starting/titrating; what to trend; visit spacing.</p></div>
+        </div>
+      </section>
+
+      <!-- MODULE: USPSTF + prevention (CLINIC-SPECIFIC) -->
+      <section class="sec" id="c-prevention">
+        <div class="sec-head"><span class="pill" style="background:var(--dispo)">Prevent</span><h2>USPSTF A/B &amp; prevention</h2></div>
+        <div class="module accent" style="--m:var(--dispo)">
+          <div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🛡️</span><h3>Grade A &amp; B screening for this population</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table class="uspstf-table">
+              <thead><tr><th>Grade</th><th>Recommendation</th><th>Population</th></tr></thead>
+              <tbody><tr><td class="grade A">A</td><td>Screening/intervention</td><td>Who &amp; how often</td></tr></tbody>
+            </table></div>
+            <p>Vaccinations &amp; comorbidity screening relevant to the disease.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE: escalate from clinic -->
+      <section class="sec" id="c-escalate">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Escalate</span><h2>When to refer / admit</h2></div>
+        <div class="module accent" style="--m:var(--escalate)">
+          <div class="m-head" style="--m:var(--escalate)"><span class="m-ico">🚑</span><h3>Red flags &rarr; ED / admission</h3></div>
+          <div class="m-body"><div class="redflag"><span class="lbl"></span>Specific findings that mean "don't manage this in clinic."</div></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================
+         WARDS CONTEXT PANEL
+         ============================================================ -->
+    <div class="ctx-panel" data-context="wards">
+      <div class="context-band">🛏️ Wards — acute inpatient management</div>
+
+      <section class="sec" id="w-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>Who to admit</h2></div>
+        <div class="module accent" style="--m:var(--assess)"><div class="m-head" style="--m:var(--assess)"><span class="m-ico">📋</span><h3>Admission criteria &amp; initial profile</h3></div>
+          <div class="m-body"><p>Admission triggers; severity/profile classification.</p></div></div>
+      </section>
+
+      <section class="sec" id="w-orders">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Orders</span><h2>Admission order set</h2></div>
+        <div class="module accent" style="--m:var(--workup)"><div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>Labs, imaging, monitoring</h3></div>
+          <div class="m-body"><div class="orderset"><div class="order-row"><span class="ord-name">Order</span><span class="ord-when">When / why.</span><span class="ord-tag">Admit</span></div></div></div></div>
+      </section>
+
+      <section class="sec" id="w-manage">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Acute management</h2></div>
+        <div class="module accent" style="--m:var(--treat)"><div class="m-head" style="--m:var(--treat)"><span class="m-ico">💊</span><h3>Stepwise inpatient therapy</h3></div>
+          <div class="m-body"><div class="ladder"><div class="rung first open"><div class="r-head" onclick="toggleRung(this)"><span class="step">1</span><div><div class="r-title">First-line</div></div><span class="chev">▾</span></div><div class="r-body"><p>Detail + why.</p></div></div></div></div></div>
+      </section>
+
+      <section class="sec" id="w-daily">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Monitor</span><h2>Daily management</h2></div>
+        <div class="module accent" style="--m:var(--monitor)"><div class="m-head" style="--m:var(--monitor)"><span class="m-ico">📈</span><h3>What to trend each day</h3></div>
+          <div class="m-body"><p>Daily assessment targets.</p></div></div>
+      </section>
+
+      <section class="sec" id="w-escalate">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Escalate</span><h2>When to call ICU</h2></div>
+        <div class="module accent" style="--m:var(--escalate)"><div class="m-head" style="--m:var(--escalate)"><span class="m-ico">⬆️</span><h3>Escalation triggers</h3></div>
+          <div class="m-body"><div class="decision"><span class="lbl"></span>Concrete thresholds that mean transfer to a higher level of care.</div></div></div>
+      </section>
+
+      <section class="sec" id="w-dispo">
+        <div class="sec-head"><span class="pill" style="background:var(--dispo)">Dispo</span><h2>Discharge &amp; disposition</h2></div>
+        <div class="module accent" style="--m:var(--dispo)"><div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🏠</span><h3>Readiness + where they go</h3></div>
+          <div class="m-body">
+            <p><strong>Discharge readiness:</strong> criteria list.</p>
+            <div class="dispo-grid">
+              <div class="dispo"><h4>Home</h4><div class="crit">Independent / stable.</div></div>
+              <div class="dispo"><h4>Home health</h4><div class="crit">Home + skilled nursing/therapy visits.</div></div>
+              <div class="dispo"><h4>SNF</h4><div class="crit">Needs 24h skilled nursing, &lt;3h therapy/day.</div></div>
+              <div class="dispo"><h4>Acute rehab (IRF)</h4><div class="crit">Can tolerate ≥3h therapy/day, ≥2 disciplines.</div></div>
+              <div class="dispo"><h4>LTAC</h4><div class="crit">Prolonged complex care (e.g., vent weaning) &gt;25 days.</div></div>
+              <div class="dispo"><h4>Hospice / palliative</h4><div class="crit">Comfort-focused; prognosis / goals.</div></div>
+            </div>
+          </div></div>
+      </section>
+    </div>
+
+    <!-- ============================================================
+         ICU CONTEXT PANEL
+         ============================================================ -->
+    <div class="ctx-panel" data-context="icu">
+      <div class="context-band">🫀 ICU — critical care &amp; organ support</div>
+
+      <section class="sec" id="i-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>ICU triggers</h2></div>
+        <div class="module accent" style="--m:var(--assess)"><div class="m-head" style="--m:var(--assess)"><span class="m-ico">🚨</span><h3>When it belongs in the unit</h3></div>
+          <div class="m-body"><p>Severity recognition / shock staging.</p></div></div>
+      </section>
+
+      <section class="sec" id="i-monitor">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Monitor</span><h2>Monitoring &amp; access</h2></div>
+        <div class="module accent" style="--m:var(--workup)"><div class="m-head" style="--m:var(--workup)"><span class="m-ico">🩸</span><h3>Lines, labs, targets</h3></div>
+          <div class="m-body"><p>Arterial line, central access, what to trend.</p></div></div>
+      </section>
+
+      <!-- ICU-SPECIFIC: pressors & inotropes -->
+      <section class="sec" id="i-pressors">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Support</span><h2>Pressors &amp; inotropes</h2></div>
+        <div class="module accent" style="--m:var(--treat)"><div class="m-head" style="--m:var(--treat)"><span class="m-ico">💉</span><h3>Which drip, why, and the dose</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table class="pressor-table">
+              <thead><tr><th>Agent</th><th>Receptors / mechanism</th><th>Dose range</th><th>Hemodynamic effect</th><th>When to pick</th></tr></thead>
+              <tbody><tr><td>Norepinephrine</td><td>α1 &gt; β1</td><td>0.01–0.5 mcg/kg/min</td><td>↑SVR, mild ↑CO</td><td>First-line most shock</td></tr></tbody>
+            </table></div>
+            <div class="why"><span class="lbl"></span>Tie receptor pharmacology to the hemodynamic goal.</div>
+          </div></div>
+      </section>
+
+      <!-- ICU-SPECIFIC: ventilator / respiratory support -->
+      <section class="sec" id="i-vent">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Airway</span><h2>Respiratory support &amp; vent</h2></div>
+        <div class="module accent" style="--m:var(--monitor)"><div class="m-head" style="--m:var(--monitor)"><span class="m-ico">🌬️</span><h3>NIV vs intubate; initial settings</h3></div>
+          <div class="m-body">
+            <p>When NIV (CPAP/BiPAP) works, when to intubate.</p>
+            <div class="vent-card">
+              <div class="vent-item"><div class="vk">Mode</div><div class="vv">AC/VC</div><div class="vn">volume-control assist-control</div></div>
+              <div class="vent-item"><div class="vk">Tidal volume</div><div class="vv">6 mL/kg IBW</div><div class="vn">lung-protective</div></div>
+              <div class="vent-item"><div class="vk">PEEP</div><div class="vv">5–8</div><div class="vn">titrate to oxygenation</div></div>
+              <div class="vent-item"><div class="vk">FiO₂</div><div class="vv">100%→wean</div><div class="vn">SpO₂ 92–96%</div></div>
+            </div>
+          </div></div>
+      </section>
+
+      <section class="sec" id="i-advanced">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Rescue</span><h2>Advanced / mechanical support</h2></div>
+        <div class="module accent" style="--m:var(--escalate)"><div class="m-head" style="--m:var(--escalate)"><span class="m-ico">⚙️</span><h3>Devices &amp; refractory options</h3></div>
+          <div class="m-body"><p>Mechanical support indications; refractory algorithms.</p></div></div>
+      </section>
+
+      <section class="sec" id="i-downgrade">
+        <div class="sec-head"><span class="pill" style="background:var(--dx)">Downgrade</span><h2>When to downgrade</h2></div>
+        <div class="module accent" style="--m:var(--dx)"><div class="m-head" style="--m:var(--dx)"><span class="m-ico">⬇️</span><h3>De-escalation to the floor</h3></div>
+          <div class="m-body"><div class="decision"><span class="lbl"></span>Criteria for stepping down; and ICU disposition (LTAC, goals of care).</div></div></div>
+      </section>
+    </div>
+
+    <!-- ===== MY NOTES (shared, per-disease, auto-saved to this browser) ===== -->
+    <section class="sec" id="notes" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:#eab308">Notes</span><h2>My notes</h2></div>
+      <div class="module accent" style="--m:#eab308">
+        <div class="m-head" style="--m:#eab308"><span class="m-ico">&#128221;</span><h3>Personal notes — auto-saved on this device, timestamped</h3></div>
+        <div class="m-body">
+          <textarea id="noteInput" class="note-input" placeholder="Add a note — attending pearls, your own reminders, things to look up..."></textarea>
+          <div style="display:flex;gap:10px;margin-top:8px;align-items:center;flex-wrap:wrap">
+            <button class="note-btn" onclick="addNote()">&#65291; Add note</button>
+            <span style="font-size:11.5px;color:var(--muted)">Saved in this browser only &middot; each note stamped with date &amp; time</span>
+          </div>
+          <div id="noteList" class="note-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REFERENCES (shared) ===== -->
+    <section class="sec refs" id="references">
+      <div class="sec-head"><span class="pill" style="background:#64748b">Refs</span><h2>Sources &amp; guidelines</h2></div>
+      <ul>
+        <li>Guideline citation with <a href="#" target="_blank">clickable link</a>.</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<div class="lightbox" id="lightbox"><span class="x" id="lbx">&times;</span><img id="lbimg" src="" alt=""></div>
+<button class="toc-fab" onclick="toggleSheet()" title="Sections">☰</button>
+
+<script>
+/* ============================================================
+   CONTEXT SWITCHER  — swaps panels, retints accent, rebuilds nav
+   ============================================================ */
+var CTX_COLOR = {clinic:'#14b8a6', wards:'#3b82f6', icu:'#f43f5e'};
+var CTX_SOFT  = {clinic:'rgba(20,184,166,.14)', wards:'rgba(59,130,246,.14)', icu:'rgba(244,63,94,.14)'};
+function setCtx(ctx){
+  document.querySelectorAll('.ctx-btn').forEach(b=>b.classList.toggle('active', b.dataset.ctx===ctx));
+  document.querySelectorAll('.ctx-panel').forEach(p=>p.classList.toggle('active', p.dataset.context===ctx));
+  document.documentElement.style.setProperty('--ctx', CTX_COLOR[ctx]);
+  document.documentElement.style.setProperty('--ctx-soft', CTX_SOFT[ctx]);
+  buildNav();
+  try{ localStorage.setItem('ctx', ctx); }catch(e){}
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ============================================================
+   BUILD TOC RAIL for the active context (shared + context sections)
+   ============================================================ */
+function buildNav(){
+  var links = document.getElementById('railLinks');
+  if(!links) return;
+  links.innerHTML='';
+  // shared sections above the panels
+  var shared = document.querySelectorAll('.content > .sec[data-shared], .content > #snapshot');
+  var active = document.querySelector('.ctx-panel.active');
+  var items = [];
+  document.querySelectorAll('.sec[data-shared]').forEach(s=>items.push({s:s,shared:true}));
+  if(active){ active.querySelectorAll('.sec').forEach(s=>items.push({s:s,shared:false})); }
+  document.querySelectorAll('#references').forEach(s=>items.push({s:s,shared:true}));
+  items.forEach(function(it){
+    var h=it.s.querySelector('.sec-head h2'); if(!h) return;
+    var a=document.createElement('a');
+    a.href='#'+it.s.id; a.className = it.shared?'shared':'';
+    a.innerHTML='<span class="dot"></span>'+h.textContent;
+    a.addEventListener('click', function(){ if(window.innerWidth<=920) closeSheet(); });
+    links.appendChild(a);
+  });
+  observeSections();
+}
+
+/* ============================================================
+   SCROLL-SPY
+   ============================================================ */
+var _obs;
+function observeSections(){
+  if(_obs) _obs.disconnect();
+  var links = document.querySelectorAll('#railLinks a');
+  var map={}; links.forEach(l=>map[l.getAttribute('href')]=l);
+  _obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove('active'));
+        var l=map['#'+e.target.id]; if(l) l.classList.add('active');
+      }
+    });
+  },{rootMargin:'-25% 0px -65% 0px'});
+  document.querySelectorAll('.sec[id]').forEach(s=>_obs.observe(s));
+}
+
+/* ============================================================
+   THEME
+   ============================================================ */
+function toggleTheme(){
+  document.body.classList.toggle('light');
+  try{ localStorage.setItem('sg_theme', document.body.classList.contains('light')?'light':'dark'); }catch(e){}
+}
+
+/* ============================================================
+   OSMOSIS LOGIN — app-bar key button (click to copy password)
+   ============================================================ */
+function copyOsmo(b){
+  try{ navigator.clipboard.writeText('Skanda123!'); b.textContent='✓';
+       setTimeout(function(){ b.innerHTML='&#128273;'; },1200); }catch(e){}
+}
+
+/* ============================================================
+   LADDER ACCORDION
+   ============================================================ */
+function toggleRung(h){ h.parentElement.classList.toggle('open'); }
+
+/* ============================================================
+   TABS
+   ============================================================ */
+document.addEventListener('click', function(e){
+  var t=e.target.closest('.tab'); if(!t) return;
+  var wrap=t.closest('.module')||document;
+  wrap.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  wrap.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  var p=wrap.querySelector('#'+t.dataset.panel); if(p) p.classList.add('active');
+});
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+(function(){
+  var lb=document.getElementById('lightbox'), im=document.getElementById('lbimg'), x=document.getElementById('lbx');
+  document.addEventListener('click', function(e){
+    var img=e.target.closest('.fig img, .svg-wrap img');
+    if(img && !lb.classList.contains('on')){ im.src=img.src; im.alt=img.alt; lb.classList.add('on'); document.body.style.overflow='hidden'; return; }
+  });
+  function close(){ lb.classList.remove('on'); document.body.style.overflow=''; im.src=''; }
+  lb.addEventListener('click', function(e){ if(e.target!==im) close(); });
+  x.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+
+/* ============================================================
+   MOBILE TOC SHEET
+   ============================================================ */
+function toggleSheet(){ document.getElementById('rail').classList.toggle('sheet'); }
+function closeSheet(){ document.getElementById('rail').classList.remove('sheet'); }
+
+/* ============================================================
+   INIT
+   ============================================================ */
+// ============================================================
+// PER-DISEASE NOTES — auto-saved to localStorage, timestamped
+// ============================================================
+var NOTE_KEY='sgnotes_'+(location.pathname.split('/').pop()||'guide');
+function loadNotes(){try{return JSON.parse(localStorage.getItem(NOTE_KEY)||'[]');}catch(e){return[];}}
+function saveNotes(a){try{localStorage.setItem(NOTE_KEY,JSON.stringify(a));}catch(e){}}
+function renderNotes(){var a=loadNotes(),el=document.getElementById('noteList');if(!el)return;el.innerHTML='';a.forEach(function(n,i){var c=document.createElement('div');c.className='note-card';var m=document.createElement('div');m.className='note-meta';var ts=document.createElement('span');ts.textContent=n.ts;var d=document.createElement('span');d.className='note-del';d.textContent='✕';d.addEventListener('click',function(){delNote(i);});m.appendChild(ts);m.appendChild(d);var t=document.createElement('div');t.className='note-text';t.textContent=n.text;c.appendChild(m);c.appendChild(t);el.appendChild(c);});}
+function addNote(){var ta=document.getElementById('noteInput'),v=ta.value.trim();if(!v)return;var a=loadNotes();a.unshift({text:v,ts:new Date().toLocaleString()});saveNotes(a);ta.value='';try{localStorage.removeItem(NOTE_KEY+'_draft');}catch(e){}renderNotes();}
+function delNote(i){var a=loadNotes();a.splice(i,1);saveNotes(a);renderNotes();}
+function initNotes(){var ni=document.getElementById('noteInput');if(ni){try{ni.value=localStorage.getItem(NOTE_KEY+'_draft')||'';}catch(e){}ni.addEventListener('input',function(){try{localStorage.setItem(NOTE_KEY+'_draft',ni.value);}catch(e){}});}renderNotes();}
+
+(function(){
+  try{ if(localStorage.getItem('sg_theme')==='light') document.body.classList.add('light'); }catch(e){}
+  var start='clinic';
+  try{ var s=localStorage.getItem('ctx'); if(s) start=s; }catch(e){}
+  setCtx(start);
+  initNotes();
+})();
+</script>
+</body>
+</html>
