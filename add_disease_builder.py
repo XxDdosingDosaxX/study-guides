@@ -154,30 +154,39 @@ def worker():
         with open(promptfile, "w", encoding="utf-8") as pf:
             pf.write(build_prompt(nxt["disease"]))
         print("[%s] building: %s" % (now(), nxt["disease"]))
-        rc = -1
-        try:
-            # Prompt via STDIN (multi-line/quotes safe); flag stays on the command line.
-            with open(logpath, "w", encoding="utf-8", errors="ignore") as lf, \
-                 open(promptfile, "r", encoding="utf-8") as pin:
-                lf.write("CMD: cmd /c %s --dangerously-skip-permissions -p  (prompt via stdin)\nSTART: %s\n\n"
-                         % (CLAUDE_CMD, now()))
-                lf.flush()
-                p = subprocess.run(["cmd", "/c", CLAUDE_CMD, "--dangerously-skip-permissions", "-p"],
-                                   cwd=REPO, stdin=pin, stdout=lf, stderr=subprocess.STDOUT,
-                                   timeout=BUILD_TIMEOUT)
-                rc = p.returncode
-        except subprocess.TimeoutExpired:
-            rc = -2
-        except Exception as e:
-            with open(logpath, "a", encoding="utf-8") as lf:
-                lf.write("\nEXC: %s\n" % e)
-        # If we hit the Claude session/usage limit, don't burn the disease as an error —
-        # requeue it and wait for the limit to reset, then retry.
-        try:
-            with open(logpath, encoding="utf-8", errors="ignore") as lf:
-                tail = lf.read()[-3000:].lower()
-        except Exception:
-            tail = ""
+        rc = -1; tail = ""
+        # Prefer Fable 5 at MAX effort; if Fable is rate-limited, retry the same build on Opus 4.8.
+        for model in ("claude-fable-5", "claude-opus-4-8"):
+            try:
+                # Prompt via STDIN (multi-line/quotes safe); flags stay on the command line.
+                with open(logpath, "w", encoding="utf-8", errors="ignore") as lf, \
+                     open(promptfile, "r", encoding="utf-8") as pin:
+                    lf.write("CMD: cmd /c %s --dangerously-skip-permissions --model %s "
+                             "--fallback-model claude-opus-4-8 --effort max -p  (stdin)\nSTART: %s\n\n"
+                             % (CLAUDE_CMD, model, now()))
+                    lf.flush()
+                    p = subprocess.run(["cmd", "/c", CLAUDE_CMD, "--dangerously-skip-permissions",
+                                        "--model", model, "--fallback-model", "claude-opus-4-8",
+                                        "--effort", "max", "-p"],
+                                       cwd=REPO, stdin=pin, stdout=lf, stderr=subprocess.STDOUT,
+                                       timeout=BUILD_TIMEOUT)
+                    rc = p.returncode
+            except subprocess.TimeoutExpired:
+                rc = -2
+            except Exception as e:
+                with open(logpath, "a", encoding="utf-8") as lf:
+                    lf.write("\nEXC: %s\n" % e)
+            try:
+                with open(logpath, encoding="utf-8", errors="ignore") as lf:
+                    tail = lf.read()[-3000:].lower()
+            except Exception:
+                tail = ""
+            # Fable-specific rate limit -> fall back to Opus 4.8; otherwise stop the model loop.
+            if model == "claude-fable-5" and ("fable 5 limit" in tail or "reached your fable" in tail):
+                print("[%s] Fable 5 limited — retrying %s on Opus 4.8" % (now(), nxt["disease"]))
+                continue
+            break
+        # Account-level session/usage limit (even on Opus) -> requeue + wait for reset.
         if rc != 0 and ("session limit" in tail or "usage limit" in tail or "hit your" in tail):
             q = load_queue()
             for i in q:
