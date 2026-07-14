@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- data-contexts:clinic,wards,icu | category:Pulmonology -->
+<title>Acute Respiratory Failure and ARDS — Clinical Reference (Clinic · Wards · ICU)</title>
+<style>
+:root{
+  --bg:#0b1220; --bg2:#0f172a;
+  --card:#131c30; --card2:#18233b;
+  --border:rgba(255,255,255,.08);
+  --border-strong:rgba(255,255,255,.14);
+  --text:#dbe4f0; --muted:#93a3ba; --heading:#f3f7fc;
+  --clinic:#14b8a6; --wards:#3b82f6; --icu:#f43f5e;
+  --assess:#38bdf8; --workup:#22d3ee; --dx:#818cf8; --treat:#34d399;
+  --monitor:#f59e0b; --escalate:#fb7185; --dispo:#a78bfa; --path:#f472b6;
+  --ok:#34d399; --warn:#f59e0b; --danger:#f43f5e; --info:#38bdf8;
+  --ctx:#14b8a6; --ctx-soft:rgba(20,184,166,.14);
+  --radius:14px; --tr:.28s ease; --rail:250px;
+  --maxw:1080px;
+  --d-bg:#0f1a2e; --d-neutral:#18233b; --d-line:#94a3b8; --d-text:#dbe4f0; --d-muted:#93a3ba;
+  --d-red:#f43f5e; --d-green:#34d399; --d-purple:#a78bfa; --d-blue:#38bdf8; --d-amber:#f59e0b;
+  --d-red-bg:rgba(244,63,94,.16); --d-green-bg:rgba(52,211,153,.16); --d-purple-bg:rgba(167,139,250,.16); --d-blue-bg:rgba(56,189,248,.16); --d-amber-bg:rgba(245,158,11,.16);
+}
+.light{
+  --bg:#eef2f7; --bg2:#e6ecf3; --card:#ffffff; --card2:#f6f9fc;
+  --border:rgba(15,23,42,.10); --border-strong:rgba(15,23,42,.18);
+  --text:#1e293b; --muted:#55627a; --heading:#0b1220;
+  --d-bg:#f6f9fc; --d-neutral:#eef2f7; --d-line:#64748b; --d-text:#1e293b; --d-muted:#475569;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,.10), transparent 60%),
+    radial-gradient(1000px 500px at -10% 10%, rgba(244,63,94,.08), transparent 55%),
+    var(--bg);
+  color:var(--text); font-size:15px; line-height:1.65;
+  -webkit-text-size-adjust:100%;
+  transition:background var(--tr),color var(--tr);
+  padding-bottom:60px;
+}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(148,163,184,.35);border-radius:6px}
+a{color:#7dd3fc;text-decoration:none}
+.light a{color:#0369a1}
+a:hover{text-decoration:underline}
+strong{color:var(--heading)}
+h2,h3,h4{color:var(--heading);letter-spacing:.2px}
+h3{font-size:17px;margin:16px 0 8px}
+h4{font-size:14.5px;margin:12px 0 6px}
+p{margin:7px 0}
+ul,ol{margin:7px 0 7px 20px}
+li{margin:4px 0}
+.appbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; gap:12px;
+  padding:10px 16px; padding-top:max(10px,env(safe-area-inset-top));
+  background:rgba(11,18,32,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.light .appbar{background:rgba(238,242,247,.85)}
+.iconbtn{
+  width:40px;height:40px;flex:0 0 auto;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--border);color:var(--text);
+  cursor:pointer;font-size:19px;transition:var(--tr);text-decoration:none;
+}
+.iconbtn:hover{border-color:var(--ctx);color:var(--ctx);transform:translateY(-1px)}
+.appbar .titlewrap{flex:1 1 auto;min-width:0}
+.appbar .kicker{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.appbar h1{
+  font-size:19px;font-weight:800;line-height:1.15;color:var(--heading);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ctx-switch{
+  position:sticky; top:60px; z-index:45;
+  background:rgba(11,18,32,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:10px 16px;
+}
+.light .ctx-switch{background:rgba(238,242,247,.85)}
+.ctx-seg{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+  max-width:var(--maxw); margin:0 auto;
+  background:var(--card); border:1px solid var(--border);
+  padding:6px; border-radius:16px;
+}
+.ctx-btn{
+  border:1px solid transparent; background:transparent; color:var(--muted);
+  border-radius:11px; padding:9px 8px; cursor:pointer; font-family:inherit;
+  font-weight:700; font-size:14px; transition:var(--tr);
+  display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.1;
+}
+.ctx-btn .sub{font-size:10.5px;font-weight:600;opacity:.8;letter-spacing:.3px}
+.ctx-btn .ico{font-size:18px}
+.ctx-btn:hover{color:var(--text)}
+.ctx-btn[data-ctx="clinic"].active{background:rgba(20,184,166,.16);border-color:var(--clinic);color:var(--clinic)}
+.ctx-btn[data-ctx="wards"].active{background:rgba(59,130,246,.16);border-color:var(--wards);color:var(--wards)}
+.ctx-btn[data-ctx="icu"].active{background:rgba(244,63,94,.16);border-color:var(--icu);color:var(--icu)}
+.shell{display:flex;gap:26px;max-width:var(--maxw);margin:0 auto;padding:0 16px}
+.rail{
+  position:sticky; top:132px; align-self:flex-start;
+  width:var(--rail); flex:0 0 var(--rail); max-height:calc(100vh - 150px);
+  overflow-y:auto; padding:14px 0 30px;
+}
+.rail .rail-h{font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);padding:0 10px 8px}
+.rail a{
+  display:flex;align-items:center;gap:9px;padding:7px 12px;border-radius:9px;
+  color:var(--muted);font-size:12.8px;font-weight:600;border-left:2px solid transparent;
+  transition:var(--tr);
+}
+.rail a:hover{color:var(--text);background:var(--ctx-soft);text-decoration:none}
+.rail a.active{color:var(--heading);background:var(--ctx-soft);border-left-color:var(--ctx)}
+.rail a .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 auto;opacity:.85}
+.rail a.shared{border-left-color:var(--path)}
+.content{flex:1 1 auto;min-width:0;padding:16px 0 40px}
+.snapshot{
+  background:linear-gradient(135deg,var(--card),var(--card2));
+  border:1px solid var(--border-strong); border-radius:var(--radius);
+  padding:18px 20px; margin:8px 0 20px;
+}
+.snapshot .one-liner{font-size:16px;color:var(--heading);font-weight:600}
+.snapshot .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{
+  padding:5px 11px;border-radius:8px;font-size:12px;font-weight:700;
+  background:var(--ctx-soft);color:var(--ctx);border:1px solid var(--border-strong);
+  white-space:nowrap;
+}
+.badge.danger{background:rgba(244,63,94,.14);color:var(--danger);border-color:rgba(244,63,94,.3)}
+.badge.warn{background:rgba(245,158,11,.14);color:var(--warn);border-color:rgba(245,158,11,.3)}
+.badge.ok{background:rgba(52,211,153,.14);color:var(--ok);border-color:rgba(52,211,153,.3)}
+.sec{scroll-margin-top:150px;margin:26px 0}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.sec-head .pill{
+  font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;color:#03121a;background:var(--ctx);
+}
+.sec-head h2{font-size:22px;font-weight:800}
+.context-band{
+  display:inline-flex;align-items:center;gap:7px;margin:2px 0 18px;
+  font-size:12px;font-weight:700;color:var(--ctx);
+  padding:5px 12px;border-radius:999px;background:var(--ctx-soft);border:1px solid var(--border-strong);
+}
+.module{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  margin:14px 0; overflow:hidden; box-shadow:0 6px 22px rgba(0,0,0,.18);
+}
+.module > .m-head{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(90deg,var(--m,var(--ctx)),transparent 70%);
+  background-color:rgba(255,255,255,.02);
+}
+.module > .m-head .m-ico{font-size:18px}
+.module > .m-head h3{margin:0;font-size:15.5px;color:var(--heading)}
+.module > .m-head .m-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--muted)}
+.module > .m-body{padding:14px 16px}
+.module.accent{border-left:4px solid var(--m,var(--ctx))}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+th{background:rgba(255,255,255,.05);text-align:left;padding:9px 12px;font-size:12px;color:var(--heading);
+  font-weight:700;border-bottom:1px solid var(--border-strong)}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.light th{background:rgba(15,23,42,.05)}
+.light tr:nth-child(even) td{background:rgba(15,23,42,.02)}
+.drug-table td:nth-child(1){font-weight:700;color:var(--heading)}
+.drug-table .why{color:var(--treat)}
+.drug-table .alt{color:var(--warn)}
+.freq{font-weight:700;white-space:nowrap}
+.f-hi{color:#f43f5e}.f-md{color:#f59e0b}.f-lo{color:#38bdf8}.f-rare{color:#a78bfa}
+.ladder{margin:12px 0}
+.rung{border:1px solid var(--border);border-radius:11px;margin:8px 0;overflow:hidden;background:var(--card2)}
+.rung > .r-head{display:flex;align-items:center;gap:11px;padding:12px 14px;cursor:pointer;user-select:none}
+.rung > .r-head:hover{background:rgba(255,255,255,.03)}
+.rung .step{
+  width:30px;height:30px;flex:0 0 auto;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;color:#03121a;background:var(--ctx);
+}
+.rung.first .step{background:var(--ok)}
+.rung.second .step{background:var(--warn)}
+.rung.third .step{background:var(--danger);color:#fff}
+.rung.fourth .step{background:#7c3aed;color:#fff}
+.rung .r-title{font-weight:700;color:var(--heading);font-size:14.5px}
+.rung .r-sub{font-size:12px;color:var(--muted)}
+.rung .chev{margin-left:auto;transition:transform var(--tr);color:var(--muted)}
+.rung.open .chev{transform:rotate(180deg)}
+.rung .r-body{display:none;padding:0 14px 14px 55px}
+.rung.open .r-body{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(max-width:520px){ .rung .r-body{padding:0 12px 12px 14px} }
+.callout{border-radius:0 11px 11px 0;padding:12px 15px;margin:12px 0;border-left:4px solid var(--info);
+  background:rgba(56,189,248,.08);font-size:13.5px}
+.callout .lbl{font-weight:800;display:block;margin-bottom:3px;font-size:12px;letter-spacing:.4px;text-transform:uppercase}
+.why{border-left-color:var(--treat);background:rgba(52,211,153,.08)}
+.why .lbl{color:var(--treat)}
+.why .lbl::before{content:"⚙  Why it works — "}
+.analogy{border-left-color:#c084fc;background:rgba(192,132,252,.09)}
+.analogy .lbl{color:#c084fc}
+.analogy .lbl::before{content:"🔗  Think of it like — "}
+.pearl{border-left-color:var(--warn);background:rgba(245,158,11,.09)}
+.pearl .lbl{color:var(--warn)}
+.pearl .lbl::before{content:"💡  Clinical pearl — "}
+.redflag{border-left-color:var(--danger);background:rgba(244,63,94,.10)}
+.redflag .lbl{color:var(--danger)}
+.redflag .lbl::before{content:"🚩  Red flag — "}
+.emergency{border-left-color:var(--danger);background:rgba(244,63,94,.14)}
+.emergency .lbl{color:var(--danger)}
+.emergency .lbl::before{content:"⛑  Emergency — "}
+.decision{border-left-color:var(--dx);background:rgba(129,140,248,.10)}
+.decision .lbl{color:var(--dx)}
+.decision .lbl::before{content:"🔀  Decision point — "}
+.orderset{display:grid;gap:8px;margin:10px 0}
+.order-row{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--border);
+  border-radius:10px;background:var(--card2)}
+.order-row .ord-name{font-weight:700;color:var(--heading);min-width:150px;flex:0 0 auto}
+.order-row .ord-when{color:var(--muted);font-size:12.5px;flex:1 1 auto}
+.order-row .ord-tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;
+  background:var(--ctx-soft);color:var(--ctx);flex:0 0 auto;align-self:center}
+.dispo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:12px 0}
+.dispo{border:1px solid var(--border);border-top:3px solid var(--dispo);border-radius:11px;padding:12px 14px;background:var(--card2)}
+.dispo h4{margin:0 0 4px;color:var(--dispo)}
+.dispo .crit{font-size:12.5px;color:var(--muted)}
+.vent-card{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.vent-item{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--card2)}
+.vent-item .vk{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+.vent-item .vv{font-size:15px;font-weight:800;color:var(--heading);margin-top:2px}
+.vent-item .vn{font-size:11.5px;color:var(--muted);margin-top:3px}
+.uspstf-table .grade{font-weight:800;text-align:center;white-space:nowrap}
+.uspstf-table .grade.A{color:var(--ok)}
+.uspstf-table .grade.B{color:var(--info)}
+.fig-row{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}
+.fig{flex:1 1 300px;min-width:0}
+.fig img{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,.3);cursor:zoom-in;display:block;background:#fff}
+.fig .cap{font-size:12px;color:var(--muted);margin-top:6px}
+.fig .credit{font-size:10.5px;color:var(--muted);margin-top:2px}
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(3,7,18,.94);
+  align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox.on{display:flex}
+.lightbox img{max-width:94vw;max-height:92vh;border-radius:8px;object-fit:contain}
+.lightbox .x{position:fixed;top:14px;right:20px;font-size:34px;color:#fff;opacity:.8;cursor:pointer}
+.calc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin:12px 0}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.calc-opt{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid var(--border);
+  border-radius:9px;margin:6px 0;cursor:pointer;background:var(--card2);transition:var(--tr);font-size:13px}
+.calc-opt:hover{border-color:var(--ctx)}
+.calc-opt.sel{border-color:var(--ctx);background:var(--ctx-soft)}
+.calc-result{text-align:center;margin-top:14px;padding:16px;border:1px solid var(--border);border-radius:11px;background:var(--card2)}
+.calc-total{font-size:40px;font-weight:800;color:var(--ctx);line-height:1.1}
+.calc-in{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:15px}
+.calc-lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:5px;display:block}
+.dose-out{display:grid;gap:8px;margin-top:12px}
+.dose-row{display:flex;gap:12px;align-items:baseline;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--card2);flex-wrap:wrap}
+.dose-row .dn{font-weight:700;color:var(--heading);min-width:150px;flex:0 0 auto}
+.dose-row .dv{font-weight:800;font-size:16px;color:var(--ctx);flex:0 0 auto}
+.dose-row .dz{font-size:12px;color:var(--muted);flex:1 1 160px}
+.dose-row.capped{border-color:rgba(245,158,11,.45)}
+.dose-row.capped .dv{color:var(--warn)}
+@media(max-width:520px){ .dose-row .dn{min-width:0;flex:1 1 100%} }
+.svg-wrap{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0;overflow-x:auto}
+.dia-dark{display:block}.dia-light{display:none}
+.light .dia-dark{display:none}.light .dia-light{display:block}
+.svg-wrap .cap{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
+.svg-wrap svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.mini{background:var(--card2);border:1px solid var(--border);border-radius:11px;padding:12px 14px;margin:10px 0}
+.mini h4{margin:0 0 6px}
+.note-input{width:100%;min-height:72px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:14px}
+.note-btn{padding:8px 16px;border-radius:9px;border:1px solid #eab308;background:rgba(234,179,8,.14);color:#eab308;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}
+.note-btn:hover{background:rgba(234,179,8,.22)}
+.note-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.note-card{border:1px solid var(--border);border-left:3px solid #eab308;border-radius:9px;padding:9px 12px;background:var(--card2)}
+.note-meta{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-bottom:4px}
+.note-del{cursor:pointer;color:var(--danger);font-weight:700}
+.note-text{font-size:13.5px;white-space:pre-wrap;word-break:break-word}
+.refs{margin-top:34px;padding-top:18px;border-top:1px solid var(--border)}
+.refs li{font-size:12.5px;color:var(--muted)}
+.refs h3{margin-top:18px}
+.ctx-panel{display:none}
+.ctx-panel.active{display:block}
+.toc-fab{display:none;position:fixed;right:16px;bottom:18px;z-index:60;
+  width:52px;height:52px;border-radius:16px;background:var(--ctx);color:#03121a;border:none;
+  font-size:22px;box-shadow:0 8px 24px rgba(0,0,0,.4);cursor:pointer}
+@media(max-width:920px){
+  .rail{display:none}
+  .shell{padding:0 12px}
+  .toc-fab{display:flex;align-items:center;justify-content:center}
+  .ctx-btn .sub{display:none}
+  .appbar h1{font-size:17px}
+  .sec-head h2{font-size:19px}
+  .rail.sheet{display:block;position:fixed;inset:auto 0 0 0;top:auto;width:100%;max-height:66vh;
+    background:var(--card);border-top:1px solid var(--border-strong);border-radius:18px 18px 0 0;
+    padding:16px;z-index:70;box-shadow:0 -10px 40px rgba(0,0,0,.5);flex:none}
+  .rail.sheet .rail-h{display:flex;justify-content:space-between;align-items:center}
+}
+@media(max-width:520px){
+  body{font-size:14.5px}
+  .snapshot{padding:15px}
+  .order-row{flex-direction:column;gap:4px}
+  .order-row .ord-name{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <a class="iconbtn" href="https://xxddosingdosaxx.github.io/study-guides/" title="Library home">&#8962;</a>
+  <div class="titlewrap">
+    <div class="kicker">Clinical Reference · Pulmonology</div>
+    <h1>Acute Respiratory Failure &amp; ARDS</h1>
+  </div>
+  <button class="iconbtn" onclick="copyOsmo(this)" title="Copy Osmosis login (horoy31882@flownue.com / Skanda123!)">&#128273;</button>
+  <button class="iconbtn" onclick="toggleTheme()" title="Theme">&#9789;</button>
+</header>
+
+<div class="ctx-switch">
+  <div class="ctx-seg" role="tablist" aria-label="Care setting">
+    <button class="ctx-btn active" data-ctx="clinic" onclick="setCtx('clinic')"><span class="ico">🩺</span>Clinic<span class="sub">Outpatient</span></button>
+    <button class="ctx-btn" data-ctx="wards" onclick="setCtx('wards')"><span class="ico">🛏️</span>Wards<span class="sub">Inpatient floor</span></button>
+    <button class="ctx-btn" data-ctx="icu" onclick="setCtx('icu')"><span class="ico">🫀</span>ICU<span class="sub">Critical care</span></button>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="rail" id="rail">
+    <div class="rail-h" id="railHead">On this page</div>
+    <div id="railLinks"></div>
+  </nav>
+
+  <main class="content">
+
+    <section class="snapshot" id="snapshot">
+      <div class="one-liner"><strong>Acute respiratory failure</strong> is the lung failing at one of its two jobs — getting oxygen in (<em>hypoxemic</em>, PaO₂ &lt; 60) or getting CO₂ out (<em>hypercapnic</em>, PaCO₂ &gt; 45 with acidemia). <strong>ARDS</strong> is the most severe hypoxemic form: within a week of an insult, the alveolar–capillary barrier leaks, both lungs flood with protein-rich fluid, and the resulting <strong>shunt</strong> makes the hypoxemia refractory to oxygen. You cannot oxygenate your way out of it — you have to re-open the lung.</div>
+      <div class="badges">
+        <span class="badge">Berlin 2012 → Global Definition 2024</span>
+        <span class="badge warn">P/F ≤ 300 on PEEP ≥ 5</span>
+        <span class="badge danger">Severe ARDS mortality ~40–46%</span>
+        <span class="badge ok">6 mL/kg PBW · Pplat &lt; 30 · ΔP &lt; 15</span>
+        <span class="badge ok">Prone ≥16 h if P/F &lt; 150</span>
+        <span class="badge warn">Only ~⅔ of ARDS is ever recognised (LUNG SAFE)</span>
+      </div>
+    </section>
+
+    <!-- ==================== SHARED: PATHOPHYSIOLOGY ==================== -->
+    <section class="sec" id="pathophys" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>Pathophysiology</h2></div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🧬</span><h3>Mechanism — the story, from insult to refractory hypoxemia</h3></div>
+        <div class="m-body">
+          <p>Start with the only thing the lung is for: bringing <strong>gas</strong> and <strong>blood</strong> close enough together that oxygen can diffuse across. The gas sits in ~480 million alveoli. The blood runs through capillaries pressed against them, separated by a barrier so thin — about 0.3 µm — that it is essentially two cell layers back-to-back: an <strong>alveolar epithelium</strong> (flat type I pneumocytes covering 95% of the surface, plus cuboidal type II cells that make surfactant and act as the progenitor cells) and a <strong>capillary endothelium</strong>. That barrier is simultaneously the reason gas exchange works and the reason ARDS is catastrophic: it is far too thin to tolerate injury.</p>
+
+          <p><strong>The insult.</strong> Something injures that barrier — either <em>directly</em>, from the airspace side (pneumonia, aspiration of gastric acid, inhalation injury, near-drowning, pulmonary contusion), or <em>indirectly</em>, from the bloodstream side (sepsis — the single most common cause, pancreatitis, major trauma, massive transfusion/TRALI, burns). The distinction matters clinically: direct ARDS tends to produce patchy, consolidated, poorly recruitable lung; indirect ARDS tends to produce diffuse, more recruitable oedema. Either way, the endpoint converges.</p>
+
+          <p><strong>The breakdown.</strong> Injured endothelium and dying type I pneumocytes lose their tight junctions, and the barrier becomes <em>permeable</em>. Neutrophils, marginated in the pulmonary capillaries in enormous numbers, are activated and migrate across it, releasing proteases, reactive oxygen species and cytokines (IL-1β, IL-6, IL-8, TNF-α). This is the crucial point that separates ARDS from every other kind of pulmonary oedema: <strong>the fluid that fills the alveoli is not filtered out by high pressure — it leaks out through holes.</strong> It is therefore <em>protein-rich</em> (an exudate), not protein-poor (a transudate). It cannot be diuresed away the way cardiogenic oedema can, because the driving force was never hydrostatic pressure.</p>
+
+          <p><strong>The flooding, and the collapse.</strong> Two things now happen at once. The alveoli fill with proteinaceous fluid, cellular debris and fibrin, which polymerises against the alveolar wall into the eosinophilic <strong>hyaline membranes</strong> that define <em>diffuse alveolar damage</em> (DAD) on histology. And the type II cells that make surfactant are killed, while the plasma proteins that have leaked into the airspace directly <em>inactivate</em> whatever surfactant is left. Without surfactant, alveolar surface tension rises, and by Laplace's law the small alveoli collapse into the larger ones. So the alveolus is now flooded <em>and</em> collapsed.</p>
+
+          <p><strong>The consequence — and the whole reason ARDS behaves the way it does.</strong> A flooded, collapsed alveolus is still <em>perfused</em> — the capillary next to it is still carrying blood. But it is no longer <em>ventilated</em>. Blood therefore runs past it, picks up no oxygen at all, and rejoins the pulmonary vein still venous. That is the definition of a <strong>right-to-left intrapulmonary shunt</strong>, and shunt is the reason ARDS hypoxemia is <em>refractory</em>: the shunted blood never meets gas, so it does not matter what is <em>in</em> the gas. You can turn the FiO₂ to 100% and the shunted fraction is completely unaffected. (The isoshunt graph below makes this concrete: at a 30% shunt, 100% oxygen buys a PaO₂ of only ~100 mmHg; at 50%, only ~49.)</p>
+
+          <p>Two more consequences follow. First, the lung that is <em>left</em> — the aerated compartment — is tiny. Gattinoni's CT work showed the aerated volume in ARDS is often the size of a <strong>5-year-old child's lung</strong>: the <em>"baby lung."</em> The chest is normal-sized; the functioning lung is not. Second, microvascular thrombosis and capillary obliteration create the opposite lesion — alveoli that are ventilated but <em>not perfused</em> — i.e. <strong>dead space</strong>. A high dead-space fraction (V<sub>D</sub>/V<sub>T</sub>) is one of the strongest independent predictors of death in ARDS, and it is why the PaCO₂ starts climbing even as you ventilate harder.</p>
+
+          <div class="analogy"><span class="lbl"></span><strong>A flooded city.</strong> Think of the lung as a city of 480 million houses, each with a road (airway) and a water pipe (capillary) running past it. Normally, deliveries (oxygen) go from the road into every house. In ARDS a flood fills a third of the houses to the roof. The <em>pipes still run past those flooded houses</em> — the water keeps flowing — but no delivery can get in. Now: sending <strong>more delivery trucks down the road</strong> (raising the FiO₂) does nothing at all for the flooded houses; the trucks cannot get through a flooded door. The only things that help are <strong>pumping the water out and propping the doors open</strong> (PEEP), <strong>tilting the city so the flooded district drains and the dry district takes the load</strong> (prone positioning), and — critically — <strong>not sending so much traffic down the few dry streets that you destroy them too</strong> (low tidal volume). That last one is the whole idea of ventilator-induced lung injury: the ventilator, set "normally," will finish off the healthy lung that ARDS left you.</div>
+
+          <h3>The cascade</h3>
+          <div class="svg-wrap">
+            <div class="dia dia-dark">__MM_PATHO_DARK__</div>
+            <div class="dia dia-light">__MM_PATHO_LIGHT__</div>
+            <div class="cap">From insult to therapy. Every box on the bottom row is a therapy, and each one sits directly under the derangement it interrupts — that is the through-line of this whole guide.</div>
+          </div>
+
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_alveolus__" alt="Normal alveolus versus injured alveolus in the acute phase of ARDS">
+              <div class="cap"><strong>The normal alveolus (left) vs the injured alveolus in the acute phase of ARDS (right).</strong> Everything in the narrative above is in this one picture: sloughed epithelium, denuded basement membrane, a <strong>hyaline membrane</strong> plastered against the wall, <strong>protein-rich oedema fluid</strong> in the airspace, <strong>inactivated surfactant</strong>, activated neutrophils pouring through <strong>gaps</strong> in a swollen endothelium, and a widened, oedematous interstitium. Note what is <em>not</em> there: any sign of high hydrostatic pressure. This is a leak, not a flood from above.</div>
+              <div class="credit">__CREDIT_alveolus__</div>
+            </div>
+          </div>
+
+          <h3>Why raising the FiO₂ stops working — shunt vs V̇/Q̇ mismatch</h3>
+          <p>This is the single most important physiological idea in the guide, and it is the one that most often gets skipped. Hypoxemia has five classical mechanisms (low inspired PO₂, hypoventilation, diffusion limitation, V̇/Q̇ mismatch, and shunt), but at the bedside in acute respiratory failure only the last two really compete — and <strong>they respond to oxygen in completely opposite ways.</strong></p>
+          __SVG_UNITS__
+          __SVG_ISOSHUNT__
+
+          <div class="pearl"><span class="lbl"></span><strong>The non-rebreather test.</strong> Put a hypoxemic patient on a non-rebreather at 15 L/min. If the saturation climbs nicely, the problem is V̇/Q̇ mismatch — think COPD, asthma, PE, atelectasis. <strong>If the saturation barely moves, you are looking at shunt</strong>, and the differential collapses to a short list: ARDS, dense lobar pneumonia, cardiogenic pulmonary oedema, or an anatomic shunt (intracardiac, AVM). That single manoeuvre reframes the entire admission — and it is free.</div>
+
+          <h3>The baby lung — why the ventilator becomes the second disease</h3>
+          __SVG_BABYLUNG__
+          <div class="why"><span class="lbl"></span><strong>Ventilator-induced lung injury (VILI) is not a complication of ARDS — it is a second, iatrogenic ARDS layered on top of the first.</strong> Four mechanisms: <strong>volutrauma</strong> (over-distension of the baby lung by a "normal" tidal volume), <strong>barotrauma</strong> (frank rupture — pneumothorax, pneumomediastinum), <strong>atelectrauma</strong> (the shear injury of alveoli repeatedly snapping open on inspiration and slamming shut on expiration — this is what PEEP prevents), and <strong>biotrauma</strong> (the cytokines released by all of the above spilling into the circulation and driving the multi-organ failure that actually kills most ARDS patients). Note the elegance of the two core vent settings: <strong>low tidal volume prevents volutrauma; adequate PEEP prevents atelectrauma.</strong> They are treating two different injuries, and you need both.</div>
+
+          <h3>The three phases — and why the CT looks different in week 1 vs week 3</h3>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Phase</th><th>Timing</th><th>What is happening histologically</th><th>What you see clinically</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Exudative</strong></td><td>Days 0–7</td><td>Diffuse alveolar damage: interstitial and alveolar oedema, <strong>hyaline membranes</strong>, neutrophil infiltration, type I pneumocyte necrosis, capillary congestion and microthrombi.</td><td>The acute, floridly hypoxemic phase. Bilateral opacities appear. This is the window in which lung-protective ventilation, prone positioning and (if indicated) steroids do their work.</td></tr>
+              <tr><td><strong>Proliferative</strong></td><td>~Days 7–21</td><td>Attempted repair: <strong>type II pneumocytes proliferate</strong> to re-line the denuded basement membrane, fibroblasts and myofibroblasts migrate into the alveolar space, organising fibrinous exudate. Hyaline membranes are resorbed.</td><td>Compliance may begin to improve — or the patient becomes ventilator-dependent. Dead space stays high. Most survivors turn the corner here.</td></tr>
+              <tr><td><strong>Fibrotic</strong></td><td>&gt; ~3 weeks (not all patients)</td><td>Collagen deposition, architectural distortion, obliteration of the microvasculature, cyst formation.</td><td>Persistent ventilator dependence, persistent high dead space, pulmonary hypertension, rising risk of barotrauma. This is the patient who ends up at LTAC for a prolonged wean, or with a tracheostomy.</td></tr>
+            </tbody>
+          </table></div>
+
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_dad_histo__" alt="Histopathology of hyaline membranes in diffuse alveolar damage">
+              <div class="cap"><strong>Exudative phase — diffuse alveolar damage.</strong> The arrows mark <strong>hyaline membranes</strong>: pink, glassy, protein-and-fibrin ribbons plastered against the alveolar wall, formed from the plasma proteins that leaked through the broken barrier. This is the histological signature of ARDS, and it is what "the alveolus is flooded with an exudate" actually looks like down the microscope. (H&amp;E, ×200; from a COVID-19 ARDS series.)</div>
+              <div class="credit">__CREDIT_dad_histo__</div>
+            </div>
+            <div class="fig">
+              <img src="__IMG_dad_prolif__" alt="Diffuse alveolar damage, proliferative organizing phase">
+              <div class="cap"><strong>Proliferative / organising phase.</strong> Two to three weeks in, the picture changes completely: the hyaline membranes are gone, and in their place are <strong>plump, proliferating type II pneumocytes</strong> re-lining the alveolus and <strong>fibroblasts organising the exudate</strong> into the airspace. This is repair — but repair that, if it overshoots, becomes the fibrosis that leaves the patient permanently ventilator-dependent.</div>
+              <div class="credit">__CREDIT_dad_prolif__</div>
+            </div>
+          </div>
+
+          <h3>Every therapy, mapped to the step it interrupts</h3>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Therapy</th><th>The exact step it blocks</th><th>Therefore…</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Low tidal volume (6 mL/kg PBW)</strong></td><td><strong>Volutrauma.</strong> Stops the ventilator from over-distending the small aerated "baby lung" that is left.</td><td>The only ventilator intervention with an unambiguous, large mortality benefit (ARMA 2000: 31.0% vs 39.8%). Everything else is negotiable; this is not.</td></tr>
+              <tr><td><strong>PEEP</strong></td><td><strong>Alveolar collapse + atelectrauma.</strong> Holds the recruited alveoli open at end-expiration so they (a) participate in gas exchange, abolishing shunt, and (b) stop shearing open and shut.</td><td>Directly attacks the shunt. This — not FiO₂ — is the lever that actually raises the PaO₂ in ARDS.</td></tr>
+              <tr><td><strong>Prone positioning</strong></td><td><strong>The V̇/Q̇ divorce.</strong> Re-inflates the dorsal lung (which was crushed by the heart, abdomen and the lung's own weight) <em>where the blood already is</em>, and makes the pleural-pressure gradient — and therefore ventilation — more uniform.</td><td>Recruits and redistributes simultaneously. Largest absolute mortality reduction in ARDS (PROSEVA: 16.0% vs 32.8% at 28 d).</td></tr>
+              <tr><td><strong>Neuromuscular blockade</strong></td><td><strong>Patient–ventilator dyssynchrony and vigorous spontaneous effort</strong> — which generates large, injurious swings in transpulmonary pressure ("patient self-inflicted lung injury," P-SILI) and breath-stacking.</td><td>Makes the lung a passive bag so the protective settings are actually delivered. Benefit was clear when the comparator was deeply sedated (ACURASYS) and vanished when it was lightly sedated (ROSE) — see the trials table.</td></tr>
+              <tr><td><strong>Conservative fluid strategy</strong></td><td><strong>The hydrostatic component.</strong> The barrier is leaky, so <em>any</em> hydrostatic pressure drives far more fluid across it than it would across a normal barrier — Starling forces still apply, they are just operating through a sieve.</td><td>You cannot diurese away a leak, but you can stop pushing fluid through it. FACTT: +2.5 ventilator-free days, no increase in shock or dialysis.</td></tr>
+              <tr><td><strong>Corticosteroids</strong></td><td><strong>The inflammatory amplification loop</strong> (neutrophil recruitment, cytokine transcription) and the <strong>fibroproliferative response.</strong></td><td>Attacks the injury itself rather than its consequences — the only therapy on this list that does. Strongest evidence in COVID-ARDS and in early moderate–severe ARDS (DEXA-ARDS).</td></tr>
+              <tr><td><strong>Inhaled pulmonary vasodilators</strong> (iNO, epoprostenol)</td><td><strong>Shunt fraction</strong>, by a clever trick: delivered <em>as a gas</em>, they only reach alveoli that are still <em>ventilated</em>, so they vasodilate only those capillaries and divert blood flow away from the shunt.</td><td>Improves oxygenation reliably — but <strong>does not improve mortality</strong>, and iNO increases renal injury. A bridge and a rescue, not a treatment.</td></tr>
+              <tr><td><strong>VV-ECMO</strong></td><td><strong>The whole lung.</strong> Takes gas exchange out of the lung entirely so the ventilator can be turned down to genuinely non-injurious settings ("lung rest").</td><td>The ultimate expression of "the ventilator is the second disease" — the point is not oxygenation, it is <em>letting the lung stop being ventilated.</em></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SHARED: DEFINITIONS ==================== -->
+    <section class="sec" id="definitions" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--dx)">Shared</span><h2>Definitions, types &amp; severity</h2></div>
+
+      <div class="module accent" style="--m:var(--dx)">
+        <div class="m-head" style="--m:var(--dx)"><span class="m-ico">🧭</span><h3>Step 1 — Which <em>type</em> of respiratory failure is this?</h3></div>
+        <div class="m-body">
+          <p>Before ARDS, before anything: classify the failure. This one decision determines whether the patient needs <strong>oxygen</strong>, <strong>ventilation</strong>, or <strong>both</strong> — and it is made with a single arterial blood gas.</p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Type</th><th>Blood gas</th><th>The failing organ system</th><th>Classic causes</th><th>What fixes it</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Type 1<br>Hypoxemic</strong></td><td><strong>PaO₂ &lt; 60</strong> mmHg<br>PaCO₂ normal or <em>low</em></td><td>Failure of <strong>gas exchange</strong>. The lung parenchyma is broken; the pump is fine (and in fact is working overtime — hence the low CO₂).</td><td><strong>ARDS</strong>, pneumonia, cardiogenic pulmonary oedema, PE, atelectasis, alveolar haemorrhage.</td><td>Oxygen ± <strong>PEEP</strong>. Note: if it is shunt, oxygen alone will fail — you need PEEP/recruitment.</td></tr>
+              <tr><td><strong>Type 2<br>Hypercapnic</strong></td><td><strong>PaCO₂ &gt; 45</strong> mmHg<br>with <strong>pH &lt; 7.35</strong> (acute)</td><td>Failure of the <strong>pump</strong> — the bellows cannot move enough air. Alveolar <em>ventilation</em> is inadequate.</td><td>COPD exacerbation, opioid/benzo overdose, obesity-hypoventilation, neuromuscular disease (GBS, myasthenia, ALS), severe asthma (a <em>late</em> and ominous sign), chest wall disease.</td><td><strong>Ventilation</strong> — NIV/BiPAP first line. Oxygen alone does not fix a pump problem and in COPD can worsen it.</td></tr>
+              <tr><td><strong>Type 3<br>Peri-operative</strong></td><td>Usually type 1 physiology</td><td>Atelectasis from reduced FRC, supine posture, splinting, residual anaesthesia.</td><td>Post-op — especially upper abdominal and thoracic surgery, obesity, smokers.</td><td>Recruitment: incentive spirometry, sitting up, analgesia so they can cough, CPAP.</td></tr>
+              <tr><td><strong>Type 4<br>Shock</strong></td><td>Variable; often lactic acidosis with compensatory low CO₂</td><td>The respiratory muscles are consuming a huge share of a cardiac output that cannot meet demand — intubation here is to <em>unload the diaphragm</em>, not to fix the lung.</td><td>Septic, cardiogenic, haemorrhagic shock.</td><td>Fix the shock. Intubate to redirect blood flow away from the work of breathing.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_rf_types__" alt="The four types of respiratory failure with their etiologies">
+              <div class="cap"><strong>The four types, with their causes.</strong> Worth reading across: notice that ARDS sits under Type 1 in the "V̇/Q̇ mismatch / right-to-left shunt" branch — the branch that will <em>not</em> respond to oxygen alone.</div>
+              <div class="credit">__CREDIT_rf_types__</div>
+            </div>
+          </div>
+          <div class="pearl"><span class="lbl"></span><strong>A "normal" PaCO₂ in a patient who is visibly struggling is a pre-arrest sign.</strong> A tachypnoeic patient with a respiratory rate of 35 should have blown their CO₂ down to 25–30. If their PaCO₂ is 40, they are not "fine" — they are <strong>tiring</strong>, and their minute ventilation is falling as their diaphragm fails. A CO₂ that is <em>rising</em> in an asthmatic or in ARDS means the patient is about to stop breathing. Do not be reassured by a normal number; be alarmed by it in the wrong context.</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--dx)">
+        <div class="m-head" style="--m:var(--dx)"><span class="m-ico">📐</span><h3>Step 2 — the A–a gradient: <em>where</em> in the chain is the problem?</h3></div>
+        <div class="m-body">
+          <p>The alveolar–arterial oxygen gradient separates "the lung is broken" from "the lung is fine, but nobody is breathing." It is the difference between the oxygen tension you calculate <em>should</em> be in the alveolus and the oxygen tension you actually measure in the artery.</p>
+          <div class="mini">
+            <h4>The equations</h4>
+            <p><strong>Alveolar gas equation:</strong> P<sub>A</sub>O₂ = FiO₂ × (P<sub>atm</sub> − P<sub>H₂O</sub>) − PaCO₂ / R &nbsp; = &nbsp; FiO₂ × (760 − 47) − PaCO₂ / 0.8 &nbsp; at sea level.</p>
+            <p><strong>A–a gradient</strong> = P<sub>A</sub>O₂ − PaO₂. &nbsp; <strong>Expected (normal) A–a</strong> ≈ (Age / 4) + 4 &nbsp; on room air.</p>
+          </div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Pattern</th><th>Interpretation</th><th>Differential</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Hypoxemia + NORMAL A–a</strong></td><td>The lung is doing its job — the gas simply isn't arriving. Either the patient isn't breathing enough, or there wasn't enough oxygen in the air to begin with.</td><td><strong>Hypoventilation</strong> (opioids, sedatives, neuromuscular disease, obesity-hypoventilation, CNS lesion) — always with a <strong>high PaCO₂</strong>. Or <strong>low FiO₂</strong> (altitude).</td></tr>
+              <tr><td><strong>Hypoxemia + WIDE A–a, corrects with O₂</strong></td><td>Gas and blood are meeting, but badly matched.</td><td><strong>V̇/Q̇ mismatch</strong> (COPD, asthma, PE, pneumonia) or <strong>diffusion limitation</strong> (ILD, emphysema).</td></tr>
+              <tr><td><strong>Hypoxemia + WIDE A–a, does NOT correct with O₂</strong></td><td><strong>Shunt.</strong> Blood is bypassing ventilated alveoli entirely.</td><td><strong>ARDS</strong>, dense consolidation, cardiogenic pulmonary oedema, atelectasis, intracardiac shunt, pulmonary AVM.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--dx)">
+        <div class="m-head" style="--m:var(--dx)"><span class="m-ico">📋</span><h3>Step 3 — is it ARDS? Berlin (2012) and the new Global Definition (2024)</h3></div>
+        <div class="m-body">
+          <p>ARDS is a <strong>syndrome</strong>, not a disease — there is no confirmatory test, only a set of criteria you must actively apply. This is exactly why it is missed: LUNG SAFE (Bellani, <em>JAMA</em> 2016) found that clinicians recognised ARDS in <strong>only ~60%</strong> of the patients who met the criteria — and in only 51% of mild cases. <strong>The commonest error in ARDS is not treating it badly; it is not calling it.</strong></p>
+
+          <h4>The Berlin Definition (2012) — all four required</h4>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Criterion</th><th>Requirement</th><th>The trap</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Timing</strong></td><td>Within <strong>1 week</strong> of a known insult, or new/worsening respiratory symptoms.</td><td>If it has been smouldering for a month, think ILD, not ARDS.</td></tr>
+              <tr><td><strong>Imaging</strong></td><td><strong>Bilateral opacities</strong> on CXR or CT, not fully explained by effusions, lobar/lung collapse, or nodules.</td><td>Unilateral opacity is <em>not</em> ARDS. Do not let a big effusion or a collapsed lobe masquerade as one.</td></tr>
+              <tr><td><strong>Origin of oedema</strong></td><td>Respiratory failure <strong>not fully explained</strong> by cardiac failure or fluid overload. Needs objective assessment (<strong>echocardiography</strong>) if no ARDS risk factor is present.</td><td><strong>ARDS and heart failure can coexist</strong> — the criterion is "not <em>fully</em> explained by," not "absence of." Do not withhold the diagnosis because the EF is 40%.</td></tr>
+              <tr><td><strong>Oxygenation</strong></td><td><strong>P/F ≤ 300</strong> on <strong>PEEP ≥ 5</strong> cmH₂O (CPAP counts for mild).</td><td>The PEEP requirement is real: a P/F of 250 on room air is not (yet) gradeable. Re-measure the P/F after 12–24 h on stable settings — up to a quarter of patients reclassify.</td></tr>
+            </tbody>
+          </table></div>
+
+          <h4>Berlin severity — and why it is the number that drives every ICU decision</h4>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Severity</th><th>PaO₂/FiO₂ (on PEEP ≥ 5)</th><th>Approx. mortality</th><th>What it unlocks</th></tr></thead>
+            <tbody>
+              <tr><td><strong style="color:var(--ok)">Mild</strong></td><td>200 &lt; P/F ≤ 300</td><td>~27–35%</td><td>Lung-protective ventilation. HFNC/NIV may still be reasonable.</td></tr>
+              <tr><td><strong style="color:var(--warn)">Moderate</strong></td><td>100 &lt; P/F ≤ 200</td><td>~32–40%</td><td>Higher PEEP strategy. <strong>Prone if P/F &lt; 150.</strong> Consider NMB. Consider steroids.</td></tr>
+              <tr><td><strong style="color:var(--danger)">Severe</strong></td><td>P/F ≤ 100</td><td>~45–46%</td><td><strong>Prone. NMB. Call ECMO — early.</strong> Consider inhaled pulmonary vasodilator as a bridge.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_ards_grade__" alt="Gradation of ARDS severity by PaO2/FiO2 based on the Berlin definition">
+              <div class="cap"><strong>The Berlin severity gauge.</strong> One number — the P/F ratio — sorts ARDS into mild, moderate and severe, and that single sort determines whether you prone, whether you paralyse, and whether you phone the ECMO centre.</div>
+              <div class="credit">__CREDIT_ards_grade__</div>
+            </div>
+          </div>
+
+          <h4>The new Global Definition of ARDS (2024)</h4>
+          <p>Berlin had three practical problems: it required an <strong>arterial blood gas</strong> (unavailable in much of the world), it required <strong>invasive ventilation or CPAP</strong> (so a patient on HFNC could not be called ARDS at all), and it required <strong>CXR or CT</strong> (unavailable in many settings). The 2024 Global Definition (Matthay et al., <em>AJRCCM</em> 209:37–47) fixes all three. It <em>expands</em> who counts as having ARDS — it does not replace the Berlin severity strata for intubated patients.</p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Category</th><th>Respiratory support required</th><th>Oxygenation criterion</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Non-intubated ARDS</strong> <span style="color:var(--info)">(new)</span></td><td><strong>HFNO ≥ 30 L/min</strong>, or NIV/CPAP with <strong>PEEP ≥ 5</strong> cmH₂O</td><td>P/F ≤ 300 &nbsp;<strong>or</strong>&nbsp; <strong>SpO₂/FiO₂ ≤ 315</strong></td></tr>
+              <tr><td rowspan="3"><strong>Intubated ARDS</strong><br><span style="font-weight:400;font-size:11.5px;color:var(--muted)">(all require PEEP ≥ 5)</span></td><td colspan="2"><strong>Mild:</strong> 200 &lt; P/F ≤ 300 &nbsp;or&nbsp; 235 &lt; SpO₂/FiO₂ ≤ 315</td></tr>
+              <tr><td colspan="2"><strong>Moderate:</strong> 100 &lt; P/F ≤ 200 &nbsp;or&nbsp; 148 &lt; SpO₂/FiO₂ ≤ 235</td></tr>
+              <tr><td colspan="2"><strong>Severe:</strong> P/F ≤ 100 &nbsp;or&nbsp; SpO₂/FiO₂ ≤ 148</td></tr>
+              <tr><td><strong>Resource-limited settings</strong> <span style="color:var(--info)">(new)</span></td><td>No PEEP and no minimum flow rate required</td><td><strong>SpO₂/FiO₂ ≤ 315</strong></td></tr>
+            </tbody>
+          </table></div>
+          <div class="redflag"><span class="lbl"></span><strong>SpO₂/FiO₂ is only valid when SpO₂ ≤ 97%.</strong> Above that you are on the flat top of the oxyhaemoglobin dissociation curve, where a saturation of 98% could correspond to a PaO₂ of 100 or of 400 — the ratio becomes meaningless. If your patient is satting 99%, <strong>turn the FiO₂ down until the SpO₂ is ≤ 97%, then calculate.</strong> The Global Definition also accepts <strong>lung ultrasound</strong> (bilateral B-lines and/or consolidations) in place of CXR/CT for the imaging criterion, when performed by a trained operator.</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--dx)">
+        <div class="m-head" style="--m:var(--dx)"><span class="m-ico">🧮</span><h3>Calculator — P/F ratio, S/F ratio &amp; ARDS severity</h3></div>
+        <div class="m-body">
+          <div class="calc">
+            <div class="calc-grid">
+              <div>
+                <label class="calc-lbl" for="pfPao2">PaO₂ (mmHg) — from ABG</label>
+                <input class="calc-in" type="number" id="pfPao2" min="20" max="600" step="1" value="70" oninput="calcPF()">
+              </div>
+              <div>
+                <label class="calc-lbl" for="pfSpo2">SpO₂ (%) — pulse oximeter</label>
+                <input class="calc-in" type="number" id="pfSpo2" min="50" max="100" step="1" value="92" oninput="calcPF()">
+              </div>
+              <div>
+                <label class="calc-lbl" for="pfFio2">FiO₂ (%)</label>
+                <input class="calc-in" type="number" id="pfFio2" min="21" max="100" step="1" value="60" oninput="calcPF()">
+              </div>
+              <div>
+                <label class="calc-lbl" for="pfPeep">PEEP (cmH₂O)</label>
+                <input class="calc-in" type="number" id="pfPeep" min="0" max="30" step="1" value="10" oninput="calcPF()">
+              </div>
+            </div>
+            <div class="dose-out" id="pfOut"></div>
+            <p style="font-size:11.5px;color:var(--muted);margin-top:12px">Berlin Definition (<em>JAMA</em> 2012) and the New Global Definition of ARDS (Matthay et al., <em>AJRCCM</em> 2024;209:37–47). This tool grades <strong>oxygenation only</strong> — ARDS additionally requires the timing, bilateral-imaging and origin-of-oedema criteria, which no calculator can check for you.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--dx)">
+        <div class="m-head" style="--m:var(--dx)"><span class="m-ico">🔍</span><h3>Causes — and the mimics that will embarrass you</h3></div>
+        <div class="m-body">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>DIRECT lung injury (~inhaled / airspace side)</th><th>INDIRECT lung injury (~bloodstream side)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Pneumonia</strong> — bacterial, viral (influenza, COVID-19), fungal. <em>The single commonest direct cause.</em><br><strong>Aspiration</strong> of gastric contents (acid → chemical pneumonitis).<br>Inhalation injury (smoke, toxic gas), near-drowning, pulmonary contusion, fat embolism, reperfusion after lung transplant/embolectomy.</td>
+                <td><strong>Sepsis</strong> — <em>the single commonest cause of ARDS overall.</em><br><strong>Acute pancreatitis.</strong><br>Major trauma, multiple fractures, burns.<br><strong>Massive transfusion / TRALI.</strong><br>Cardiopulmonary bypass, drug overdose (opioids, salicylates), disseminated intravascular coagulation.</td>
+              </tr>
+            </tbody>
+          </table></div>
+          <div class="decision"><span class="lbl"></span><strong>If there is no risk factor, it is probably not ARDS — go looking for the mimic.</strong> The Berlin definition presumes a precipitant. When you cannot name one, the diagnosis you are about to miss is on this list, and several of these are <em>steroid-responsive and rapidly fatal if missed:</em>
+          <ul>
+            <li><strong>Cardiogenic pulmonary oedema</strong> — the great mimic. Echo, BNP, and the response to diuresis sort it out (see the imaging table below).</li>
+            <li><strong>Diffuse alveolar haemorrhage</strong> — vasculitis, anti-GBM, SLE. Clue: <strong>dropping haemoglobin</strong> with bilateral infiltrates; haemoptysis in only ~⅓. <strong>Serially bloodier BAL aliquots are diagnostic.</strong> Needs pulse steroids ± plasma exchange, not just a ventilator.</li>
+            <li><strong>Acute eosinophilic pneumonia</strong> — often a young new smoker or vaper. <strong>BAL eosinophils &gt; 25%.</strong> Dramatically steroid-responsive — this is a diagnosis you can actually cure in 48 hours.</li>
+            <li><strong>Acute interstitial pneumonia (Hamman–Rich)</strong> — idiopathic ARDS; histologically identical DAD, but with no precipitant.</li>
+            <li><strong>Cryptogenic organising pneumonia (COP)</strong>, <strong>acute exacerbation of IPF</strong>, <strong>drug-induced lung injury</strong> (amiodarone, bleomycin, checkpoint inhibitors), <strong>leukaemic infiltration / leukostasis</strong>.</li>
+          </ul>
+          <strong>Practical rule:</strong> if the patient has bilateral infiltrates and no obvious sepsis, pneumonia, aspiration, pancreatitis or trauma — get an <strong>echo</strong>, send a <strong>vasculitis screen</strong>, check the <strong>haemoglobin trend</strong>, and think hard about <strong>bronchoscopy with BAL</strong> before you settle for "ARDS."</div>
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,309 @@
+
+    <!-- ============================================================
+         WARDS CONTEXT PANEL
+         ============================================================ -->
+    <div class="ctx-panel" data-context="wards">
+      <div class="context-band">🛏️ Wards — the oxygen ladder, and knowing when it has failed</div>
+
+      <section class="sec" id="w-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>Who gets admitted — and who goes straight to the unit</h2></div>
+        <div class="module accent" style="--m:var(--assess)">
+          <div class="m-head" style="--m:var(--assess)"><span class="m-ico">📋</span><h3>Admission criteria &amp; level of care</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Level of care</th><th>Criteria</th></tr></thead>
+              <tbody>
+                <tr><td><strong style="color:var(--ok)">Home</strong></td><td>SpO₂ ≥ 92% on room air at rest <strong>and on ambulation</strong>, RR &lt; 20, no work of breathing, a treatable cause with reliable outpatient follow-up, and a patient who can get back to hospital quickly.</td></tr>
+                <tr><td><strong style="color:var(--wards)">Ward / telemetry</strong></td><td>New oxygen requirement that is <strong>modest and stable</strong> — typically <strong>≤ 4–6 L/min nasal cannula</strong> to hold SpO₂ ≥ 92% (≥ 88% in chronic CO₂ retainers). RR &lt; 25. Normal mentation. Haemodynamically stable. No acidosis. <strong>A cause you can treat on a ward.</strong></td></tr>
+                <tr><td><strong style="color:var(--warn)">Step-down / intermediate care</strong></td><td>Needs <strong>HFNC</strong> or <strong>NIV</strong>, or oxygen requirement that is climbing, but is otherwise stable — <em>if</em> your institution allows these outside the ICU. <strong>Many do not, and that is a reasonable policy: the patient who needs HFNC is the patient who may need intubating.</strong></td></tr>
+                <tr><td><strong style="color:var(--danger)">ICU — go straight there</strong></td><td>Any of: <strong>P/F ≤ 300 with bilateral infiltrates</strong> (i.e. ARDS by definition); FiO₂ requirement <strong>&gt; 50%</strong> or ≥ 6 L/min to maintain saturation; <strong>RR ≥ 30</strong>; accessory-muscle use or paradoxical breathing; <strong>pH &lt; 7.30 with a rising PaCO₂</strong>; altered mental status; haemodynamic instability or a rising lactate; or <strong>any patient you think might need intubating in the next few hours</strong>.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="emergency"><span class="lbl"></span><strong>If the patient meets the Berlin criteria, they have ARDS, and ARDS is an ICU diagnosis.</strong> There is no such thing as "mild ARDS we'll watch on the floor." Even Berlin-mild ARDS carries roughly 27–35% mortality — worse than most STEMIs. The floor cannot deliver lung-protective ventilation, cannot prone, and cannot rescue a patient who deteriorates in twenty minutes. <strong>Make the diagnosis explicitly, say the word "ARDS" out loud, and move the patient.</strong> The most consequential failure in this disease — quantified by LUNG SAFE, which found ARDS was recognised in only ~60% of cases — is not calling it.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-orders">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Orders</span><h2>Admission order set</h2></div>
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>Labs, imaging, monitoring — and exactly when</h3></div>
+          <div class="m-body">
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">Continuous pulse oximetry + continuous cardiac monitoring</span><span class="ord-when">Everyone with new hypoxaemia. Not spot checks — <strong>continuous</strong>. And set the alarm limits deliberately; a patient can sit at 85% for an hour if nobody set a low limit.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">ABG</span><span class="ord-when"><strong>On admission</strong> for any significant hypoxaemia (you need the PaO₂ for a P/F ratio and the PaCO₂ for the type). Repeat <strong>1 h after any change in support</strong> (starting NIV, changing FiO₂ meaningfully) and with any deterioration.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Chest radiograph</span><span class="ord-when"><strong>Admission and daily</strong> while acutely unwell. Always repeat after intubation and after any central line (tube position, pneumothorax).</span><span class="ord-tag">Admit + daily</span></div>
+              <div class="order-row"><span class="ord-name">CBC, CMP, magnesium, phosphate, lactate, coags</span><span class="ord-when">Admission and daily. <strong>Phosphate and magnesium are the ones everyone forgets — and both are essential for diaphragmatic contractility.</strong> A hypophosphataemic patient cannot be weaned, and nobody will work out why.</span><span class="ord-tag">Admit + daily</span></div>
+              <div class="order-row"><span class="ord-name">Blood cultures ×2, sputum/tracheal aspirate culture + Gram stain</span><span class="ord-when"><strong>Before antibiotics</strong> — but <strong>never delay antibiotics to obtain them</strong>. In sepsis, every hour of delay to effective antibiotics costs lives.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Respiratory viral PCR panel (influenza, SARS-CoV-2, RSV) + urinary <em>Legionella</em> and pneumococcal antigens</span><span class="ord-when">On admission in any pneumonia severe enough to cause respiratory failure. Influenza changes management immediately (oseltamivir); <em>Legionella</em> changes the antibiotic.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">BNP / NT-proBNP + troponin + ECG</span><span class="ord-when">On admission, to address the cardiogenic question and the demand-ischaemia question.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Echocardiogram</span><span class="ord-when"><strong>Within 24 h</strong> in anyone with bilateral infiltrates where the origin of the oedema is not entirely clear — which is most of them. Required by the Berlin criterion in the absence of a clear ARDS risk factor.</span><span class="ord-tag">&lt; 24 h</span></div>
+              <div class="order-row"><span class="ord-name">HIV test</span><span class="ord-when">In any unexplained severe pneumonia or respiratory failure. Universal one-time screening is recommended for adults 15–65 regardless (USPSTF Grade A) — and the diagnosis you find here changes everything.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">VTE prophylaxis</span><span class="ord-when"><strong>Every patient, day one, unless actively bleeding.</strong> Enoxaparin 40 mg SC daily (30 mg SC q12h if CrCl &lt; 30 → or switch to heparin 5,000 U SC q8h). ARDS is profoundly prothrombotic and these patients are immobile.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Stress-ulcer prophylaxis</span><span class="ord-when">If mechanically ventilated &gt; 48 h or coagulopathic. PPI or H₂-blocker. <strong>Not indicated for everyone</strong> — it is over-prescribed and carries a real <em>C. difficile</em> and pneumonia cost.</span><span class="ord-tag">If vented</span></div>
+              <div class="order-row"><span class="ord-name">Head of bed 30–45°</span><span class="ord-when">Always. Reduces aspiration and ventilator-associated pneumonia; improves FRC and the mechanical efficiency of the diaphragm. Free.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Strict inputs/outputs + daily weights</span><span class="ord-when">Every day. <strong>You cannot run a conservative fluid strategy if nobody is counting.</strong> The daily weight is more honest than the I/O chart.</span><span class="ord-tag">Admit + daily</span></div>
+              <div class="order-row"><span class="ord-name">Nutrition</span><span class="ord-when"><strong>Enteral, early (within 24–48 h)</strong>, trophic or full-calorie — EDEN showed initial trophic feeding was non-inferior to full feeding in ARDS, so do not delay feeding while you argue about the rate. Avoid parenteral nutrition unless the gut is unusable.</span><span class="ord-tag">&lt; 48 h</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-oxygen">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Support</span><h2>The oxygen ladder — every device, with the real numbers</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">🌬️</span><h3>Devices: flow, FiO₂, and when each one runs out of road</h3></div>
+          <div class="m-body">
+            <p>This is the ward's core competence. Every device has a ceiling; the skill is knowing where each ceiling is and recognising when you have hit it — <em>before</em> the patient does.</p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Device</th><th>Flow</th><th>Delivered FiO₂ (approx.)</th><th>How it works / when to use it</th><th>Where it runs out</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Nasal cannula</strong></td><td><strong>1–6 L/min</strong></td><td><strong>~24–44%</strong><br><span style="font-size:11.5px;color:var(--muted)">rule of thumb: each 1 L/min ≈ +4% over room air's 21%</span></td><td>Low-flow: the patient's inspiratory flow far exceeds the device's, so they entrain room air and dilute the oxygen. Comfortable, allows eating and talking. First line for a modest requirement.</td><td>Above ~6 L/min it dries and bleeds the nose without adding meaningful FiO₂. <strong>The delivered FiO₂ is highly variable</strong> — it falls as the patient breathes harder (more entrainment). Which is exactly backwards from what you want.</td></tr>
+                <tr><td><strong>Simple face mask</strong></td><td><strong>5–10 L/min</strong><br><span style="font-size:11.5px;color:var(--muted)">never below 5</span></td><td><strong>~35–60%</strong></td><td>The mask body acts as a small reservoir. <strong>Must run ≥ 5 L/min</strong> to flush exhaled CO₂ out of the mask — below that the patient rebreathes their own CO₂.</td><td>Modest ceiling; poorly tolerated; FiO₂ still unpredictable.</td></tr>
+                <tr><td><strong>Venturi mask</strong></td><td>Per the colour-coded valve</td><td><strong>24 / 28 / 31 / 35 / 40 / 50%</strong> — <em>precise and fixed</em></td><td>Uses the <strong>Bernoulli principle</strong>: oxygen jets through a narrow orifice, entraining a fixed ratio of room air. Because total flow exceeds the patient's inspiratory demand, <strong>the FiO₂ is genuinely fixed regardless of how the patient breathes.</strong></td><td><strong>The device of choice in COPD/CO₂ retainers</strong>, precisely because you can deliver 24% or 28% and know it. Ceiling ~50%.</td></tr>
+                <tr><td><strong>Non-rebreather mask</strong></td><td><strong>10–15 L/min</strong><br><span style="font-size:11.5px;color:var(--muted)">enough to keep the bag inflated</span></td><td><strong>~70–90%</strong> (rarely the theoretical 100%)</td><td>Reservoir bag + one-way valves. <strong>This is the ceiling of conventional low-flow oxygen therapy.</strong></td><td><strong>The single most important decision point on the ward.</strong> A patient still hypoxaemic on a non-rebreather has <strong>failed conventional oxygen</strong>. The next step is HFNC, NIV, or intubation — <em>not</em> "let's watch them overnight."</td></tr>
+                <tr><td><strong>High-flow nasal cannula (HFNC)</strong></td><td><strong>Flow 30–60 L/min</strong><br>(start ~40–50 in acute failure)</td><td><strong>21–100%</strong> — set independently of flow, and actually delivered</td><td>Heated, humidified gas at a flow that <em>exceeds</em> the patient's peak inspiratory flow. Four mechanisms: <strong>(1)</strong> the set FiO₂ is truly delivered (no entrainment); <strong>(2)</strong> it washes out the anatomical <strong>dead space</strong> in the nasopharynx — arguably the main benefit; <strong>(3)</strong> it generates a modest <strong>PEEP</strong> effect (roughly 1 cmH₂O per 10 L/min, with the mouth <em>closed</em>); <strong>(4)</strong> humidification improves secretion clearance and comfort.</td><td><strong>Type 1 (hypoxaemic) failure is where it shines.</strong> Evidence: FLORALI (<em>NEJM</em> 2015). <strong>Its danger is that patients look comfortable while failing.</strong> Use the ROX index (below) to catch that.</td></tr>
+                <tr><td><strong>NIV — CPAP</strong></td><td>Continuous <strong>5–15 cmH₂O</strong></td><td>Up to 100%</td><td>A single continuous pressure. Recruits alveoli, raises FRC, and <strong>reduces LV preload and afterload</strong> — which is why it is transformative in <strong>cardiogenic pulmonary oedema</strong>. Also first-line for OSA.</td><td>Provides <em>no</em> inspiratory assistance, so it does little for a fatiguing pump or for hypercapnia.</td></tr>
+                <tr><td><strong>NIV — BiPAP</strong></td><td><strong>IPAP 10–12</strong>, <strong>EPAP 4–5</strong> to start</td><td>Up to 100%</td><td>Two pressures. The <strong>difference (IPAP − EPAP) is the pressure support</strong> — that is what augments tidal volume, unloads the diaphragm and <strong>blows off CO₂</strong>. EPAP is the PEEP: it recruits and oxygenates.</td><td><strong>The treatment of choice for type 2 hypercapnic failure</strong> — COPD exacerbation above all (where it reduces intubation and mortality), plus cardiogenic oedema, obesity-hypoventilation and neuromuscular disease.</td></tr>
+              </tbody>
+            </table></div>
+
+            <div class="fig-row">
+              <div class="fig">
+                <img src="__IMG_hfnc__" alt="High-flow nasal cannula">
+                <div class="cap"><strong>High-flow nasal cannula.</strong> The wide-bore prongs are the giveaway. Heated and humidified gas at 30–60 L/min, delivering a true set FiO₂, washing out nasopharyngeal dead space and generating a small PEEP effect — while the patient can still talk, eat and cooperate.</div>
+                <div class="credit">__CREDIT_hfnc__</div>
+              </div>
+              <div class="fig">
+                <img src="__IMG_niv__" alt="Non-invasive ventilation mask">
+                <div class="cap"><strong>Non-invasive ventilation.</strong> A tight-fitting oronasal mask delivering bilevel pressure. The whole therapy depends on the seal: a leak means the ventilator cannot deliver the pressure it thinks it is delivering, and it is the commonest reason "NIV failed."</div>
+                <div class="credit">__CREDIT_niv__</div>
+              </div>
+            </div>
+
+            <h4>Titrating BiPAP — the part everyone fudges</h4>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Setting</th><th>Start</th><th>Titration</th><th>Target / Max</th><th>What it is actually doing</th></tr></thead>
+              <tbody>
+                <tr><td><strong>IPAP</strong></td><td><strong>10–12 cmH₂O</strong></td><td>Increase by <strong>2 cmH₂O</strong> every ~5–10 min as tolerated</td><td>Titrate to: exhaled <strong>V<sub>T</sub> 6–8 mL/kg PBW</strong>, <strong>RR &lt; 25</strong>, and a <strong>falling PaCO₂</strong>. Practical max <strong>~20–25 cmH₂O</strong>.</td><td class="why">IPAP − EPAP = <strong>pressure support</strong> = the breath the machine gives. This is what <strong>unloads the diaphragm and clears CO₂</strong>. If the CO₂ isn't falling, <strong>the pressure support is too low</strong> — that is almost always the problem.</td></tr>
+                <tr><td><strong>EPAP</strong></td><td><strong>4–5 cmH₂O</strong></td><td>Increase by <strong>1–2 cmH₂O</strong> for persistent hypoxaemia</td><td>Usually <strong>5–8</strong>; higher in obesity or cardiogenic oedema. <strong>Keep IPAP − EPAP ≥ 5.</strong></td><td class="why">EPAP <em>is</em> PEEP: it <strong>recruits alveoli and oxygenates</strong>, splints open the upper airway, and (in COPD) counterbalances intrinsic PEEP so the patient can actually trigger the machine.</td></tr>
+                <tr><td><strong>FiO₂</strong></td><td>Whatever holds the target</td><td>Wean first, before you wean pressure</td><td><strong>SpO₂ 92–96%</strong> — or <strong>88–92%</strong> in chronic CO₂ retainers</td><td class="why">Oxygen is the easiest thing to give and the least likely to be the answer. Wean it early so it does not mask a deteriorating pump.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span><strong>Above IPAP ~25 cmH₂O you exceed the lower oesophageal sphincter pressure</strong> and start insufflating the stomach — which causes vomiting, aspiration, and a splinted diaphragm. If you need pressures that high to ventilate the patient, <strong>the patient needs a tube, not a bigger number.</strong></div>
+
+            <div class="redflag"><span class="lbl"></span><strong>Contraindications to NIV — the patient who needs a tube, now:</strong> cardiac or respiratory arrest; <strong>inability to protect the airway</strong> or an impaired conscious level (with one important exception — hypercapnic COPD encephalopathy often <em>improves</em> rapidly on NIV and is not an automatic bar); <strong>active vomiting or upper GI bleeding</strong>; facial trauma, burns or surgery preventing a seal; <strong>undrained pneumothorax</strong>; copious secretions the patient cannot clear; haemodynamic instability or life-threatening arrhythmia; bowel obstruction; and an agitated, uncooperative patient. <strong>And the big one: NIV is a treatment for a problem you expect to fix in hours. It is not a way to postpone an inevitable intubation.</strong></div>
+
+            <h4>The whole escalation, in one picture</h4>
+            <div class="svg-wrap">
+              <div class="dia dia-dark">__MM_ESC_DARK__</div>
+              <div class="dia dia-light">__MM_ESC_LIGHT__</div>
+              <div class="cap">From the first litre of nasal-cannula oxygen to the ECMO phone call. Note where the ROX index sits: it is the checkpoint that stops HFNC from quietly becoming a delayed intubation.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">🧮</span><h3>Calculator — ROX index (is HFNC working?)</h3></div>
+          <div class="m-body">
+            <div class="why"><span class="lbl"></span>The danger of HFNC is that it makes a failing patient <em>look comfortable</em>. They are warm, humidified, talking to you — and quietly heading for a crash intubation. The ROX index is the objective check. It combines the two things that actually track with failure: <strong>how well they are oxygenating (SpO₂/FiO₂)</strong> and <strong>how hard they are working to do it (respiratory rate)</strong>. A patient maintaining their saturation only by breathing 40 times a minute has a <em>low</em> ROX and is failing, however calm they look.</div>
+            <div class="calc">
+              <div class="calc-grid">
+                <div>
+                  <label class="calc-lbl" for="roxSpo2">SpO₂ (%)</label>
+                  <input class="calc-in" type="number" id="roxSpo2" min="50" max="100" step="1" value="92" oninput="calcROX()">
+                </div>
+                <div>
+                  <label class="calc-lbl" for="roxFio2">FiO₂ (%)</label>
+                  <input class="calc-in" type="number" id="roxFio2" min="21" max="100" step="1" value="60" oninput="calcROX()">
+                </div>
+                <div>
+                  <label class="calc-lbl" for="roxRr">Respiratory rate (breaths/min)</label>
+                  <input class="calc-in" type="number" id="roxRr" min="5" max="70" step="1" value="28" oninput="calcROX()">
+                </div>
+                <div>
+                  <label class="calc-lbl" for="roxT">Time since starting HFNC</label>
+                  <select class="calc-in" id="roxT" onchange="calcROX()">
+                    <option value="2">2 hours</option>
+                    <option value="6" selected>6 hours</option>
+                    <option value="12">12 hours</option>
+                  </select>
+                </div>
+              </div>
+              <div class="dose-out" id="roxOut"></div>
+              <p style="font-size:11.5px;color:var(--muted);margin-top:12px"><strong>ROX = (SpO₂ / FiO₂) / respiratory rate.</strong> Thresholds from Roca O, et al. <em>Am J Respir Crit Care Med</em> 2019;199(11):1368–1376 — a ROX <strong>≥ 4.88</strong> measured at 2, 6 or 12 h predicts HFNC <em>success</em>; the high-risk-of-failure thresholds are <strong>&lt; 2.85 at 2 h, &lt; 3.47 at 6 h, and &lt; 3.85 at 12 h</strong>. Between the two lies a genuine grey zone where clinical judgement governs. <strong>A ROX that is <em>falling</em> between time points is worrying regardless of its absolute value.</strong></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-manage">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Treating the cause — the ladder, with real doses</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">💊</span><h3>Stepwise inpatient therapy</h3></div>
+          <div class="m-body">
+            <div class="emergency"><span class="lbl"></span><strong>There is no drug for ARDS.</strong> Read that again, because it reorganises everything you do. The only therapies that reduce mortality in ARDS are <strong>mechanical</strong> (low tidal volume, prone positioning), <strong>a fluid strategy</strong>, and — in selected patients — <strong>corticosteroids</strong>. Everything else on this page is aimed at <strong>the precipitant</strong>. So the single most important therapeutic act on the ward is to <em>find and treat the cause</em>: the pneumonia, the sepsis, the aspiration, the pancreatitis. Chasing the PaO₂ while the source goes untreated is the classic way to lose one of these patients.</div>
+
+            <div class="ladder">
+              <div class="rung first open"><div class="r-head" onclick="toggleRung(this)"><span class="step">1</span><div><div class="r-title">Oxygen to target, and treat the precipitant</div><div class="r-sub">Antibiotics within the hour if sepsis is on the table.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p><strong>Oxygen targets:</strong> <strong>SpO₂ 92–96%</strong> for most patients; <strong>88–92%</strong> if there is any suspicion of chronic CO₂ retention. Do not aim higher — hyperoxia causes absorption atelectasis and oxidative injury, and liberal oxygen targets have been associated with harm.</p>
+                  <h4>Empiric antibiotics — pneumonia severe enough to cause respiratory failure</h4>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Scenario</th><th>Regimen — Start</th><th>Duration / adjustment</th><th>Why these agents</th><th>If penicillin-allergic</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Severe CAP</strong><br>(ICU-level)</td><td><strong>Ceftriaxone 2 g IV q24h</strong><br><strong>+ azithromycin 500 mg IV q24h</strong></td><td>Typically <strong>5–7 days</strong> if improving and afebrile ≥ 48 h. De-escalate on cultures.</td><td class="why">The β-lactam covers <em>S. pneumoniae</em> and <em>H. influenzae</em>. The macrolide covers the <strong>atypicals</strong> (<em>Legionella</em>, <em>Mycoplasma</em>, <em>Chlamydia</em>) — and combination therapy carries a mortality benefit in severe CAP over β-lactam alone.</td><td class="alt"><strong>Levofloxacin 750 mg IV q24h</strong> (or moxifloxacin 400 mg IV q24h) as monotherapy — a respiratory fluoroquinolone covers both typicals and atypicals. Mind QT prolongation and tendinopathy.</td></tr>
+                      <tr><td><strong>Add MRSA cover</strong></td><td><strong>Vancomycin</strong> 15–20 mg/kg IV q8–12h (with a <strong>25–30 mg/kg loading dose</strong> in critical illness) — target <strong>AUC/MIC 400–600</strong><br><em>or</em> <strong>linezolid 600 mg IV q12h</strong></td><td>Stop at 48 h if MRSA nasal PCR is negative and cultures are clean — <strong>a negative MRSA nasal swab has a very high negative predictive value in pneumonia and is one of the best de-escalation tools you have.</strong></td><td class="why">For necrotising/cavitary pneumonia, post-influenza pneumonia, known MRSA colonisation, or recent IV antibiotics. Linezolid penetrates lung tissue better and spares the kidney.</td><td class="alt">Vancomycin nephrotoxicity (especially with piperacillin–tazobactam) → <strong>linezolid</strong>. Linezolid: watch for thrombocytopenia and <strong>serotonin syndrome</strong> with SSRIs.</td></tr>
+                      <tr><td><strong>Add antipseudomonal cover</strong></td><td><strong>Piperacillin–tazobactam 4.5 g IV q6h</strong> (ideally as an <strong>extended 4-hour infusion</strong>)<br><em>or</em> <strong>cefepime 2 g IV q8h</strong><br><em>or</em> <strong>meropenem 1 g IV q8h</strong></td><td>7 days for most VAP/HAP. De-escalate hard on culture data.</td><td class="why">For structural lung disease (bronchiectasis, severe COPD), recent IV antibiotics, or hospital-acquired/ventilator-associated pneumonia. <strong>Extended infusion</strong> exploits the time-dependent killing of β-lactams (maximising time above MIC).</td><td class="alt">True (IgE-mediated) penicillin allergy → <strong>cefepime</strong> is usually safe (cross-reactivity with modern cephalosporins is very low), or <strong>aztreonam 2 g IV q8h</strong> + an aminoglycoside if cephalosporins are truly off the table. <strong>Cefepime: watch for neurotoxicity in renal impairment.</strong></td></tr>
+                      <tr><td><strong>Influenza</strong></td><td><strong>Oseltamivir 75 mg PO/NG BID</strong></td><td><strong>5 days</strong> (longer in the critically ill or immunocompromised).</td><td class="why">Neuraminidase inhibitor — blocks release of virions from infected cells. <strong>In critically ill patients, start it regardless of symptom duration</strong> — the "must be within 48 h" rule applies to outpatients, not to the ICU. Influenza is a leading cause of viral ARDS.</td><td class="alt">Oseltamivir resistance or intolerance → IV <strong>peramivir</strong> or inhaled zanamivir (avoid zanamivir in bronchospasm and in the intubated).</td></tr>
+                      <tr><td><strong>Aspiration</strong></td><td>Usually already covered by the above.</td><td>—</td><td class="why"><strong>Most "aspiration" is a chemical pneumonitis, not an infection</strong> — it is a sterile acid burn, it peaks in 24–48 h, and it improves without antibiotics. <strong>Anaerobic coverage is no longer routine.</strong></td><td class="alt">Add anaerobic cover (e.g. metronidazole, or use ampicillin–sulbactam) <strong>only</strong> for lung abscess, empyema, necrotising pneumonia, or severe periodontal disease.</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="why"><span class="lbl"></span>In septic shock, <strong>every hour of delay to effective antibiotics increases mortality</strong>. Give the first dose within one hour of recognition. Draw cultures if you can do it in minutes — <strong>but do not let culture-drawing delay the drug.</strong></div>
+                </div>
+              </div>
+
+              <div class="rung second"><div class="r-head" onclick="toggleRung(this)"><span class="step">2</span><div><div class="r-title">Fluid strategy — resuscitate, then stop, then remove</div><div class="r-sub">The three phases, and the discipline to switch between them.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>This is where wards most often do harm, because the two phases require <em>opposite</em> behaviour and nobody announces the transition.</p>
+                  <div class="tbl-wrap"><table>
+                    <thead><tr><th>Phase</th><th>What to do</th><th>Why</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>1. Resuscitation</strong><br><span style="font-size:11.5px;color:var(--muted)">(first hours, if shocked)</span></td><td><strong>30 mL/kg crystalloid</strong> for sepsis-induced hypoperfusion (Surviving Sepsis), then <strong>reassess with dynamic measures</strong> — passive leg raise, stroke-volume variation, or an echo — <em>not</em> with a static CVP.</td><td>Perfusion first. A dead patient has an excellent fluid balance.</td></tr>
+                      <tr><td><strong>2. Stabilisation → de-resuscitation</strong><br><span style="font-size:11.5px;color:var(--muted)">(once shock has resolved)</span></td><td><strong>STOP the fluids.</strong> Then aim for a <strong>net-negative balance</strong>. This is the <strong>FACTT</strong> strategy (<em>NEJM</em> 2006): the conservative arm achieved a roughly <strong>even 7-day fluid balance</strong> (versus +7 L in the liberal arm) and gained <strong>~2.5 more ventilator-free days (14.6 vs 12.1)</strong> — <strong>with no increase in shock or in dialysis.</strong></td><td class="why">The alveolar–capillary barrier is a sieve. Starling's forces still operate through a sieve — they just move far more fluid, and it is protein-rich. <strong>You cannot diurese away a leak, but you can stop driving fluid through it.</strong> Every extra litre of positive balance widens the flood.</td></tr>
+                      <tr><td><strong>3. Ongoing</strong></td><td>Daily weights, strict I/O, and a <strong>daily explicit fluid-balance target written in the plan.</strong></td><td>If it is not written down, it will not happen. "Even to negative today" is a real order.</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="redflag"><span class="lbl"></span><strong>The FACTT conservative strategy applies only to the patient who is OUT of shock.</strong> Do not diurese a patient who is still on rising pressors with a lactate of 6 — you will make the shock worse, and the trial explicitly excluded that patient. The order is: <strong>resuscitate → stabilise → de-resuscitate.</strong> The error is doing them in the wrong order, or never getting to the third.</div>
+
+                  <h4>Diuretics — the full class, with equivalences</h4>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Agent</th><th>Start (loop-naive)</th><th>Titration</th><th>Max / infusion</th><th>Why this one</th><th>If allergic / not working</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Furosemide</strong><br><span style="font-size:11.5px;color:var(--muted)">the default</span></td><td><strong>20–40 mg IV</strong>.<br><strong>If already on a home loop diuretic:</strong> give <strong>1–2.5× the total daily home PO dose, as a single IV dose.</strong> (Do not restart their home 40 mg PO and expect anything — a decongesting dose is a multiple of the maintenance dose.)</td><td><strong>DOUBLE the dose</strong> if there is no adequate diuresis in ~2 h — do <em>not</em> simply repeat the same dose. Then reassess again.</td><td>Up to <strong>~200 mg per IV dose</strong> in severe renal impairment. Or a <strong>continuous infusion 5–20 mg/h</strong> after a loading bolus.</td><td class="why">Blocks the <strong>Na⁺/K⁺/2Cl⁻ cotransporter</strong> in the thick ascending limb — the most powerful natriuretic site in the nephron. <strong>Also a direct venodilator</strong>, which is why dyspnoea often improves before a drop of urine appears.</td><td class="alt"><strong>Erratic oral bioavailability (10–90%)</strong> — always use IV in the acute setting. IV:PO ≈ 1:2 (40 mg IV ≈ 80 mg PO).</td></tr>
+                      <tr><td><strong>Bumetanide</strong></td><td><strong>0.5–1 mg IV</strong></td><td>Double as above.</td><td>Max ~10 mg/day.</td><td class="why">Same mechanism. <strong>More reliable, near-complete oral absorption</strong> — the better choice when gut oedema is making oral furosemide fail.</td><td class="alt"><strong>1 mg bumetanide ≈ 40 mg furosemide ≈ 20 mg torsemide.</strong> Memorise this ratio; conversion errors here are common and consequential.</td></tr>
+                      <tr><td><strong>Torsemide</strong></td><td><strong>10–20 mg IV/PO</strong></td><td>Double as above.</td><td>Max ~200 mg/day.</td><td class="why">Same mechanism, <strong>longer half-life</strong> and <strong>80–100% oral bioavailability</strong>. A good conversion for discharge.</td><td class="alt"><strong>20 mg torsemide ≈ 40 mg furosemide.</strong></td></tr>
+                      <tr><td><strong>Ethacrynic acid</strong></td><td><strong>25–50 mg IV/PO</strong></td><td>Titrate to effect.</td><td>Max ~100 mg/dose.</td><td class="why"><strong>The ONLY loop diuretic that is not a sulfonamide.</strong></td><td class="alt"><strong>This is the answer to "true, severe sulfa allergy."</strong> (In practice, cross-reactivity between sulfonamide <em>antibiotics</em> and sulfonamide <em>non-antibiotics</em> like furosemide is low — but in a documented severe reaction, ethacrynic acid is the clean choice.) More ototoxic; more expensive.</td></tr>
+                      <tr><td><strong>Chlorothiazide</strong> (IV) or <strong>metolazone</strong> (PO)</td><td>Chlorothiazide <strong>500 mg IV</strong>, or metolazone <strong>5–10 mg PO</strong></td><td>Give <strong>30 min BEFORE</strong> the loop dose.</td><td>Usually once daily, and usually only for a few days.</td><td class="why"><strong>Sequential nephron blockade.</strong> Chronic loop use causes compensatory hypertrophy of the distal convoluted tubule, which reabsorbs the sodium the loop just delivered to it. A thiazide blocks that escape.</td><td class="alt"><strong>Extremely potent in combination — watch for profound hypokalaemia, hyponatraemia and hypomagnesaemia.</strong> Check electrolytes daily. This is not a set-and-forget combination.</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="pearl"><span class="lbl"></span><strong>Diuretic resistance: work through the list rather than just giving more.</strong> (1) <strong>Is the dose big enough to reach the threshold?</strong> Loops have a sigmoid dose–response — a sub-threshold dose does <em>nothing</em>, so doubling beats repeating. (2) <strong>Is it getting there?</strong> Gut oedema destroys oral absorption — go IV. (3) <strong>Is there distal escape?</strong> Add a thiazide. (4) <strong>Is the patient hypochloraemic or alkalotic?</strong> Loops need chloride to work — replace it. (5) <strong>Is the albumin very low?</strong> Furosemide is protein-bound for delivery to the tubule. (6) <strong>Are NSAIDs on the chart?</strong> They block the prostaglandin-mediated renal vasodilation the diuretic depends on. (7) <strong>Is the patient actually still in shock?</strong> — in which case, stop.</div>
+                </div>
+              </div>
+
+              <div class="rung third"><div class="r-head" onclick="toggleRung(this)"><span class="step">3</span><div><div class="r-title">Corticosteroids — who, when, and what dose</div><div class="r-sub">The one drug class with a genuine mortality signal in ARDS.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Indication</th><th>Regimen — Start → Taper</th><th>Evidence</th><th>Why it works</th><th>Cautions</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>COVID-19</strong> requiring oxygen or ventilation</td><td><strong>Dexamethasone 6 mg IV/PO daily × 10 days</strong> (or until discharge).</td><td class="why"><strong>RECOVERY</strong> (<em>NEJM</em> 2021) — reduced 28-day mortality; the benefit was <strong>confined to patients receiving oxygen or mechanical ventilation</strong>, and there was a <em>signal of harm</em> in those needing no oxygen at all.</td><td class="why">Damps the hyperinflammatory phase of the injury. <strong>The clearest steroid indication in all of respiratory failure.</strong></td><td class="alt"><strong>Do not give to a hypoxaemia-free COVID patient.</strong> Watch glucose — hyperglycaemia is near-universal and needs an insulin plan written the same day.</td></tr>
+                      <tr><td><strong>Moderate–severe ARDS</strong> (non-COVID), <strong>early</strong></td><td><strong>Dexamethasone 20 mg IV daily × 5 days</strong>, then <strong>10 mg IV daily × 5 days</strong> (10 days total, or until extubation).</td><td class="why"><strong>DEXA-ARDS</strong> (Villar, <em>Lancet Respir Med</em> 2020): started within 24 h of moderate–severe ARDS. <strong>60-day mortality 21% vs 36%</strong>; ventilator-free days 12.3 vs 7.5.</td><td class="why">Suppresses the cytokine transcription and neutrophil recruitment driving the barrier injury, and blunts the fibroproliferative response. <strong>It is the only therapy here that attacks the injury itself rather than its consequences.</strong></td><td class="alt">Single trial; not universally adopted. <strong>Timing is everything</strong> — see the warning below.</td></tr>
+                      <tr><td><strong>Septic shock</strong> with refractory pressor requirement</td><td><strong>Hydrocortisone 200 mg/day IV</strong> (50 mg q6h, or a continuous infusion) ± fludrocortisone 50 µg daily.</td><td class="why">Surviving Sepsis: suggested when adequate fluids and vasopressors have failed to restore haemodynamic stability.</td><td class="why">Restores vascular responsiveness to catecholamines in critical-illness-related corticosteroid insufficiency. <strong>Shortens time to shock reversal.</strong></td><td class="alt">A different indication and a different dose from ARDS — do not conflate them.</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="redflag"><span class="lbl"></span><strong>Do NOT start steroids in LATE ARDS.</strong> The ARDSNet <strong>LaSRS</strong> trial (<em>NEJM</em> 2006) found that methylprednisolone started <strong>after 14 days</strong> of ARDS was associated with <strong>increased 60-day mortality</strong>. It also found more neuromuscular weakness. <strong>Steroids in ARDS are an early-phase drug.</strong> If you are meeting the patient on day 16, that window has closed. And in every case: rule out an untreated or inadequately drained infection first — steroids on top of an undrained empyema or an uncontrolled source is how you kill someone.</div>
+                </div>
+              </div>
+
+              <div class="rung fourth"><div class="r-head" onclick="toggleRung(this)"><span class="step">4</span><div><div class="r-title">Adjuncts — and the things that do NOT work</div><div class="r-sub">Knowing what to stop ordering is as valuable as knowing what to order.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p><strong>Do use:</strong> bronchodilators (<strong>albuterol 2.5 mg + ipratropium 0.5 mg nebulised q4–6h</strong>) <em>if</em> there is a genuine obstructive component — but not reflexively for ARDS, which is not a bronchospastic disease; <strong>analgesia</strong>, so the patient can take a deep breath and cough; <strong>chest physiotherapy and early mobilisation</strong>; <strong>VTE prophylaxis</strong>; and <strong>enteral nutrition</strong>.</p>
+                  <div class="tbl-wrap"><table>
+                    <thead><tr><th>Therapy</th><th>Verdict</th><th>Why</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Inhaled/nebulised surfactant</strong></td><td style="color:var(--danger)"><strong>No benefit in adults</strong></td><td>Works beautifully in neonatal RDS (a pure surfactant-deficiency disease). In adult ARDS, surfactant is <em>inactivated</em> by leaked plasma proteins rather than absent, and the alveolus is full of exudate the drug cannot penetrate. Repeatedly negative in adult trials.</td></tr>
+                      <tr><td><strong>β₂-agonists (systemic/IV) to clear alveolar fluid</strong></td><td style="color:var(--danger)"><strong>Harmful</strong></td><td>The theory (upregulating alveolar fluid clearance) was elegant. <strong>BALTI-2 was stopped early for increased mortality</strong>; ALTA was negative. Do not do this.</td></tr>
+                      <tr><td><strong>Statins</strong></td><td style="color:var(--danger)">No benefit</td><td>SAILS and HARP-2 were both negative for ARDS outcomes.</td></tr>
+                      <tr><td><strong>N-acetylcysteine, ketoconazole, lisofylline, fish oil / omega-3 immunonutrition</strong></td><td style="color:var(--danger)">No benefit</td><td>All negative. Omega-3 immunonutrition (OMEGA) showed a signal of <em>harm</em>.</td></tr>
+                      <tr><td><strong>Routine diuresis in a shocked patient</strong></td><td style="color:var(--danger)">Harmful</td><td>See the fluid rung above. The order is resuscitate → stabilise → de-resuscitate.</td></tr>
+                      <tr><td><strong>HFOV</strong> (high-frequency oscillation)</td><td style="color:var(--danger)"><strong>Harmful</strong></td><td><strong>OSCILLATE was stopped early for harm</strong> (in-hospital mortality 47% vs 35%); OSCAR was neutral. Not a rescue therapy.</td></tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-daily">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Monitor</span><h2>Daily management</h2></div>
+        <div class="module accent" style="--m:var(--monitor)">
+          <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">📈</span><h3>What to trend every single day</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Trend</th><th>Target / what "good" looks like</th><th>What a bad trend means</th></tr></thead>
+              <tbody>
+                <tr><td><strong>The oxygen requirement itself</strong> (FiO₂ or L/min needed to hold target)</td><td><strong>Falling.</strong> This is the single most informative number on the ward round.</td><td><strong>A rising FiO₂ requirement over 12–24 h is the earliest objective sign of failure</strong> — earlier than the saturation (which stays "fine" precisely because you keep turning the oxygen up to keep it there). <strong>Chart the FiO₂, not just the SpO₂.</strong></td></tr>
+                <tr><td><strong>Respiratory rate</strong> (counted, for 60 s)</td><td>Falling toward &lt; 20</td><td>A climbing RR means rising work of breathing or rising dead space. <strong>A suddenly falling RR in a patient who is not better is the pump quitting.</strong></td></tr>
+                <tr><td><strong>Work of breathing</strong> (accessory muscles, sentences, paradox)</td><td>Improving</td><td>The physical exam beats the monitor here. The patient who could speak in sentences yesterday and cannot today has deteriorated, whatever the numbers say.</td></tr>
+                <tr><td><strong>ROX index</strong> (if on HFNC)</td><td>≥ 4.88, and <strong>rising</strong></td><td>A falling ROX = the patient is compensating harder to hold the same saturation. Call the ICU <em>while</em> it is falling, not after it has bottomed out.</td></tr>
+                <tr><td><strong>P/F ratio</strong> (or S/F if no ABG)</td><td>Rising</td><td>Recalculate daily. A P/F crossing below 150 changes the plan (prone), and below 100 changes it again (ECMO conversation).</td></tr>
+                <tr><td><strong>Fluid balance + daily weight</strong></td><td><strong>Even to negative</strong>, once out of shock</td><td>Cumulative positive balance is one of the strongest modifiable predictors of prolonged ventilation. <strong>The daily weight does not lie; the I/O chart does.</strong></td></tr>
+                <tr><td><strong>Mental status</strong></td><td>Alert, oriented</td><td>Agitation → hypoxia. Somnolence → hypercapnia. <strong>Both are late.</strong></td></tr>
+                <tr><td><strong>Lactate, creatinine, platelets</strong></td><td>Improving</td><td>Rising = the underlying illness is winning, or a new organ is failing. Non-pulmonary organ failure is what actually kills most ARDS patients — <strong>they die <em>with</em> hypoxaemia, not usually <em>of</em> it.</strong></td></tr>
+                <tr><td><strong>Magnesium, phosphate, potassium</strong></td><td>Replete daily</td><td><strong>Hypophosphataemia and hypomagnesaemia cause diaphragmatic weakness</strong> and are a genuinely common, entirely fixable cause of failure to wean. Replace them before you blame the lung.</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-escalate">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Escalate</span><h2>When to call the ICU</h2></div>
+        <div class="module accent" style="--m:var(--escalate)">
+          <div class="m-head" style="--m:var(--escalate)"><span class="m-ico">⬆️</span><h3>Numeric triggers — no hand-waving</h3></div>
+          <div class="m-body">
+            <div class="decision"><span class="lbl"></span><strong>Call the ICU — now — for ANY of the following:</strong>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Domain</th><th>Trigger</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Oxygenation</strong></td><td><strong>P/F ≤ 300</strong> with bilateral infiltrates (= ARDS). <strong>SpO₂ &lt; 90% despite FiO₂ ≥ 50%</strong>, or requiring <strong>&gt; 6 L/min nasal cannula</strong> / any need for a <strong>non-rebreather</strong> to stay ≥ 92%. Or <strong>a rising FiO₂ requirement over 12–24 h.</strong></td></tr>
+                <tr><td><strong>HFNC failing</strong></td><td><strong>ROX &lt; 3.85 at 12 h</strong> (or &lt; 2.85 at 2 h, &lt; 3.47 at 6 h) — <strong>or a ROX that is falling between measurements at all.</strong></td></tr>
+                <tr><td><strong>NIV failing</strong></td><td><strong>No improvement in pH, PaCO₂ or RR after 1–2 h</strong> on well-fitted NIV. <strong>This is the single most important escalation trigger on the ward</strong>, and the one most often missed — a patient left on failing NIV overnight is the classic preventable ICU disaster.</td></tr>
+                <tr><td><strong>Ventilation</strong></td><td><strong>RR ≥ 35</strong> — or <strong>&lt; 8</strong>. <strong>pH &lt; 7.30 with a rising PaCO₂.</strong> Any <strong>paradoxical abdominal motion</strong> or inability to speak.</td></tr>
+                <tr><td><strong>Haemodynamics</strong></td><td><strong>SBP &lt; 90</strong> or MAP &lt; 65 despite fluids; <strong>any need for a vasopressor</strong>; <strong>lactate &gt; 4</strong> or rising.</td></tr>
+                <tr><td><strong>Neurology</strong></td><td><strong>Any new altered mental status</strong> — agitation, confusion, or somnolence. GCS ≤ 8 → intubate.</td></tr>
+                <tr><td><strong>Gestalt</strong></td><td><strong>You think they might need intubating in the next few hours.</strong> That is a sufficient reason on its own, and it does not require a number.</td></tr>
+              </tbody>
+            </table></div>
+            </div>
+            <div class="emergency"><span class="lbl"></span><strong>The most dangerous patient on the ward is the one on HFNC or NIV who "looks comfortable."</strong> Both therapies are extremely good at making a failing patient <em>appear</em> well while their respiratory muscles quietly exhaust and, on HFNC, while they generate large injurious tidal volumes on their own (P-SILI). <strong>Delayed intubation after failed non-invasive support is independently associated with higher mortality.</strong> Do not congratulate yourself for avoiding a tube — <strong>set a deadline in advance</strong> ("if the ROX is not above 4.88 at 6 hours, we intubate") and hold yourself to it. NIV and HFNC are treatments for a problem you expect to fix in <em>hours</em>. They are not a strategy for postponing an inevitable intubation to a worse hour of the night.</div>
+
+            <div class="fig-row">
+              <div class="fig">
+                <img src="__IMG_intubation__" alt="Endotracheal intubation with a laryngoscope">
+                <div class="cap"><strong>The decision you are really making.</strong> Intubation is not a failure of ward management — it is a treatment, and one whose benefit falls the longer you postpone it. The right time to intubate the failing patient is <strong>a controlled, planned, daylight procedure with your best airway operator present</strong> — not a crash call at 4 a.m. after eight hours of "let's see how they do on BiPAP." <strong>The tube is not the bad outcome. The delayed tube is.</strong></div>
+                <div class="credit">__CREDIT_intubation__</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-dispo">
+        <div class="sec-head"><span class="pill" style="background:var(--dispo)">Dispo</span><h2>Discharge &amp; disposition</h2></div>
+        <div class="module accent" style="--m:var(--dispo)">
+          <div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🏠</span><h3>Readiness — and where they actually go</h3></div>
+          <div class="m-body">
+            <p><strong>Discharge readiness — all of these:</strong></p>
+            <ul>
+              <li><strong>SpO₂ ≥ 92% on room air</strong> (or on their established home oxygen), <strong>including on ambulation</strong> — walk them before you discharge them. This single step prevents a large fraction of bounce-backs.</li>
+              <li><strong>RR &lt; 20</strong>, no accessory-muscle use, speaking in full sentences.</li>
+              <li><strong>Afebrile ≥ 24 h</strong>, haemodynamically stable, and the precipitant is treated with a defined plan to finish the course.</li>
+              <li>Eating and drinking; oral medications tolerated; <strong>swallow assessed</strong> if there was any intubation or stroke.</li>
+              <li><strong>If newly on oxygen:</strong> the equipment is physically <em>delivered and demonstrated</em>, not merely ordered — and a <strong>60–90 day re-assessment is booked</strong> to see whether they still qualify (many do not).</li>
+              <li><strong>Follow-up within 7 days</strong>, and the patient can state what they are watching for and who to call.</li>
+            </ul>
+            <div class="dispo-grid">
+              <div class="dispo"><h4>Home</h4><div class="crit">Back to baseline. Independent with ADLs. No oxygen, or already established on home O₂ at a stable flow. Reliable follow-up.</div></div>
+              <div class="dispo"><h4>Home health</h4><div class="crit">Home + skilled nursing/therapy visits. <strong>The right answer for most new-oxygen and post-pneumonia patients</strong> — someone lays eyes on them, checks the equipment actually works, and confirms they are taking the antibiotics.</div></div>
+              <div class="dispo"><h4>SNF</h4><div class="crit">Needs 24-h skilled nursing but can tolerate <strong>&lt; 3 h of therapy/day</strong>. Typical for the deconditioned elderly patient after a long pneumonia admission.</div></div>
+              <div class="dispo"><h4>Acute rehab (IRF)</h4><div class="crit">Can tolerate <strong>≥ 3 h of therapy/day across ≥ 2 disciplines</strong>, and has the potential to make measurable functional gains. <strong>The right destination for the ARDS survivor with ICU-acquired weakness</strong> who still has the reserve to work.</div></div>
+              <div class="dispo"><h4>LTAC</h4><div class="crit">Prolonged complex care, typically <strong>&gt; 25 days</strong> — above all, <strong>ventilator weaning</strong>. The patient with a tracheostomy who could not be liberated in the ICU. This is where the fibrotic-phase ARDS patient goes.</div></div>
+              <div class="dispo"><h4>Hospice / palliative</h4><div class="crit">Irreversible respiratory failure, end-stage lung disease, or a patient who does not want further escalation. <strong>Involve palliative care EARLY and in parallel with active treatment</strong> — not as the thing you do once you have given up.</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>

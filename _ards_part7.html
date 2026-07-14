@@ -1,0 +1,464 @@
+
+    <!-- ===== PEARLS (shared) ===== -->
+    <section class="sec" id="pearls" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--warn)">Pearls</span><h2>The pearls that change what you do</h2></div>
+      <div class="module accent" style="--m:var(--warn)">
+        <div class="m-head" style="--m:var(--warn)"><span class="m-ico">💡</span><h3>Fourteen things worth carrying into the unit</h3></div>
+        <div class="m-body">
+          <ol>
+            <li><strong>The commonest error in ARDS is not calling it.</strong> LUNG SAFE found clinicians recognised ARDS in only ~60% of patients who met the criteria — and only 51% of mild cases. Every therapy that works depends on someone first saying the word out loud. <strong>Apply the four Berlin criteria deliberately, to every patient with bilateral infiltrates and hypoxaemia.</strong></li>
+            <li><strong>You cannot oxygenate your way out of a shunt.</strong> At a 30% shunt, 100% oxygen buys a PaO₂ of ~100; at 50%, ~49. If the saturation barely moves on a non-rebreather, stop turning up the FiO₂ and start thinking about PEEP, prone and the tube.</li>
+            <li><strong>Dose tidal volume on PREDICTED body weight — from height and sex.</strong> Never actual weight. This is the commonest lethal ventilator error in general ICUs, and it is committed by people who "know" about lung-protective ventilation. <strong>Measure the height.</strong></li>
+            <li><strong>Driving pressure (Pplat − PEEP) is the number that individualises the protocol.</strong> 6 mL/kg is a population rule; ΔP &lt; 15 is that rule applied to <em>this</em> lung. If ΔP is high, you are over-stretching this patient regardless of what the mL/kg says.</li>
+            <li><strong>Prone early, prone long, and don't stop because the PaO₂ didn't improve.</strong> P/F &lt; 150 → ≥ 16 h/day, within 36–48 h. The mortality benefit comes from more homogeneous ventilation (less VILI), not from better oxygenation — so oxygenation non-responders benefit too.</li>
+            <li><strong>A "normal" PaCO₂ in a patient breathing 35 times a minute is a pre-arrest sign.</strong> They should be at 25. A CO₂ drifting up toward normal means the pump is failing. This is the most dangerous falsely-reassuring number in medicine.</li>
+            <li><strong>The most dangerous patient on the ward is the one on HFNC or NIV who "looks comfortable."</strong> Both make failure look like success. Set a numeric deadline in advance (ROX ≥ 4.88 at 6 h; NIV improving pH and CO₂ at 1–2 h) and honour it. <strong>Delayed intubation after failed non-invasive support increases mortality.</strong></li>
+            <li><strong>Resuscitate → stabilise → de-resuscitate, in that order.</strong> Give the fluid the shocked patient needs, then stop, then take it off. FACTT bought 2.5 ventilator-free days with no extra shock or dialysis. The error is never getting to phase three.</li>
+            <li><strong>Steroids in ARDS are an EARLY drug.</strong> Dexamethasone 20 mg × 5 d then 10 mg × 5 d (DEXA-ARDS) or 6 mg × 10 d (COVID). <strong>Started after 14 days, steroids were associated with increased mortality (LaSRS).</strong> And always exclude an undrained source first.</li>
+            <li><strong>A sudden desaturation on the vent is DOPES until proven otherwise</strong> — Displaced tube, Obstructed tube, Pneumothorax, Equipment failure, Stacked breaths. People die of a mucus plug while their team arranges ECMO.</li>
+            <li><strong>Call ECMO before you need it.</strong> The window closes at ~7 days of high-setting ventilation — which is exactly the period you spend "waiting to see." A phone call costs nothing.</li>
+            <li><strong>The right ventricle is what kills them — and every ARDS therapy attacks it.</strong> Hypoxaemia, hypercapnia, acidosis and high PEEP all raise pulmonary vascular resistance. If the RV fails: echo, limit ΔP, ease off PEEP, relax the permissive hypercapnia, prone, and use norepinephrine/vasopressin (not agents that raise PVR).</li>
+            <li><strong>Check the phosphate and the magnesium before you blame the lung.</strong> A hypophosphataemic diaphragm cannot pass an SBT, and nobody will work out why.</li>
+            <li><strong>The disability of ARDS is not pulmonary.</strong> At five years, survivors' lungs are largely normal and their <em>lives</em> are not: weakness, cognitive impairment and PTSD dominate. Which means the sedation you give today, and the mobility you do or don't do today, is the disability you cause a year from now. <strong>Light sedation, no benzodiazepines, early mobility, A–F bundle. Every day.</strong></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MY NOTES (shared) ===== -->
+    <section class="sec" id="notes" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:#eab308">Notes</span><h2>My notes</h2></div>
+      <div class="module accent" style="--m:#eab308">
+        <div class="m-head" style="--m:#eab308"><span class="m-ico">&#128221;</span><h3>Personal notes — auto-saved on this device, timestamped</h3></div>
+        <div class="m-body">
+          <textarea id="noteInput" class="note-input" placeholder="Add a note — attending pearls, your own reminders, things to look up..."></textarea>
+          <div style="display:flex;gap:10px;margin-top:8px;align-items:center;flex-wrap:wrap">
+            <button class="note-btn" onclick="addNote()">&#65291; Add note</button>
+            <span style="font-size:11.5px;color:var(--muted)">Saved in this browser only &middot; each note stamped with date &amp; time</span>
+          </div>
+          <div id="noteList" class="note-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REFERENCES ===== -->
+    <section class="sec refs" id="references">
+      <div class="sec-head"><span class="pill" style="background:#64748b">Refs</span><h2>Sources, guidelines &amp; the trials</h2></div>
+
+      <h3>The landmark trials — what each one actually changed</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Trial</th><th>Year</th><th>Question</th><th>Result</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ARMA</strong> (ARDSNet)<br><span style="font-size:11px;color:var(--muted)">NEJM 2000</span></td><td>2000</td><td>6 vs 12 mL/kg PBW tidal volume in ARDS</td><td><strong>Mortality 31.0% vs 39.8%</strong> (p = 0.007). Stopped early for benefit.</td><td><strong>The foundation of everything.</strong> Established that the ventilator itself was killing patients, and that a smaller breath saved them. The single largest mortality benefit of any ARDS therapy, and the reason "6 mL/kg PBW" is a reflex.</td></tr>
+          <tr><td><strong>ALVEOLI</strong><br><span style="font-size:11px;color:var(--muted)">NEJM 2004</span></td><td>2004</td><td>Higher vs lower PEEP (on top of low V<sub>T</sub>)</td><td><strong>No mortality difference.</strong></td><td>Killed the idea that more PEEP is simply better for everyone. Later meta-analysis (Briel 2010) suggested benefit confined to <em>moderate–severe</em> ARDS — which is why we now use the high-PEEP table selectively rather than universally.</td></tr>
+          <tr><td><strong>FACTT</strong> (ARDSNet)<br><span style="font-size:11px;color:var(--muted)">NEJM 2006</span></td><td>2006</td><td>Conservative vs liberal fluid strategy</td><td>No mortality difference, but <strong>+2.5 ventilator-free days (14.6 vs 12.1)</strong> and better oxygenation — <strong>with no increase in shock or dialysis.</strong></td><td>Made "dry lungs" a therapeutic goal. The evidence base for de-resuscitating the patient once shock has resolved.</td></tr>
+          <tr><td><strong>LaSRS</strong> (ARDSNet)<br><span style="font-size:11px;color:var(--muted)">NEJM 2006</span></td><td>2006</td><td>Methylprednisolone in <em>persistent</em> ARDS</td><td>No overall benefit; <strong>started after 14 days → INCREASED 60-day mortality.</strong> More neuromuscular weakness.</td><td><strong>The reason steroid timing matters.</strong> The single most important negative steroid trial in ARDS.</td></tr>
+          <tr><td><strong>ACURASYS</strong><br><span style="font-size:11px;color:var(--muted)">NEJM 2010</span></td><td>2010</td><td>Early cisatracurium × 48 h in P/F &lt; 150</td><td><strong>Improved adjusted 90-day survival</strong>; ~9% absolute reduction in 28-day mortality. No increase in ICU-acquired weakness.</td><td>Made early paralysis standard — for a decade. Control arm was <em>deeply sedated</em>.</td></tr>
+          <tr><td><strong>OSCILLATE</strong> / <strong>OSCAR</strong><br><span style="font-size:11px;color:var(--muted)">NEJM 2013</span></td><td>2013</td><td>High-frequency oscillatory ventilation (HFOV)</td><td><strong>OSCILLATE stopped early for HARM</strong> (in-hospital mortality <strong>47% vs 35%</strong>). OSCAR neutral.</td><td>Removed HFOV from the rescue algorithm entirely. A cautionary tale about physiologically seductive therapies.</td></tr>
+          <tr><td><strong>PROSEVA</strong><br><span style="font-size:11px;color:var(--muted)">NEJM 2013</span></td><td>2013</td><td>Prone ≥ 16 h/day in severe ARDS (P/F &lt; 150)</td><td><strong>28-day mortality 16.0% vs 32.8%</strong> (HR 0.39); 90-day 23.6% vs 41.0%. <strong>NNT ≈ 6.</strong></td><td><strong>One of the largest absolute mortality reductions in all of critical care</strong>, from a free intervention requiring only people and time. The reason proning is not optional in severe ARDS.</td></tr>
+          <tr><td><strong>FLORALI</strong><br><span style="font-size:11px;color:var(--muted)">NEJM 2015</span></td><td>2015</td><td>HFNC vs NIV vs conventional O₂ in acute hypoxaemic (non-hypercapnic) failure</td><td>No difference in the primary intubation endpoint overall; <strong>HFNC reduced 90-day mortality</strong>, and reduced intubation in the pre-specified <strong>P/F ≤ 200</strong> subgroup.</td><td>Established HFNC as the first-line non-invasive support for <em>type 1</em> failure — and raised real concern about NIV in this population.</td></tr>
+          <tr><td><strong>Amato — driving pressure</strong><br><span style="font-size:11px;color:var(--muted)">NEJM 2015</span></td><td>2015</td><td>Mediation analysis, 3,562 patients, 9 trials</td><td><strong>Driving pressure was the ventilator variable most strongly associated with survival</strong> — and changes in V<sub>T</sub>/PEEP only helped when they lowered ΔP.</td><td>Reframed lung-protective ventilation around <strong>ΔP &lt; 15</strong> rather than mL/kg alone.</td></tr>
+          <tr><td><strong>LUNG SAFE</strong><br><span style="font-size:11px;color:var(--muted)">JAMA 2016</span></td><td>2016</td><td>Global epidemiology of ARDS (50 countries)</td><td>ARDS in <strong>10.4%</strong> of ICU admissions and 23.4% of ventilated patients. <strong>Recognised by clinicians in only ~60%.</strong> Hospital mortality <strong>34.9% (mild) → 40.3% (moderate) → 46.1% (severe)</strong>.</td><td><strong>The under-recognition statistic that should change your practice today.</strong> Also showed lung-protective ventilation was widely under-applied.</td></tr>
+          <tr><td><strong>ART</strong><br><span style="font-size:11px;color:var(--muted)">JAMA 2017</span></td><td>2017</td><td>Lung recruitment manoeuvre + PEEP titration vs low PEEP</td><td><strong>INCREASED 28-day mortality (55.3% vs 49.3%)</strong> and 6-month mortality; more barotrauma and hypotension.</td><td><strong>Killed aggressive recruitment manoeuvres.</strong> Both ATS and ESICM now recommend strongly against prolonged RMs.</td></tr>
+          <tr><td><strong>EOLIA</strong><br><span style="font-size:11px;color:var(--muted)">NEJM 2018</span></td><td>2018</td><td>Early VV-ECMO in very severe ARDS</td><td>60-day mortality <strong>35% vs 46%, p = 0.09</strong> — formally negative. <strong>But 28% of controls crossed over to rescue ECMO.</strong> Bayesian re-analyses favour benefit.</td><td>Defined the <strong>ECMO referral criteria</strong> still used today. A masterclass in why "negative" is not the same as "no effect."</td></tr>
+          <tr><td><strong>ROSE</strong> (PETAL)<br><span style="font-size:11px;color:var(--muted)">NEJM 2019</span></td><td>2019</td><td>Re-test of early cisatracurium — but with a <strong>lightly sedated</strong>, high-PEEP control arm</td><td><strong>No difference</strong> — 90-day mortality 42.5% vs 42.8%.</td><td>Overturned routine paralysis. Reconciles with ACURASYS via the <em>control arm</em>: paralysis helps only when spontaneous effort is doing harm. Source of the ATS/ESICM disagreement.</td></tr>
+          <tr><td><strong>DEXA-ARDS</strong><br><span style="font-size:11px;color:var(--muted)">Lancet Respir Med 2020</span></td><td>2020</td><td>Dexamethasone 20 mg × 5 d → 10 mg × 5 d in early moderate–severe ARDS</td><td><strong>60-day mortality 21% vs 36%</strong>; ventilator-free days 12.3 vs 7.5.</td><td>The strongest non-COVID steroid signal in ARDS. <strong>Caveat, stated plainly: a single, unblinded, early-stopped trial in a narrow population.</strong> Promising, not definitive.</td></tr>
+          <tr><td><strong>RECOVERY</strong> (dexamethasone)<br><span style="font-size:11px;color:var(--muted)">NEJM 2021</span></td><td>2021</td><td>Dexamethasone 6 mg daily × 10 d in COVID-19</td><td>Reduced 28-day mortality — <strong>benefit confined to patients receiving oxygen or ventilation</strong>; a signal of <em>harm</em> in those needing no oxygen.</td><td><strong>The clearest steroid indication in respiratory failure</strong> — and a sharp reminder that the same drug can help the hypoxaemic and harm the well.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Guidelines &amp; definitions</h3>
+      <ul>
+        <li><strong>ATS 2024 — the current ARDS guideline:</strong> Qiu H, Fan E, Brodie D, et al. "An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline." <em>Am J Respir Crit Care Med.</em> 2024;209(1):24–36. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/" target="_blank">PMC10870893</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/38032683/" target="_blank">PubMed</a></li>
+        <li><strong>ESICM 2023 ARDS guideline:</strong> Grasselli G, Calfee CS, Camporota L, et al. "ESICM guidelines on acute respiratory distress syndrome: definition, phenotyping and respiratory support strategies." <em>Intensive Care Med.</em> 2023;49(7):727–759. <a href="https://link.springer.com/article/10.1007/s00134-023-07050-7" target="_blank">Springer</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/37326646/" target="_blank">PubMed</a></li>
+        <li><strong>Where the two guidelines disagree (and why):</strong> "Mind the gap: understanding the discordance between the ATS and ESICM ARDS guidelines." <em>Intensive Care Med.</em> 2024. <a href="https://link.springer.com/article/10.1007/s00134-024-07431-6" target="_blank">Springer</a> · Bedside application: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12040422/" target="_blank">PMC12040422</a></li>
+        <li><strong>New Global Definition of ARDS (2024):</strong> Matthay MA, Arabi Y, Arroliga AC, et al. <em>Am J Respir Crit Care Med.</em> 2024;209(1):37–47. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10870872/" target="_blank">PMC10870872</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/37487152/" target="_blank">PubMed</a></li>
+        <li><strong>Berlin Definition:</strong> ARDS Definition Task Force. "Acute Respiratory Distress Syndrome: The Berlin Definition." <em>JAMA.</em> 2012;307(23):2526–2533. <a href="https://pubmed.ncbi.nlm.nih.gov/22797452/" target="_blank">PubMed</a></li>
+        <li><strong>ARDSNet / NHLBI ventilator protocol card</strong> (PBW formulas, both PEEP/FiO₂ tables, the plateau and pH algorithms, weaning criteria): <a href="http://www.ardsnet.org/files/ventilator_protocol_2008-07.pdf" target="_blank">ardsnet.org — ventilator protocol (PDF)</a></li>
+        <li><strong>Surviving Sepsis Campaign 2021</strong> (MAP target, vasopressor sequence, steroid indication): Evans L, et al. <em>Crit Care Med.</em> 2021;49(11):e1063–e1143. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8486643/" target="_blank">PMC8486643</a></li>
+        <li><strong>PADIS 2018</strong> (pain, agitation, delirium, immobility, sleep — the basis of light sedation and the A–F bundle): Devlin JW, et al. <em>Crit Care Med.</em> 2018;46(9):e825–e873.</li>
+        <li><strong>USPSTF A &amp; B recommendations</strong> (tobacco cessation, lung cancer screening, unhealthy alcohol use, obesity, HIV): <a href="https://www.uspreventiveservicestaskforce.org/uspstf/topic_search_results?topic_status=P" target="_blank">uspreventiveservicestaskforce.org</a></li>
+      </ul>
+
+      <h3>Key primary papers cited in the text</h3>
+      <ul>
+        <li><strong>ROX index:</strong> Roca O, Caralt B, Messika J, et al. "An Index Combining Respiratory Rate and Oxygenation to Predict Outcome of Nasal High-Flow Therapy." <em>Am J Respir Crit Care Med.</em> 2019;199(11):1368–1376. <a href="https://www.atsjournals.org/doi/abs/10.1164/rccm.201803-0589OC" target="_blank">AJRCCM</a></li>
+        <li><strong>RSBI:</strong> Yang KL, Tobin MJ. "A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation." <em>N Engl J Med.</em> 1991;324:1445–1450.</li>
+        <li><strong>Murray Lung Injury Score:</strong> Murray JF, Matthay MA, Luce JM, Flick MR. "An expanded definition of the adult respiratory distress syndrome." <em>Am Rev Respir Dis.</em> 1988;138(3):720–723.</li>
+        <li><strong>Driving pressure:</strong> Amato MBP, Meade MO, Slutsky AS, et al. "Driving Pressure and Survival in the Acute Respiratory Distress Syndrome." <em>N Engl J Med.</em> 2015;372:747–755.</li>
+        <li><strong>The baby lung:</strong> Gattinoni L, Pesenti A. "The concept of 'baby lung'." <em>Intensive Care Med.</em> 2005;31(6):776–784.</li>
+        <li><strong>ARDS survivorship (5-year outcomes):</strong> Herridge MS, Tansey CM, Matté A, et al. "Functional Disability 5 Years after Acute Respiratory Distress Syndrome." <em>N Engl J Med.</em> 2011;364:1293–1304.</li>
+        <li><strong>Long-term cognitive impairment after critical illness:</strong> Pandharipande PP, Girard TD, Jackson JC, et al. (BRAIN-ICU). <em>N Engl J Med.</em> 2013;369:1306–1316.</li>
+        <li><strong>Pulse oximetry and occult hypoxaemia by race:</strong> Sjoding MW, Dickson RP, Iwashyna TJ, et al. "Racial Bias in Pulse Oximetry Measurement." <em>N Engl J Med.</em> 2020;383:2477–2478.</li>
+        <li><strong>Long-term oxygen therapy:</strong> Nocturnal Oxygen Therapy Trial Group. <em>Ann Intern Med.</em> 1980;93:391–398. · Medical Research Council Working Party. <em>Lancet.</em> 1981;1:681–686. · <strong>LOTT</strong> (no benefit for moderate desaturation): <em>N Engl J Med.</em> 2016;375:1617–1627.</li>
+        <li><strong>Home NIV in chronic hypercapnic COPD:</strong> Köhnlein T, et al. <em>Lancet Respir Med.</em> 2014;2(9):698–705. · <strong>HOT-HMV:</strong> Murphy PB, et al. <em>JAMA.</em> 2017;317(21):2177–2186.</li>
+      </ul>
+
+      <h3>Osmosis</h3>
+      <ul>
+        <li><a href="https://www.osmosis.org/learn/Acute_respiratory_distress_syndrome" target="_blank">Watch on Osmosis — Acute respiratory distress syndrome</a></li>
+        <li><a href="https://www.osmosis.org/learn/Respiratory_failure" target="_blank">Watch on Osmosis — Respiratory failure</a></li>
+        <li><a href="https://www.osmosis.org/learn/Ventilation-perfusion_ratios_and_V/Q_mismatch" target="_blank">Watch on Osmosis — V/Q mismatch and shunt</a></li>
+        <li><a href="https://www.osmosis.org/learn/Pulmonary_shunts" target="_blank">Watch on Osmosis — Pulmonary shunts</a></li>
+        <li style="color:var(--muted)">Login is in the app-bar 🔑 button (click to copy the password).</li>
+      </ul>
+
+      <h3>Calculators — verified here vs. linked out</h3>
+      <p style="font-size:12.5px;color:var(--muted)">Reimplemented live on this page (exact point values verified against a primary or MDCalc source): <strong>PaO₂/FiO₂ &amp; SpO₂/FiO₂ with Berlin + Global severity · A–a gradient · ROX index · Predicted body weight, tidal-volume ladder &amp; driving pressure · RSBI · Murray Lung Injury Score.</strong><br>
+      Deliberately <em>not</em> reimplemented — link out to <a href="https://www.mdcalc.com/" target="_blank">MDCalc</a> instead, because their weighted lookup tables cannot be faithfully reproduced from a summary and a nearly-correct severity score is worse than none: <strong>APACHE II/IV · SOFA · LIPS (Lung Injury Prediction Score) · RESP score (ECMO survival prediction) · HACOR score · mechanical power.</strong> The <strong>Oxygenation Index</strong> is also omitted: its published severity bands are validated in <em>children</em> (PALICC), and there is no validated adult classification.</p>
+
+      <h3>Image credits</h3>
+      <ul id="imgcredits">
+        <li>__CREDIT_alveolus__</li>
+        <li>__CREDIT_dad_histo__</li>
+        <li>__CREDIT_dad_prolif__</li>
+        <li>__CREDIT_cxr_ards__</li>
+        <li>__CREDIT_ards_grade__</li>
+        <li>__CREDIT_cxr_cardiac__</li>
+        <li>__CREDIT_rf_types__</li>
+        <li>__CREDIT_lung_us__</li>
+        <li>__CREDIT_pv_curve__</li>
+        <li>__CREDIT_vv_ecmo__</li>
+        <li>__CREDIT_ecmo_pt__</li>
+        <li>__CREDIT_vent__</li>
+        <li>__CREDIT_niv__</li>
+        <li>__CREDIT_hfnc__</li>
+        <li>__CREDIT_intubation__</li>
+      </ul>
+
+      <p style="font-size:12px;color:var(--muted);margin-top:20px;padding-top:14px;border-top:1px solid var(--border)"><strong>Disclaimer.</strong> An educational reference for clinicians in training. Doses and thresholds are drawn from the guidelines and primary trials cited above and were verified against those sources at the time of writing — but they are <strong>not a substitute for your institution's protocols, a pharmacist, or your own judgement about the patient in front of you.</strong> Always confirm before you prescribe.</p>
+    </section>
+
+  </main>
+</div>
+
+<div class="lightbox" id="lightbox"><span class="x" id="lbx">&times;</span><img id="lbimg" src="" alt=""></div>
+<button class="toc-fab" onclick="toggleSheet()" title="Sections">☰</button>
+
+<script>
+/* ============================================================
+   CONTEXT SWITCHER
+   ============================================================ */
+var CTX_COLOR = {clinic:'#14b8a6', wards:'#3b82f6', icu:'#f43f5e'};
+var CTX_SOFT  = {clinic:'rgba(20,184,166,.14)', wards:'rgba(59,130,246,.14)', icu:'rgba(244,63,94,.14)'};
+function setCtx(ctx){
+  document.querySelectorAll('.ctx-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.ctx===ctx); });
+  document.querySelectorAll('.ctx-panel').forEach(function(p){ p.classList.toggle('active', p.dataset.context===ctx); });
+  document.documentElement.style.setProperty('--ctx', CTX_COLOR[ctx]);
+  document.documentElement.style.setProperty('--ctx-soft', CTX_SOFT[ctx]);
+  buildNav();
+  try{ localStorage.setItem('ctx', ctx); }catch(e){}
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ============================================================
+   TOC RAIL
+   ============================================================ */
+function buildNav(){
+  var links = document.getElementById('railLinks');
+  if(!links) return;
+  links.innerHTML='';
+  var active = document.querySelector('.ctx-panel.active');
+  var items = [];
+  document.querySelectorAll('.sec[data-shared]').forEach(function(s){
+    if(s.id==='notes' || s.id==='pearls') return;   // append these after the context sections
+    items.push({s:s, shared:true});
+  });
+  if(active){ active.querySelectorAll('.sec').forEach(function(s){ items.push({s:s, shared:false}); }); }
+  ['pearls','notes','references'].forEach(function(id){
+    var s = document.getElementById(id);
+    if(s) items.push({s:s, shared:true});
+  });
+  items.forEach(function(it){
+    var h = it.s.querySelector('.sec-head h2'); if(!h) return;
+    var a = document.createElement('a');
+    a.href = '#' + it.s.id;
+    a.className = it.shared ? 'shared' : '';
+    var dot = document.createElement('span'); dot.className='dot';
+    a.appendChild(dot);
+    a.appendChild(document.createTextNode(h.textContent));
+    a.addEventListener('click', function(){ if(window.innerWidth<=920) closeSheet(); });
+    links.appendChild(a);
+  });
+  observeSections();
+}
+
+/* ============================================================
+   SCROLL-SPY
+   ============================================================ */
+var _obs;
+function observeSections(){
+  if(_obs) _obs.disconnect();
+  var links = document.querySelectorAll('#railLinks a');
+  var map = {};
+  links.forEach(function(l){ map[l.getAttribute('href')] = l; });
+  _obs = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        var l = map['#'+e.target.id]; if(l) l.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-25% 0px -65% 0px'});
+  document.querySelectorAll('.sec[id]').forEach(function(s){ _obs.observe(s); });
+}
+
+/* ============================================================
+   THEME / OSMOSIS / LADDER / TABS / LIGHTBOX / SHEET
+   ============================================================ */
+function toggleTheme(){
+  document.body.classList.toggle('light');
+  try{ localStorage.setItem('sg_theme', document.body.classList.contains('light')?'light':'dark'); }catch(e){}
+}
+function copyOsmo(b){
+  try{ navigator.clipboard.writeText('Skanda123!'); b.textContent='✓';
+       setTimeout(function(){ b.innerHTML='&#128273;'; },1200); }catch(e){}
+}
+function toggleRung(h){ h.parentElement.classList.toggle('open'); }
+document.addEventListener('click', function(e){
+  var t = e.target.closest('.tab'); if(!t) return;
+  var wrap = t.closest('.module') || document;
+  wrap.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
+  wrap.querySelectorAll('.panel').forEach(function(x){ x.classList.remove('active'); });
+  t.classList.add('active');
+  var p = wrap.querySelector('#'+t.dataset.panel); if(p) p.classList.add('active');
+});
+(function(){
+  var lb=document.getElementById('lightbox'), im=document.getElementById('lbimg'), x=document.getElementById('lbx');
+  document.addEventListener('click', function(e){
+    var img = e.target.closest('.fig img, .svg-wrap img');
+    if(img && !lb.classList.contains('on')){ im.src=img.src; im.alt=img.alt; lb.classList.add('on'); document.body.style.overflow='hidden'; return; }
+  });
+  function close(){ lb.classList.remove('on'); document.body.style.overflow=''; im.src=''; }
+  lb.addEventListener('click', function(e){ if(e.target!==im) close(); });
+  x.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+function toggleSheet(){ document.getElementById('rail').classList.toggle('sheet'); }
+function closeSheet(){ document.getElementById('rail').classList.remove('sheet'); }
+
+/* ============================================================
+   CALC HELPERS
+   ============================================================ */
+function num(id){ var el=document.getElementById(id); return el ? parseFloat(el.value) : NaN; }
+function row(name, value, note, capped){
+  return '<div class="dose-row'+(capped?' capped':'')+'">'
+       + '<span class="dn">'+name+'</span>'
+       + '<span class="dv">'+value+'</span>'
+       + '<span class="dz">'+(note||'')+'</span></div>';
+}
+
+/* ---------- P/F ratio + Berlin / Global severity ---------- */
+function calcPF(){
+  var pao2=num('pfPao2'), spo2=num('pfSpo2'), fio2=num('pfFio2'), peep=num('pfPeep');
+  var out=document.getElementById('pfOut'); if(!out) return;
+  var h='';
+  if(!isFinite(fio2) || fio2<21){ out.innerHTML=row('Input needed','—','Enter a valid FiO₂ (21–100%).'); return; }
+  var f=fio2/100;
+
+  if(isFinite(pao2) && pao2>0){
+    var pf = pao2/f;
+    var sev, col;
+    if(pf>300){ sev='Does NOT meet the ARDS oxygenation criterion'; col='var(--ok)'; }
+    else if(pf>200){ sev='MILD ARDS'; col='var(--ok)'; }
+    else if(pf>100){ sev='MODERATE ARDS'; col='var(--warn)'; }
+    else { sev='SEVERE ARDS'; col='var(--danger)'; }
+    h += row('PaO₂ / FiO₂ ratio', pf.toFixed(0), 'PaO₂ '+pao2+' ÷ FiO₂ '+f.toFixed(2));
+    h += '<div class="dose-row"><span class="dn">Berlin severity</span><span class="dv" style="color:'+col+'">'+sev+'</span><span class="dz">Mild 200–300 · Moderate 100–200 · Severe ≤100</span></div>';
+  }
+
+  if(isFinite(spo2) && spo2>0){
+    if(spo2>97){
+      h += row('SpO₂ / FiO₂ ratio','not valid','<strong>SpO₂ must be ≤ 97%</strong> — above that you are on the flat top of the dissociation curve and the ratio is meaningless. Turn the FiO₂ down until SpO₂ ≤ 97%, then recalculate.', true);
+    } else {
+      var sf = spo2/f;
+      var gsev, gcol;
+      if(sf>315){ gsev='Does NOT meet the criterion'; gcol='var(--ok)'; }
+      else if(sf>235){ gsev='MILD'; gcol='var(--ok)'; }
+      else if(sf>148){ gsev='MODERATE'; gcol='var(--warn)'; }
+      else { gsev='SEVERE'; gcol='var(--danger)'; }
+      h += row('SpO₂ / FiO₂ ratio', sf.toFixed(0), 'SpO₂ '+spo2+'% ÷ FiO₂ '+f.toFixed(2));
+      h += '<div class="dose-row"><span class="dn">Global Definition (2024)</span><span class="dv" style="color:'+gcol+'">'+gsev+'</span><span class="dz">Mild 235–315 · Moderate 148–235 · Severe ≤148</span></div>';
+    }
+  }
+
+  if(isFinite(peep)){
+    if(peep<5){
+      h += row('PEEP check', peep+' cmH₂O', '<strong>ARDS requires PEEP ≥ 5 cmH₂O</strong> (or CPAP ≥ 5). At this PEEP the severity grade is not yet valid — re-measure on ≥ 5.', true);
+    } else {
+      h += row('PEEP check', peep+' cmH₂O', '✓ Meets the PEEP ≥ 5 requirement.');
+    }
+  }
+  h += '<div class="dose-row"><span class="dn">Still to confirm</span><span class="dz">Oxygenation is only 1 of 4 criteria. Also required: onset <strong>within 1 week</strong>; <strong>bilateral opacities</strong> (CXR, CT, or bilateral B-lines on ultrasound); and oedema <strong>not fully explained</strong> by cardiac failure/fluid overload.</span></div>';
+  out.innerHTML=h;
+}
+
+/* ---------- A–a gradient ---------- */
+function calcAa(){
+  var pao2=num('aaPao2'), paco2=num('aaPaco2'), fio2=num('aaFio2'), age=num('aaAge');
+  var out=document.getElementById('aaOut'); if(!out) return;
+  if(!isFinite(pao2)||!isFinite(paco2)||!isFinite(fio2)||!isFinite(age)){ out.innerHTML=row('Input needed','—','Fill in all four fields.'); return; }
+  var f=fio2/100;
+  var PAO2 = f*(760-47) - paco2/0.8;
+  var aa = PAO2 - pao2;
+  var expected = age/4 + 4;
+  var h='';
+  h += row('Alveolar PO₂ (P<sub>A</sub>O₂)', PAO2.toFixed(0)+' mmHg', 'FiO₂ '+f.toFixed(2)+' × (760 − 47) − '+paco2+'/0.8');
+  h += row('A–a gradient', aa.toFixed(0)+' mmHg', 'P<sub>A</sub>O₂ '+PAO2.toFixed(0)+' − PaO₂ '+pao2);
+  h += row('Expected for age', expected.toFixed(0)+' mmHg', '(age ÷ 4) + 4 — valid on room air');
+
+  var interp, capped=false;
+  if(fio2>21){
+    interp = '<strong>Note: on supplemental O₂.</strong> The expected gradient widens with FiO₂, so the age-based "normal" understates it. Interpret cautiously — the pattern below still holds, but the threshold does not.';
+  } else { interp=''; }
+
+  if(aa <= expected){
+    if(paco2>45){
+      h += row('Interpretation','HYPOVENTILATION','<strong>Normal A–a gradient + high CO₂ = the lung is fine; the patient is not breathing enough.</strong> Think: opioids/sedatives, neuromuscular disease, obesity-hypoventilation, CNS lesion, severe COPD. <strong>The treatment is VENTILATION, not oxygen.</strong> '+interp, true);
+    } else {
+      h += row('Interpretation','NORMAL gradient','Gas exchange across the membrane is intact. If the patient is hypoxaemic with a normal gradient and a normal CO₂, consider a low inspired FiO₂ (altitude). '+interp);
+    }
+  } else {
+    h += row('Interpretation','WIDENED gradient','<strong>The lung itself is the problem.</strong> Now the key bedside question: <strong>does it correct with oxygen?</strong> If YES → V̇/Q̇ mismatch (COPD, asthma, PE, pneumonia) or diffusion limitation. If NO → <strong>SHUNT</strong> (ARDS, dense consolidation, cardiogenic oedema, intracardiac shunt / AVM). '+interp, true);
+  }
+  out.innerHTML=h;
+}
+
+/* ---------- ROX index ---------- */
+function calcROX(){
+  var spo2=num('roxSpo2'), fio2=num('roxFio2'), rr=num('roxRr');
+  var tEl=document.getElementById('roxT');
+  var t = tEl ? parseInt(tEl.value,10) : 6;
+  var out=document.getElementById('roxOut'); if(!out) return;
+  if(!isFinite(spo2)||!isFinite(fio2)||!isFinite(rr)||rr<=0||fio2<=0){ out.innerHTML=row('Input needed','—','Fill in SpO₂, FiO₂ and respiratory rate.'); return; }
+  var f = fio2/100;                    // FiO2 must be a FRACTION in the S/F ratio
+  var sf = spo2/f;                     // e.g. 92 / 0.60 = 153
+  var rox = sf/rr;                     // ROX = (SpO2/FiO2) / RR
+  var fail = (t===2) ? 2.85 : (t===6 ? 3.47 : 3.85);
+  var h='';
+  h += row('SpO₂ / FiO₂ ratio', sf.toFixed(0), 'SpO₂ '+spo2+'% ÷ FiO₂ '+f.toFixed(2));
+  h += row('ROX index', rox.toFixed(2), 'S/F '+sf.toFixed(0)+' ÷ RR '+rr);
+  if(rox >= 4.88){
+    h += row('Interpretation','LOW risk of HFNC failure','<strong>ROX ≥ 4.88</strong> at '+t+' h predicts HFNC success (Roca 2019). Continue — and keep reassessing; a ROX that <em>falls</em> at the next time point still matters.');
+  } else if(rox < fail){
+    h += row('Interpretation','HIGH RISK OF FAILURE','<strong>ROX &lt; '+fail.toFixed(2)+' at '+t+' h = high risk of HFNC failure.</strong> Escalate now — call the ICU and prepare to intubate. <strong>Delayed intubation after failed HFNC is independently associated with higher mortality.</strong>', true);
+  } else {
+    h += row('Interpretation','GREY ZONE','Between the failure threshold ('+fail.toFixed(2)+' at '+t+' h) and the success threshold (4.88). <strong>Clinical judgement governs.</strong> Recheck in 1–2 h, and treat a <em>falling</em> trend as a failing trend. Have an escalation plan ready and a deadline written down.', true);
+  }
+  out.innerHTML=h;
+}
+
+/* ---------- PBW + tidal volume + driving pressure ---------- */
+function calcPBW(){
+  var sexEl=document.getElementById('pbwSex'), unitEl=document.getElementById('pbwUnit');
+  if(!sexEl||!unitEl) return;
+  var sex=sexEl.value, unit=unitEl.value, ht=num('pbwHt');
+  var out=document.getElementById('pbwOut'), dOut=document.getElementById('dpOut');
+  if(!out) return;
+  if(!isFinite(ht)||ht<=0){ out.innerHTML=row('Input needed','—','Enter a height.'); if(dOut) dOut.innerHTML=''; return; }
+  var inches = (unit==='cm') ? ht/2.54 : ht;
+  var base = (sex==='m') ? 50 : 45.5;
+  var pbw = base + 2.3*(inches-60);
+  var h='';
+  if(pbw < 25){
+    out.innerHTML = row('Predicted body weight','implausible','Check the height and the units — this height gives a PBW under 25 kg.', true);
+    if(dOut) dOut.innerHTML='';
+    return;
+  }
+  h += row('Predicted body weight', pbw.toFixed(1)+' kg', (sex==='m'?'Male: 50':'Female: 45.5')+' + 2.3 × ('+inches.toFixed(1)+' in − 60)');
+  h += '<div class="dose-row" style="border-color:var(--ctx)"><span class="dn">V<sub>T</sub> at <strong>6 mL/kg</strong> — the target</span><span class="dv">'+(pbw*6).toFixed(0)+' mL</span><span class="dz">The ARDSNet goal. Get here within ~4 h.</span></div>';
+  h += row('V<sub>T</sub> at 8 mL/kg — <em>start here</em>', (pbw*8).toFixed(0)+' mL', 'ARDSNet starts at 8, then reduces by 1 mL/kg every ≤ 2 h until 6.');
+  h += row('V<sub>T</sub> at 7 mL/kg', (pbw*7).toFixed(0)+' mL', 'the step in between');
+  h += row('V<sub>T</sub> at 5 mL/kg', (pbw*5).toFixed(0)+' mL', 'if plateau pressure &gt; 30');
+  h += row('V<sub>T</sub> at 4 mL/kg — <em>the floor</em>', (pbw*4).toFixed(0)+' mL', 'minimum permitted by the protocol');
+  h += '<div class="dose-row"><span class="dn">Remember</span><span class="dz"><strong>This is PREDICTED body weight — from height and sex only. It has nothing to do with what the patient actually weighs.</strong> A 120 kg and a 60 kg patient of the same height and sex get the SAME tidal volume.</span></div>';
+  out.innerHTML=h;
+
+  // driving pressure
+  if(!dOut) return;
+  var pplat=num('dpPplat'), peep=num('dpPeep');
+  if(!isFinite(pplat)||!isFinite(peep)){ dOut.innerHTML=''; return; }
+  var dp = pplat - peep;
+  var vt6 = pbw*6;
+  var d='';
+  if(dp<=0){ dOut.innerHTML=row('Driving pressure','invalid','Plateau pressure must exceed PEEP.', true); return; }
+  var crs = vt6/dp;
+  var dcol = dp<15 ? '' : ' capped';
+  d += '<div class="dose-row'+dcol+'"><span class="dn">Driving pressure (ΔP)</span><span class="dv">'+dp.toFixed(0)+' cmH₂O</span><span class="dz">Pplat '+pplat+' − PEEP '+peep+'. <strong>Target &lt; 15 — ideally &lt; 13.</strong></span></div>';
+  d += row('Static compliance (C<sub>rs</sub>)', crs.toFixed(0)+' mL/cmH₂O', 'V<sub>T</sub> at 6 mL/kg ('+vt6.toFixed(0)+' mL) ÷ ΔP. Normal 60–80; ARDS typically 20–40.');
+  if(pplat>30){
+    d += row('⚠ Plateau pressure', pplat+' cmH₂O', '<strong>Above 30 — reduce V<sub>T</sub> by 1 mL/kg steps (floor 4 mL/kg).</strong>', true);
+  }
+  if(dp>=15){
+    d += row('⚠ Driving pressure', dp.toFixed(0)+' cmH₂O', '<strong>ΔP ≥ 15 — this lung is being over-stretched, whatever the mL/kg says.</strong> Lower the V<sub>T</sub>, and try adjusting PEEP: if raising PEEP <em>lowers</em> ΔP you have recruited lung (keep it); if it <em>raises</em> ΔP you are over-distending (back off).', true);
+  } else {
+    d += row('✓ Driving pressure', dp.toFixed(0)+' cmH₂O', 'Below 15. This is the ventilator variable most strongly associated with survival (Amato, NEJM 2015).');
+  }
+  dOut.innerHTML=d;
+}
+
+/* ---------- RSBI ---------- */
+function calcRSBI(){
+  var rr=num('rsbiRr'), vt=num('rsbiVt');
+  var out=document.getElementById('rsbiOut'); if(!out) return;
+  if(!isFinite(rr)||!isFinite(vt)||vt<=0){ out.innerHTML=row('Input needed','—','Enter the respiratory rate and the spontaneous tidal volume.'); return; }
+  var rsbi = rr/(vt/1000);
+  var h='';
+  h += row('RSBI', rsbi.toFixed(0), 'RR '+rr+' ÷ V<sub>T</sub> '+(vt/1000).toFixed(2)+' L');
+  if(rsbi < 105){
+    h += row('Interpretation','LIKELY TO SUCCEED','<strong>RSBI &lt; 105</strong> predicts successful extubation (Yang &amp; Tobin 1991). <strong>But passing the SBT tests the LUNGS — it says nothing about the AIRWAY.</strong> Before you pull the tube, confirm: adequate cough, manageable secretions, following commands, and a cuff leak if they are at risk.');
+  } else {
+    h += row('Interpretation','LIKELY TO FAIL','<strong>RSBI &gt; 105</strong> — rapid and shallow. Predicts extubation failure. Rest on full support for ~24 h and <strong>hunt for the cause: is it LOAD or is it STRENGTH?</strong> Load = secretions, bronchospasm, oedema, auto-PEEP, abdominal distension, unresolved pneumonia. Strength = ICU-acquired weakness, oversedation, <strong>low phosphate/magnesium</strong>, hypothyroidism, malnutrition, critical-illness neuromyopathy.', true);
+  }
+  out.innerHTML=h;
+}
+
+/* ---------- Murray Lung Injury Score ---------- */
+function calcMurray(){
+  var ids=['mCxr','mPf','mPeep','mComp'];
+  var sum=0, n=0;
+  for(var i=0;i<ids.length;i++){
+    var el=document.getElementById(ids[i]); if(!el) continue;
+    if(el.value==='x') continue;                 // component not available -> omit from both
+    var v=parseInt(el.value,10);
+    if(isNaN(v)) continue;
+    sum+=v; n++;
+  }
+  var tEl=document.getElementById('murrayTotal'), iEl=document.getElementById('murrayInterp');
+  if(!tEl||!iEl) return;
+  if(n===0){ tEl.textContent='—'; iEl.textContent='Select at least one component.'; return; }
+  var score = sum/n;
+  tEl.textContent = score.toFixed(2);
+  var txt, col;
+  if(score===0){ txt='<strong>No lung injury.</strong>'; col='var(--ok)'; }
+  else if(score<=2.5){ txt='<strong>Mild-to-moderate lung injury.</strong> Continue lung-protective ventilation and treat the precipitant.'; col='var(--warn)'; }
+  else { txt='<strong>SEVERE lung injury (ARDS).</strong> A score &gt; 2.5 is the band at which <strong>ECMO referral is conventionally discussed</strong> (Murray ≥ 3.0 was an entry criterion in CESAR). Ensure you have already optimised: 6 mL/kg PBW, ΔP &lt; 15, appropriate PEEP, conservative fluids — and <strong>prone if P/F &lt; 150.</strong>'; col='var(--danger)'; }
+  tEl.style.color=col;
+  iEl.innerHTML = txt + '<br><span style="color:var(--muted);font-size:12px">Sum '+sum+' ÷ '+n+' component'+(n===1?'':'s')+' used.</span>';
+}
+
+/* ============================================================
+   NOTES
+   ============================================================ */
+var NOTE_KEY='sgnotes_'+(location.pathname.split('/').pop()||'guide');
+function loadNotes(){try{return JSON.parse(localStorage.getItem(NOTE_KEY)||'[]');}catch(e){return[];}}
+function saveNotes(a){try{localStorage.setItem(NOTE_KEY,JSON.stringify(a));}catch(e){}}
+function renderNotes(){var a=loadNotes(),el=document.getElementById('noteList');if(!el)return;el.innerHTML='';a.forEach(function(n,i){var c=document.createElement('div');c.className='note-card';var m=document.createElement('div');m.className='note-meta';var ts=document.createElement('span');ts.textContent=n.ts;var d=document.createElement('span');d.className='note-del';d.textContent='✕';d.addEventListener('click',function(){delNote(i);});m.appendChild(ts);m.appendChild(d);var t=document.createElement('div');t.className='note-text';t.textContent=n.text;c.appendChild(m);c.appendChild(t);el.appendChild(c);});}
+function addNote(){var ta=document.getElementById('noteInput'),v=ta.value.trim();if(!v)return;var a=loadNotes();a.unshift({text:v,ts:new Date().toLocaleString()});saveNotes(a);ta.value='';try{localStorage.removeItem(NOTE_KEY+'_draft');}catch(e){}renderNotes();}
+function delNote(i){var a=loadNotes();a.splice(i,1);saveNotes(a);renderNotes();}
+function initNotes(){var ni=document.getElementById('noteInput');if(ni){try{ni.value=localStorage.getItem(NOTE_KEY+'_draft')||'';}catch(e){}ni.addEventListener('input',function(){try{localStorage.setItem(NOTE_KEY+'_draft',ni.value);}catch(e){}});}renderNotes();}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+(function(){
+  try{ if(localStorage.getItem('sg_theme')==='light') document.body.classList.add('light'); }catch(e){}
+  var start='clinic';
+  try{ var s=localStorage.getItem('ctx'); if(s) start=s; }catch(e){}
+  setCtx(start);
+  initNotes();
+  calcPF(); calcAa(); calcROX(); calcPBW(); calcRSBI(); calcMurray();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+
+    <!-- ============================================================
+         ICU CONTEXT PANEL
+         ============================================================ -->
+    <div class="ctx-panel" data-context="icu">
+      <div class="context-band">🫀 ICU — lung-protective ventilation, rescue, and liberation</div>
+
+      <section class="sec" id="i-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>ICU triggers &amp; what the guidelines actually say</h2></div>
+        <div class="module accent" style="--m:var(--assess)">
+          <div class="m-head" style="--m:var(--assess)"><span class="m-ico">🚨</span><h3>When it belongs in the unit</h3></div>
+          <div class="m-body">
+            <p><strong>Any patient meeting the Berlin criteria belongs in an ICU</strong> — even Berlin-mild ARDS carries ~27–35% mortality. Beyond that: any FiO₂ &gt; 50% to maintain saturation, failing HFNC (ROX &lt; 3.85 at 12 h) or failing NIV (no improvement at 1–2 h), RR ≥ 35, pH &lt; 7.30 with rising PaCO₂, altered mentation, or any need for vasopressors.</p>
+
+          <h4>The two governing guidelines — and where they genuinely disagree</h4>
+          <p>You will be told in different hospitals, by different attendings, to do opposite things. That is not because someone is wrong; it is because <strong>the two major societies published guidelines within a year of each other and reached different conclusions on two of the biggest questions.</strong> Knowing where they diverge — and why — is more useful than memorising either one.</p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Intervention</th><th>ATS 2024</th><th>ESICM 2023</th><th>The practical read</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Low tidal volume</strong> (4–8 mL/kg PBW) + Pplat &lt; 30</td><td style="color:var(--ok)"><strong>STRONG for</strong></td><td style="color:var(--ok)"><strong>STRONG for</strong></td><td><strong>Total agreement. Non-negotiable.</strong> If you do one thing, do this.</td></tr>
+              <tr><td><strong>Prone positioning</strong></td><td style="color:var(--ok)"><strong>STRONG for</strong> in severe ARDS, &gt; 12 h/day</td><td style="color:var(--ok)"><strong>STRONG for</strong>, &gt; 16 h/day (and suggests <em>awake</em> proning to avoid intubation)</td><td>Agreement on the principle. <strong>Use ≥ 16 h — that is what PROSEVA actually did</strong>, and PROSEVA is where the mortality benefit comes from.</td></tr>
+              <tr><td><strong>Prolonged recruitment manoeuvres</strong> (e.g. PEEP ≥ 35 for &gt; 60 s)</td><td style="color:var(--danger)"><strong>STRONG against</strong> (harm)</td><td style="color:var(--danger)"><strong>STRONG against</strong> prolonged</td><td><strong>Agreement. Do not do sustained recruitment manoeuvres.</strong> See ART (JAMA 2017): increased mortality.</td></tr>
+              <tr><td><strong>Higher PEEP</strong> (without recruitment manoeuvres) in moderate–severe ARDS</td><td style="color:var(--warn)"><strong>CONDITIONAL for</strong></td><td style="color:var(--muted)"><strong>NO recommendation</strong> — "insufficient data"</td><td><strong>Disagreement.</strong> Practically: use the <strong>high-PEEP table for P/F &lt; 200</strong>, and individualise by watching what the compliance and driving pressure actually do when you raise it.</td></tr>
+              <tr><td><strong>Neuromuscular blockade</strong></td><td style="color:var(--warn)"><strong>CONDITIONAL for</strong> in <em>early severe</em> ARDS (&lt; 48 h, P/F ≤ 100, max 48 h)</td><td style="color:var(--danger)"><strong>STRONG against</strong> routine continuous infusion</td><td><strong>The sharpest disagreement in the field</strong> — and it is really a disagreement about ACURASYS vs ROSE. Synthesis: <strong>not routine — a targeted, time-limited rescue.</strong> See the NMB module below.</td></tr>
+              <tr><td><strong>VV-ECMO</strong></td><td style="color:var(--warn)"><strong>CONDITIONAL for</strong> in selected severe ARDS</td><td style="color:var(--ok)"><strong>STRONG for</strong> (in ECMO centres, EOLIA criteria)</td><td>Agreement on <em>direction</em>, differ on strength. Both use <strong>P/F &lt; 80</strong> and <strong>pH &lt; 7.25 with PaCO₂ ≥ 60</strong> as triggers.</td></tr>
+              <tr><td><strong>Corticosteroids</strong></td><td style="color:var(--warn)"><strong>CONDITIONAL for</strong> — but <strong>only if initiated within 14 days</strong> of ARDS onset</td><td colspan="1" style="color:var(--muted)">(Addressed separately)</td><td>Early = probably helps. <strong>Late (&gt; 14 days) = associated with harm</strong> (LaSRS).</td></tr>
+            </tbody>
+          </table></div>
+          <div class="pearl"><span class="lbl"></span><strong>Notice the pattern.</strong> The interventions everyone agrees on are the <strong>mechanical</strong> ones that reduce the injury you are inflicting (low V<sub>T</sub>, prone, no sustained recruitment). The ones they argue about are the ones that add an <strong>intervention</strong> on top (high PEEP, paralysis, ECMO). That is a decent heuristic for critical care generally: <em>the strongest evidence is usually for doing less harm, not for doing more things.</em></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="i-monitor">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Monitor</span><h2>Monitoring &amp; access</h2></div>
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🩸</span><h3>Lines, leads, and what you are titrating to</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Item</th><th>When</th><th>What it buys you</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Arterial line</strong></td><td>Essentially everyone with ARDS on a ventilator</td><td>Beat-to-beat BP <em>and</em> — the real reason — <strong>frequent ABGs without a needle each time.</strong> You will be checking gases repeatedly while you titrate PEEP and accept permissive hypercapnia.</td></tr>
+                <tr><td><strong>Central venous catheter</strong></td><td>Vasopressors, or poor peripheral access</td><td>Reliable pressor delivery and central labs. <strong>Note: start pressors peripherally rather than delaying while you place a line</strong> (Surviving Sepsis 2021). <strong>Do not titrate fluids to CVP</strong> — it is a poor predictor of fluid responsiveness.</td></tr>
+                <tr><td><strong>Continuous SpO₂ + capnography (EtCO₂)</strong></td><td>All intubated patients</td><td>EtCO₂ confirms tube placement and then, if you track the <strong>PaCO₂ − EtCO₂ gap</strong>, gives you a running surrogate for <strong>dead space</strong> — which is one of the best mortality predictors in ARDS.</td></tr>
+                <tr><td><strong>Echocardiography</strong></td><td>On admission, and repeat with any deterioration</td><td>Answers the three ARDS questions: is it cardiogenic, <strong>is the RV failing</strong> (acute cor pulmonale complicates ~20–25% of moderate–severe ARDS), and is there a PFO shunting right-to-left under your PEEP?</td></tr>
+                <tr><td><strong>Oesophageal balloon manometry</strong></td><td>Selected: <strong>morbid obesity</strong>, massive ascites, chest-wall burns/oedema — where the chest wall, not the lung, is stiff</td><td>Separates <strong>transpulmonary pressure</strong> (what actually stretches the lung) from airway pressure (what the ventilator shows you). <strong>In a patient with a BMI of 55, a plateau pressure of 34 may be entirely safe</strong> — because most of it is being spent pushing the chest wall, not the alveolus. Without this measurement you will under-PEEP and over-restrict exactly the patients who need the opposite.</td></tr>
+                <tr><td><strong>Daily: ABG, CXR, electrolytes (incl. Mg, PO₄), lactate, creatinine, CBC</strong></td><td>Daily</td><td>Plus a <strong>daily recalculated P/F ratio and driving pressure</strong> — these two numbers drive every decision on this page.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Target</th><th>Value</th><th>Why not higher / lower</th></tr></thead>
+              <tbody>
+                <tr><td><strong>SpO₂</strong></td><td><strong>88–95%</strong> (ARDSNet)</td><td>Lower than you instinctively want. Hyperoxia causes absorption atelectasis and oxidative injury; the evidence does not support chasing a normal saturation, and doing so costs you FiO₂ you did not need to spend.</td></tr>
+                <tr><td><strong>PaO₂</strong></td><td><strong>55–80 mmHg</strong> (ARDSNet)</td><td>Same logic. A PaO₂ of 65 in ARDS is a <em>success</em>, not a problem to be fixed.</td></tr>
+                <tr><td><strong>pH</strong></td><td><strong>≥ 7.20</strong> tolerated; ARDSNet targets 7.30–7.45</td><td><strong>Permissive hypercapnia:</strong> you deliberately accept a high CO₂ and a low pH in order to keep the tidal volume small. The lung matters more than the number.</td></tr>
+                <tr><td><strong>Plateau pressure</strong></td><td><strong>&lt; 30 cmH₂O</strong></td><td>The proxy for end-inspiratory alveolar stress.</td></tr>
+                <tr><td><strong>Driving pressure (ΔP)</strong></td><td><strong>&lt; 15 cmH₂O</strong> — ideally &lt; 13</td><td>Arguably the most important single number. See below.</td></tr>
+                <tr><td><strong>MAP</strong></td><td>≥ 65 mmHg</td><td>Surviving Sepsis 2021.</td></tr>
+                <tr><td><strong>Fluid balance</strong></td><td><strong>Even to negative</strong>, once out of shock</td><td>FACTT.</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="i-vent">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Airway</span><h2>Lung-protective ventilation</h2></div>
+        <div class="module accent" style="--m:var(--monitor)">
+          <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">🌬️</span><h3>The initial settings — and the reasoning behind every one</h3></div>
+          <div class="m-body">
+            <div class="emergency"><span class="lbl"></span><strong>Tidal volume is dosed on PREDICTED body weight — calculated from HEIGHT and SEX ONLY. Never actual weight. Never estimated weight.</strong> Lungs do not grow when a person gains 40 kg. Dosing a 6 mL/kg tidal volume on the actual weight of a 120 kg patient delivers ~720 mL into a lung built for ~400 — you have just prescribed volutrauma with a straight face. <strong>Measure the height. Every single time.</strong> This is, by a wide margin, the commonest serious ventilator error in general ICUs, and it is fatal at scale.</div>
+
+            <div class="vent-card">
+              <div class="vent-item"><div class="vk">Mode</div><div class="vv">Volume AC</div><div class="vn">volume assist-control — guarantees the V<sub>T</sub> you set</div></div>
+              <div class="vent-item"><div class="vk">Tidal volume</div><div class="vv">6 mL/kg PBW</div><div class="vn">start 8, step down to 6 over ≤ 4 h; range 4–8</div></div>
+              <div class="vent-item"><div class="vk">PEEP</div><div class="vv">per ARDSNet table</div><div class="vn">start ≥ 5; high-PEEP table if P/F &lt; 200</div></div>
+              <div class="vent-item"><div class="vk">FiO₂</div><div class="vv">lowest to hit target</div><div class="vn">SpO₂ 88–95% · PaO₂ 55–80</div></div>
+              <div class="vent-item"><div class="vk">Rate</div><div class="vv">18–35</div><div class="vn">to hold pH ≥ 7.30; <strong>max 35</strong></div></div>
+              <div class="vent-item"><div class="vk">Plateau pressure</div><div class="vv">&lt; 30 cmH₂O</div><div class="vn">check with a 0.5 s inspiratory hold</div></div>
+              <div class="vent-item"><div class="vk">Driving pressure</div><div class="vv">&lt; 15 cmH₂O</div><div class="vn">ΔP = Pplat − PEEP</div></div>
+              <div class="vent-item"><div class="vk">I:E ratio</div><div class="vv">1:1 – 1:3</div><div class="vn">ARDSNet goal; watch for auto-PEEP</div></div>
+            </div>
+
+            <h4>Why volume control, and not pressure control?</h4>
+            <div class="why"><span class="lbl"></span>In ARDS the lung's compliance changes hour to hour. In <strong>volume control</strong>, you set the volume and the <em>pressure</em> varies — so if the lung stiffens, the pressure alarm tells you. In <strong>pressure control</strong>, you set the pressure and the <em>volume</em> varies — so if the lung stiffens, the tidal volume silently <em>falls</em>, and if it improves, the tidal volume silently <em>rises</em> and you can be delivering an injurious breath without any alarm sounding. <strong>Since the thing you are trying to limit IS the volume, set the volume.</strong> That is the whole argument, and it is why every major ARDS trial used volume control.</div>
+
+            <h4>The tidal volume protocol (ARDSNet, verbatim)</h4>
+            <ol>
+              <li>Calculate <strong>PBW</strong>. &nbsp;<strong>Male:</strong> 50 + 2.3 × (height in inches − 60). &nbsp;<strong>Female:</strong> 45.5 + 2.3 × (height in inches − 60).</li>
+              <li><strong>Start at V<sub>T</sub> = 8 mL/kg PBW.</strong></li>
+              <li><strong>Reduce V<sub>T</sub> by 1 mL/kg at intervals of ≤ 2 hours until V<sub>T</sub> = 6 mL/kg PBW.</strong></li>
+              <li>Check the <strong>plateau pressure</strong> (0.5 s inspiratory hold) at least q4h and after every change.
+                <ul>
+                  <li><strong>If Pplat &gt; 30:</strong> decrease V<sub>T</sub> by 1 mL/kg steps — <strong>down to a minimum of 4 mL/kg.</strong></li>
+                  <li><strong>If Pplat &lt; 25 AND V<sub>T</sub> &lt; 6:</strong> increase V<sub>T</sub> by 1 mL/kg until Pplat &gt; 25 or V<sub>T</sub> = 6 (this prevents needless hypoventilation).</li>
+                  <li><strong>If Pplat &lt; 30 but the patient is breath-stacking or severely dyssynchronous:</strong> V<sub>T</sub> may be increased to 7 or even 8 mL/kg — dyssynchrony is itself injurious.</li>
+                </ul>
+              </li>
+              <li>Manage the pH (goal <strong>7.30–7.45</strong>):
+                <ul>
+                  <li><strong>pH 7.15–7.30:</strong> increase the respiratory rate until pH &gt; 7.30 or PaCO₂ &lt; 25 — <strong>maximum set rate 35.</strong></li>
+                  <li><strong>pH &lt; 7.15:</strong> increase RR to 35; if the pH is <em>still</em> &lt; 7.15, <strong>V<sub>T</sub> may be increased in 1 mL/kg steps</strong> (the plateau-pressure limit may be exceeded — this is the one sanctioned exception), and bicarbonate may be considered.</li>
+                  <li><strong>pH &gt; 7.45:</strong> decrease the respiratory rate.</li>
+                </ul>
+              </li>
+            </ol>
+
+            <h4>Driving pressure — the number that matters most</h4>
+            <div class="mini">
+              <p><strong>ΔP = Plateau pressure − PEEP = V<sub>T</sub> / C<sub>rs</sub></strong></p>
+              <p>Amato's mediation analysis of 3,562 patients across nine trials (<em>NEJM</em> 2015) found that <strong>driving pressure was the variable most strongly associated with survival</strong> — and, crucially, that changes in V<sub>T</sub> or PEEP only improved survival <em>when they lowered ΔP</em>.</p>
+            </div>
+            <div class="why"><span class="lbl"></span>Look at the algebra: ΔP = V<sub>T</sub>/C<sub>rs</sub>. Compliance in ARDS is essentially proportional to the size of the aerated <strong>baby lung</strong>. So driving pressure is <em>tidal volume normalised to the amount of lung you actually have left.</em> Two patients can both be on "6 mL/kg" and be experiencing completely different strain — because one has 1 L of aerated lung and the other has 2.5 L. <strong>6 mL/kg is a population rule. Driving pressure is that rule individualised to the patient in front of you.</strong> If ΔP is &gt; 15, you are over-stretching this particular lung, whatever the protocol says. <strong>Target ΔP &lt; 15, ideally &lt; 13.</strong></div>
+
+            <h4>The ARDSNet PEEP/FiO₂ tables</h4>
+            <p>These are lookup tables, not calculations: you pick a row that gives you the oxygenation target, and the table pairs an FiO₂ with a PEEP. <strong>Use the LOW-PEEP table by default; use the HIGH-PEEP table for moderate–severe ARDS (P/F &lt; 200)</strong>, which is the conditional ATS 2024 recommendation.</p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th style="white-space:nowrap">Table</th><th colspan="14">Paired values →</th></tr></thead>
+              <tbody>
+                <tr><td rowspan="2"><strong>LOWER PEEP</strong><br><span style="font-size:11px;color:var(--muted)">higher FiO₂<br>(default)</span></td><td><strong>FiO₂</strong></td><td>0.3</td><td>0.4</td><td>0.4</td><td>0.5</td><td>0.5</td><td>0.6</td><td>0.7</td><td>0.7</td><td>0.7</td><td>0.8</td><td>0.9</td><td>0.9</td><td>0.9</td><td>1.0</td></tr>
+                <tr><td><strong>PEEP</strong></td><td>5</td><td>5</td><td>8</td><td>8</td><td>10</td><td>10</td><td>10</td><td>12</td><td>14</td><td>14</td><td>14</td><td>16</td><td>18</td><td>18–24</td></tr>
+                <tr><td rowspan="2"><strong>HIGHER PEEP</strong><br><span style="font-size:11px;color:var(--muted)">lower FiO₂<br>(P/F &lt; 200)</span></td><td><strong>FiO₂</strong></td><td>0.3</td><td>0.3</td><td>0.3</td><td>0.3</td><td>0.3</td><td>0.4</td><td>0.4</td><td>0.5</td><td>0.5</td><td>0.5–0.8</td><td>0.8</td><td>0.9</td><td>1.0</td><td>1.0</td></tr>
+                <tr><td><strong>PEEP</strong></td><td>5</td><td>8</td><td>10</td><td>12</td><td>14</td><td>14</td><td>16</td><td>16</td><td>18</td><td>20</td><td>22</td><td>22</td><td>22</td><td>24</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span><strong>How to actually pick a PEEP, beyond the table.</strong> Raise PEEP by 2 and watch <strong>three</strong> things: (1) the <strong>PaO₂/SpO₂</strong> — does oxygenation improve? (2) the <strong>compliance / driving pressure</strong> — does ΔP <em>fall</em>? and (3) the <strong>blood pressure</strong> — does the CVP rise and the BP drop? <strong>If PEEP improves oxygenation AND lowers driving pressure, you have recruited lung — keep it.</strong> If PEEP improves the PaO₂ but the driving pressure <em>rises</em> and the BP falls, you have not recruited anything: you have over-distended the healthy lung and squeezed the heart. <strong>Back off.</strong> That single test — "what happened to the driving pressure?" — is how you tell recruitment from over-distension at the bedside, and it is worth more than any table.</div>
+            <div class="fig-row">
+              <div class="fig">
+                <img src="__IMG_pv_curve__" alt="Static pressure-volume curve of the lung showing lower and upper inflection points">
+                <div class="cap"><strong>The static pressure–volume curve — the theory behind PEEP.</strong> The <strong>lower inflection point (LIP)</strong> is where collapsed alveoli begin to snap open; the <strong>upper inflection point (HIP)</strong> is where the lung starts to over-distend. The "open lung" idea is to keep the tidal breath on the steep, compliant middle of the curve — <strong>PEEP above the LIP</strong> (so alveoli never fully collapse and shear) and <strong>plateau below the HIP</strong> (so they never over-stretch). The curve is why both a PEEP that is too low <em>and</em> a pressure that is too high injure the lung.</div>
+                <div class="credit">__CREDIT_pv_curve__</div>
+              </div>
+              <div class="fig">
+                <img src="__IMG_vent__" alt="ICU mechanical ventilator">
+                <div class="cap"><strong>The ventilator.</strong> Worth stating plainly: this machine is keeping the patient alive <em>and</em> injuring them, simultaneously and continuously. Every setting on this page exists to shift that balance.</div>
+                <div class="credit">__CREDIT_vent__</div>
+              </div>
+            </div>
+
+            <h4>Permissive hypercapnia — deliberately accepting a bad number</h4>
+            <div class="why"><span class="lbl"></span>To keep V<sub>T</sub> at 6 mL/kg in a lung with high dead space, you must accept a <strong>rising PaCO₂ and a falling pH</strong>. This is not a failure — <strong>it is the price of the therapy, and it is a price worth paying.</strong> Accept a pH down to ~7.20 (some tolerate 7.15) provided haemodynamics hold. <strong>Do not "fix" the CO₂ by raising the tidal volume</strong> — that trades a survivable number for an unsurvivable lung. Raise the rate first (to a maximum of 35); beyond that, accept it.</div>
+            <div class="redflag"><span class="lbl"></span><strong>When permissive hypercapnia is dangerous:</strong> <strong>raised intracranial pressure</strong> (CO₂ is a potent cerebral vasodilator — hypercapnia will raise ICP; this is close to an absolute contraindication), <strong>severe pulmonary hypertension or RV failure</strong> (hypercapnia and acidosis both raise pulmonary vascular resistance and will finish off a struggling RV), <strong>severe metabolic acidosis</strong> (no respiratory compensation left to give), <strong>pregnancy</strong> (fetal acidosis), and <strong>significant haemodynamic instability</strong> (acidaemia reduces catecholamine responsiveness). Also note: at very high rates, the expiratory time shortens and you generate <strong>auto-PEEP</strong> — which raises the CO₂ further. Check for it (the expiratory flow tracing never returns to zero before the next breath).</div>
+          </div>
+        </div>
+
+        <div class="module accent" style="--m:var(--monitor)">
+          <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">🧮</span><h3>Calculator — predicted body weight, tidal volume ladder &amp; driving pressure</h3></div>
+          <div class="m-body">
+            <div class="calc">
+              <div class="calc-grid">
+                <div>
+                  <label class="calc-lbl" for="pbwSex">Sex</label>
+                  <select class="calc-in" id="pbwSex" onchange="calcPBW()">
+                    <option value="m" selected>Male</option>
+                    <option value="f">Female</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="calc-lbl" for="pbwHt">Height</label>
+                  <input class="calc-in" type="number" id="pbwHt" min="100" max="220" step="1" value="175" oninput="calcPBW()">
+                </div>
+                <div>
+                  <label class="calc-lbl" for="pbwUnit">Height units</label>
+                  <select class="calc-in" id="pbwUnit" onchange="calcPBW()">
+                    <option value="cm" selected>centimetres</option>
+                    <option value="in">inches</option>
+                  </select>
+                </div>
+              </div>
+              <div class="dose-out" id="pbwOut"></div>
+
+              <h4 style="margin-top:20px">Driving pressure &amp; compliance</h4>
+              <div class="calc-grid">
+                <div>
+                  <label class="calc-lbl" for="dpPplat">Plateau pressure (cmH₂O)</label>
+                  <input class="calc-in" type="number" id="dpPplat" min="5" max="60" step="1" value="28" oninput="calcPBW()">
+                </div>
+                <div>
+                  <label class="calc-lbl" for="dpPeep">PEEP (cmH₂O)</label>
+                  <input class="calc-in" type="number" id="dpPeep" min="0" max="30" step="1" value="12" oninput="calcPBW()">
+                </div>
+              </div>
+              <div class="dose-out" id="dpOut"></div>
+              <p style="font-size:11.5px;color:var(--muted);margin-top:12px">Predicted body weight per the Devine formulas as used in the NIH/NHLBI <strong>ARDSNet (ARMA) protocol</strong>: male PBW = 50 + 2.3 × (height in inches − 60); female PBW = 45.5 + 2.3 × (height in inches − 60). Driving pressure ΔP = P<sub>plat</sub> − PEEP; static compliance C<sub>rs</sub> = V<sub>T</sub> / ΔP (computed here at 6 mL/kg). Plateau pressure must be measured with an <strong>inspiratory hold</strong> on a <strong>passive</strong> patient — a plateau measured while the patient is actively breathing is meaningless.</p>
+            </div>
+          </div>
+        </div>
+      </section>

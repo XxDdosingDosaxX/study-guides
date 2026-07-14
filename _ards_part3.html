@@ -1,0 +1,276 @@
+
+    <!-- ============================================================
+         CLINIC CONTEXT PANEL
+         ============================================================ -->
+    <div class="ctx-panel active" data-context="clinic">
+      <div class="context-band">🩺 Clinic — catching it early, preventing it, and the life after it</div>
+
+      <section class="sec" id="c-recognize">
+        <div class="sec-head"><span class="pill">Assess</span><h2>Who is on the road to respiratory failure</h2></div>
+        <div class="module accent" style="--m:var(--assess)">
+          <div class="m-head" style="--m:var(--assess)"><span class="m-ico">🔍</span><h3>The three clinic patients</h3></div>
+          <div class="m-body">
+            <p>ARDS does not <em>start</em> in clinic — but three quite different patients bring it to your clinic door, and conflating them is the commonest cognitive error in this disease.</p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Patient</th><th>What is actually going on</th><th>Your job</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1. The patient developing acute failure right now</strong><br><span style="color:var(--muted);font-size:12px">"Doctor, I've been more short of breath for two days"</span></td><td>Early pneumonia, influenza/COVID, decompensated heart failure, PE, or an asthma/COPD exacerbation — <em>any</em> of which can be 24–48 h from ARDS.</td><td><strong>Do not manage this in clinic.</strong> Get a saturation on room air, count the respiratory rate yourself, and apply the red-flag list below. This patient's outcome is decided by how fast they get to an ED, not by anything you prescribe.</td></tr>
+                <tr><td><strong>2. The patient with CHRONIC respiratory failure</strong><br><span style="color:var(--muted);font-size:12px">COPD, ILD, obesity-hypoventilation, neuromuscular disease</span></td><td>Compensated type 1 or type 2 failure. The bicarbonate is high, the pH is normal — the kidney has had weeks to adapt.</td><td>Long-term oxygen assessment, non-invasive ventilation assessment, vaccination, smoking cessation, pulmonary rehab, and an <strong>advance-care-planning conversation before the crisis</strong>.</td></tr>
+                <tr><td><strong>3. The ARDS SURVIVOR</strong><br><span style="color:var(--muted);font-size:12px">3 months post-discharge, "not right since"</span></td><td><strong>Post-intensive-care syndrome (PICS)</strong> — the reason this section exists. See the survivorship module below. This is the patient most often failed by follow-up, because everyone assumes someone else is managing it.</td><td>Screen deliberately for physical, cognitive and psychiatric sequelae. Most will <em>not</em> volunteer them.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span><strong>Count the respiratory rate yourself, for a full 60 seconds.</strong> The number written in the chart is very often "18" — a number nobody measured. Respiratory rate is the earliest vital sign to deteriorate in respiratory failure and the last one anyone actually counts. <strong>An RR of 24 in a patient who says they feel "a bit breathless" is a genuinely abnormal finding</strong>, and it will be normal-looking on every monitor in your clinic.</div>
+            <div class="redflag"><span class="lbl"></span><strong>SpO₂ has a lying problem you must know about.</strong> Pulse oximetry <strong>overestimates true arterial saturation in patients with darker skin pigmentation</strong>, with roughly three-fold higher rates of occult hypoxemia (a true SaO₂ &lt; 88% while the oximeter reads 92–96%) in Black compared with White patients (Sjoding et al., <em>NEJM</em> 2020). It also reads falsely high in <strong>carbon monoxide poisoning</strong> (carboxyhaemoglobin is read as oxyhaemoglobin — the saturation can be 100% in a dying patient) and is unreliable in <strong>methaemoglobinaemia</strong> (drifts toward 85% regardless of the truth), <strong>severe anaemia</strong>, <strong>poor perfusion/vasoconstriction</strong>, motion, and nail polish. <strong>If the clinical picture and the oximeter disagree, believe the patient and get a blood gas.</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-workup">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Workup</span><h2>What to order &amp; when</h2></div>
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>Outpatient labs &amp; imaging</h3></div>
+          <div class="m-body">
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">Pulse oximetry — at rest AND walking</span><span class="ord-when">Every dyspnoeic patient, every visit. <strong>The ambulatory desaturation test is the highest-yield thing you can do in a clinic room</strong>: walk them and re-check. A resting SpO₂ of 95% that falls to 87% on a hallway walk is a positive test and changes the disposition. Resting saturation alone misses early parenchymal disease routinely.</span><span class="ord-tag">Always</span></div>
+              <div class="order-row"><span class="ord-name">Arterial blood gas</span><span class="ord-when">When you need to know the <strong>CO₂</strong> or the <strong>A–a gradient</strong> — i.e. any suspicion of hypercapnia (COPD, obesity-hypoventilation, neuromuscular disease, sedative use), or hypoxemia whose mechanism you cannot explain. A VBG is fine for pH and CO₂ (venous CO₂ runs ~4–6 mmHg higher) but <strong>tells you nothing about oxygenation</strong>.</span><span class="ord-tag">If indicated</span></div>
+              <div class="order-row"><span class="ord-name">Chest radiograph</span><span class="ord-when">Any new hypoxemia, any new focal finding, any dyspnoea that is not clearly cardiac or clearly obstructive. <strong>Same-day, not next-week.</strong></span><span class="ord-tag">Initial</span></div>
+              <div class="order-row"><span class="ord-name">BNP or NT-proBNP</span><span class="ord-when">To separate cardiac from pulmonary dyspnoea when it is genuinely unclear. Best used to <strong>rule out</strong> heart failure (BNP &lt; 100 pg/mL). Remember it is falsely <em>low</em> in obesity and falsely <em>high</em> in renal failure, AF and age.</span><span class="ord-tag">If unclear</span></div>
+              <div class="order-row"><span class="ord-name">ECG + troponin</span><span class="ord-when">If there is any chest pain, arrhythmia, or a cardiac history — dyspnoea is an anginal equivalent, particularly in women, the elderly, and people with diabetes.</span><span class="ord-tag">If indicated</span></div>
+              <div class="order-row"><span class="ord-name">CBC</span><span class="ord-when">Anaemia is a common, entirely reversible cause of exertional dyspnoea — and it also <strong>masks cyanosis</strong>. Check it before you go hunting for exotica.</span><span class="ord-tag">Initial</span></div>
+              <div class="order-row"><span class="ord-name">Spirometry / full PFTs with DLCO</span><span class="ord-when">For <strong>chronic</strong> dyspnoea, once the acute picture is excluded. A restrictive pattern with a reduced DLCO points to ILD (or to a post-ARDS lung); an obstructive pattern points to COPD/asthma. <strong>Not useful acutely, and potentially dangerous in an acutely unwell patient.</strong></span><span class="ord-tag">Chronic</span></div>
+              <div class="order-row"><span class="ord-name">Echocardiogram</span><span class="ord-when">Unexplained hypoxemia or dyspnoea; suspected heart failure, pulmonary hypertension, valvular disease, or intracardiac shunt (a PFO can cause profound platypnoea-orthodeoxia).</span><span class="ord-tag">If unclear</span></div>
+              <div class="order-row"><span class="ord-name">CT chest (± CT-PA)</span><span class="ord-when">Suspected ILD, suspected malignancy, an abnormal CXR that needs characterising, or <strong>hypoxemia with a clear chest radiograph</strong> — which is PE until proven otherwise.</span><span class="ord-tag">If indicated</span></div>
+              <div class="order-row"><span class="ord-name">6-minute walk test</span><span class="ord-when">For chronic disease and for <strong>ARDS survivors</strong>: quantifies exercise capacity and desaturation, and tracks recovery objectively over months.</span><span class="ord-tag">Chronic</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧮</span><h3>Calculator — A–a gradient</h3></div>
+          <div class="m-body">
+            <p>The bedside tool that tells you <em>where</em> the oxygenation is failing: in the lung, or upstream of it.</p>
+            <div class="calc">
+              <div class="calc-grid">
+                <div>
+                  <label class="calc-lbl" for="aaPao2">PaO₂ (mmHg)</label>
+                  <input class="calc-in" type="number" id="aaPao2" min="20" max="600" step="1" value="60" oninput="calcAa()">
+                </div>
+                <div>
+                  <label class="calc-lbl" for="aaPaco2">PaCO₂ (mmHg)</label>
+                  <input class="calc-in" type="number" id="aaPaco2" min="10" max="120" step="1" value="40" oninput="calcAa()">
+                </div>
+                <div>
+                  <label class="calc-lbl" for="aaFio2">FiO₂ (%)</label>
+                  <input class="calc-in" type="number" id="aaFio2" min="21" max="100" step="1" value="21" oninput="calcAa()">
+                </div>
+                <div>
+                  <label class="calc-lbl" for="aaAge">Age (years)</label>
+                  <input class="calc-in" type="number" id="aaAge" min="1" max="110" step="1" value="60" oninput="calcAa()">
+                </div>
+              </div>
+              <div class="dose-out" id="aaOut"></div>
+              <p style="font-size:11.5px;color:var(--muted);margin-top:12px">Alveolar gas equation at sea level (P<sub>atm</sub> 760 mmHg, P<sub>H₂O</sub> 47 mmHg, respiratory quotient R = 0.8). Expected A–a gradient ≈ (age/4) + 4 on room air. At altitude, substitute the local barometric pressure — the equation, and this calculator, assume sea level.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-manage">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Chronic respiratory failure — the outpatient ladder</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">💨</span><h3>Stepwise therapy — first-line → escalation</h3></div>
+          <div class="m-body">
+            <div class="ladder">
+
+              <div class="rung first open"><div class="r-head" onclick="toggleRung(this)"><span class="step">1</span><div><div class="r-title">Treat the underlying disease — and stop the smoking</div><div class="r-sub">The only two things that change the natural history.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>Chronic respiratory failure is always <em>a complication of something</em>. Optimise that something: GOLD-directed inhaled therapy for COPD, antifibrotics for IPF, guideline-directed medical therapy for heart failure, weight loss and CPAP for obesity-hypoventilation, immunosuppression for the relevant ILDs.</p>
+                  <div class="why"><span class="lbl"></span><strong>Smoking cessation is the single highest-yield intervention in the entire pulmonary clinic.</strong> It is the only thing that alters the slope of FEV₁ decline in COPD. Combining pharmacotherapy with behavioural support roughly doubles-to-triples quit rates versus either alone.</div>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Agent</th><th>Start</th><th>Titration</th><th>Target / Max &amp; duration</th><th>Why it works</th><th>If contraindicated / intolerant</th></tr></thead>
+                    <tbody>
+                      <tr><td>Varenicline</td><td>0.5 mg PO daily × 3 days. <strong>Start 1–2 weeks before the quit date</strong> (or use the flexible-quit approach up to 5 weeks in).</td><td>→ 0.5 mg <strong>BID</strong> × 4 days → <strong>1 mg BID</strong> from day 8.</td><td>1 mg BID × 12 weeks; a further 12 weeks if abstinent. Reduce to 0.5 mg BID if CrCl &lt; 30.</td><td class="why"><strong>Partial α4β2 nicotinic agonist.</strong> Partially stimulates the receptor (blunting withdrawal) while <em>blocking</em> nicotine from binding (blunting the reward of a cigarette). It works on both halves of the addiction at once — hence the highest efficacy of any single agent.</td><td class="alt">Nausea is the commonest reason people stop — take with food and a full glass of water; it usually settles. Insomnia/vivid dreams: take the evening dose earlier. The FDA boxed warning for neuropsychiatric events <strong>was removed in 2016</strong> after the EAGLES trial found no excess. Alternative: combination NRT.</td></tr>
+                      <tr><td>Nicotine replacement — <strong>combination</strong></td><td><strong>Patch</strong> (long-acting basal): 21 mg/24 h if &gt; 10 cigarettes/day; 14 mg if ≤ 10. <strong>PLUS</strong> a short-acting rescue: gum 2–4 mg, lozenge 2–4 mg, inhaler or nasal spray, PRN cravings.</td><td>Patch: 21 mg × 6 wks → 14 mg × 2 wks → 7 mg × 2 wks. Rescue: use PRN, typically 1 q1–2 h while awake.</td><td>~10–12 weeks total, extendable.</td><td class="why">Replaces the nicotine without the 7,000 other combustion products. <strong>The combination — a patch for the baseline plus a short-acting agent for cravings — is markedly more effective than a patch alone</strong>, and is the practical first choice when varenicline is not an option.</td><td class="alt">Local irritation (rotate patch sites); vivid dreams (remove the patch at night, accept worse morning cravings). Safe in stable cardiovascular disease — the old fear here was misplaced.</td></tr>
+                      <tr><td>Bupropion SR</td><td>150 mg PO daily × 3 days. Start 1–2 weeks before the quit date.</td><td>→ <strong>150 mg BID</strong> from day 4 (doses ≥ 8 h apart).</td><td>150 mg BID × 7–12 weeks.</td><td class="why">Dopamine/noradrenaline reuptake inhibitor + nicotinic receptor antagonist. Blunts withdrawal and craving. Useful when there is <strong>comorbid depression</strong>, and it is <strong>weight-neutral-to-favourable</strong> — attractive for the patient whose main objection to quitting is weight gain.</td><td class="alt"><strong>Contraindicated in seizure disorder, eating disorders, and abrupt alcohol/benzodiazepine withdrawal</strong> (it lowers the seizure threshold). Use an alternative in any of these.</td></tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </div>
+
+              <div class="rung second"><div class="r-head" onclick="toggleRung(this)"><span class="step">2</span><div><div class="r-title">Long-term oxygen therapy (LTOT)</div><div class="r-sub">The only oxygen prescription that has ever been shown to prolong life.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>The evidence base is the <strong>NOTT</strong> (1980) and <strong>MRC</strong> (1981) trials in COPD, and the qualifying thresholds below descend directly from them. They remain the criteria used for reimbursement.</p>
+                  <div class="tbl-wrap"><table>
+                    <thead><tr><th>Qualify if…</th><th>Threshold (measured when <strong>clinically stable</strong>, on optimal therapy, ≥ 30–90 days after an exacerbation)</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Severe resting hypoxaemia</strong></td><td><strong>PaO₂ ≤ 55 mmHg</strong> or <strong>SpO₂ ≤ 88%</strong></td></tr>
+                      <tr><td><strong>Moderate hypoxaemia WITH evidence of end-organ effect</strong></td><td><strong>PaO₂ 56–59 mmHg</strong> (or SpO₂ 89%) <strong>PLUS</strong> cor pulmonale / right heart failure, peripheral oedema, or <strong>polycythaemia (haematocrit &gt; 55%)</strong></td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="mini">
+                    <h4>The prescription</h4>
+                    <p><strong>Dose:</strong> the lowest flow that achieves <strong>SpO₂ 90–92%</strong> (typically 1–3 L/min by nasal cannula). <strong>Duration is the active ingredient: ≥ 15 hours per day</strong>, including overnight. NOTT showed continuous (~19 h/day) oxygen roughly <em>halved</em> mortality versus nocturnal-only — <strong>the survival benefit is dose-dependent on hours worn.</strong> Titrate separately for exertion and for sleep (both often need more).</p>
+                  </div>
+                  <div class="why"><span class="lbl"></span>Chronic alveolar hypoxia causes <strong>hypoxic pulmonary vasoconstriction</strong> across the whole lung, driving pulmonary hypertension and, eventually, right heart failure (cor pulmonale). Sustained oxygen relieves that vasoconstriction, lowers pulmonary artery pressure and unloads the right ventricle. <strong>The mortality benefit is haemodynamic, not symptomatic</strong> — which is precisely why it depends on <em>hours worn</em> and why oxygen given only for breathlessness does nothing for survival.</div>
+                  <div class="pearl"><span class="lbl"></span><strong>Do not prescribe oxygen for breathlessness in a non-hypoxaemic patient.</strong> The LOTT trial (<em>NEJM</em> 2016) randomised COPD patients with <em>moderate</em> resting or exertional desaturation and found <strong>no benefit</strong> on mortality, hospitalisation, exacerbations, walk distance or quality of life. Oxygen is a drug with a specific indication — not a comfort measure. For refractory breathlessness without hypoxaemia, the evidence supports a <strong>handheld fan directed at the face</strong> (trigeminal afferents genuinely relieve air hunger) and, in advanced disease, <strong>low-dose opioids</strong>.</div>
+                </div>
+              </div>
+
+              <div class="rung third"><div class="r-head" onclick="toggleRung(this)"><span class="step">3</span><div><div class="r-title">Home non-invasive ventilation (for chronic hypercapnia)</div><div class="r-sub">When the problem is the pump, not the gas exchanger.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>Oxygen fixes hypoxaemia. It does <strong>not</strong> fix hypercapnia — and in a CO₂-retaining patient it can worsen it. When the failure is <em>ventilatory</em> (type 2), the treatment is <em>ventilation</em>.</p>
+                  <div class="tbl-wrap"><table>
+                    <thead><tr><th>Indication</th><th>Who</th><th>Typical settings</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>COPD with chronic hypercapnia</strong></td><td>Persistent <strong>PaCO₂ ≥ 52 mmHg</strong> when clinically stable (i.e. re-measured ≥ 2–4 weeks after an exacerbation, not during one), or persistent hypercapnia after an episode of acute-on-chronic failure requiring NIV.</td><td><strong>High-intensity NIV</strong>: bilevel with a genuinely high IPAP, targeted at <em>lowering the CO₂</em> — this is the key insight from the German trial (Köhnlein, <em>Lancet Respir Med</em> 2014) and from HOT-HMV (Murphy, <em>JAMA</em> 2017), which showed reduced readmission and mortality. Low, "comfortable" pressures do not work.</td></tr>
+                      <tr><td><strong>Obesity-hypoventilation syndrome</strong></td><td>BMI ≥ 30 + awake PaCO₂ ≥ 45 mmHg, with no other explanation.</td><td>Most have concurrent OSA: start <strong>CPAP</strong>. Escalate to <strong>bilevel</strong> if hypercapnia or nocturnal desaturation persists on CPAP. <strong>Weight loss is the definitive therapy.</strong></td></tr>
+                      <tr><td><strong>Neuromuscular disease / chest-wall disease</strong> (ALS, muscular dystrophy, kyphoscoliosis)</td><td>Symptoms + any of: <strong>FVC &lt; 50%</strong> predicted, <strong>maximal inspiratory pressure &lt; 60 cmH₂O</strong>, nocturnal desaturation, or daytime PaCO₂ ≥ 45.</td><td>Nocturnal bilevel. <strong>In ALS, NIV is one of the few interventions that prolongs survival and improves quality of life</strong> — start the conversation early, well before the FVC collapses.</td></tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </div>
+
+              <div class="rung fourth"><div class="r-head" onclick="toggleRung(this)"><span class="step">4</span><div><div class="r-title">Pulmonary rehabilitation, vaccination &amp; advance care planning</div><div class="r-sub">The unglamorous things with the best effect sizes.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p><strong>Pulmonary rehabilitation</strong> — a supervised exercise and education programme, typically 6–12 weeks. In COPD it improves dyspnoea, exercise capacity and quality of life with effect sizes that comfortably exceed any inhaler, and when delivered after an exacerbation it <strong>reduces readmission and mortality</strong>. It is also the core of ARDS-survivor recovery. It is drastically under-referred; refer.</p>
+                  <p><strong>Advance care planning</strong> — have the conversation about intubation and tracheostomy <strong>in clinic, when the patient can speak</strong>, not at 3 a.m. in an ED when they cannot. For progressive neuromuscular disease and end-stage COPD/IPF this is a core part of the treatment plan, not an afterthought. Document it where the ED will actually find it.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">🌱</span><h3>The ARDS survivor — post-intensive-care syndrome (PICS)</h3></div>
+          <div class="m-body">
+            <p>This module exists because ARDS survivorship is, systematically, the most neglected part of the disease. Survival has improved; the survivors have not been looked after. The landmark data come from Herridge's Toronto cohort (<em>NEJM</em> 2003 and 2011), which followed ARDS survivors for <strong>five years</strong>. The headline finding is counter-intuitive and worth memorising: <strong>at five years, pulmonary function had largely returned to normal — and yet the patients had not.</strong> Their exercise capacity and quality of life remained persistently and substantially reduced. <strong>The lasting disability of ARDS is neuromuscular, cognitive and psychiatric — it is not the lung.</strong></p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Domain</th><th>What survivors actually have</th><th>What to do in clinic</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Physical</strong></td><td><strong>ICU-acquired weakness</strong> (a critical-illness polyneuromyopathy) in up to ~⅓ of ARDS survivors — profound proximal weakness, wasting, foot drop, contractures, and persistently reduced 6-minute walk distance <em>years</em> later. Also: heterotopic ossification, frozen shoulder, tracheal stenosis, and often chronic pain from cannulation and immobility.</td><td>Refer to <strong>physical and occupational therapy</strong> and to <strong>pulmonary rehabilitation</strong>. Track objectively with a <strong>6-minute walk test</strong>. Take a swallowing history — post-extubation dysphagia is common and is aspirated silently.</td></tr>
+                <tr><td><strong>Cognitive</strong></td><td>New, long-lasting deficits in <strong>memory, attention and executive function</strong> in a large proportion — in the BRAIN-ICU cohort (Pandharipande, <em>NEJM</em> 2013), global cognition at 12 months was, in many patients, comparable to <strong>mild Alzheimer's or moderate traumatic brain injury</strong>. <strong>The duration of ICU delirium is the strongest modifiable predictor.</strong></td><td>Screen (MoCA). Warn the patient and — crucially — <strong>the family</strong>, who typically interpret the deficits as personality change or laziness. Do not clear them to return to a cognitively demanding job or to driving without assessment.</td></tr>
+                <tr><td><strong>Psychiatric</strong></td><td><strong>Depression, anxiety and PTSD</strong> — each in roughly a quarter to a third of survivors, and often persisting for years. Frequently driven by <strong>delusional memories</strong> formed during sedation and delirium, which patients recall vividly and are often too embarrassed to mention.</td><td><strong>Ask explicitly</strong> — they will not raise it. Screen (PHQ-9, GAD-7, IES-R). Refer. An <strong>ICU diary</strong>, and simply walking the patient through what actually happened to them, has genuine evidence for reducing PTSD symptoms.</td></tr>
+                <tr><td><strong>Pulmonary</strong></td><td>Usually the <em>best</em> news: most survivors have near-normal spirometry and lung volumes by 6–12 months, with a mildly reduced DLCO the commonest residual abnormality. Significant fibrosis is the exception, not the rule.</td><td>PFTs with DLCO at ~6 months. <strong>Reassure</strong> — and then redirect your attention to the three domains above, which is where the actual disability lives.</td></tr>
+                <tr><td><strong>Family</strong></td><td><strong>PICS-F</strong>: the patient's family members have their own high rates of depression, anxiety and PTSD.</td><td>Ask the caregiver how <em>they</em> are. Genuinely.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span><strong>The single sentence to give every ARDS survivor at discharge:</strong> "Your lungs will very likely recover. Your strength, your memory and your mood will take much longer, and that is expected — it is not you failing." It reframes months of frightening, unexplained disability into something anticipated and survivable, and it is the most therapeutic thing in this module.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-monitor">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Monitor</span><h2>Follow-up cadence</h2></div>
+        <div class="module accent" style="--m:var(--monitor)">
+          <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">📈</span><h3>What to recheck, and when</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Situation</th><th>Recheck</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td><strong>After starting LTOT</strong></td><td><strong>60–90 days</strong>, with a repeat ABG/oximetry <em>on and off</em> oxygen</td><td>To re-qualify the patient (many who desaturate during an exacerbation no longer meet criteria once truly stable — and should have the oxygen <em>stopped</em>), and to confirm the flow rate is right at rest, on exertion and asleep.</td></tr>
+                <tr><td><strong>After starting home NIV</strong></td><td><strong>4–6 weeks</strong>: repeat morning ABG/CO₂, download the device compliance and leak data</td><td>The goal is a <strong>falling PaCO₂</strong>, not merely a comfortable patient. If the CO₂ has not fallen, the pressures are too low or the mask is leaking. Check adherence (target &gt; 4 h/night).</td></tr>
+                <tr><td><strong>After a hospitalisation for respiratory failure</strong></td><td><strong>Within 7 days</strong></td><td>The highest-risk readmission window in all of medicine. Reconcile the medications, confirm the oxygen is right, and check they actually got the equipment.</td></tr>
+                <tr><td><strong>Stable chronic respiratory failure</strong></td><td>Every <strong>3–6 months</strong>; spirometry annually</td><td>Track the trajectory, re-titrate oxygen, re-vaccinate, revisit goals of care.</td></tr>
+                <tr><td><strong>ARDS survivor</strong></td><td><strong>4–6 weeks</strong>, then <strong>3, 6 and 12 months</strong></td><td>PFTs with DLCO and a 6-minute walk at ~6 months. Screen for PICS (cognition, mood, PTSD, weakness) at <em>every</em> visit — not once.</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-comorbid">
+        <div class="sec-head"><span class="pill" style="background:var(--dx)">Interactions</span><h2>Comorbidities &amp; drugs to avoid</h2></div>
+        <div class="module accent" style="--m:var(--dx)">
+          <div class="m-head" style="--m:var(--dx)"><span class="m-ico">⚖️</span><h3>How each comorbidity changes the disease AND the management</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Comorbidity</th><th>How it changes the COURSE</th><th>How it changes the MANAGEMENT</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Heart failure</strong></td><td>The great confounder. Coexists with ARDS constantly, and each worsens the other: ARDS raises RV afterload, and a failing RV worsens gas exchange. Makes the diagnosis harder and the fluid strategy treacherous.</td><td>Get an <strong>echo</strong> — the Berlin criterion effectively requires it. <strong>Do not withhold the ARDS diagnosis just because the EF is low.</strong> Treat both: lung-protective ventilation <em>plus</em> genuine decongestion. High PEEP <em>helps</em> the failing LV (it reduces preload and afterload) but <em>hurts</em> the failing RV.</td></tr>
+                <tr><td><strong>COPD</strong></td><td>Baseline CO₂ retention means the "normal" gas is abnormal. Dynamic hyperinflation and <strong>auto-PEEP</strong> develop fast and cause hypotension and dyssynchrony.</td><td><strong>NIV is first-line</strong> for the acute hypercapnic exacerbation (strong evidence — reduces intubation and mortality). Target SpO₂ <strong>88–92%</strong>, not 94–98%. If ventilated: <strong>long expiratory time</strong>, lower RR, watch for auto-PEEP (a flow tracing that never returns to zero). <strong>Permissive hypercapnia is more dangerous here</strong> — they start from a higher CO₂.</td></tr>
+                <tr><td><strong>Chronic kidney disease / AKI</strong></td><td>AKI complicates 40–50% of ARDS and independently predicts death. Impairs the compensation for respiratory acidosis and the clearance of most sedatives.</td><td>Conservative fluids become harder — you have less renal reserve to fix an overshoot. <strong>Dose-adjust everything.</strong> <strong>Avoid vecuronium</strong> (active renally-cleared metabolite → prolonged paralysis); use <strong>cisatracurium</strong>, which is eliminated by organ-independent <strong>Hofmann degradation</strong>. Early RRT for volume control is often the way to achieve the negative balance.</td></tr>
+                <tr><td><strong>Obesity</strong></td><td>Reduced FRC and chest-wall compliance; higher pleural pressure. Desaturates alarmingly fast on induction (tiny oxygen reserve). Higher ARDS risk — but, paradoxically, <strong>lower mortality once they have it</strong> (the "obesity paradox").</td><td><strong>The single most important error in all of ARDS is dosing tidal volume on actual body weight.</strong> Lungs do not grow with weight. <strong>Always use predicted body weight, from HEIGHT and SEX only.</strong> Obese patients need <strong>higher PEEP</strong> (to counteract the chest-wall load — the <em>transpulmonary</em> pressure is far lower than the airway pressure suggests; oesophageal manometry helps), <strong>reverse Trendelenburg / ramped positioning</strong>, and pre-oxygenation before any airway attempt.</td></tr>
+                <tr><td><strong>Immunocompromise</strong> (transplant, chemotherapy, HIV, biologics)</td><td>Broadens the pathogen list enormously (PJP, CMV, invasive fungal, <em>Nocardia</em>) and worsens outcome. NIV/HFNC failure rates are higher.</td><td><strong>Bronchoscopy with BAL has a much higher yield here — pursue it early.</strong> Add empiric coverage guided by the specific immune defect. Consider PJP prophylaxis and CMV PCR. Have the goals-of-care conversation early; outcomes with ARDS on a background of a haematological malignancy are sobering.</td></tr>
+                <tr><td><strong>Cirrhosis</strong></td><td>Markedly worse mortality. Baseline hypoxemia may be <strong>hepatopulmonary syndrome</strong> (an intrapulmonary vascular dilatation that is itself a shunt — with the classic <em>platypnoea–orthodeoxia</em>: worse sitting up). Ascites splints the diaphragm.</td><td>Coagulopathy constrains procedures and anticoagulation. <strong>Large-volume paracentesis genuinely improves respiratory mechanics</strong> — do it. Avoid hepatically-cleared sedatives; <strong>cisatracurium is again the right paralytic.</strong></td></tr>
+                <tr><td><strong>Pregnancy</strong></td><td>Reduced FRC + increased oxygen consumption = desaturates extremely fast. Baseline is a <em>compensated respiratory alkalosis</em> (normal PaCO₂ ~30), so a PaCO₂ of 40 in a pregnant patient means <strong>impending failure</strong>.</td><td>Target a <strong>higher SpO₂ (≥ 95%)</strong> — fetal oxygen delivery sits on the steep part of the curve. <strong>Permissive hypercapnia is relatively contraindicated</strong> (fetal acidosis). <strong>Prone positioning is feasible</strong> with appropriate bolstering. <strong>ECMO is feasible.</strong> Involve obstetrics early; delivery may improve maternal respiratory mechanics.</td></tr>
+                <tr><td><strong>Neuromuscular disease</strong></td><td>The pump fails while the lung is <em>normal</em> — so <strong>the saturation stays fine until the moment they arrest.</strong> Oximetry is dangerously falsely reassuring.</td><td><strong>Do not monitor these patients with a pulse oximeter — monitor with serial FVC and negative inspiratory force.</strong> Classic thresholds: <strong>FVC &lt; 20 mL/kg, NIF worse than −30 cmH₂O, or a ≥ 30% fall from baseline</strong> ("20/30/40 rule") → intubate <em>electively</em>. <strong>Avoid succinylcholine</strong> (hyperkalaemic arrest from receptor upregulation).</td></tr>
+              </tbody>
+            </table></div>
+
+            <div class="redflag"><span class="lbl"></span><strong>DRUGS TO AVOID / USE WITH CAUTION IN ACUTE RESPIRATORY FAILURE</strong>
+            <ul>
+              <li><strong>High-flow oxygen in a CO₂-retaining COPD patient</strong> — the classic iatrogenic disaster. Raising PaO₂ worsens hypercapnia by <strong>releasing hypoxic pulmonary vasoconstriction</strong> (which worsens V̇/Q̇ matching and dead space) and by the <strong>Haldane effect</strong>; blunting of hypoxic respiratory drive is the <em>least</em> important mechanism, despite being the one everyone quotes. <strong>Target SpO₂ 88–92%.</strong> But note the corollary — <strong>never withhold oxygen from a hypoxaemic patient out of fear of this.</strong> Hypoxia kills in minutes; hypercapnia takes hours and is treatable with BiPAP.</li>
+              <li><strong>Sedatives / opioids / benzodiazepines</strong> in an unmonitored patient with borderline ventilation — you will convert a compensating patient into an apnoeic one. If you must, monitor with capnography.</li>
+              <li><strong>Succinylcholine</strong> — avoid in neuromuscular disease, burns &gt; 24–48 h old, crush injury, prolonged immobility, spinal cord injury and pre-existing hyperkalaemia (<strong>hyperkalaemic cardiac arrest</strong> from upregulated extrajunctional acetylcholine receptors). Use <strong>rocuronium</strong> instead.</li>
+              <li><strong>Vecuronium and rocuronium (for prolonged infusion) in renal or hepatic failure</strong> — accumulation and prolonged paralysis. Use <strong>cisatracurium</strong> (Hofmann elimination — organ-independent).</li>
+              <li><strong>Etomidate</strong> in septic shock — causes dose-dependent <strong>adrenal suppression</strong> even after a single induction dose. Reasonable alternatives: <strong>ketamine</strong> (haemodynamically favourable) or a <strong>reduced-dose propofol</strong> with a pressor ready.</li>
+              <li><strong>Beta-blockers</strong> in acute severe bronchospasm — non-selective ones especially. (In stable COPD, cardioselective beta-blockers are safe and should not be withheld when cardiac indications exist.)</li>
+              <li><strong>Aggressive fluid boluses</strong> once the patient is out of shock — every litre widens the alveolar leak. See FACTT.</li>
+              <li><strong>Routine systemic corticosteroids for ALL ARDS</strong> — the benefit is real in COVID-ARDS and in early moderate–severe ARDS, but is <em>not</em> established for every phenotype, and steroids started <strong>late (after ~14 days)</strong> were associated with <strong>increased mortality</strong> in the ARDSNet LaSRS trial. Timing matters.</li>
+              <li><strong>NSAIDs</strong> — no role, and they impair the renal compensation you are relying on.</li>
+              <li><strong>High-frequency oscillatory ventilation (HFOV)</strong> — <strong>OSCILLATE was stopped early for HARM</strong> (in-hospital mortality 47% vs 35%). This is not a rescue therapy; it is a discredited one.</li>
+              <li><strong>Routine recruitment manoeuvres with aggressive PEEP titration</strong> — <strong>the ART trial (JAMA 2017) found increased 28-day mortality (55.3% vs 49.3%)</strong>, more barotrauma and more hypotension. Both the ATS and ESICM guidelines recommend against prolonged/aggressive recruitment manoeuvres.</li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-prevention">
+        <div class="sec-head"><span class="pill" style="background:var(--dispo)">Prevent</span><h2>USPSTF A/B &amp; prevention</h2></div>
+        <div class="module accent" style="--m:var(--dispo)">
+          <div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🛡️</span><h3>Grade A &amp; B recommendations that actually apply here</h3></div>
+          <div class="m-body">
+            <p>There is no USPSTF recommendation for "ARDS" — you cannot screen for a syndrome that appears over 48 hours. But ARDS is almost always the end of a chain that <em>starts</em> with a preventable event: a pneumonia, an aspiration, a sepsis, a trauma. These are the Grade A and B recommendations that break that chain, plus the immunisations that prevent the commonest precipitant of all.</p>
+            <div class="tbl-wrap"><table class="uspstf-table">
+              <thead><tr><th>Grade</th><th>Recommendation</th><th>Population</th><th>Relevance to respiratory failure</th></tr></thead>
+              <tbody>
+                <tr><td class="grade A">A</td><td><strong>Tobacco smoking cessation</strong> — ask all adults about tobacco use, advise them to stop, and provide <strong>both behavioural interventions and FDA-approved pharmacotherapy</strong></td><td>All non-pregnant adults</td><td>The dominant modifiable risk factor for COPD, for pneumonia, and for chronic respiratory failure. Also independently increases ARDS risk (notably after trauma and transfusion).</td></tr>
+                <tr><td class="grade A">A</td><td><strong>Tobacco cessation — behavioural interventions</strong> (pharmacotherapy not recommended, as evidence is insufficient in this group)</td><td>Pregnant adults</td><td>As above, plus fetal benefit.</td></tr>
+                <tr><td class="grade B">B</td><td><strong>Lung cancer screening</strong> — annual low-dose CT</td><td>Adults <strong>50–80</strong> with a <strong>≥ 20 pack-year</strong> history who currently smoke <em>or</em> have quit within the past <strong>15 years</strong></td><td>Same population as chronic respiratory failure; the visit is the highest-yield opportunity to also address cessation, oxygen and vaccination.</td></tr>
+                <tr><td class="grade B">B</td><td><strong>Unhealthy alcohol use</strong> — screen and give brief behavioural counselling</td><td>Adults ≥ 18</td><td><strong>Chronic alcohol use is an independent risk factor for ARDS</strong> (it depletes alveolar glutathione and impairs alveolar epithelial function) and a major risk factor for aspiration and for community-acquired pneumonia.</td></tr>
+                <tr><td class="grade B">B</td><td><strong>Obesity</strong> — offer or refer to intensive, multicomponent behavioural interventions</td><td>Adults with BMI ≥ 30</td><td>Drives obesity-hypoventilation syndrome and OSA; complicates every aspect of ventilation.</td></tr>
+                <tr><td class="grade B">B</td><td><strong>Hypertension screening</strong>; <strong>statin use for primary CVD prevention</strong> (adults 40–75 with ≥ 1 risk factor and 10-y CVD risk ≥ 10%)</td><td>Adults</td><td>Prevents the heart failure that is ARDS's commonest mimic and its commonest comorbidity.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4>Immunisation — the highest-yield ARDS prevention there is</h4>
+            <p>These are ACIP/CDC recommendations rather than USPSTF (the USPSTF does not issue vaccine recommendations), but they matter more here than anything above: <strong>pneumonia and influenza are the leading direct causes of ARDS.</strong></p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Vaccine</th><th>Who</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Influenza</strong>, annually</td><td>Everyone ≥ 6 months. Influenza is a leading cause of viral ARDS, and vaccination reduces hospitalisation and ICU admission.</td></tr>
+                <tr><td><strong>Pneumococcal</strong> (PCV20, or PCV21; or PCV15 followed by PPSV23)</td><td>All adults <strong>≥ 50</strong>, and adults 19–49 with risk conditions (chronic lung/heart/liver disease, diabetes, smoking, immunocompromise, CSF leak, cochlear implant, asplenia).</td></tr>
+                <tr><td><strong>COVID-19</strong>, per current ACIP schedule</td><td>SARS-CoV-2 remains a major cause of ARDS; vaccination substantially reduces severe disease and ICU admission.</td></tr>
+                <tr><td><strong>RSV</strong></td><td>Adults <strong>≥ 75</strong>, and adults <strong>50–74</strong> at increased risk. RSV is a genuinely under-recognised cause of respiratory failure in older adults.</td></tr>
+                <tr><td><strong>Tdap/Td</strong>, <strong>zoster</strong></td><td>Per routine adult schedule.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span><strong>Aspiration prevention is ARDS prevention.</strong> Aspiration of gastric acid is a leading direct cause. In clinic that means: a swallow evaluation after any stroke or in any progressive neuromuscular disease; deprescribing sedatives and anticholinergics in the elderly; treating reflux; sitting patients upright to eat; and scrupulous oral care (which reduces pneumonia risk in the frail and institutionalised more reliably than most drugs).</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-escalate">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Escalate</span><h2>When to send them to the ED</h2></div>
+        <div class="module accent" style="--m:var(--escalate)">
+          <div class="m-head" style="--m:var(--escalate)"><span class="m-ico">🚑</span><h3>Red flags — do not manage these in clinic</h3></div>
+          <div class="m-body">
+            <div class="redflag"><span class="lbl"></span><strong>Call an ambulance — do not send them home, and do not send them to the ED in their own car:</strong>
+            <ul>
+              <li><strong>SpO₂ &lt; 90% on room air</strong> (or &lt; 88% in known chronic hypercapnic COPD), <strong>or any new oxygen requirement</strong>.</li>
+              <li><strong>Respiratory rate ≥ 30</strong>/min — or, more ominously, <strong>&lt; 8</strong>/min.</li>
+              <li><strong>Cannot speak in full sentences.</strong></li>
+              <li><strong>Accessory-muscle use</strong>, tracheal tug, or <strong>paradoxical abdominal breathing</strong>.</li>
+              <li><strong>Altered mental status</strong> — new confusion, agitation, or somnolence.</li>
+              <li><strong>Cyanosis.</strong></li>
+              <li><strong>Haemodynamic instability</strong> — SBP &lt; 90, or a lactate you have any way of knowing is up.</li>
+              <li><strong>Silent chest</strong> in an asthmatic (no wheeze = no air moving = peri-arrest).</li>
+              <li><strong>A rising or "normalising" PaCO₂ in a tachypnoeic patient</strong> — the pump is failing.</li>
+              <li><strong>Any hypoxaemia with haemoptysis</strong> (think DAH, PE) or with <strong>a clear chest film</strong> (think PE).</li>
+            </ul></div>
+            <div class="decision"><span class="lbl"></span><strong>The two-question clinic triage.</strong> (1) <em>"What is the respiratory rate — counted, by me, for 60 seconds?"</em> and (2) <em>"What does the saturation do when they walk?"</em> Those two numbers will correctly triage the overwhelming majority of dyspnoeic clinic patients, and both are free. A resting saturation taken while the patient sits quietly in a chair is the least sensitive test in respiratory medicine.</div>
+          </div>
+        </div>
+      </section>
+    </div>
