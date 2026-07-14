@@ -1,0 +1,90 @@
+<svg viewBox="0 0 660 430" role="img" aria-label="Why vegetations sit on the low-pressure side of the valve — the jet lesion rule">
+  <defs>
+    <marker id="jetArrow" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="var(--d-red)"/>
+    </marker>
+    <marker id="ptrArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="var(--d-amber)"/>
+    </marker>
+  </defs>
+
+  <text x="330" y="22" fill="var(--d-text)" font-size="14.5" font-weight="700" text-anchor="middle">The jet-lesion rule — vegetations grow on the LOW-pressure side</text>
+
+  <!-- ===================== PANEL A: MITRAL REGURGITATION ===================== -->
+  <text x="24" y="58" fill="var(--d-blue)" font-size="12.5" font-weight="700">A · MITRAL REGURGITATION — vegetation on the ATRIAL surface</text>
+
+  <!-- high-pressure chamber -->
+  <rect x="24" y="70" width="150" height="92" rx="10" fill="var(--d-red-bg)" stroke="var(--d-red)" stroke-width="1.5"/>
+  <text x="99" y="102" fill="var(--d-red)" font-size="13" font-weight="700" text-anchor="middle">LEFT VENTRICLE</text>
+  <text x="99" y="122" fill="var(--d-text)" font-size="11.5" text-anchor="middle">HIGH pressure</text>
+  <text x="99" y="140" fill="var(--d-muted)" font-size="11" text-anchor="middle">~120 mmHg (systole)</text>
+
+  <!-- valve -->
+  <line x1="196" y1="70" x2="196" y2="110" stroke="var(--d-line)" stroke-width="4" stroke-linecap="round"/>
+  <line x1="196" y1="126" x2="196" y2="162" stroke="var(--d-line)" stroke-width="4" stroke-linecap="round"/>
+  <text x="196" y="184" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">mitral valve</text>
+
+  <!-- jet -->
+  <line x1="178" y1="118" x2="252" y2="118" stroke="var(--d-red)" stroke-width="3.5" marker-end="url(#jetArrow)"/>
+  <text x="215" y="108" fill="var(--d-red)" font-size="10.5" font-weight="700" text-anchor="middle">jet</text>
+
+  <!-- low-pressure chamber -->
+  <rect x="262" y="70" width="150" height="92" rx="10" fill="var(--d-blue-bg)" stroke="var(--d-blue)" stroke-width="1.5"/>
+  <text x="337" y="102" fill="var(--d-blue)" font-size="13" font-weight="700" text-anchor="middle">LEFT ATRIUM</text>
+  <text x="337" y="122" fill="var(--d-text)" font-size="11.5" text-anchor="middle">LOW pressure</text>
+  <text x="337" y="140" fill="var(--d-muted)" font-size="11" text-anchor="middle">~10 mmHg</text>
+
+  <!-- vegetation on the atrial side of the leaflet -->
+  <circle cx="207" cy="132" r="7.5" fill="var(--d-amber)" stroke="var(--d-text)" stroke-width="1"/>
+  <circle cx="213" cy="142" r="5" fill="var(--d-amber)" stroke="var(--d-text)" stroke-width="1"/>
+  <line x1="290" y1="190" x2="220" y2="146" stroke="var(--d-amber)" stroke-width="1.4" marker-end="url(#ptrArrow)"/>
+  <text x="296" y="194" fill="var(--d-amber)" font-size="11.5" font-weight="700">VEGETATION</text>
+  <text x="296" y="209" fill="var(--d-muted)" font-size="10.5">on the atrial surface</text>
+
+  <!-- ===================== PANEL B: AORTIC REGURGITATION ===================== -->
+  <text x="24" y="252" fill="var(--d-blue)" font-size="12.5" font-weight="700">B · AORTIC REGURGITATION — vegetation on the VENTRICULAR surface</text>
+
+  <rect x="24" y="264" width="150" height="92" rx="10" fill="var(--d-red-bg)" stroke="var(--d-red)" stroke-width="1.5"/>
+  <text x="99" y="296" fill="var(--d-red)" font-size="13" font-weight="700" text-anchor="middle">AORTA</text>
+  <text x="99" y="316" fill="var(--d-text)" font-size="11.5" text-anchor="middle">HIGH pressure</text>
+  <text x="99" y="334" fill="var(--d-muted)" font-size="11" text-anchor="middle">~80 mmHg (diastole)</text>
+
+  <line x1="196" y1="264" x2="196" y2="304" stroke="var(--d-line)" stroke-width="4" stroke-linecap="round"/>
+  <line x1="196" y1="320" x2="196" y2="356" stroke="var(--d-line)" stroke-width="4" stroke-linecap="round"/>
+  <text x="196" y="378" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">aortic valve</text>
+
+  <line x1="178" y1="312" x2="252" y2="312" stroke="var(--d-red)" stroke-width="3.5" marker-end="url(#jetArrow)"/>
+  <text x="215" y="302" fill="var(--d-red)" font-size="10.5" font-weight="700" text-anchor="middle">jet</text>
+
+  <rect x="262" y="264" width="150" height="92" rx="10" fill="var(--d-blue-bg)" stroke="var(--d-blue)" stroke-width="1.5"/>
+  <text x="337" y="296" fill="var(--d-blue)" font-size="13" font-weight="700" text-anchor="middle">LEFT VENTRICLE</text>
+  <text x="337" y="316" fill="var(--d-text)" font-size="11.5" text-anchor="middle">LOW pressure</text>
+  <text x="337" y="334" fill="var(--d-muted)" font-size="11" text-anchor="middle">~10 mmHg (diastole)</text>
+
+  <circle cx="207" cy="326" r="7.5" fill="var(--d-amber)" stroke="var(--d-text)" stroke-width="1"/>
+  <circle cx="213" cy="336" r="5" fill="var(--d-amber)" stroke="var(--d-text)" stroke-width="1"/>
+  <line x1="290" y1="384" x2="220" y2="340" stroke="var(--d-amber)" stroke-width="1.4" marker-end="url(#ptrArrow)"/>
+  <text x="296" y="388" fill="var(--d-amber)" font-size="11.5" font-weight="700">VEGETATION</text>
+  <text x="296" y="403" fill="var(--d-muted)" font-size="10.5">on the ventricular surface</text>
+
+  <!-- ===================== THE RULE (right column) ===================== -->
+  <rect x="432" y="70" width="204" height="286" rx="11" fill="var(--d-neutral)" stroke="var(--d-line)" stroke-width="1.2"/>
+  <text x="534" y="96" fill="var(--d-green)" font-size="12.5" font-weight="700" text-anchor="middle">WHY</text>
+
+  <text x="446" y="122" fill="var(--d-text)" font-size="11.5">A high-velocity jet squeezes</text>
+  <text x="446" y="138" fill="var(--d-text)" font-size="11.5">through a narrow orifice. Just</text>
+  <text x="446" y="154" fill="var(--d-text)" font-size="11.5">downstream, pressure drops</text>
+  <text x="446" y="170" fill="var(--d-text)" font-size="11.5">(Venturi) and the jet strips</text>
+  <text x="446" y="186" fill="var(--d-text)" font-size="11.5">endothelium off the surface.</text>
+
+  <text x="446" y="212" fill="var(--d-amber)" font-size="11.5" font-weight="700">Bare collagen + turbulence</text>
+  <text x="446" y="228" fill="var(--d-amber)" font-size="11.5" font-weight="700">= platelet-fibrin nidus (NBTE)</text>
+
+  <text x="446" y="254" fill="var(--d-text)" font-size="11.5">Passing bacteria stick there —</text>
+  <text x="446" y="270" fill="var(--d-text)" font-size="11.5">so the vegetation always sits</text>
+  <text x="446" y="286" fill="var(--d-text)" font-size="11.5">where the jet LANDS, on the</text>
+  <text x="446" y="302" fill="var(--d-text)" font-size="11.5">low-pressure side.</text>
+
+  <text x="446" y="330" fill="var(--d-purple)" font-size="11" font-weight="700">Same logic: VSD jet → RV wall;</text>
+  <text x="446" y="345" fill="var(--d-purple)" font-size="11" font-weight="700">PDA jet → pulmonary artery.</text>
+</svg>

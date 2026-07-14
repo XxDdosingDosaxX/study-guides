@@ -8,3 +8,7 @@ __pycache__/
 .playwright-mcp/
 *.mmd
 builder_server.out
+# per-disease build scratch: source guideline PDFs (copyrighted), extracted
+# text, part files and screenshots. The finished guide inlines everything.
+_*_build/
+_*_img_candidates.json
