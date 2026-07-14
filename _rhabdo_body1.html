@@ -1,0 +1,355 @@
+    <!-- ===== SNAPSHOT (shared) ===== -->
+    <section class="snapshot" id="snapshot">
+      <div class="one-liner">Skeletal muscle breaks open and dumps its contents into the blood — myoglobin, potassium, phosphate and CK. The muscle pain is what the patient feels; the <strong>kidney</strong> and the <strong>potassium</strong> are what kill them. Treatment is early, aggressive isotonic fluid, removal of the trigger, and relentless surveillance for hyperkalemia and compartment syndrome.</div>
+      <div class="badges">
+        <span class="badge">CK &gt;1,000 U/L (≈5× ULN) = the working threshold</span>
+        <span class="badge warn">CK peaks 24–72 h, then falls ~40%/day</span>
+        <span class="badge danger">AKI in ~15–50%; hyperkalemia is the early killer</span>
+        <span class="badge ok">First-line: isotonic crystalloid, early and generous</span>
+        <span class="badge">McMahon ≥6 = not low risk</span>
+      </div>
+    </section>
+
+    <!-- ===== SHARED PATHOPHYSIOLOGY ===== -->
+    <section class="sec" id="pathophys" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>Pathophysiology &amp; classification</h2></div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🧬</span><h3>The final common pathway — calcium is the executioner</h3></div>
+        <div class="m-body">
+          <p>Every cause of rhabdomyolysis — a collapsed building, a spin class, a statin, a seizure, an eight-hour stupor on a bathroom floor — converges on <strong>one mechanism: the myocyte runs out of ATP, and calcium floods in.</strong></p>
+
+          <p>The resting muscle cell spends a large share of its energy budget holding calcium <em>out</em> of the cytosol. Two ATP-dependent pumps do this work: the <strong>Na⁺/K⁺-ATPase</strong>, which maintains the sodium gradient, and the <strong>Ca²⁺-ATPase (SERCA)</strong>, which sequesters calcium back into the sarcoplasmic reticulum. Both are hungry for ATP, and both fail the moment supply falls behind demand — whether because the muscle is being crushed and its blood supply cut off (ischemia), because it is contracting far beyond its aerobic capacity (exertion, seizure, agitation), or because a drug or toxin has poisoned mitochondrial energy production (statins, alcohol, propofol).</p>
+
+          <p>When those pumps stop, sodium accumulates inside the cell, dragging water with it (the cell swells), and the Na⁺/Ca²⁺ exchanger — which normally pushes calcium out using the sodium gradient — reverses. <strong>Cytosolic calcium climbs.</strong> That calcium does three destructive things at once:</p>
+          <ol>
+            <li><strong>It locks the muscle into sustained contraction</strong> — actin and myosin cannot release without ATP-driven calcium removal. This burns whatever ATP remains, deepening the crisis. The cell is now in a death spiral.</li>
+            <li><strong>It activates calcium-dependent proteases (calpains) and phospholipase A₂</strong>, which digest the cell's own cytoskeleton and membrane phospholipids.</li>
+            <li><strong>It uncouples mitochondria</strong>, generating reactive oxygen species that oxidize what is left.</li>
+          </ol>
+
+          <p>The sarcolemma finally gives way. Everything the myocyte was holding — <strong>myoglobin, potassium, phosphate, urate, creatine kinase, LDH, AST, and organic acids</strong> — pours into the circulation. That spill <em>is</em> rhabdomyolysis. Meanwhile the injured muscle behaves like a burn: it becomes a sponge, and enormous volumes of extracellular fluid third-space into it. A patient can sequester <strong>many litres</strong> into a single crushed thigh, which is why they arrive profoundly hypovolemic despite having lost no blood.</p>
+
+          <div class="analogy"><span class="lbl"></span><strong>the muscle cell is a dam holding back a reservoir of calcium, and ATP is the electricity running the pumps.</strong> Cut the power — by crushing, over-exercising, or poisoning the generator — and the pumps stop. The reservoir floods the town. The flood (calcium) doesn't just drown the cell; it dissolves the dam itself (calpains, phospholipases), and everything the dam was holding back — myoglobin, potassium, phosphate — washes downstream into the bloodstream. The kidney is the town downstream.</div>
+
+          <div class="svg-wrap">
+            <div class="dia dia-dark">__SVG_pathodark__</div>
+            <div class="dia dia-light">__SVG_patholight__</div>
+            <div class="cap">The cascade from trigger to kidney failure — and the two points where treatment intervenes. IV crystalloid restores renal perfusion and flushes casts; urinary alkalinization (in selected patients only) keeps myoglobin soluble and limits heme redox cycling.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--escalate)">
+        <div class="m-head" style="--m:var(--escalate)"><span class="m-ico">🩸</span><h3>Why the kidney fails — three hits, not one</h3></div>
+        <div class="m-body">
+          <p>Acute kidney injury is the complication that defines prognosis, and it happens through <strong>three simultaneous mechanisms</strong>. Understanding all three is what makes the treatment obvious — because fluid attacks all three at once.</p>
+
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Hit</th><th>Mechanism</th><th>What it means at the bedside</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Hypovolemia &amp; renal vasoconstriction</strong></td>
+                <td>Damaged muscle sequesters litres of extracellular fluid. Intravascular volume collapses → renin-angiotensin, vasopressin and sympathetic activation → intense renal afferent vasoconstriction. Myoglobin itself scavenges nitric oxide, removing the kidney's main vasodilator and worsening medullary ischemia.</td>
+                <td>The patient is dry <em>before</em> you notice. This is why fluid given <strong>early</strong> — ideally before extrication — prevents AKI, and fluid given late does much less.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Intratubular cast formation</strong></td>
+                <td>Filtered myoglobin binds <strong>Tamm–Horsfall protein</strong> in the distal tubule and precipitates into obstructing casts. This reaction is strongly <strong>pH-dependent</strong>: it happens readily in acidic, concentrated urine and much less in alkaline, dilute urine.</td>
+                <td>This is the entire rationale for high urine flow (dilute the myoglobin, wash out the casts) and for urinary alkalinization (keep myoglobin soluble) — though, as below, alkalinization has never actually proven superior to saline alone.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Direct tubular toxicity</strong></td>
+                <td>Myoglobin is taken up by proximal tubular cells, where its <strong>heme iron</strong> is released and drives Fenton chemistry — free radical generation, lipid peroxidation, and direct oxidative tubular necrosis. The porphyrin ring also degrades to ferrihemate, which is directly cytotoxic in acidic urine.</td>
+                <td>The nephrotoxin is <em>iron</em>, not "CK." CK is only a marker — it is not toxic to the kidney at all. This distinction matters more than any other in this disease.</td>
+              </tr>
+            </tbody>
+          </table></div>
+
+          <div class="pearl"><span class="lbl"></span><strong>CK is a marker; myoglobin is the poison.</strong> CK is a large, harmless enzyme that happens to be released alongside myoglobin, and it lingers (half-life ≈36 h). Myoglobin is the actual nephrotoxin — and it has a half-life of only <strong>2–4 hours</strong>, clearing from serum and urine within about a day. So by the time you are staring at a spectacular CK of 80,000, the substance that was actually hurting the kidney may already be gone. Two consequences: <strong>(1)</strong> a normal-looking urine or a negative myoglobin does not mean the kidney is safe, and <strong>(2)</strong> waiting to treat until the CK is "high enough" means treating after the window has closed. Treat on suspicion, not on the peak.</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--dx)">
+        <div class="m-head" style="--m:var(--dx)"><span class="m-ico">🔬</span><h3>What it looks like — muscle, urine, and the microscope</h3></div>
+        <div class="m-body">
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_muscle__" alt="Skeletal muscle structure — fascicles, fibers, myofibrils">
+              <div class="cap">Normal skeletal muscle: fascicles → fibers (myocytes) → myofibrils. Each fiber is a single multinucleated cell whose sarcolemma is the barrier that fails in rhabdomyolysis, releasing myoglobin, K⁺, PO₄³⁻ and CK.</div>
+              <div class="credit">Public domain · <a href="https://commons.wikimedia.org/wiki/File:Skeletal_muscle_and_fiber.jpg" target="_blank">Skeletal muscle and fiber — Wikimedia Commons</a> (SEER/NCI training material)</div>
+            </div>
+            <div class="fig">
+              <img src="__IMG_urine__" alt="Dark tea-coloured urine of myoglobinuria in rhabdomyolysis">
+              <div class="cap"><strong>The classic sign.</strong> Tea/cola-coloured urine from myoglobinuria. Pigment appears once serum myoglobin exceeds the plasma protein binding capacity and the renal threshold (roughly &gt;100 mg/dL in urine) — so visible pigmenturia implies substantial muscle loss, but its <em>absence</em> never excludes rhabdomyolysis.</div>
+              <div class="credit">CC BY-SA 3.0 · James Heilman, MD — <a href="https://commons.wikimedia.org/wiki/File:RhabdoUrine.JPG" target="_blank">File:RhabdoUrine.JPG, Wikimedia Commons</a></div>
+            </div>
+          </div>
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_biopsy__" alt="Muscle biopsy showing necrotic and regenerating fibers">
+              <div class="cap">Muscle histology in a necrotizing myopathy: fibre-size variation, necrotic fibres undergoing myophagocytosis, and basophilic regenerating fibres. Biopsy is <em>not</em> needed to diagnose acute rhabdomyolysis — it is reserved for suspected inflammatory/immune-mediated (e.g. anti-HMGCR) or metabolic myopathy after the acute episode.</div>
+              <div class="credit">CC BY 4.0 · Lasa-Elgarresta J, et al. — <a href="https://commons.wikimedia.org/wiki/File:Calpainopathy_Muscle_Biopsy.png" target="_blank">File:Calpainopathy Muscle Biopsy.png, Wikimedia Commons</a></div>
+            </div>
+            <div class="fig">
+              <img src="__IMG_dipstick__" alt="Urine dipstick test strip">
+              <div class="cap"><strong>The single most useful bedside test.</strong> The dipstick "blood" pad detects the <em>heme</em> group — so it cannot distinguish haemoglobin from myoglobin from red cells. A dipstick that is <strong>strongly positive for blood while microscopy shows few or no RBCs</strong> is the classic fingerprint of myoglobinuria.</div>
+              <div class="credit">CC BY-SA 4.0 · Spicy — <a href="https://commons.wikimedia.org/wiki/File:Dipstick_urinalysis.jpg" target="_blank">File:Dipstick urinalysis.jpg, Wikimedia Commons</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--assess)">
+        <div class="m-head" style="--m:var(--assess)"><span class="m-ico">🗂️</span><h3>Classification — the causes, and the clue that gives each one away</h3></div>
+        <div class="m-body">
+          <p>There is <strong>no universally accepted definition</strong> of rhabdomyolysis. In practice most clinicians and studies use a <strong>CK &gt;5× the upper limit of normal</strong> (ULN ≈200 U/L, so roughly <strong>CK &gt;1,000 U/L</strong>) together with a compatible clinical picture. The severity bands below are the pragmatic ones used in critical care.</p>
+
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>CK band</th><th>Label</th><th>What it implies</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1,000–5,000 U/L</strong></td><td>Mild</td><td>Low risk of kidney injury on its own. Risk-stratify (McMahon) rather than reflexively admitting.</td></tr>
+              <tr><td><strong>5,000–15,000 U/L</strong></td><td>Moderate</td><td>Meaningfully increased AKI risk. Most of these patients get IV fluid and admission.</td></tr>
+              <tr><td><strong>&gt;15,000 U/L</strong></td><td>Severe</td><td>Substantially increased risk of AKI and of needing dialysis.</td></tr>
+              <tr><td><strong>&gt;40,000 U/L</strong></td><td>—</td><td>Scores 2 points on its own in the McMahon model; a strong independent risk marker.</td></tr>
+            </tbody>
+          </table></div>
+          <p style="font-size:12.5px;color:var(--muted)">Bands per the Internet Book of Critical Care; the &gt;40,000 cut-point is from McMahon (JAMA Intern Med 2013). <strong>Note the trap:</strong> CK correlates only loosely with AKI risk, and a single CK never rules the diagnosis in or out — the McMahon score outperforms CK alone for predicting dialysis or death.</p>
+
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Category</th><th>Specific causes</th><th>The clue that gives it away</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Traumatic / compressive</strong></td>
+                <td>Crush injury (earthquake, building collapse, motor vehicle entrapment), prolonged immobilisation ("found down" after overdose, stroke or intoxication), prolonged surgery in a fixed position, tourniquet/reperfusion, burns, electrical injury and lightning strike.</td>
+                <td>A history of entrapment or a "long lie." Look for pressure necrosis over bony prominences and a tense, swollen limb. <strong>This is the group with the highest AKI and mortality.</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Exertional</strong></td>
+                <td>Unaccustomed or eccentric exercise (military recruits, new CrossFit/spin participants), marathon running, status epilepticus, severe agitation/psychosis, delirium tremens, hyperthermia — including <strong>neuroleptic malignant syndrome</strong>, <strong>serotonin syndrome</strong>, <strong>malignant hyperthermia</strong>, and heat stroke.</td>
+                <td>Healthy young person, days after a hard first workout; or a hyperthermic, rigid, agitated patient. <strong>Sickle cell trait</strong> and exercise in heat/humidity/altitude multiply the risk.</td>
+              </tr>
+              <tr>
+                <td><strong>Drugs &amp; toxins</strong></td>
+                <td><strong>Statins</strong> (especially with a CYP3A4 inhibitor or a fibrate), fibrates, <strong>alcohol</strong>, cocaine, amphetamines/MDMA, heroin and other opioids (via immobility), <strong>propofol</strong> (propofol-related infusion syndrome), daptomycin, colchicine, antipsychotics, snake and insect envenomation, carbon monoxide.</td>
+                <td>Reconcile the med list <em>and</em> the substance history. Ask specifically about new drugs, new doses, and new interacting drugs in the last 4–6 weeks.</td>
+              </tr>
+              <tr>
+                <td><strong>Infectious</strong></td>
+                <td><strong>Influenza A and B</strong> (the classic), COVID-19, EBV, HIV, enterovirus, <strong>Legionella</strong>, streptococcal and staphylococcal sepsis, <em>Clostridium</em>, malaria.</td>
+                <td>Rhabdo with a febrile prodrome. Influenza-associated rhabdomyolysis is disproportionately a paediatric/young-adult diagnosis and is easy to miss.</td>
+              </tr>
+              <tr>
+                <td><strong>Electrolyte &amp; endocrine</strong></td>
+                <td><strong>Hypokalemia</strong> and <strong>hypophosphatemia</strong> (both impair muscle energetics and vasodilation — classically in the refeeding or alcoholic patient), hypernatremia, DKA and HHS, <strong>hypothyroidism</strong>, hyperaldosteronism.</td>
+                <td>An odd one to remember: low K⁺ and low PO₄³⁻ <em>cause</em> rhabdo — and then the rhabdo releases K⁺ and PO₄³⁻ and flips them high. The initial values can mislead you about the cause.</td>
+              </tr>
+              <tr>
+                <td><strong>Inflammatory / autoimmune</strong></td>
+                <td>Polymyositis, dermatomyositis, and <strong>anti-HMGCR immune-mediated necrotising myopathy</strong> (statin-triggered but self-perpetuating), immune checkpoint inhibitor myositis.</td>
+                <td>Weakness that is proximal, progressive, and <strong>does not resolve when the statin is stopped</strong> — that patient needs anti-HMGCR antibodies, not reassurance.</td>
+              </tr>
+              <tr>
+                <td><strong>Inherited metabolic myopathies</strong></td>
+                <td>McArdle disease (myophosphorylase deficiency), CPT-II deficiency, other glycogen/fatty-acid oxidation and mitochondrial disorders. <strong>RYR1</strong> variants (malignant hyperthermia susceptibility).</td>
+                <td><strong>Recurrent</strong> rhabdomyolysis, episodes out of proportion to the trigger, a family history, or the "second wind" phenomenon (McArdle). Refer these to neuromuscular — do not just keep rehydrating them.</td>
+              </tr>
+            </tbody>
+          </table></div>
+
+          <div class="redflag"><span class="lbl"></span><strong>Recurrent rhabdomyolysis, or rhabdomyolysis wildly out of proportion to its trigger, is a different disease.</strong> Two or more episodes — or one episode after trivial exertion — should prompt a hunt for an inherited metabolic myopathy or a susceptibility trait (RYR1/malignant hyperthermia), and referral to neuromuscular. Do not simply rehydrate and discharge, because the next trigger may be a general anaesthetic.</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--treat)">
+        <div class="m-head" style="--m:var(--treat)"><span class="m-ico">⚙️</span><h3>Why the treatments work — mapped onto the cascade</h3></div>
+        <div class="m-body">
+          <p>Rhabdomyolysis has almost no <em>pharmacology</em>. There is no drug that reverses it. The therapy is <strong>volume, subtraction, and vigilance</strong> — and each element blocks a specific, nameable step of the cascade above. Hold onto this map; the rest of the guide hangs from it.</p>
+          <div class="tbl-wrap"><table class="drug-table">
+            <thead><tr><th>Intervention</th><th>Step of the cascade it interrupts</th><th>Why that works</th></tr></thead>
+            <tbody>
+              <tr><td>Isotonic IV crystalloid</td><td>Hits <strong>#1 and #2</strong></td><td class="why">Refills the intravascular space that the muscle stole, restoring renal perfusion and switching off afferent vasoconstriction; then generates a high urine flow that dilutes myoglobin below its precipitation threshold and physically washes casts out of the tubule. This is the only intervention with a real effect size — and it works best <em>early</em>.</td></tr>
+              <tr><td>Removing the trigger</td><td>Hits the <strong>top of the cascade</strong></td><td class="why">Stop the statin, stop the seizure, cool the hyperthermic patient, decompress the compartment, turn the patient. If the muscle keeps dying, no amount of fluid downstream will keep up.</td></tr>
+              <tr><td>Urinary alkalinization (selected)</td><td>Hits <strong>#2 and #3</strong></td><td class="why">Myoglobin–Tamm-Horsfall precipitation and heme-driven free-radical chemistry are both favoured by acidic urine. Raising urine pH above ~6.5 keeps myoglobin soluble and blunts redox cycling. <strong>Sound theory, unproven in practice — both GRADE guidelines (EAST 2022, DASAIM/DSIT 2019) recommend against it.</strong> See the fluid section.</td></tr>
+              <tr><td>Calcium (for hyperkalemia)</td><td>Does <strong>not</strong> touch the cascade</td><td class="why">Purely a membrane-stabilising manoeuvre at the myocardium — it buys minutes against a lethal arrhythmia while you actually shift and remove the potassium. It lowers no potassium at all.</td></tr>
+              <tr><td>Fasciotomy</td><td>Hits the <strong>trigger, mechanically</strong></td><td class="why">A compartment above perfusion pressure is a muscle that is still being infarcted. Cutting the fascia restores perfusion and stops the ongoing myonecrosis at its source. The single most time-critical surgical decision in this disease.</td></tr>
+              <tr><td>Renal replacement therapy</td><td>Hits the <strong>consequences</strong>, not the disease</td><td class="why">Dialysis clears potassium, acid and volume — it does <em>not</em> meaningfully clear myoglobin (too large for conventional membranes), so it is never "prophylactic." You dialyse for the standard AKI indications, not for the CK number.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SHARED: PRESENTATION ===== -->
+    <section class="sec" id="presentation" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>Presentation &amp; findings — and why</h2></div>
+
+      <div class="module accent" style="--m:var(--assess)">
+        <div class="m-head" style="--m:var(--assess)"><span class="m-ico">📊</span><h3>Symptoms &amp; signs — frequency, and the mechanism behind each</h3></div>
+        <div class="m-body">
+          <div class="redflag"><span class="lbl"></span><strong>The classic triad is the exception, not the rule.</strong> Myalgia + weakness + dark urine all together occurs in <strong>&lt;10%</strong> of patients, and <strong>more than half have no muscle symptoms at all.</strong> Rhabdomyolysis is far more often found on a chemistry panel than diagnosed at the bedside. If you wait for the triad, you will miss most of the disease.</p></div>
+
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Symptom / sign</th><th>≈Frequency</th><th>Why it happens</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Muscle weakness</strong></td><td style="color:#f43f5e;font-weight:700">~70%</td><td>Necrotic and contracture-locked fibres cannot generate force. Typically <strong>proximal</strong> (thighs, shoulders, lower back) because large postural muscle groups have the greatest mass and metabolic demand.</td></tr>
+              <tr><td><strong>Myalgia / muscle pain</strong></td><td style="color:#f59e0b;font-weight:700">~50%</td><td>Swelling of injured muscle within its non-compliant fascial compartment stretches nociceptors, and phospholipase-generated inflammatory mediators (prostaglandins, bradykinin) sensitise them directly. Often disproportionately severe — and its <em>absence</em> is common and reassures you of nothing.</td></tr>
+              <tr><td><strong>No muscle symptoms at all</strong></td><td style="color:#f43f5e;font-weight:700">&gt;50%</td><td>Muscle nociceptors are sparse, and in the obtunded, sedated, intoxicated or intubated patient nobody can report pain. This is exactly the population (found-down, post-ictal, post-arrest) with the <em>highest</em> risk — hence the low threshold to simply check a CK.</td></tr>
+              <tr><td><strong>Dark / tea- or cola-coloured urine</strong></td><td style="color:#f59e0b;font-weight:700">~40%</td><td>Free myoglobin is filtered once it saturates plasma binding; it colours the urine only above roughly 100 mg/dL. Because myoglobin's half-life is just 2–4 h, the pigment can <strong>clear within a day</strong> — a normal-coloured urine at presentation does not exclude significant rhabdomyolysis.</td></tr>
+              <tr><td><strong>Muscle swelling / tenderness</strong></td><td style="color:#38bdf8;font-weight:700">~20–30%</td><td>Massive fluid shift into injured muscle. Often appears <em>after</em> fluid resuscitation starts (the muscle rehydrates too), which is precisely when compartment syndrome declares itself. A newly tense, tender limb on day 1–2 of treatment is a surgical emergency, not an expected finding.</td></tr>
+              <tr><td><strong>Fever, malaise, nausea, tachycardia</strong></td><td style="color:#38bdf8;font-weight:700">~25%</td><td>Non-specific systemic response to muscle necrosis — cytokine release plus hypovolemia. Easily and dangerously attributed to "a virus."</td></tr>
+              <tr><td><strong>Oliguria / AKI</strong></td><td style="color:#38bdf8;font-weight:700">~15–50%</td><td>The three-hit mechanism above. The wide range is real: ~15% in unselected medical rhabdomyolysis, but up to half or more in crush injury and in patients presenting late and profoundly dry.</td></tr>
+              <tr><td><strong>Classic triad (all three together)</strong></td><td style="color:#a78bfa;font-weight:700">&lt;10%</td><td>Requires enough muscle loss to cause visible pigmenturia <em>and</em> a patient awake enough to report pain and weakness. Rare — and its rarity is the single most examinable fact in this disease.</td></tr>
+              <tr><td><strong>Compartment syndrome</strong></td><td style="color:#a78bfa;font-weight:700">~4%<br><span style="font-weight:400;font-size:11.5px;color:var(--muted)">(~7% if CK &gt;5,000)</span></td><td>Muscle swells inside an inelastic fascial envelope; pressure exceeds capillary perfusion pressure and the muscle infarcts — which releases more myoglobin, causing more swelling. A vicious cycle that only a knife interrupts. Most common in crush, "found down," and <strong>after aggressive fluid resuscitation</strong> — your treatment can cause it.</td></tr>
+              <tr><td><strong>Cardiac arrhythmia / arrest from hyperkalemia</strong></td><td style="color:#a78bfa;font-weight:700">&lt;10%</td><td>Necrotic muscle is the body's largest potassium reservoir. Release can be abrupt and enormous — and in crush injury it classically occurs at the moment of <strong>reperfusion</strong> (the "smiling death," where the victim is chatting during extrication and arrests as the limb is freed).</td></tr>
+              <tr><td><strong>DIC</strong></td><td style="color:#a78bfa;font-weight:700">~8%</td><td>Necrotic muscle releases thromboplastin and tissue factor, triggering the coagulation cascade. A late and ominous sign; check platelets, INR, fibrinogen and D-dimer if the patient deteriorates.</td></tr>
+            </tbody>
+          </table></div>
+          <p style="font-size:12.5px;color:var(--muted)"><strong>Read these frequencies as approximations.</strong> They vary substantially by aetiology and by cohort — exertional series look very different from crush series — and there is no single authoritative frequency table for this disease. Ranges are synthesised from Bosch, Poch &amp; Grau (<em>NEJM</em> 2009), Chavez et al. (<em>Crit Care</em> 2016) and Torres et al. (<em>Ochsner J</em> 2015). Use them to calibrate suspicion, not to rule anything in or out.</p>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--workup)">
+        <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🖥️</span><h3>Imaging — when it helps, and when it wastes time</h3></div>
+        <div class="m-body">
+          <p><strong>Rhabdomyolysis is a laboratory diagnosis. No imaging is required to make it</strong>, and ordering an MRI to "confirm rhabdo" is a classic intern error that delays fluid. Imaging answers three <em>other</em> questions.</p>
+
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Study</th><th>When to order</th><th>Finding &amp; what it changes</th></tr></thead>
+            <tbody>
+              <tr><td><strong>MRI (STIR / T2-weighted)</strong></td><td>Suspected focal myonecrosis or an unclear cause; recurrent/unexplained rhabdomyolysis; to target a biopsy site.</td><td><strong>Most sensitive test for muscle oedema</strong> — high T2/STIR signal in affected groups. Confirms distribution and can direct biopsy. Rarely changes acute management, so <em>never</em> let it delay fluid resuscitation.</td></tr>
+              <tr><td><strong>CT</strong></td><td>Trauma, or when you need to exclude an alternative/coexisting diagnosis (abscess, haematoma, fracture).</td><td>Low-attenuation oedematous muscle, sometimes with fascial fluid. <strong>Insensitive early</strong> and often normal in the first hours; a normal CT does not exclude rhabdomyolysis.</td></tr>
+              <tr><td><strong>Ultrasound</strong></td><td>Bedside; to assess a swollen limb, or to exclude DVT in a swollen tender leg.</td><td>Non-specific for rhabdomyolysis (may show heterogeneous echotexture). Its real value is <strong>ruling out DVT</strong>, which mimics the swollen painful limb exactly. <strong>Ultrasound cannot exclude compartment syndrome.</strong></td></tr>
+              <tr><td><strong>ECG</strong> <span style="color:var(--danger)">(order first — treat it as imaging of the potassium)</span></td><td><strong>Immediately, on every patient</strong>, and repeated with every significant potassium change.</td><td>Peaked T waves → PR prolongation and P-wave flattening → QRS widening → sine wave → arrest. Also look for the <strong>prolonged QT of concurrent hypocalcemia</strong> — the combination is nearly specific to rhabdomyolysis. The ECG changes faster than the lab result comes back.</td></tr>
+              <tr><td><strong>Compartment pressure measurement</strong></td><td>Any tense, disproportionately painful compartment; pain on passive stretch; an obtunded patient with a swollen limb who cannot report pain.</td><td><strong>Delta pressure = diastolic BP − compartment pressure. ≤30 mmHg → urgent fasciotomy.</strong> This is the one "imaging" number that saves the limb. See the ICU panel.</td></tr>
+            </tbody>
+          </table></div>
+
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_mri__" alt="Coronal STIR MRI showing high-signal muscle oedema">
+              <div class="cap"><strong>Coronal STIR MRI</strong> — the fat-suppressed sequence makes muscle oedema glow white. This is the imaging appearance of acutely injured muscle (here, diabetic myonecrosis, which is radiologically indistinguishable from other causes of myonecrosis). STIR is the most sensitive sequence for identifying which muscle groups are involved.</div>
+              <div class="credit">CC BY-SA 3.0 · Jto410 — <a href="https://commons.wikimedia.org/wiki/File:Diabetic_Myonecrosis_Cor_STIR.JPG" target="_blank">File:Diabetic Myonecrosis Cor STIR.JPG, Wikimedia Commons</a></div>
+            </div>
+            <div class="fig">
+              <img src="__IMG_ecg_combo__" alt="ECG showing combined hyperkalemia and hypocalcemia">
+              <div class="cap"><strong>The rhabdomyolysis ECG.</strong> Combined <strong>hyperkalemia</strong> (tall, narrow, peaked T waves) and <strong>hypocalcemia</strong> (a long ST segment stretching the QT). Hyperkalemia normally <em>shortens</em> the QT — so a peaked T wave sitting on top of a <em>long</em> QT is a near-signature of rhabdomyolysis, where potassium and phosphate pour out of muscle while calcium is simultaneously consumed by it.</div>
+              <div class="credit">CC BY-SA 3.0 · Jer5150 — <a href="https://commons.wikimedia.org/wiki/File:Combined_hyperkalemia_and_hypocalcemia.png" target="_blank">File:Combined hyperkalemia and hypocalcemia.png, Wikimedia Commons</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--monitor)">
+        <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">🧪</span><h3>Reading the labs — what each value is telling you, and what fools it</h3></div>
+        <div class="m-body">
+          <p>This is the heart of the diagnosis. Every abnormal value in rhabdomyolysis has a mechanism — and almost every one has a confounder that can mislead you.</p>
+
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Lab</th><th>Direction</th><th>Why it moves — and what fools it</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Creatine kinase (CK)</strong></td>
+                <td style="color:#f43f5e;font-weight:700">↑↑↑</td>
+                <td><strong>The diagnostic test.</strong> A large cytosolic enzyme released from ruptured myocytes. <strong>Kinetics matter:</strong> begins rising <strong>2–12 h</strong> after injury, peaks at <strong>24–72 h</strong>, then falls with a half-life of ≈36 h (roughly 40%/day).<br><em>What fools it:</em> a CK drawn too early can be near-normal — <strong>repeat it</strong> if suspicion is high. A CK that <strong>plateaus or re-rises instead of falling</strong> means muscle is <em>still dying</em> — think ongoing compartment syndrome, an un-removed drug, or continuing seizure/agitation. CK also rises from cardiac muscle (check CK-MB fraction / troponin if that is the question), from IM injections, needle EMG, and vigorous exercise; and Black patients and muscular individuals have higher baseline CK.</td>
+              </tr>
+              <tr>
+                <td><strong>Urine dipstick "blood"</strong></td>
+                <td style="color:#f43f5e;font-weight:700">Positive</td>
+                <td><strong>Positive dipstick + few/no RBCs on microscopy = myoglobinuria until proven otherwise.</strong> The pad's peroxidase reaction detects the <em>heme</em> moiety and cannot distinguish myoglobin from haemoglobin from intact RBCs.<br><em>What fools it:</em> haemolysis (free haemoglobin) gives the identical picture — check a plasma sample: haemolysis makes plasma <strong>pink</strong>, while myoglobinaemia leaves plasma <strong>clear</strong> (myoglobin is cleared so fast and binds plasma proteins poorly). A <em>negative</em> dipstick never excludes rhabdomyolysis, because myoglobin may already have cleared.</td>
+              </tr>
+              <tr>
+                <td><strong>Potassium</strong></td>
+                <td style="color:#f43f5e;font-weight:700">↑</td>
+                <td><strong>The early killer.</strong> Muscle is the body's largest potassium store; necrosis dumps it into the blood, and a failing kidney cannot excrete it. Concurrent metabolic acidosis drives more K⁺ out of cells.<br><em>What fools it:</em> a haemolysed specimen gives a spuriously high K⁺ — but <strong>never assume haemolysis in a rhabdomyolysis patient</strong>: get an ECG and a repeat/blood-gas potassium <em>simultaneously</em>, do not simply re-draw and wait. Conversely, if the rhabdomyolysis was <em>caused</em> by hypokalemia, the admission K⁺ may be normal or low and then climb alarmingly over the next 24 h.</td>
+              </tr>
+              <tr>
+                <td><strong>Phosphate</strong></td>
+                <td style="color:#f43f5e;font-weight:700">↑</td>
+                <td>Released from myocytes (intracellular phosphate is ~100× extracellular) and retained by the injured kidney. Scores in the McMahon model.<br><em>What fools it:</em> as with potassium, a <em>low</em> phosphate can be the <strong>cause</strong> of the rhabdomyolysis (alcoholism, refeeding) — and then flips high. Do not "correct" a low-normal phosphate aggressively in early rhabdomyolysis; it is about to rise on its own.</td>
+              </tr>
+              <tr>
+                <td><strong>Calcium</strong></td>
+                <td style="color:#38bdf8;font-weight:700">↓ early, ↑ late</td>
+                <td><strong>The biphasic one — and a genuine management trap.</strong> <em>Early:</em> calcium precipitates with the enormous phosphate load and deposits directly into damaged muscle; PTH resistance and low calcitriol contribute. <em>Late (recovery):</em> that deposited calcium is <strong>mobilised back out</strong> of healing muscle, and calcitriol rebounds — producing <strong>hypercalcemia in up to ~20–30% of recovering patients</strong>.<br><em>Implication:</em> giving calcium to an asymptomatic hypocalcemic patient front-loads the later rebound and promotes metastatic calcification. <strong>Treat hypocalcemia only if symptomatic or if it is destabilising a hyperkalemic myocardium.</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Creatinine</strong></td>
+                <td style="color:#f59e0b;font-weight:700">↑</td>
+                <td>AKI — but also <strong>disproportionately elevated for the GFR</strong>, because damaged muscle releases <em>creatine</em>, which is non-enzymatically converted to creatinine. So the creatinine over-states the true renal impairment, and it rises faster than in other causes of AKI.<br><em>Practical consequence:</em> a <strong>BUN:creatinine ratio that looks "low"</strong> (&lt;10:1) despite obvious hypovolemia is characteristic. Don't let a low ratio talk you out of volume depletion.</td>
+              </tr>
+              <tr>
+                <td><strong>Bicarbonate / anion gap</strong></td>
+                <td style="color:#f59e0b;font-weight:700">↓ / ↑</td>
+                <td>Anion-gap metabolic acidosis from released organic acids (lactate, phosphate, sulfate, urate) plus impaired renal acid excretion. A bicarbonate <strong>&lt;19 mEq/L scores in the McMahon model.</strong> Acidosis also worsens hyperkalemia and favours myoglobin cast formation — the acidosis is not merely a marker, it actively feeds the disease.</td>
+              </tr>
+              <tr>
+                <td><strong>Uric acid</strong></td>
+                <td style="color:#f59e0b;font-weight:700">↑</td>
+                <td>Purines released from the nucleic acids of dying myocytes are catabolised to urate; the injured kidney cannot clear it. Contributes an additional crystal-based tubular insult (and can be dramatic — overlapping with tumour lysis physiology).</td>
+              </tr>
+              <tr>
+                <td><strong>AST / ALT</strong></td>
+                <td style="color:#38bdf8;font-weight:700">↑</td>
+                <td><strong>A classic false alarm.</strong> AST and (to a lesser degree) ALT are abundant in skeletal muscle, so they rise from muscle injury with a completely normal liver. AST typically rises more than ALT.<br><em>What fools it:</em> this triggers needless hepatitis work-ups. If the transaminases are up but <strong>GGT and alkaline phosphatase are normal</strong> and the CK is enormous, the muscle is the source — not the liver.</td>
+              </tr>
+              <tr>
+                <td><strong>Serum/urine myoglobin</strong></td>
+                <td style="color:#a78bfa;font-weight:700">↑ then gone</td>
+                <td>The actual nephrotoxin — but a <strong>poor test</strong>, because its half-life is only 2–4 h and it is often undetectable by the time the patient presents. <strong>A negative myoglobin never excludes rhabdomyolysis</strong>, and it should not be used to trend the disease. Use CK to trend; use myoglobin (if at all) only to support an early diagnosis.</td>
+              </tr>
+              <tr>
+                <td><strong>Platelets, INR, fibrinogen, D-dimer</strong></td>
+                <td style="color:#a78bfa;font-weight:700">Check if severe</td>
+                <td>Necrotic muscle releases tissue factor/thromboplastin and can trigger <strong>DIC</strong>. Falling platelets and fibrinogen with a rising INR/D-dimer in a deteriorating rhabdomyolysis patient is a late, ominous complication.</td>
+              </tr>
+            </tbody>
+          </table></div>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 660 300" role="img" aria-label="Time course of myoglobin and CK after muscle injury">
+              <defs>
+                <linearGradient id="rbmyo" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--d-red)" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="var(--d-red)" stop-opacity="0.02"/>
+                </linearGradient>
+              </defs>
+              <!-- axes -->
+              <line x1="60" y1="245" x2="630" y2="245" stroke="var(--d-line)" stroke-width="1.5"/>
+              <line x1="60" y1="30" x2="60" y2="245" stroke="var(--d-line)" stroke-width="1.5"/>
+              <text x="345" y="283" fill="var(--d-muted)" font-size="12" text-anchor="middle">Time from muscle injury</text>
+              <text x="18" y="140" fill="var(--d-muted)" font-size="12" text-anchor="middle" transform="rotate(-90 18 140)">Serum level</text>
+              <!-- x ticks -->
+              <text x="60"  y="263" fill="var(--d-muted)" font-size="11" text-anchor="middle">0</text>
+              <text x="155" y="263" fill="var(--d-muted)" font-size="11" text-anchor="middle">12 h</text>
+              <text x="250" y="263" fill="var(--d-muted)" font-size="11" text-anchor="middle">24 h</text>
+              <text x="440" y="263" fill="var(--d-muted)" font-size="11" text-anchor="middle">72 h</text>
+              <text x="600" y="263" fill="var(--d-muted)" font-size="11" text-anchor="middle">7 d</text>
+              <!-- myoglobin curve: fast up, fast down -->
+              <path d="M60,245 C 90,120 110,60 135,58 C 165,56 185,150 215,205 C 245,240 280,244 320,245 L 320,245 L 60,245 Z" fill="url(#rbmyo)"/>
+              <path d="M60,245 C 90,120 110,60 135,58 C 165,56 185,150 215,205 C 245,240 280,244 320,245" fill="none" stroke="var(--d-red)" stroke-width="2.5"/>
+              <!-- CK curve: slower up, peak 24-72, slow decline -->
+              <path d="M60,245 C 110,235 150,175 215,120 C 280,72 330,68 380,72 C 450,78 520,150 630,205" fill="none" stroke="var(--d-blue)" stroke-width="2.5"/>
+              <!-- peak markers -->
+              <line x1="135" y1="58" x2="135" y2="245" stroke="var(--d-red)" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+              <line x1="380" y1="72" x2="380" y2="245" stroke="var(--d-blue)" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+              <!-- labels -->
+              <circle cx="135" cy="58" r="4" fill="var(--d-red)"/>
+              <text x="142" y="44" fill="var(--d-red)" font-size="12.5" font-weight="700">Myoglobin</text>
+              <text x="142" y="59" fill="var(--d-muted)" font-size="10.5">peaks early · t½ 2–4 h · gone by ~24 h</text>
+              <circle cx="380" cy="72" r="4" fill="var(--d-blue)"/>
+              <text x="392" y="62" fill="var(--d-blue)" font-size="12.5" font-weight="700">Creatine kinase</text>
+              <text x="392" y="77" fill="var(--d-muted)" font-size="10.5">rises 2–12 h · peaks 24–72 h · t½ ≈36 h</text>
+              <!-- the danger window -->
+              <rect x="60" y="30" width="95" height="215" fill="var(--d-red-bg)"/>
+              <text x="107" y="24" fill="var(--d-red)" font-size="10.5" font-weight="700" text-anchor="middle">nephrotoxic window</text>
+              <text x="107" y="180" fill="var(--d-text)" font-size="10.5" text-anchor="middle">TREAT</text>
+              <text x="107" y="194" fill="var(--d-text)" font-size="10.5" text-anchor="middle">HERE</text>
+            </svg>
+            <div class="cap"><strong>Why "wait and see what the CK does" is the wrong instinct.</strong> Myoglobin — the actual nephrotoxin — peaks and clears <em>before</em> CK even reaches its peak. By the time the CK is at its most impressive, the kidney-damaging window has largely passed. Fluid given during the red band prevents AKI; fluid given at the CK peak is treating a marker. Kinetics per the Internet Book of Critical Care and Bosch et al., <em>NEJM</em> 2009.</div>
+          </div>
+
+          <div class="pearl"><span class="lbl"></span><strong>The three lab traps, in one place.</strong> (1) <em>"The AST is up — order a hepatitis panel."</em> No: muscle is full of AST. Check GGT — if it is normal, the liver is innocent. (2) <em>"The potassium is 6.8 but the sample was haemolysed, so I'll re-draw."</em> In rhabdomyolysis the potassium is probably <strong>real</strong>. Get an ECG <em>now</em>, and send a blood gas K⁺ at the same time as the repeat. (3) <em>"The calcium is 6.9 — I'll replace it."</em> Only if symptomatic: that calcium is sitting in the muscle and it is coming back, and replacing it invites rebound hypercalcemia and metastatic calcification.</div>
+        </div>
+      </div>
+    </section>

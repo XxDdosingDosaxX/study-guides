@@ -1,0 +1,180 @@
+    <!-- ===== MY NOTES (shared, per-disease, auto-saved to this browser) ===== -->
+    <section class="sec" id="notes" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:#eab308">Notes</span><h2>My notes</h2></div>
+      <div class="module accent" style="--m:#eab308">
+        <div class="m-head" style="--m:#eab308"><span class="m-ico">&#128221;</span><h3>Personal notes — auto-saved on this device, timestamped</h3></div>
+        <div class="m-body">
+          <textarea id="noteInput" class="note-input" placeholder="Add a note — attending pearls, your own reminders, things to look up..."></textarea>
+          <div style="display:flex;gap:10px;margin-top:8px;align-items:center;flex-wrap:wrap">
+            <button class="note-btn" onclick="addNote()">&#65291; Add note</button>
+            <span style="font-size:11.5px;color:var(--muted)">Saved in this browser only &middot; each note stamped with date &amp; time</span>
+          </div>
+          <div id="noteList" class="note-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REFERENCES (shared) ===== -->
+    <section class="sec refs" id="references">
+      <div class="sec-head"><span class="pill" style="background:#64748b">Refs</span><h2>Sources, trials &amp; media</h2></div>
+
+      <div class="module accent" style="--m:#64748b">
+        <div class="m-head" style="--m:#64748b"><span class="m-ico">📐</span><h3>The evidence base — and the honest state of it</h3></div>
+        <div class="m-body">
+          <div class="decision"><span class="lbl"></span><strong>Read this before you trust any protocol, including this one.</strong> Rhabdomyolysis has <strong>never had a randomised controlled trial of fluid ± bicarbonate ± mannitol</strong>, and there is no Cochrane review. Both GRADE-based society guidelines — <strong>EAST 2022</strong> and <strong>DASAIM/DSIT 2019</strong> — could issue only <strong>conditional/weak recommendations</strong>, on low or very low quality evidence.
+            <p style="margin-top:8px">So bicarbonate and mannitol are <strong>unproven, not disproven</strong> — which is precisely why they refuse to die, and why two attendings will tell you two different things. <strong>But note what the two guidelines agree on, independently: aggressive early IV fluid helps; bicarbonate and mannitol do not.</strong> That convergence is as close to a settled answer as this disease offers.</p>
+            <p style="margin-top:8px"><strong>What is genuinely well-supported: give isotonic fluid, give it early, titrate it to urine output, remove the trigger, and watch the potassium and the limb.</strong> Everything else is contested — and this guide flags the conflicts rather than inventing a consensus that does not exist.</p>
+          </div>
+
+          <h3>Key trials &amp; landmark evidence</h3>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Study</th><th>Year</th><th>Design / n</th><th>Result</th><th>Why it matters</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Bywaters &amp; Beall</strong><br><em>Br Med J</em></td><td>1941</td>
+                <td>Case series — victims of the London Blitz</td>
+                <td>First description of <strong>crush syndrome</strong>: limb compression → dark urine → renal failure → death.</td>
+                <td><strong>The paper that created the disease.</strong> Everything since is a footnote to it.</td>
+              </tr>
+              <tr>
+                <td><strong>Ron et al.</strong><br><em>Arch Intern Med</em></td><td>1984</td>
+                <td>Case series — 7 crush victims, building collapse</td>
+                <td>Early mannitol-alkaline forced diuresis, started <strong>at the scene</strong>: <strong>no patient developed renal failure.</strong></td>
+                <td>Established the doctrine of <strong>very early, aggressive fluid</strong> — the single most durable idea in this disease. (Its <em>mannitol/bicarbonate</em> component is what later evidence undermined; the <em>early fluid</em> component survived.)</td>
+              </tr>
+              <tr>
+                <td><strong>Brown CV, et al.</strong><br><em>J Trauma</em></td><td>2004</td>
+                <td>Retrospective, trauma ICU, <strong>n = 2,083</strong></td>
+                <td>In patients with <strong>CK &gt;5,000 U/L, bicarbonate + mannitol produced NO difference in renal failure, dialysis, or mortality.</strong> Also: CK &gt;5,000 → 19% renal failure vs 8% below.</td>
+                <td><strong>The study that broke the dogma.</strong> Its conclusion — "the standard of administering BIC/MAN… should be reevaluated" — is why most protocols today are fluid-only.</td>
+              </tr>
+              <tr>
+                <td><strong>Sever &amp; Vanholder (ISN RDRTF)</strong><br><em>Nephrol Dial Transplant</em></td><td>2012</td>
+                <td>Consensus recommendations + earthquake registries (&gt;1,200 dialysed)</td>
+                <td>The definitive <strong>crush protocol</strong>: isotonic saline <strong>1 L/h before extrication</strong>; ≤500 mL/h if entrapment &gt;2 h; <strong>3–6 L in the first 6 h</strong>; <strong>avoid potassium-containing fluids</strong>; no NSAIDs; mannitol only after a test dose.</td>
+                <td>The operational manual for the deadliest form of this disease — and the source of the "treat before you extricate" principle.</td>
+              </tr>
+              <tr>
+                <td><strong>McMahon GM, Zeng X, Waikar SS</strong><br><em>JAMA Intern Med</em></td><td>2013</td>
+                <td>Derivation + validation cohort, <strong>n = 2,371</strong> (CPK &gt;5,000)</td>
+                <td>Derived the <strong>McMahon score</strong>. <strong>AUC 0.83.</strong> Score <strong>&lt;5 → 2.3%</strong> risk of death/RRT; <strong>&gt;10 → 61.2%</strong>. NPV <strong>97%</strong> at a cutoff of 5.</td>
+                <td><strong>The only validated risk tool in rhabdomyolysis — and a formal statement that CK is a weak predictor</strong> (CK appears once, worth 2 points, and only above 40,000; <em>aetiology</em> is worth 3).</td>
+              </tr>
+              <tr>
+                <td><strong>Scharman &amp; Troutman</strong><br><em>Ann Pharmacother</em></td><td>2013</td>
+                <td>Systematic review, 27 studies</td>
+                <td><strong>Fluid within 6 h; urine output ≥300 mL/h for ≥24 h.</strong> Bicarbonate <strong>only</strong> to correct a systemic acidosis; mannitol <strong>only</strong> if urine output stays &lt;300 mL/h despite adequate fluid. <strong>8 studies showed delayed fluid → more AKI.</strong></td>
+                <td>The cleanest synthesis of the fluid literature, and the source of the "within 6 hours" target.</td>
+              </tr>
+              <tr>
+                <td><strong>Simpson JP, et al.</strong><br><em>J Intensive Care Soc</em> (10-yr cohort)</td><td>2016</td>
+                <td>External validation, <strong>n = 232</strong></td>
+                <td><strong>McMahon ≥6</strong> predicted RRT with <strong>sensitivity 86% / specificity 68%</strong> — <strong>beating peak CK ≥5,000</strong> (83% / 55%).</td>
+                <td>Validated the score against the number everyone actually quotes on rounds — and the score won.</td>
+              </tr>
+              <tr>
+                <td><strong>Chavez LO, et al.</strong><br><em>Crit Care</em></td><td>2016</td>
+                <td>Systematic review</td>
+                <td>No RCTs exist comparing fluid alone vs fluid + bicarbonate/mannitol. <strong>Avoid calcium for asymptomatic hypocalcemia.</strong> CRRT improves myoglobin clearance but <strong>mortality is unchanged.</strong></td>
+                <td>The source of the "don't give calcium" and "don't dialyse the myoglobin" rules.</td>
+              </tr>
+              <tr>
+                <td><strong>Nelson DA, et al.</strong><br><em>NEJM</em></td><td>2016</td>
+                <td>Cohort, <strong>n = 47,944</strong> US Army soldiers</td>
+                <td><strong>Sickle cell trait raised rhabdomyolysis risk (HR 1.54, 95% CI 1.12–2.12) — but mortality was NO different (HR 0.99).</strong></td>
+                <td>Confirms sickle cell trait as a real risk factor <em>and</em> argues against screening-and-exclusion policies. Counsel and mitigate; don't disqualify.</td>
+              </tr>
+              <tr>
+                <td><strong>Michelsen J, et al. (DASAIM/DSIT)</strong><br><em>Acta Anaesthesiol Scand</em></td><td>2019</td>
+                <td><strong>GRADE clinical practice guideline</strong></td>
+                <td><strong>FOR early (rather than late) fluid; crystalloid over colloid. AGAINST routine mannitol, loop diuretics, sodium bicarbonate, alkalinisation, and routine RRT.</strong> All eight recommendations <strong>weak</strong>; evidence low/very low.</td>
+                <td>The GRADE-based Scandinavian guideline on preventing rhabdomyolysis-induced AKI. <strong>It contradicts a lot of what is still taught.</strong></td>
+              </tr>
+              <tr style="background:rgba(52,211,153,.07)">
+                <td><strong>EAST practice management guideline</strong><br><em>Am J Surg</em></td><td>2022</td>
+                <td><strong>GRADE clinical practice guideline</strong> (Eastern Association for the Surgery of Trauma; 12 studies)</td>
+                <td>Conditionally <strong>FOR aggressive IV fluid resuscitation</strong> — it <strong>reduced acute renal failure and the need for dialysis.</strong> Conditionally <strong>AGAINST bicarbonate</strong> and conditionally <strong>AGAINST mannitol</strong> — neither improved renal failure or dialysis rates.</td>
+                <td><strong>The North American society guideline — and the single most useful citation in this topic.</strong> Written independently, on a different literature set, from a different continent, it reaches <strong>exactly the same conclusions as DASAIM/DSIT 2019.</strong> When two GRADE panels converge like this, you can stop arguing: <strong>fluid yes, bicarbonate and mannitol no.</strong></td>
+              </tr>
+              <tr>
+                <td><strong>ACSM Clinical Practice Guidelines for Exertional Rhabdomyolysis</strong><br><em>Curr Sports Med Rep</em></td><td>2021</td>
+                <td>Clinical practice guideline (military medicine perspective)</td>
+                <td>Staged <strong>4-phase return to activity</strong>: minimum <strong>72 h rest</strong>; advance only when <strong>CK &lt;5× ULN, urinalysis normal, and asymptomatic.</strong></td>
+                <td>The operational answer to "when can I train again?" — the question every exertional case will ask you.</td>
+              </tr>
+              <tr>
+                <td><strong>French multicentre ICU cohort</strong><br><em>Ann Intensive Care</em></td><td>2020</td>
+                <td>Retrospective, severe rhabdomyolysis in ICU, <strong>n = 387</strong></td>
+                <td><strong>81.4% developed AKI; 44.1% KDIGO Stage 3; 26.6% needed RRT.</strong> Severe AKI correlated with admission <strong>phosphate, potassium, bicarbonate</strong> and <strong>myoglobin — but NOT with CK.</strong></td>
+                <td>Quantifies just how bad ICU-grade rhabdomyolysis is — and lands the central lesson again: <strong>the CK is not the risk.</strong></td>
+              </tr>
+              <tr>
+                <td><strong>"Urinalysis is an inadequate screen for rhabdomyolysis"</strong><br><em>Am J Emerg Med</em></td><td>2014</td>
+                <td>Diagnostic accuracy study</td>
+                <td>Heme-positive dipstick with no RBCs: <strong>sensitivity only 41%</strong> (and only 55% even when CK ≥10,000).</td>
+                <td><strong>A negative dipstick does NOT rule out rhabdomyolysis.</strong> The classic teaching is a good <em>rule-in</em> sign and a terrible <em>rule-out</em> test. Send a CK.</td>
+              </tr>
+              <tr>
+                <td><strong>CLEAR Outcomes (bempedoic acid)</strong><br><em>NEJM</em></td><td>2023</td>
+                <td>RCT, statin-intolerant patients</td>
+                <td>Bempedoic acid <strong>reduced major cardiovascular events</strong> in patients unable or unwilling to take statins.</td>
+                <td>The outcome evidence behind the non-statin arm of the SAMS ladder — and mechanistically elegant, because bempedoic acid is a prodrug activated only in liver, <strong>not in muscle.</strong></td>
+              </tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <h3>Guidelines &amp; primary sources</h3>
+      <ul>
+        <li><strong>EAST 2022 (the North American guideline)</strong> — <em>Management of rhabdomyolysis: A practice management guideline from the Eastern Association for the Surgery of Trauma.</em> Am J Surg. 2022;224(1 Pt A):196–204. <a href="https://pubmed.ncbi.nlm.nih.gov/34836603/" target="_blank">PubMed 34836603</a> · <a href="https://www.east.org/education-resources/practice-management-guidelines/details/management-of-rhabdomyolysis" target="_blank">EAST guideline page</a></li>
+        <li><strong>DASAIM/DSIT 2019 (the Scandinavian guideline)</strong> — Michelsen J, Cordtz J, Liboriussen L, et al. <em>Prevention of rhabdomyolysis-induced acute kidney injury — A DASAIM/DSIT clinical practice guideline.</em> Acta Anaesthesiol Scand. 2019;63(5):576–586. <a href="https://pubmed.ncbi.nlm.nih.gov/30644084/" target="_blank">PubMed 30644084</a></li>
+        <li><strong>ISN Renal Disaster Relief Task Force — crush syndrome</strong> — Sever MS, Vanholder R, et al. <em>Recommendation for the management of crush victims in mass disasters.</em> Nephrol Dial Transplant. 2012;27(Suppl 1):i1–i67. <a href="https://pubmed.ncbi.nlm.nih.gov/22467763/" target="_blank">PubMed 22467763</a> · <a href="https://www.era-online.org/wp-content/uploads/2024/11/4-Crush-recommendations-field-version.pdf" target="_blank">Short field version (PDF)</a></li>
+        <li><strong>McMahon risk score (primary derivation)</strong> — McMahon GM, Zeng X, Waikar SS. <em>A risk prediction score for kidney failure or mortality in rhabdomyolysis.</em> JAMA Intern Med. 2013;173(19):1821–8. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5152583/" target="_blank">PMC5152583</a> · calculator points cross-checked against <a href="https://www.mdcalc.com/calc/4017/mcmahon-score-rhabdomyolysis" target="_blank">MDCalc</a></li>
+        <li><strong>Brown CV, Rhee P, Chan L, et al.</strong> <em>Preventing renal failure in patients with rhabdomyolysis: do bicarbonate and mannitol make a difference?</em> J Trauma. 2004;56(6):1191–6. <a href="https://pubmed.ncbi.nlm.nih.gov/15211124/" target="_blank">PubMed 15211124</a></li>
+        <li><strong>Bosch X, Poch E, Grau JM.</strong> <em>Rhabdomyolysis and acute kidney injury.</em> N Engl J Med. 2009;361(1):62–72. — the classic review. <a href="https://pubmed.ncbi.nlm.nih.gov/19571284/" target="_blank">PubMed 19571284</a></li>
+        <li><strong>Chavez LO, Leon M, Einav S, Varon J.</strong> <em>Beyond muscle destruction: a systematic review of rhabdomyolysis for clinical practice.</em> Crit Care. 2016;20(1):135. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4908773/" target="_blank">PMC4908773</a></li>
+        <li><strong>Scharman EJ, Troutman WG.</strong> <em>Prevention of kidney injury following rhabdomyolysis: a systematic review.</em> Ann Pharmacother. 2013;47(1):90–105. <a href="https://www.ncbi.nlm.nih.gov/books/NBK133144/" target="_blank">NCBI Bookshelf</a></li>
+        <li><strong>Exertional rhabdomyolysis / return to play</strong> — <em>Clinical Practice Guidelines for Exertional Rhabdomyolysis: A Military Medicine Perspective.</em> Curr Sports Med Rep (ACSM). 2021;20(3):169–178. <a href="https://pubmed.ncbi.nlm.nih.gov/33655999/" target="_blank">PubMed 33655999</a></li>
+        <li><strong>Statin-associated muscle symptoms</strong> — Cheeley MK, et al. <em>NLA scientific statement on statin intolerance.</em> J Clin Lipidol. 2022. <a href="https://www.lipidjournal.com/article/S1933-2874(22)00245-8/fulltext" target="_blank">Journal of Clinical Lipidology</a></li>
+        <li><strong>Statin dosing &amp; intensity</strong> — Grundy SM, et al. <em>2018 AHA/ACC/Multisociety Guideline on the Management of Blood Cholesterol.</em> <a href="https://www.ahajournals.org/doi/10.1161/CIR.0000000000000625" target="_blank">Circulation</a></li>
+        <li><strong>KDIGO 2012 Clinical Practice Guideline for Acute Kidney Injury</strong> (still the current AKI standard). <a href="https://kdigo.org/guidelines/acute-kidney-injury/" target="_blank">kdigo.org</a></li>
+        <li><strong>Acute compartment syndrome / delta pressure</strong> — AAOS Clinical Practice Guideline; McQueen &amp; Court-Brown. <a href="https://www.ncbi.nlm.nih.gov/books/NBK448124/" target="_blank">StatPearls: Acute Compartment Syndrome</a></li>
+        <li><strong>Malignant hyperthermia crisis protocol</strong> — MHAUS. <a href="https://www.mhaus.org/healthcare-professionals/managing-a-crisis/" target="_blank">mhaus.org — Managing a Crisis</a></li>
+        <li><strong>Internet Book of Critical Care — Rhabdomyolysis</strong> (Farkas). <a href="https://emcrit.org/ibcc/rhabdo/" target="_blank">emcrit.org/ibcc/rhabdo</a></li>
+        <li><strong>USPSTF A &amp; B Recommendations</strong>. <a href="https://www.uspreventiveservicestaskforce.org/uspstf/topic_search_results?topic_status=P" target="_blank">uspreventiveservicestaskforce.org</a></li>
+        <li><strong>StatPearls — Rhabdomyolysis</strong>. <a href="https://www.ncbi.nlm.nih.gov/books/NBK448168/" target="_blank">NCBI Bookshelf NBK448168</a></li>
+      </ul>
+
+      <h3>Watch on Osmosis</h3>
+      <ul>
+        <li><a href="https://www.osmosis.org/learn/Rhabdomyolysis" target="_blank">Rhabdomyolysis — pathology &amp; clinical reasoning</a></li>
+        <li><a href="https://www.osmosis.org/learn/Acute_kidney_injury" target="_blank">Acute kidney injury</a></li>
+        <li><a href="https://www.osmosis.org/learn/Hyperkalemia" target="_blank">Hyperkalemia</a></li>
+        <li><a href="https://www.osmosis.org/learn/Compartment_syndrome" target="_blank">Compartment syndrome</a></li>
+        <li><a href="https://www.osmosis.org/learn/Statins" target="_blank">Statins — mechanism &amp; adverse effects</a></li>
+        <li style="color:var(--muted)">Login is on the 🔑 button in the app bar (click to copy the password).</li>
+      </ul>
+
+      <h3>Image credits</h3>
+      <p style="font-size:12.5px;color:var(--muted)">All images are real, Creative-Commons or public-domain licensed, and embedded from Wikimedia Commons. No AI-generated anatomy is used anywhere in this guide.</p>
+      <ul>
+        <li>Tea-coloured urine of myoglobinuria — CC BY-SA 3.0, <strong>James Heilman, MD</strong> · <a href="https://commons.wikimedia.org/wiki/File:RhabdoUrine.JPG" target="_blank">File:RhabdoUrine.JPG</a></li>
+        <li>Skeletal muscle structure — Public domain (SEER/NCI) · <a href="https://commons.wikimedia.org/wiki/File:Skeletal_muscle_and_fiber.jpg" target="_blank">File:Skeletal muscle and fiber.jpg</a></li>
+        <li>Muscle biopsy, necrotic &amp; regenerating fibres — CC BY 4.0, <strong>Lasa-Elgarresta J, et al.</strong> · <a href="https://commons.wikimedia.org/wiki/File:Calpainopathy_Muscle_Biopsy.png" target="_blank">File:Calpainopathy Muscle Biopsy.png</a></li>
+        <li>Urine dipstick — CC BY-SA 4.0, <strong>Spicy</strong> · <a href="https://commons.wikimedia.org/wiki/File:Dipstick_urinalysis.jpg" target="_blank">File:Dipstick urinalysis.jpg</a></li>
+        <li>Coronal STIR MRI, muscle oedema — CC BY-SA 3.0, <strong>Jto410</strong> · <a href="https://commons.wikimedia.org/wiki/File:Diabetic_Myonecrosis_Cor_STIR.JPG" target="_blank">File:Diabetic Myonecrosis Cor STIR.JPG</a></li>
+        <li>ECG — combined hyperkalemia &amp; hypocalcemia — CC BY-SA 3.0, <strong>Jer5150</strong> · <a href="https://commons.wikimedia.org/wiki/File:Combined_hyperkalemia_and_hypocalcemia.png" target="_blank">File:Combined hyperkalemia and hypocalcemia.png</a></li>
+        <li>ECG — hyperkalemia with peaked T waves — CC BY 4.0, <strong>Agbayani MJF &amp; Sy E</strong> · <a href="https://commons.wikimedia.org/wiki/File:Hyperkalemia_ECG.jpg" target="_blank">File:Hyperkalemia ECG.jpg</a></li>
+        <li>Acute compartment &amp; crush syndrome — CC BY-SA 4.0, <strong>Dr. Vijaya chandar</strong> · <a href="https://commons.wikimedia.org/wiki/File:Acute_compartment_and_crush_syndrome.jpg" target="_blank">File:Acute compartment and crush syndrome.jpg</a></li>
+        <li>Fasciotomy of the leg — CC BY-SA 3.0, <strong>Sarte</strong> · <a href="https://commons.wikimedia.org/wiki/File:Fasciotomy_leg.jpg" target="_blank">File:Fasciotomy leg.jpg</a></li>
+        <li>Crush syndrome — CC BY-SA 4.0, <strong>AfroBrazilian</strong> · <a href="https://commons.wikimedia.org/wiki/File:Crush_syndrome_01.JPG" target="_blank">File:Crush syndrome 01.JPG</a></li>
+        <li>Haemodialysis — CC0, <strong>Anna Frodesiak</strong> · <a href="https://commons.wikimedia.org/wiki/File:Patient_receiving_dialysis_03.jpg" target="_blank">File:Patient receiving dialysis 03.jpg</a></li>
+        <li>Statin-associated myopathy algorithm — Public domain, <strong>Selva-O'Callaghan A, et al.</strong> · <a href="https://commons.wikimedia.org/wiki/File:Algorithm_for_statin-associated_myopathy.jpg" target="_blank">File:Algorithm for statin-associated myopathy.jpg</a></li>
+        <li>Mechanism &amp; management flowcharts — generated with Mermaid for this guide (rendered in both light and dark themes).</li>
+      </ul>
+
+      <p style="font-size:12px;color:var(--muted);margin-top:18px;padding-top:12px;border-top:1px solid var(--border)">
+        <strong>Educational use only.</strong> This is a study reference, not a protocol. Doses and thresholds are cited to the sources above and were current at the time of writing — always verify against your own institution's guidance and the current primary literature before acting on them. Rhabdomyolysis in particular has a thin evidence base and genuinely contested management; where sources conflict, this guide states both positions rather than inventing a consensus that does not exist.
+      </p>
+    </section>

@@ -1,0 +1,422 @@
+    <!-- ============================================================
+         WARDS CONTEXT PANEL
+         ============================================================ -->
+    <div class="ctx-panel" data-context="wards">
+      <div class="context-band">🛏️ Wards — fluid resuscitation, electrolytes &amp; daily surveillance</div>
+
+      <section class="sec" id="w-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>Who to admit</h2></div>
+        <div class="module accent" style="--m:var(--assess)">
+          <div class="m-head" style="--m:var(--assess)"><span class="m-ico">📋</span><h3>Admission criteria — the numbers</h3></div>
+          <div class="m-body">
+            <p>There is no validated admission rule for rhabdomyolysis. What follows is the pragmatic synthesis used in practice, anchored to the risk factors that the McMahon model and the crush literature actually identified.</p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Admit if…</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td><strong>CK &gt;5,000 U/L</strong> (and essentially always if &gt;15,000)</td><td>Meaningfully raised AKI risk; needs IV fluid and serial chemistry. The UAB trauma protocol triggers formal treatment at <strong>CK &gt;10,000</strong>; most physicians admit and hydrate above 5,000.</td></tr>
+                <tr><td><strong>McMahon score ≥6</strong></td><td>Not low risk for death or dialysis — even if the CK looks unimpressive. <em>This is the single best admission discriminator you have.</em></td></tr>
+                <tr><td><strong>Any AKI</strong> — creatinine ≥1.5× baseline or ≥0.3 mg/dL rise (KDIGO ≥Stage 1)</td><td>The kidney is already injured; the therapeutic window is closing.</td></tr>
+                <tr><td><strong>K⁺ ≥5.5 mEq/L</strong>, or any hyperkalemic ECG change</td><td>The early killer. Needs monitored treatment and serial potassiums.</td></tr>
+                <tr><td><strong>Bicarbonate &lt;19 mEq/L</strong>, phosphate &gt;5.4 mg/dL, or calcium &lt;7.5 mg/dL</td><td>All three are McMahon variables — each marks a sicker patient.</td></tr>
+                <tr><td><strong>Crush injury, entrapment, or a prolonged "long lie"</strong></td><td>Highest-risk aetiology. These patients look deceptively well and then crash <strong>at reperfusion</strong>. Admit regardless of the initial CK.</td></tr>
+                <tr><td><strong>Oliguria, or dark urine that has not cleared</strong></td><td>Ongoing myoglobin load with inadequate flow.</td></tr>
+                <tr><td><strong>A trigger you cannot switch off</strong> — ongoing seizures, agitation, hyperthermia, sepsis, ischaemic limb</td><td>Muscle is still dying. Fluid alone will not keep pace.</td></tr>
+                <tr><td><strong>Significant comorbidity</strong> — CKD, heart failure, cirrhosis, age &gt;65</td><td>Less reserve, and the treatment itself (litres of fluid) is hazardous. These patients need supervised resuscitation.</td></tr>
+                <tr><td><strong>Cannot drink, or unreliable for follow-up</strong></td><td>Oral hydration is not a plan if it will not happen.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h3>Stage the kidney while you are at it — KDIGO AKI</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Stage</th><th>Creatinine criterion</th><th>Urine output criterion</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1</strong></td><td>1.5–1.9× baseline, <em>or</em> ≥0.3 mg/dL increase</td><td>&lt;0.5 mL/kg/h for 6–12 h</td></tr>
+                <tr><td><strong>2</strong></td><td>2.0–2.9× baseline</td><td>&lt;0.5 mL/kg/h for ≥12 h</td></tr>
+                <tr><td><strong>3</strong></td><td>≥3.0× baseline, <em>or</em> ≥4.0 mg/dL, <em>or</em> RRT started</td><td>&lt;0.3 mL/kg/h for ≥24 h, <em>or</em> anuria ≥12 h</td></tr>
+              </tbody>
+            </table></div>
+            <p style="font-size:12.5px;color:var(--muted)">KDIGO 2012 AKI staging (still the current standard). Stage by <strong>whichever criterion is worse</strong>. Remember the rhabdomyolysis caveat: creatinine over-reads the injury here, because damaged muscle releases creatine that converts to creatinine — so track the <strong>trend and the urine output</strong>, not a single number.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-orders">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Orders</span><h2>Admission order set</h2></div>
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>What to order the moment they hit the floor</h3></div>
+          <div class="m-body">
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">ECG — now</span><span class="ord-when"><strong>Before the potassium comes back.</strong> Then continuous cardiac monitoring if K⁺ ≥5.5 or if there is any ECG change. Repeat with every significant potassium change.</span><span class="ord-tag">STAT</span></div>
+              <div class="order-row"><span class="ord-name">IV isotonic crystalloid</span><span class="ord-when"><strong>The single most important order. Start it before the workup is complete.</strong> See the fluid table below for agent, rate and titration.</span><span class="ord-tag">STAT</span></div>
+              <div class="order-row"><span class="ord-name">CK</span><span class="ord-when"><strong>q6–12 h until it peaks and is clearly falling</strong>, then daily. A CK that plateaus or re-rises = muscle is still dying → hunt for compartment syndrome or an un-removed trigger.</span><span class="ord-tag">Serial</span></div>
+              <div class="order-row"><span class="ord-name">BMP (K⁺, Cr, HCO₃⁻) + calcium + phosphate + magnesium</span><span class="ord-when"><strong>q6–12 h initially</strong> while the potassium is moving — more often if K⁺ is high or the patient is being actively treated. Then daily once stable.</span><span class="ord-tag">Serial</span></div>
+              <div class="order-row"><span class="ord-name">Strict intake/output + daily weight</span><span class="ord-when"><strong>Non-negotiable — this is how you titrate the entire treatment.</strong> Hourly urine output initially. Consider a urinary catheter if you cannot get accurate hourly volumes (the ISN crush guidance explicitly recommends one).</span><span class="ord-tag">Continuous</span></div>
+              <div class="order-row"><span class="ord-name">Urinalysis with microscopy + urine pH</span><span class="ord-when">On admission. Heme-positive dipstick with no RBCs = myoglobinuria. Urine pH is your guide if you elect to alkalinise.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">VBG / ABG with lactate</span><span class="ord-when">If unwell, acidotic, or hyperkalemic. Gives you a <strong>fast potassium</strong> alongside the acid–base picture — far quicker than waiting for the lab.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Uric acid, LDH, AST/ALT</span><span class="ord-when">Baseline. Anticipate the AST/ALT rise so nobody chases a phantom hepatitis.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">CBC, INR/PTT, fibrinogen, D-dimer</span><span class="ord-when">Baseline; repeat if the patient deteriorates — <strong>DIC</strong> is a real complication of extensive myonecrosis.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Serial limb / compartment examination</span><span class="ord-when"><strong>Document it every shift, and after every large fluid bolus.</strong> Fluid resuscitation makes injured muscle swell — compartment syndrome frequently declares itself on day 1–2 of <em>successful</em> treatment. Escalate immediately for a tense compartment, pain on passive stretch, or new paraesthesiae.</span><span class="ord-tag">q shift</span></div>
+              <div class="order-row"><span class="ord-name">Medication reconciliation — STOP the offender</span><span class="ord-when"><strong>Hold the statin. Hold NSAIDs. Hold all nephrotoxins</strong> (aminoglycosides, contrast, ACE-I/ARB while volume-depleted). Review for the interacting drug that caused this.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Treat the trigger</span><span class="ord-when">Benzodiazepines for seizures/withdrawal/agitation; <strong>active cooling</strong> for hyperthermia; antibiotics for sepsis; <strong>dantrolene</strong> for malignant hyperthermia or NMS; cyproheptadine for serotonin syndrome; reposition and offload pressure areas.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Nephrology consult</span><span class="ord-when"><strong>Early</strong> if: AKI ≥ KDIGO Stage 2, K⁺ refractory to medical therapy, oliguria despite adequate resuscitation, or (per the UAB protocol) CK remains elevated and total fluid exceeds <strong>3 L in 24 h without response</strong>.</span><span class="ord-tag">If indicated</span></div>
+              <div class="order-row"><span class="ord-name">Surgery / orthopaedics consult</span><span class="ord-when"><strong>Immediately</strong> for any suspicion of compartment syndrome. Do not "watch it overnight."</span><span class="ord-tag">If indicated</span></div>
+              <div class="order-row"><span class="ord-name">VTE prophylaxis</span><span class="ord-when">These patients are immobile and pro-thrombotic. Use pharmacological prophylaxis unless actively bleeding or DIC — then mechanical.</span><span class="ord-tag">Admit</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-manage">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Acute management — the whole algorithm</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">💧</span><h3>Fluid, subtraction, surveillance</h3></div>
+          <div class="m-body">
+            <div class="svg-wrap">
+              <div class="dia dia-dark">__SVG_mgmtdark__</div>
+              <div class="dia dia-light">__SVG_mgmtlight__</div>
+              <div class="cap">The rhabdomyolysis algorithm end-to-end. Note that the CK number routes the patient, but the McMahon score rescues the middle band (CK 1,000–5,000) from being under-treated — and that compartment syndrome is a parallel track you must check <em>continuously</em>, not once.</div>
+            </div>
+
+            <div class="ladder">
+              <div class="rung first open"><div class="r-head" onclick="toggleRung(this)"><span class="step">1</span><div><div class="r-title">Fluid — early, isotonic, and titrated to urine output</div><div class="r-sub">The only therapy with a real effect size</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <div class="why"><span class="lbl"></span>Fluid attacks two of the three mechanisms of AKI at once: it <strong>refills the intravascular space</strong> the muscle stole (reversing renal vasoconstriction) and it <strong>generates a torrent of dilute urine</strong> that keeps myoglobin below its precipitation threshold and physically flushes casts out of the tubules. Nothing else in this disease does that.</div>
+                  <p><strong>Timing is the whole ballgame.</strong> The Israeli crush-injury experience (Better &amp; Abassi) established that fluid started <em>at the scene — even before extrication —</em> prevents AKI, while fluid started after the patient reaches hospital largely does not. The DASAIM/DSIT guideline formalises this as its first recommendation: <strong>early rather than late fluid resuscitation</strong> (weak recommendation, very low quality evidence — because nobody has ever randomised a crush victim, and nobody will).</p>
+                  <p><strong>Targets:</strong></p>
+                  <ul>
+                    <li><strong>Urine output 200–300 mL/h</strong> (the crush-syndrome target), <em>or</em> <strong>1–2 mL/kg/h</strong> (the UAB trauma protocol's target). Both are roughly 2–3× a normal urine output — that is the point.</li>
+                    <li>Expect to give <strong>large volumes</strong>: the ISN crush target is <strong>3–6 L of isotonic saline within the first 6 hours</strong> of contact, and daily totals of 6–12 L are described in severe crush. <strong>Non-crush rhabdomyolysis usually needs far less.</strong></li>
+                    <li><strong>Continue until the CK is reliably down-trending</strong> and the urine has cleared. Do <em>not</em> chase the CK to normal — that takes many days, and by then the myoglobin is long gone.</li>
+                  </ul>
+                  <div class="redflag"><span class="lbl"></span><strong>The counter-error is real and it kills too.</strong> "Go big or go home" is not a licence to drown people. Blind, protocolised high-rate fluid in an oliguric patient — especially one with CKD or heart failure — produces pulmonary oedema and compartment syndrome. <strong>Fluid is titrated to a measured urine output, reassessed at least hourly at first.</strong> If the patient is not making urine despite adequate resuscitation, the answer is <em>not</em> more fluid — it is nephrology and dialysis.</div>
+                </div>
+              </div>
+
+              <div class="rung first"><div class="r-head" onclick="toggleRung(this)"><span class="step">2</span><div><div class="r-title">Kill the trigger</div><div class="r-sub">Fluid downstream cannot outrun muscle that is still dying</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Trigger</th><th>What to do</th><th>Why</th></tr></thead>
+                    <tbody>
+                      <tr><td>Compartment syndrome</td><td><strong>Fasciotomy — surgical emergency</strong></td><td class="why">Muscle above perfusion pressure is muscle that is still infarcting. The one truly time-critical intervention.</td></tr>
+                      <tr><td>Drug / statin</td><td>Stop it. Stop the interacting drug too.</td><td class="why">Removes the ongoing myotoxic exposure.</td></tr>
+                      <tr><td>Seizure / status epilepticus</td><td>Benzodiazepine, then antiseizure medication</td><td class="why">Every ongoing convulsion is ongoing exertional muscle destruction.</td></tr>
+                      <tr><td>Agitation / psychosis / withdrawal</td><td>Benzodiazepines; sedation as needed</td><td class="why">Same — sustained maximal contraction burns ATP and kills myocytes.</td></tr>
+                      <tr><td>Hyperthermia (heat stroke, NMS, serotonin syndrome, MH)</td><td><strong>Active cooling</strong> + the specific antidote: <strong>dantrolene</strong> (MH, and used in NMS), <strong>cyproheptadine</strong> (serotonin syndrome), stop the offending agent</td><td class="why">Heat itself denatures myocyte proteins and uncouples mitochondria. Cooling is the treatment; the antidote stops the ongoing contraction.</td></tr>
+                      <tr><td>Immobility / pressure</td><td>Turn and offload every 2 h; pressure-relieving surfaces</td><td class="why">Prevents further pressure myonecrosis in a patient who cannot move themselves.</td></tr>
+                      <tr><td>Sepsis / infection</td><td>Source control + antibiotics</td><td class="why">Removes the driver (and rhabdo may be the presenting sign of influenza or Legionella).</td></tr>
+                      <tr><td>Hypokalemia / hypophosphatemia (as <em>cause</em>)</td><td>Replete — carefully, and recheck</td><td class="why">They caused the rhabdo; but they will <strong>flip high</strong> as muscle lyses. Replace with a light hand and re-measure.</td></tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </div>
+
+              <div class="rung second"><div class="r-head" onclick="toggleRung(this)"><span class="step">3</span><div><div class="r-title">Treat the electrolyte emergencies</div><div class="r-sub">Hyperkalemia first — it is what kills in the first hours</div></div><span class="chev">▾</span></div>
+                <div class="r-body"><p>See the dedicated electrolyte section below. In brief: <strong>hyperkalemia is treated aggressively; hypocalcemia is usually NOT treated at all.</strong></p></div>
+              </div>
+
+              <div class="rung third"><div class="r-head" onclick="toggleRung(this)"><span class="step">4</span><div><div class="r-title">Escalate — dialysis and the ICU</div><div class="r-sub">On standard AKI indications, not on the CK</div></div><span class="chev">▾</span></div>
+                <div class="r-body"><p>See "When to call the ICU" below and the ICU panel. The key concept: <strong>you never dialyse someone because their CK is high.</strong></p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-fluids">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Fluids — pick the agent, the rate, and the endpoint</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">💉</span><h3>The full fluid ladder — start → titrate → target → stop</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Fluid</th><th>Start → titration → target/max</th><th>Why it works</th><th>Watch for / alternative</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>0.9% saline<br><span style="font-weight:400;color:var(--muted);font-size:12px">(isotonic saline)</span></td>
+                  <td><strong>Start:</strong> crush/severe — <strong>1,000 mL/h</strong> in adults (children 15–20 mL/kg), started <em>before extrication</em> if possible.<br><strong>Titrate:</strong> if extrication takes &gt;2 h, <strong>reduce to ≤500 mL/h</strong>. After extrication continue ~1,000 mL/h.<br><strong>Target:</strong> <strong>3–6 L in the first 6 h</strong> of contact; then titrate to <strong>urine output 200–300 mL/h</strong> (or 1–2 mL/kg/h).<br><strong>Stop/step down:</strong> when CK is reliably falling and urine has cleared — or immediately if the patient is oliguric and becoming overloaded.</td>
+                  <td class="why">Restores intravascular volume, reverses renal afferent vasoconstriction, and drives the high urine flow that dilutes myoglobin and washes out casts. <strong>The ISN crush guideline's preferred solution</strong> — precisely because it contains <strong>no potassium.</strong></td>
+                  <td class="alt"><strong>Large volumes cause hyperchloremic metabolic acidosis</strong> — which <em>acidifies the urine</em>, the exact opposite of what you want for myoglobin solubility. Watch the chloride and the bicarbonate; consider switching to a balanced fluid once the potassium is known to be safe.</td>
+                </tr>
+                <tr>
+                  <td>Lactated Ringer's<br>/ Plasma-Lyte<br><span style="font-weight:400;color:var(--muted);font-size:12px">(balanced crystalloid)</span></td>
+                  <td><strong>Start / titrate / target:</strong> as for saline above — the rates are the same; only the solute differs.</td>
+                  <td class="why">Avoids hyperchloremic acidosis; its lactate/acetate is metabolised to <strong>bicarbonate</strong>, which mildly alkalinises the urine — theoretically helpful for keeping myoglobin soluble. Favoured by many critical-care sources for <strong>non-crush</strong> rhabdomyolysis.</td>
+                  <td class="alt"><strong>⚠ It contains ~4 mmol/L of potassium.</strong> The ISN crush recommendations say to <strong>avoid potassium-containing solutions</strong> in crush victims. <strong>Resolve the conflict this way:</strong> if the patient is hyperkalemic, anuric, or a crush victim → <strong>0.9% saline</strong>. If potassium is normal and the kidneys are making urine → balanced crystalloid is reasonable and arguably better.</td>
+                </tr>
+                <tr>
+                  <td>Isotonic sodium bicarbonate<br><span style="font-weight:400;color:var(--muted);font-size:12px">(e.g. 150 mEq NaHCO₃ in 1 L D5W)</span></td>
+                  <td><strong>Start:</strong> only in selected patients (see below). Substitute for part of the crystalloid.<br><strong>Titrate to:</strong> <strong>urine pH &gt;6.5.</strong><br><strong>STOP if:</strong> urine pH does not rise after ~4 h; <strong>serum pH &gt;7.5</strong> or serum bicarbonate &gt;30; or <strong>symptomatic hypocalcemia develops.</strong></td>
+                  <td class="why">Alkaline urine keeps myoglobin soluble (less Tamm-Horsfall co-precipitation) and blunts heme-driven free-radical chemistry — hitting mechanisms #2 and #3. Also treats the metabolic acidosis and helps shift potassium.</td>
+                  <td class="alt"><strong>The theory is beautiful; the evidence is not.</strong> <strong>Brown (J Trauma 2004)</strong> — 2,083 trauma ICU patients — found that among those with CK &gt;5,000, bicarbonate + mannitol produced <strong>no difference in renal failure, dialysis, or mortality.</strong> <strong>DASAIM/DSIT 2019 suggests AGAINST routine bicarbonate and against routine alkalinisation.</strong> <strong>Alkalinisation also drives calcium into cells and worsens hypocalcemia</strong> — a genuine harm. <strong>Reasonable use:</strong> a patient with a significant metabolic acidosis, where you are correcting the acidosis anyway. Not as a reflex.</td>
+                </tr>
+                <tr>
+                  <td>Mannitol 20%</td>
+                  <td><strong>Test dose first:</strong> <strong>60 mL of 20% mannitol IV over 3–5 min.</strong><br><strong>Continue only if</strong> urine output rises by <strong>30–50 mL/h above baseline</strong>; <strong>stop if there is no significant increase.</strong><br><strong>If continued:</strong> <strong>1–2 g/kg/day, max ~120 g/day, infused at ~5 g/h</strong> (ISN crush protocol: 50 mL of 20% mannitol added to each litre of half-normal saline + 50 mmol bicarbonate).</td>
+                  <td class="why">An osmotic diuretic: expands intravascular volume, forces a diuresis that flushes casts, scavenges free radicals, and may reduce intracompartmental pressure.</td>
+                  <td class="alt"><strong>⚠ Largely abandoned, and rightly so.</strong> <strong>Contraindicated in anuria</strong> (it will simply accumulate and cause hyperosmolarity and its own nephrotoxicity). <strong>Brown 2004: no benefit. DASAIM/DSIT 2019: suggests AGAINST use. The UAB protocol: "should not be used."</strong> Retains a toehold only in some crush protocols where close monitoring is possible. <strong>Do not reach for it on the wards.</strong></td>
+                </tr>
+                <tr>
+                  <td>Loop diuretics<br><span style="font-weight:400;color:var(--muted);font-size:12px">(furosemide, bumetanide)</span></td>
+                  <td><strong>Not for treating rhabdomyolysis.</strong> Use only to manage <strong>established volume overload in an already-resuscitated patient</strong> — e.g. furosemide 20–40 mg IV (double the dose if no response; higher in CKD).</td>
+                  <td class="why">Produces urine — but urine volume is not the goal in itself; <em>renal perfusion</em> is.</td>
+                  <td class="alt"><strong>DASAIM/DSIT suggests against routine diuretics.</strong> They can worsen hypovolemia (making AKI worse) and they <strong>acidify the urine</strong>, favouring cast formation. Giving furosemide to an under-resuscitated oliguric rhabdomyolysis patient is a classic and harmful error.</td>
+                </tr>
+                <tr>
+                  <td>Albumin / hydroxyethyl starch<br><span style="font-weight:400;color:var(--muted);font-size:12px">(colloids)</span></td>
+                  <td><strong>Do not use for volume resuscitation.</strong></td>
+                  <td class="why">—</td>
+                  <td class="alt">The ISN crush guideline explicitly says not to select colloids for volume resuscitation in crush victims (no mortality benefit, more side effects, higher cost). <strong>DASAIM/DSIT: crystalloids preferred over colloids.</strong> HES additionally carries a nephrotoxicity signal.</td>
+                </tr>
+              </tbody>
+            </table></div>
+
+            <div class="decision"><span class="lbl"></span><strong>The honest summary of 50 years of rhabdomyolysis research — and the one place the evidence is actually strong.</strong>
+              <p style="margin-top:8px"><strong>Two GRADE-based society guidelines, written on different continents from different literature sets, reached the same three conclusions:</strong></p>
+              <ul style="margin-top:6px">
+                <li><strong>EAST 2022</strong> (Eastern Association for the Surgery of Trauma, <em>Am J Surg</em>) — conditionally <strong>FOR</strong> aggressive IV fluid resuscitation (it reduces acute renal failure and the need for dialysis); conditionally <strong>AGAINST</strong> bicarbonate; conditionally <strong>AGAINST</strong> mannitol.</li>
+                <li><strong>DASAIM/DSIT 2019</strong> (<em>Acta Anaesthesiol Scand</em>) — <strong>FOR</strong> early rather than late fluid, and crystalloid over colloid; <strong>AGAINST</strong> routine bicarbonate, alkalinisation, mannitol, diuretics, and routine RRT. All eight recommendations weak, on low/very low quality evidence.</li>
+              </ul>
+              <p style="margin-top:8px"><strong>That independent convergence is the strongest evidentiary statement this topic has.</strong> If you remember one thing from this section: <strong>give isotonic fluid, give it early, titrate it to urine output, and don't add anything clever.</strong></p>
+            </div>
+
+            <div class="calc" id="fluidCalc">
+              <h3 style="margin-top:0">Urine output &amp; fluid target helper</h3>
+              <p style="font-size:12.5px;color:var(--muted);margin-top:0">Not a validated score — an arithmetic helper that converts the published targets into numbers for <em>this</em> patient. Targets from the ISN crush recommendations (urine output 200–300 mL/h; 3–6 L isotonic saline in the first 6 h) and the UAB trauma protocol (1–2 mL/kg/h).</p>
+              <div class="calc-grid">
+                <div>
+                  <h4>Patient weight (kg)</h4>
+                  <input type="number" id="fcWt" min="30" max="250" step="1" placeholder="e.g. 70"
+                    style="width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:15px">
+                </div>
+                <div>
+                  <h4>Severity</h4>
+                  <div class="calc-opt" data-g="sev" data-v="crush"><strong>Crush / severe</strong> — front-load 3–6 L over 6 h</div>
+                  <div class="calc-opt" data-g="sev" data-v="standard"><strong>Non-crush rhabdomyolysis</strong> — titrate to urine output</div>
+                </div>
+              </div>
+              <div class="calc-result">
+                <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)">Hourly urine output target</div>
+                <div class="calc-total" id="fcUop">—</div>
+                <div id="fcDetail" style="font-size:13.5px;margin-top:8px;color:var(--muted);text-align:left">Enter a weight and pick a severity.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-lytes">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Treat</span><h2>Electrolyte emergencies</h2></div>
+        <div class="module accent" style="--m:var(--escalate)">
+          <div class="m-head" style="--m:var(--escalate)"><span class="m-ico">⚡</span><h3>Hyperkalemia — the thing that kills in the first hours</h3></div>
+          <div class="m-body">
+            <div class="emergency"><span class="lbl"></span><strong>In rhabdomyolysis, hyperkalemia is not a lab abnormality — it is the leading early cause of death.</strong> Necrotic muscle is the body's biggest potassium reservoir, the kidney that should excrete it is failing, and the acidosis is pushing still more K⁺ out of cells. In crush injury the release is classically <strong>abrupt at reperfusion</strong> — the victim who is talking during extrication and arrests the moment the slab is lifted. <strong>Get the ECG before you get the potassium.</strong></div>
+
+            <div class="fig-row">
+              <div class="fig">
+                <img src="__IMG_ecg_hyperk__" alt="ECG showing tall peaked T waves of hyperkalemia">
+                <div class="cap"><strong>Hyperkalemia.</strong> Tall, narrow, symmetrically peaked T waves — the earliest change. As K⁺ climbs: the PR lengthens and P waves flatten and disappear → the QRS widens → it merges with the T into a <strong>sine wave</strong> → asystole/VF. <strong>The ECG, not the number, dictates urgency</strong>: a patient with a widened QRS at K⁺ 6.2 is in more danger than one with peaked T waves at 7.0.</div>
+                <div class="credit">CC BY 4.0 · Agbayani MJF &amp; Sy E — <a href="https://commons.wikimedia.org/wiki/File:Hyperkalemia_ECG.jpg" target="_blank">File:Hyperkalemia ECG.jpg, Wikimedia Commons</a></div>
+              </div>
+            </div>
+
+            <h3>The hyperkalemia ladder — stabilise, shift, then remove</h3>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Drug</th><th>Start → repeat/titration → max</th><th>Onset / duration</th><th>Why it works</th><th>Watch for / alternative</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td colspan="5" style="background:rgba(244,63,94,.12);font-weight:800;color:var(--danger)">① STABILISE the myocardium — if there are ECG changes, or K⁺ ≥6.5</td>
+                </tr>
+                <tr>
+                  <td>Calcium gluconate 10%</td>
+                  <td><strong>Start: 10 mL (1 g) IV over 2–3 min.</strong><br><strong>Repeat</strong> every 5–10 min if ECG changes persist — <strong>no real maximum</strong> when the ECG demands it; titrate to ECG normalisation.</td>
+                  <td>Onset <strong>1–3 min</strong>; duration only <strong>30–60 min</strong></td>
+                  <td class="why">Raises the myocyte threshold potential back away from the (elevated) resting potential, restoring the gap that lets the heart depolarise normally. <strong>It lowers the potassium by exactly zero</strong> — it buys you 30–60 minutes to actually shift and remove the K⁺. Give it and keep going.</td>
+                  <td class="alt"><strong>Calcium chloride 10% 10 mL</strong> contains ~3× the elemental calcium — use it in arrest or if peripheral gluconate is failing, but give it <strong>centrally</strong> if you can (it is a vesicant and causes tissue necrosis if it extravasates).<br><strong>Digoxin toxicity:</strong> the old teaching to withhold calcium is largely discredited, but give it slowly, diluted, if that is the setting.</td>
+                </tr>
+                <tr>
+                  <td colspan="5" style="background:rgba(245,158,11,.12);font-weight:800;color:var(--warn)">② SHIFT potassium into cells — buys hours, removes nothing</td>
+                </tr>
+                <tr>
+                  <td>Insulin (regular) + dextrose</td>
+                  <td><strong>Start: 10 units regular insulin IV</strong> with <strong>25 g dextrose</strong> (50 mL of D50) IV.<br><strong>Reduce to 5 units</strong> if AKI/CKD or the patient is small/frail — impaired insulin clearance makes hypoglycaemia much more likely.<br><strong>If glucose &gt;250 mg/dL:</strong> give the insulin <em>without</em> the dextrose.<br><strong>Repeat</strong> q4–6 h as needed.</td>
+                  <td>Onset <strong>10–20 min</strong>; peak 30–60 min; lasts <strong>4–6 h</strong></td>
+                  <td class="why">Insulin drives the <strong>Na⁺/K⁺-ATPase</strong> — the same pump that failed in the dying myocyte — pushing K⁺ from the extracellular space back into cells. <strong>The most reliable shifting agent</strong>; lowers K⁺ by roughly <strong>0.5–1.2 mEq/L</strong>.</td>
+                  <td class="alt"><strong>Hypoglycaemia is the commonest iatrogenic harm on the wards.</strong> Check glucose at <strong>30 min, then hourly for at least 6 h</strong> — the insulin outlasts the dextrose bolus. Consider a D10 infusion after the bolus in high-risk patients.</td>
+                </tr>
+                <tr>
+                  <td>Albuterol (salbutamol), nebulised</td>
+                  <td><strong>10–20 mg nebulised over 10–15 min</strong> — note this is <strong>4–8× the standard bronchodilator dose</strong> (a normal 2.5 mg neb will not do this job).<br>May repeat.</td>
+                  <td>Onset <strong>~30 min</strong>; lasts 2–4 h</td>
+                  <td class="why">β₂-agonism stimulates the same Na⁺/K⁺-ATPase by a different (cAMP) route — so its effect is <strong>additive to insulin</strong>. Lowers K⁺ by ~0.5–1 mEq/L.</td>
+                  <td class="alt"><strong>Never use as monotherapy</strong> — up to ~40% of patients are non-responders. Causes tachycardia and tremor; use cautiously in active coronary ischaemia.</td>
+                </tr>
+                <tr>
+                  <td>Sodium bicarbonate</td>
+                  <td>Only if there is a <strong>metabolic acidosis</strong> — e.g. as part of an isotonic bicarbonate infusion.</td>
+                  <td>Slow, unreliable</td>
+                  <td class="why">Raising pH shifts K⁺ intracellularly in exchange for H⁺.</td>
+                  <td class="alt"><strong>A poor acute potassium-lowering agent on its own</strong> — do not rely on it in an emergency. And in rhabdomyolysis it carries a specific cost: <strong>it worsens hypocalcemia.</strong></td>
+                </tr>
+                <tr>
+                  <td colspan="5" style="background:rgba(52,211,153,.12);font-weight:800;color:var(--ok)">③ REMOVE potassium from the body — the only definitive step</td>
+                </tr>
+                <tr>
+                  <td>Sodium zirconium cyclosilicate (SZC)</td>
+                  <td><strong>10 g PO three times daily for up to 48 h</strong>, then 10 g once daily (maintenance range 5–15 g daily).</td>
+                  <td>Onset <strong>~1 h</strong>; meaningful effect by 4–6 h</td>
+                  <td class="why">A non-absorbed crystalline lattice that selectively traps K⁺ in the gut lumen in exchange for Na⁺/H⁺, so it is excreted in stool. <strong>Actually removes potassium</strong>, unlike everything in step ②.</td>
+                  <td class="alt">Sodium load may matter in heart failure. Can cause oedema. Not fast enough for a crashing patient — it is an adjunct, not a rescue.</td>
+                </tr>
+                <tr>
+                  <td>Patiromer</td>
+                  <td><strong>8.4 g PO once daily</strong>; titrate by 8.4 g at ≥1-week intervals to <strong>max 25.2 g daily</strong>.</td>
+                  <td>Onset <strong>~7 h</strong> — <strong>too slow for an emergency</strong></td>
+                  <td class="why">Binds K⁺ in the colon in exchange for calcium; excreted in stool.</td>
+                  <td class="alt">Separate from other oral drugs by ≥3 h (binds them). Causes hypomagnesaemia and constipation. <strong>A chronic agent — not an acute one.</strong></td>
+                </tr>
+                <tr>
+                  <td>Sodium polystyrene sulfonate<br><span style="font-weight:400;color:var(--muted);font-size:12px">(Kayexalate / SPS)</span></td>
+                  <td>15–30 g PO.</td>
+                  <td>Slow, unpredictable</td>
+                  <td class="why">Cation-exchange resin.</td>
+                  <td class="alt"><strong>Largely superseded</strong> — weak evidence, and a real risk of <strong>colonic necrosis</strong> (especially with sorbitol, and in post-operative or ileus patients). <em>Exception:</em> the ISN crush guidance recommends <strong>pre-emptive Kayexalate during transport</strong> in mass-disaster settings — where there is no lab, no monitor, and no dialysis, so an imperfect drug beats nothing.</td>
+                </tr>
+                <tr>
+                  <td>Loop diuretic</td>
+                  <td>Furosemide 20–40 mg IV (higher in CKD).</td>
+                  <td>Onset ~30 min if kidneys respond</td>
+                  <td class="why">Increases distal sodium delivery → renal K⁺ excretion.</td>
+                  <td class="alt"><strong>Only in a patient who is volume-replete and making urine.</strong> Useless in oliguric AKI, and harmful if they are still hypovolemic.</td>
+                </tr>
+                <tr>
+                  <td><strong>Haemodialysis</strong></td>
+                  <td><strong>The definitive therapy.</strong> Call for it <em>early</em> — do not wait for the medical ladder to fail twice.</td>
+                  <td>Immediate and reliable</td>
+                  <td class="why">Physically removes potassium from the blood.</td>
+                  <td class="alt"><strong>This is the specific rhabdomyolysis point:</strong> because necrotic muscle keeps <em>releasing</em> potassium for days, the shifting agents in step ② wear off and the K⁺ <strong>rebounds — repeatedly.</strong> A patient who needs insulin/albuterol three times in 12 hours does not have a medication problem; they have a dialysis indication. <strong>Escalate early if myonecrosis is ongoing.</strong></td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+
+        <div class="module accent" style="--m:var(--monitor)">
+          <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">🦴</span><h3>Calcium &amp; phosphate — where good intentions do harm</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Problem</th><th>What to do</th><th>Why — and why the obvious move is wrong</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Hypocalcemia</strong> (early, asymptomatic)</td>
+                  <td><strong>Do NOT treat.</strong> Observe and re-measure.</td>
+                  <td class="why"><strong>The single most counter-intuitive rule in this disease.</strong> That calcium has not vanished — it has precipitated with phosphate <em>into the damaged muscle</em>, and during recovery it will be <strong>mobilised back out</strong>, causing <strong>rebound hypercalcemia in a substantial minority of patients</strong>. Giving calcium now front-loads that rebound and promotes <strong>metastatic calcification</strong> in muscle, vessels and kidney. It may also worsen the intracellular calcium overload that is killing the myocytes in the first place.</td>
+                </tr>
+                <tr>
+                  <td><strong>Hypocalcemia</strong> — symptomatic (tetany, carpopedal spasm, seizures, laryngospasm) <em>or</em> needed for hyperkalemic cardiac stabilisation</td>
+                  <td><strong>Treat without hesitation.</strong> Calcium gluconate 10% 10 mL (1 g) IV over 2–3 min; repeat as needed.</td>
+                  <td class="why">Symptomatic hypocalcemia and a hyperkalemic myocardium will kill the patient today; rebound hypercalcemia is a problem for next week. <strong>The rule is "don't treat asymptomatic hypocalcemia" — it is not "never give calcium."</strong> Do not let a memorised aphorism stop you stabilising a heart.</td>
+                </tr>
+                <tr>
+                  <td><strong>Hyperphosphatemia</strong></td>
+                  <td>Treat the underlying process; <strong>oral phosphate binders</strong> (e.g. calcium acetate, sevelamer) if marked and persistent. Dialysis if severe with AKI.</td>
+                  <td class="why">Released from myocytes and retained by the failing kidney. Drives the hypocalcemia (calcium-phosphate precipitation) and contributes to metastatic calcification. <strong>Prefer a non-calcium binder</strong> (sevelamer) here, precisely because you are trying <em>not</em> to load calcium.</td>
+                </tr>
+                <tr>
+                  <td><strong>Rebound hypercalcemia</strong> (recovery phase, ~day 3–10)</td>
+                  <td>Usually just <strong>stop giving calcium</strong> and hydrate. Treat actively only if severe or symptomatic.</td>
+                  <td class="why">Calcium deposited in muscle is released as the muscle heals, and calcitriol rebounds. Its severity is <strong>proportional to how much calcium you gave during the hypocalcemic phase</strong> — which is the whole reason for the restraint above.</td>
+                </tr>
+                <tr>
+                  <td><strong>Hyperuricemia</strong></td>
+                  <td>Usually needs no specific therapy; fluid handles it. Rasburicase is <em>not</em> routine here.</td>
+                  <td class="why">Purines from lysed myocytes → urate. Contributes a crystal load to an already-injured tubule, but volume expansion is the treatment.</td>
+                </tr>
+                <tr>
+                  <td><strong>Metabolic acidosis</strong> (anion gap)</td>
+                  <td>Treat the cause (perfusion, the ongoing necrosis). Bicarbonate if severe — see the fluid table for the caveats.</td>
+                  <td class="why">Organic acids from necrotic muscle plus failing renal acid excretion. Acidosis <strong>worsens hyperkalemia and favours myoglobin cast formation</strong> — so it is not just a number; it actively feeds the disease.</td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-daily">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Monitor</span><h2>Daily management</h2></div>
+        <div class="module accent" style="--m:var(--monitor)">
+          <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">📈</span><h3>What to trend every single day — and what each trend means</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>What</th><th>How often</th><th>What you are looking for</th><th>What a bad answer means</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Urine output</strong></td><td><strong>Hourly</strong> while resuscitating; then per shift</td><td>200–300 mL/h (or 1–2 mL/kg/h)</td><td><strong>Below target despite adequate fluid → you have established AKI.</strong> Do not simply escalate the rate — reassess volume status and call nephrology. More fluid into an anuric patient is how you cause pulmonary oedema.</td></tr>
+                <tr><td><strong>CK</strong></td><td><strong>q6–12 h</strong> until peak, then daily</td><td>Peaks at 24–72 h, then falls ~40%/day</td><td><strong>A CK that plateaus or rises after 72 h means muscle is STILL DYING.</strong> Re-examine the limbs for compartment syndrome; re-check that the trigger is truly gone (statin stopped? seizing? still hyperthermic?). This is the most important single trend in the chart.</td></tr>
+                <tr><td><strong>Potassium</strong></td><td><strong>q6–12 h</strong> initially (more often if treating)</td><td>Falling and staying down</td><td><strong>A rebounding K⁺ after successful shifting = ongoing release.</strong> This is a dialysis conversation, not a third dose of insulin.</td></tr>
+                <tr><td><strong>Creatinine / BMP</strong></td><td>q6–12 h → daily</td><td>Stable or falling</td><td>Rising = evolving AKI. Stage it (KDIGO) and escalate.</td></tr>
+                <tr><td><strong>Calcium &amp; phosphate</strong></td><td>Daily</td><td>Low Ca early; watch for the flip</td><td><strong>Rising calcium in the recovery phase = the rebound.</strong> Stop any calcium supplementation.</td></tr>
+                <tr><td><strong>Bicarbonate / anion gap</strong></td><td>Daily</td><td>Normalising</td><td>Worsening acidosis with a rising K⁺ = an RRT indication.</td></tr>
+                <tr><td><strong>Volume status</strong> — daily weight, strict I/O, lung exam, JVP</td><td><strong>Daily, and after every large bolus</strong></td><td>Even or slightly negative once resuscitated</td><td><strong>Rising weight + crackles + a positive balance = you are overloading them.</strong> The commonest iatrogenic harm in this disease. Stop the fluid.</td></tr>
+                <tr><td><strong>Limb / compartment exam</strong></td><td><strong>Every shift — and after each fluid bolus</strong></td><td>Soft, non-tender compartments</td><td><strong>A tense, disproportionately painful compartment, or pain on passive stretch → surgery NOW.</strong> Remember: resuscitation itself makes muscle swell, so compartment syndrome often appears on day 1–2 of <em>successful</em> treatment.</td></tr>
+                <tr><td><strong>ECG</strong></td><td>With every significant K⁺ change</td><td>Resolution of peaking/widening</td><td>New QRS widening = a periarrest emergency.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span><strong>The single most useful question on rounds:</strong> "<em>Is the CK falling?</em>" If yes, the muscle has stopped dying and you are winning — now your job is to avoid drowning them. If no, something is still killing muscle, and you have not found it yet. Go and look at the limbs.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-escalate">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Escalate</span><h2>When to call the ICU</h2></div>
+        <div class="module accent" style="--m:var(--escalate)">
+          <div class="m-head" style="--m:var(--escalate)"><span class="m-ico">⬆️</span><h3>Escalation triggers — with numbers</h3></div>
+          <div class="m-body">
+            <div class="decision"><span class="lbl"></span><strong>Transfer to the ICU for any of:</strong>
+              <ul style="margin-top:8px">
+                <li><strong>K⁺ ≥6.5 mEq/L</strong>, <em>any</em> hyperkalemic ECG change (peaked T waves with QRS widening, loss of P waves, sine wave), or a <strong>potassium that rebounds after treatment</strong> — because ongoing myonecrosis will keep re-loading it.</li>
+                <li><strong>Refractory hyperkalemia</strong> requiring repeated shifting therapy, or requiring urgent dialysis.</li>
+                <li><strong>Oliguria/anuria despite adequate volume resuscitation</strong> — i.e. established AKI needing RRT. (The UAB protocol prompts a nephrology call when CK stays high and fluid exceeds <strong>3 L/24 h without response</strong>.)</li>
+                <li><strong>Severe metabolic acidosis</strong> (pH &lt;7.2, or bicarbonate falling despite therapy).</li>
+                <li><strong>Compartment syndrome</strong> — or a limb you are worried enough about to be measuring pressures. <strong>Delta pressure ≤30 mmHg → theatre.</strong></li>
+                <li><strong>Haemodynamic instability</strong> — hypotension not corrected by fluid, or needing vasopressors.</li>
+                <li><strong>Volume overload with respiratory compromise</strong> — a real and common consequence of correct treatment in the wrong kidney.</li>
+                <li><strong>DIC</strong>, or any evidence of multi-organ failure.</li>
+                <li><strong>Hyperthermia with rigidity</strong> — malignant hyperthermia, NMS, or serotonin syndrome needing active cooling and antidote.</li>
+                <li><strong>CK &gt;50,000–100,000 with any organ dysfunction</strong>, or a CK that continues to climb past 72 h despite treatment.</li>
+              </ul>
+            </div>
+            <div class="pearl"><span class="lbl"></span><strong>Escalate on the trajectory, not the snapshot.</strong> A potassium of 6.0 that has fallen from 7.2 is a patient who is being treated well. A potassium of 6.0 that was 5.2 four hours ago, in a patient whose CK is still climbing, is a patient whose muscle is still dying — and they will be at 7.5 by midnight. The second patient goes to the unit.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-dispo">
+        <div class="sec-head"><span class="pill" style="background:var(--dispo)">Dispo</span><h2>Discharge &amp; disposition</h2></div>
+        <div class="module accent" style="--m:var(--dispo)">
+          <div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🏠</span><h3>Readiness criteria, then where they actually go</h3></div>
+          <div class="m-body">
+            <p><strong>Discharge readiness — all of the following:</strong></p>
+            <ul>
+              <li><strong>CK clearly and consistently down-trending</strong> (it does <em>not</em> need to be normal — that takes many days, and by then the myoglobin is long gone).</li>
+              <li><strong>Renal function stable or improving</strong>; not requiring dialysis, or established on an outpatient dialysis plan.</li>
+              <li><strong>Potassium normal and stable off shifting therapy</strong> — this is the one that catches people out. A potassium held down by q6h insulin is not a stable potassium.</li>
+              <li>Calcium, phosphate and bicarbonate acceptable; no symptomatic hypocalcemia; <strong>no rising rebound hypercalcemia.</strong></li>
+              <li><strong>Adequate urine output off IV fluids</strong>, and able to maintain oral intake.</li>
+              <li><strong>The cause has been identified and addressed</strong> — statin stopped, alcohol/withdrawal addressed, thyroid treated, seizures controlled, compartment decompressed.</li>
+              <li><strong>Compartment syndrome excluded or definitively treated</strong>; wounds/fasciotomy sites have a plan.</li>
+              <li>Mobilising safely, and <strong>a follow-up CK/BMP is booked</strong> (typically within ~1 week).</li>
+            </ul>
+
+            <div class="dispo-grid">
+              <div class="dispo"><h4>Home</h4><div class="crit">Independent, CK falling, renal function and electrolytes stable off IV therapy, cause fixed, reliable for follow-up. The majority of exertional and statin cases.</div></div>
+              <div class="dispo"><h4>Home health</h4><div class="crit">Home but needs nursing for wound/fasciotomy care, or lab draws, or help with mobility. Common after a fasciotomy that is healing by secondary intention.</div></div>
+              <div class="dispo"><h4>SNF</h4><div class="crit">Deconditioned — often the older "long lie" patient — needing 24 h skilled nursing but tolerating &lt;3 h of therapy/day. Also for wound care that the family cannot manage.</div></div>
+              <div class="dispo"><h4>Acute rehab (IRF)</h4><div class="crit">Can tolerate <strong>≥3 h therapy/day across ≥2 disciplines</strong>. Typical after crush injury or fasciotomy with substantial functional loss but good rehab potential.</div></div>
+              <div class="dispo"><h4>LTAC</h4><div class="crit">Prolonged complex care — persistent dialysis dependence with other organ support, ventilator weaning, or complex multi-site wounds, expected &gt;25 days.</div></div>
+              <div class="dispo"><h4>Outpatient dialysis</h4><div class="crit">Renal recovery is the <strong>usual</strong> outcome after rhabdomyolysis-associated AKI — most patients who need RRT recover independent renal function. But some leave dialysis-dependent and need a permanent access plan and a nephrologist.</div></div>
+            </div>
+
+            <div class="pearl"><span class="lbl"></span><strong>The discharge conversation that prevents the readmission.</strong> Tell them, in plain words: <em>"Your muscle broke down and it poisoned your kidneys. It can happen again."</em> Then be concrete — name the trigger and how to avoid it; say which drug is never going back on; give the staged return-to-exercise plan if it was exertional; and tell them to come straight back if the urine goes dark again. Book the follow-up CK before they leave.</div>
+          </div>
+        </div>
+      </section>
+    </div>
