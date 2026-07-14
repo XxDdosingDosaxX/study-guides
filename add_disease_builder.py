@@ -165,11 +165,13 @@ def worker():
                              "--fallback-model claude-opus-4-8 --effort max -p  (stdin)\nSTART: %s\n\n"
                              % (CLAUDE_CMD, model, now()))
                     lf.flush()
+                    # Don't kill the build's background tasks (research agents etc.) at 600s.
+                    env = dict(os.environ, CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS="0")
                     p = subprocess.run(["cmd", "/c", CLAUDE_CMD, "--dangerously-skip-permissions",
                                         "--model", model, "--fallback-model", "claude-opus-4-8",
                                         "--effort", "max", "-p"],
                                        cwd=REPO, stdin=pin, stdout=lf, stderr=subprocess.STDOUT,
-                                       timeout=BUILD_TIMEOUT)
+                                       timeout=BUILD_TIMEOUT, env=env)
                     rc = p.returncode
             except subprocess.TimeoutExpired:
                 rc = -2
@@ -188,7 +190,9 @@ def worker():
             break
         # Account-level session/usage limit (even on Opus) -> requeue + wait for reset.
         transient = ("session limit" in tail or "usage limit" in tail or "hit your" in tail
-                     or "not logged in" in tail or "please run /login" in tail)
+                     or "not logged in" in tail or "please run /login" in tail
+                     or "connection closed" in tail or "api error" in tail
+                     or "background tasks still running" in tail)
         if rc != 0 and transient:
             q = load_queue()
             for i in q:
