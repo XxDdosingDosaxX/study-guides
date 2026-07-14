@@ -187,14 +187,17 @@ def worker():
                 continue
             break
         # Account-level session/usage limit (even on Opus) -> requeue + wait for reset.
-        if rc != 0 and ("session limit" in tail or "usage limit" in tail or "hit your" in tail):
+        transient = ("session limit" in tail or "usage limit" in tail or "hit your" in tail
+                     or "not logged in" in tail or "please run /login" in tail)
+        if rc != 0 and transient:
             q = load_queue()
             for i in q:
                 if i["disease"] == nxt["disease"] and i["status"] == "building":
                     i["status"] = "pending"; i["started"] = None
                     break
             save_queue(q)
-            print("[%s] session limit hit on %s — waiting 20 min, then retrying" % (now(), nxt["disease"]))
+            reason = "auth/logout" if "logged in" in tail or "/login" in tail else "session limit"
+            print("[%s] %s on %s — waiting 20 min, then retrying" % (now(), reason, nxt["disease"]))
             time.sleep(1200)
             continue
         # Safety net: publish the guide if the build wrote it but didn't push (e.g. timeout).
