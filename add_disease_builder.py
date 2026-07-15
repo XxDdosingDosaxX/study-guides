@@ -26,10 +26,17 @@ REPO = os.path.dirname(os.path.abspath(__file__))
 QUEUE_FILE = os.path.join(REPO, "builder_queue.json")
 LOG_DIR = os.path.join(REPO, "builder_logs")
 PORT = 8890
-# Use the npm Claude CLI. (The strict-config wrapper ~/.local/bin/claude.cmd returns a
-# usage-policy false-positive on the build prompt; the npm binary does not.)
-CLAUDE_CMD = os.path.expanduser(r"~\AppData\Roaming\npm\claude.cmd")
-if not os.path.exists(CLAUDE_CMD):
+# Point at the REAL native Claude binary. The npm `claude.cmd` shim and `bin/claude.exe`
+# stub can break after an npm reinstall (--omit=optional leaves a 500-byte placeholder that
+# errors "not compatible with this version of Windows"); the win32-x64 native exe still works.
+_NPM_PKG = os.path.expanduser(r"~\AppData\Roaming\npm\node_modules\@anthropic-ai\claude-code")
+_NATIVE = os.path.join(_NPM_PKG, "node_modules", "@anthropic-ai", "claude-code-win32-x64", "claude.exe")
+_SHIM = os.path.expanduser(r"~\AppData\Roaming\npm\claude.cmd")
+if os.path.exists(_NATIVE):
+    CLAUDE_CMD = _NATIVE
+elif os.path.exists(_SHIM):
+    CLAUDE_CMD = _SHIM
+else:
     CLAUDE_CMD = "claude"
 BUILD_TIMEOUT = 7200  # 2 hr per disease (allow a thorough research pass + full-depth build)
 
