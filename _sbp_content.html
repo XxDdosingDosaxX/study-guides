@@ -1,0 +1,648 @@
+    <!-- ===== SNAPSHOT (shared) ===== -->
+    <section class="snapshot" id="snapshot">
+      <div class="one-liner">Infection of pre-existing ascitic fluid <strong>without a surgically treatable intra-abdominal source</strong> — diagnosed when the ascitic <strong>PMN count is ≥250 cells/mm³</strong> in a patient with cirrhosis and portal-hypertensive ascites.</div>
+      <div class="badges">
+        <span class="badge">Ascitic PMN ≥250/mm³ = diagnosis</span>
+        <span class="badge warn">Cefotaxime 2 g IV q8h + albumin</span>
+        <span class="badge danger">In-hospital mortality ~20–40%</span>
+        <span class="badge ok">Albumin 1.5 g/kg d1 + 1 g/kg d3 cuts HRS &amp; death (Sort 1999)</span>
+        <span class="badge">Tap every cirrhotic-with-ascites admission</span>
+      </div>
+    </section>
+
+    <!-- ===== SHARED PATHOPHYSIOLOGY ===== -->
+    <section class="sec" id="pathophys" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>Pathophysiology &amp; classification</h2></div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🧬</span><h3>Mechanism — how gut bacteria end up infecting ascites</h3></div>
+        <div class="m-body">
+          <p>SBP is the collision of three failures that only cirrhosis produces together. <strong>(1) Portal hypertension</strong> engorges and loosens the gut wall and slows transit, feeding <strong>small-intestinal bacterial overgrowth (SIBO)</strong> and increasing mucosal permeability. <strong>(2) Bacterial translocation</strong> then lets gut organisms — chiefly <em>E. coli</em>, <em>Klebsiella</em>, and streptococci — cross into mesenteric lymph nodes and the bloodstream, from which they seed the ascitic fluid. <strong>(3) The ascites cannot defend itself:</strong> cirrhotic ascites is a low-protein, complement-poor, opsonin-poor broth, and cirrhosis blunts reticuloendothelial (Kupffer-cell) clearance — so a few translocated bacteria that would be wiped out in a healthy peritoneum instead multiply unopposed. When the neutrophil response to that infection pushes the ascitic <strong>PMN count to ≥250 cells/mm³</strong>, that is SBP.</p>
+          <div class="analogy"><span class="lbl"></span>Think of ascites as a warm, still pond with no filter and no lifeguards. A healthy peritoneum is a chlorinated, patrolled pool — a stray bacterium is skimmed out immediately. In cirrhosis the pond's defenses (protein, complement, opsonins) are drained away and the fences around it (gut wall, liver's Kupffer filter) are broken, so the same stray bacterium blooms into an infection.</div>
+
+          <!-- Pathophysiology cascade diagram (theme-adaptive: dark + light Mermaid) -->
+          <div class="svg-wrap">
+            <div class="dia dia-dark">__SVG_sbppatho_dark__</div>
+            <div class="dia dia-light">__SVG_sbppatho_light__</div>
+            <div class="cap">The bacterial-translocation cascade. Each therapy interrupts a specific limb: gut decontamination (norfloxacin/rifaximin) prevents translocation, third-generation cephalosporins kill the seeded Enterobacterales, and albumin defends the arterial circulation to prevent hepatorenal syndrome.</div>
+          </div>
+
+          <div class="why"><span class="lbl"></span>every SBP drug maps to one step above. <strong>Cefotaxime/ceftriaxone</strong> inhibit cell-wall synthesis in the gut Enterobacterales that seed the fluid. <strong>Albumin</strong> is oncotic volume plus a scavenger of nitric oxide and endotoxin — it props up effective arterial blood volume so the kidneys don't tip into type-1 hepatorenal syndrome. <strong>Norfloxacin / ciprofloxacin / rifaximin</strong> decontaminate the gut to stop translocation before it starts. <strong>Non-selective β-blockers</strong> help variceal pressure but must be used cautiously — in advanced SBP they can drop the already-low arterial pressure and worsen renal perfusion.</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🦠</span><h3>Microbiology — who is in the fluid</h3></div>
+        <div class="m-body">
+          <p>Community-acquired SBP is <strong>monomicrobial</strong> and dominated by gut flora — <strong>Gram-negative enteric bacilli cause ~70%</strong>, with <em>E. coli</em> the single most common isolate. Growth of <em>multiple</em> organisms, anaerobes, or fungi should instead make you suspect <strong>secondary</strong> (surgical) peritonitis.</p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Organism</th><th>~Share</th><th>Note</th></tr></thead>
+            <tbody>
+              <tr><td><em>Escherichia coli</em></td><td style="color:#f59e0b;font-weight:700">~40–70%</td><td>The single most common isolate; covered by 3rd-gen cephalosporins.</td></tr>
+              <tr><td><em>Klebsiella pneumoniae</em></td><td style="color:#38bdf8;font-weight:700">~10%</td><td>Other leading Enterobacterales; watch for ESBL.</td></tr>
+              <tr><td>Streptococci (incl. <em>S. pneumoniae</em>)</td><td style="color:#38bdf8;font-weight:700">~15–20%</td><td>Viridans/pneumococcus; Gram-positive cocci in the fluid.</td></tr>
+              <tr><td>Enterococci / <em>Staphylococcus</em></td><td style="color:#a78bfa;font-weight:700">&lt;15%</td><td>More common in <strong>nosocomial / healthcare-associated</strong> SBP and after quinolone prophylaxis.</td></tr>
+              <tr><td>Multidrug-resistant (ESBL, VRE, MRSA); <em>Candida</em> (SFP)</td><td style="color:#a78bfa;font-weight:700">rising</td><td>Prior antibiotics, recent hospitalization, or failed 3rd-gen cephalosporin → broaden. Fungal (spontaneous fungal peritonitis) carries far higher mortality (~1-month 70%).</td></tr>
+            </tbody>
+          </table></div>
+          <div class="pearl"><span class="lbl"></span>Culture is <em>negative in ~40–50%</em> of true SBP episodes. Improve yield to ~65–90% by inoculating <strong>≥10 mL of ascites directly into aerobic + anaerobic blood-culture bottles at the bedside</strong>, before antibiotics. A negative culture never overrides a PMN ≥250 — treat the count (that is culture-negative neutrocytic ascites, and its mortality equals culture-positive SBP).</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🗂️</span><h3>Classification — the vocabulary of the ascitic tap</h3></div>
+        <div class="m-body">
+          <h4>Neutrocytic vs bacterascitic variants (all on the SBP spectrum)</h4>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Entity</th><th>Ascitic PMN</th><th>Culture</th><th>What to do</th></tr></thead>
+            <tbody>
+              <tr><td><strong>SBP</strong> (classic)</td><td>≥250/mm³</td><td>Positive (monomicrobial)</td><td>Treat: antibiotics + albumin.</td></tr>
+              <tr><td><strong>Culture-negative neutrocytic ascites (CNNA)</strong></td><td>≥250/mm³</td><td>Negative</td><td>Treat identically — it is SBP with a missed organism.</td></tr>
+              <tr><td><strong>Monomicrobial non-neutrocytic bacterascites (MNB)</strong></td><td>&lt;250/mm³</td><td>Positive (1 organism)</td><td>Treat if symptomatic; if asymptomatic, repeat tap — many clear spontaneously, some progress to SBP.</td></tr>
+              <tr><td><strong>Secondary bacterial peritonitis</strong></td><td>≥250/mm³ (often very high)</td><td>Polymicrobial ± anaerobes/fungi</td><td>Surgical source — image (CT) and get surgery; broaden antibiotics.</td></tr>
+            </tbody>
+          </table></div>
+
+          <h4>Runyon criteria — is this SBP or a surgical (secondary) peritonitis?</h4>
+          <p>Suspect <strong>secondary</strong> peritonitis (perforation/abscess) when the neutrocytic fluid meets <strong>≥2 of 3</strong>: total protein &gt;1 g/dL, glucose &lt;50 mg/dL, LDH above the upper limit of normal for serum. Additional flags: PMN in the thousands, polymicrobial Gram stain, CEA &gt;5 or ALP &gt;240, and failure of the PMN to fall on the 48-hour repeat tap.</p>
+
+          <h4>SAAG — proving the ascites is portal-hypertensive</h4>
+          <p><strong>SAAG = serum albumin − ascitic albumin.</strong> A gradient <strong>≥1.1 g/dL</strong> means portal hypertension (cirrhosis, heart failure, Budd-Chiari) — the substrate on which SBP occurs; &lt;1.1 g/dL points elsewhere (peritoneal carcinomatosis, TB, pancreatic ascites) where "SBP" is not the right frame. Ascitic total protein <strong>&lt;1.5 g/dL</strong> marks low-opsonin fluid at high risk for a first SBP.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRESENTATION & FINDINGS (shared) ===== -->
+    <section class="sec" id="presentation" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>Presentation &amp; findings — and why</h2></div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🩺</span><h3>Symptoms &amp; signs — frequency and the mechanism behind each</h3></div>
+        <div class="m-body">
+          <p>SBP is a <strong>great masquerader</strong>: the "textbook" peritonitis picture is often muted or absent because cirrhotic ascites separates inflamed peritoneal surfaces and the immune response is blunted. Any unexplained deterioration in a cirrhotic with ascites — encephalopathy, renal decline, hypotension — <em>is SBP until a tap says otherwise.</em></p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Finding</th><th>~Frequency</th><th>Why it happens (pathophysiology)</th></tr></thead>
+            <tbody>
+              <tr><td>Fever / chills</td><td style="color:#f59e0b;font-weight:700">~50–70%</td><td>Cytokine (IL-6/TNF) response to peritoneal infection; may be low-grade or absent because cirrhosis blunts the febrile response — hypothermia is an ominous variant.</td></tr>
+              <tr><td>Abdominal pain</td><td style="color:#f59e0b;font-weight:700">~50–70%</td><td>Peritoneal inflammation; frequently <em>diffuse and mild</em> — massive ascites cushions the parietal peritoneum, so classic rigidity/rebound is often missing.</td></tr>
+              <tr><td>Worsening / new hepatic encephalopathy</td><td style="color:#f59e0b;font-weight:700">~50%</td><td>Infection is a top precipitant of HE — inflammation and ammonia-handling stress tip a marginal brain. Often the <em>only</em> clue.</td></tr>
+              <tr><td>Abdominal tenderness</td><td style="color:#38bdf8;font-weight:700">~40%</td><td>Localized peritoneal irritation; guarding/rebound are the exception, not the rule.</td></tr>
+              <tr><td>Acute kidney injury / rising creatinine</td><td style="color:#38bdf8;font-weight:700">~30–40%</td><td>SBP triggers further splanchnic vasodilation → falling effective arterial volume → renal hypoperfusion; the pathway to type-1 hepatorenal syndrome.</td></tr>
+              <tr><td>Diarrhea / ileus / vomiting</td><td style="color:#38bdf8;font-weight:700">~20–30%</td><td>Peritoneal inflammation disrupts gut motility (paralytic ileus) and secretion.</td></tr>
+              <tr><td>Hypotension / septic shock</td><td style="color:#a78bfa;font-weight:700">&lt;15%</td><td>Endotoxin + cytokines on top of baseline vasodilation → distributive shock; a late, high-mortality presentation.</td></tr>
+              <tr><td>Asymptomatic (found only on surveillance tap)</td><td style="color:#38bdf8;font-weight:700">~10–30%</td><td>Blunted immunity means up to a third have <em>no</em> localizing symptom — the reason every admission gets a diagnostic tap.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="callout"><span class="lbl" style="color:#38bdf8">Read the pattern</span>You are rarely handed "fever + rigid abdomen." You are handed a cirrhotic who is <strong>a little more confused, a little more oliguric, a little more hypotensive</strong> than yesterday. That subtle triad is the real face of SBP — tap them.</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🔬</span><h3>Reading the ascitic fluid — the values that make or break the diagnosis</h3></div>
+        <div class="m-body">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Fluid test</th><th>Threshold</th><th>Why it moves / what it means</th></tr></thead>
+            <tbody>
+              <tr><td><strong>PMN (absolute neutrophils)</strong></td><td style="color:#f43f5e;font-weight:700">≥250/mm³ = SBP</td><td>The neutrophil influx into infected fluid. Calculated as total WBC × %neutrophils. This single number defines the disease and starts antibiotics — independent of culture.</td></tr>
+              <tr><td><strong>RBC correction</strong></td><td>−1 PMN per 250 RBC</td><td>A traumatic ("bloody") tap drags blood neutrophils into the sample; subtract 1 PMN for every 250 RBC/mm³ to avoid a false-positive PMN.</td></tr>
+              <tr><td><strong>Culture (blood-culture bottles)</strong></td><td>Bedside inoculation</td><td>Positive in ~40–60% overall; bottles at the bedside raise yield to ~80%. Guides de-escalation but never gates treatment.</td></tr>
+              <tr><td><strong>Total protein</strong></td><td>&lt;1.5 g/dL = high risk</td><td>Low protein = low opsonin/complement = poor local defense (primary-prophylaxis criterion). In an SBP tap, protein &gt;1 g/dL is one Runyon flag for secondary peritonitis.</td></tr>
+              <tr><td><strong>SAAG (serum − ascites albumin)</strong></td><td>≥1.1 g/dL = portal HTN</td><td>Confirms the ascites is portal-hypertensive (the SBP substrate). Send serum albumin with the tap.</td></tr>
+              <tr><td><strong>Glucose</strong></td><td>&lt;50 mg/dL = flag</td><td>Consumed by dense bacteria/leukocytes; low glucose suggests the higher bacterial burden of secondary peritonitis.</td></tr>
+              <tr><td><strong>LDH</strong></td><td>&gt; serum ULN = flag</td><td>Released by lysing neutrophils and bacteria; a fluid LDH above the serum upper limit points to secondary peritonitis.</td></tr>
+              <tr><td><strong>Gram stain</strong></td><td>Usually negative</td><td>Low organism density means it is typically unrevealing in SBP; <em>many</em> organisms or mixed morphologies suggest a surgical source.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="pearl"><span class="lbl"></span>Order the paracentesis panel as a set: <strong>cell count + differential, culture in blood-culture bottles, total protein, albumin (with a paired serum albumin), glucose, LDH, Gram stain</strong>. Do not wait for imaging or coagulation "clearance" — a diagnostic tap is safe even with an INR of 4–8 and platelets &lt;50k; routine FFP/platelet transfusion before the tap is <em>not</em> required.</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🧪</span><h3>Reading the blood labs — what each value is telling you</h3></div>
+        <div class="m-body">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Lab</th><th>What it means &amp; why it moves</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Creatinine / BUN</strong></td><td>The prognosis driver. A rise signals SBP-induced circulatory dysfunction heading toward <strong>hepatorenal syndrome</strong> — the trigger for albumin. Cr &gt;1 mg/dL, BUN &gt;30, or bilirubin &gt;4 defines the high-risk group.</td></tr>
+              <tr><td><strong>WBC</strong></td><td>May rise, but a normal or low WBC does <em>not</em> exclude SBP — cirrhotics are often leukopenic from hypersplenism. Trust the ascitic PMN over the blood count.</td></tr>
+              <tr><td><strong>Bilirubin / INR / albumin</strong></td><td>The synthetic-function trio (feeds Child-Pugh and MELD-Na). Worsening values mark the decompensation that both predisposes to and follows SBP.</td></tr>
+              <tr><td><strong>Sodium</strong></td><td>Hyponatremia = non-osmotic ADH release from arterial underfilling — a severity/prognosis marker and a MELD-Na component; correct slowly.</td></tr>
+              <tr><td><strong>Lactate</strong></td><td>Elevated = tissue hypoperfusion / evolving septic shock; clearance tracks resuscitation. Cirrhotics clear lactate poorly, so interpret trends.</td></tr>
+              <tr><td><strong>Blood cultures</strong></td><td>Draw before antibiotics — SBP is frequently bacteremic, and blood may grow the organism when the ascitic culture does not.</td></tr>
+              <tr><td><strong>Procalcitonin / CRP</strong></td><td>Supportive of infection but neither sensitive nor specific enough to replace the tap; do not withhold a paracentesis because they are normal.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🩻</span><h3>What it looks like — clinical, procedural &amp; imaging</h3></div>
+        <div class="m-body">
+          <div class="fig-row">
+            <div class="fig"><img src="__IMG_ascites__" alt="Massive ascites — tense abdominal distension"><div class="cap">Tense ascites — the substrate for SBP. Marked abdominal distension in advanced portal hypertension.</div><div class="credit">__CREDIT_ascites__</div></div>
+            <div class="fig"><img src="__IMG_usascites__" alt="Abdominal ultrasound showing ascites"><div class="cap">Bedside ultrasound: anechoic ascitic fluid (labeled) around bowel loops — marks a safe pocket for paracentesis.</div><div class="credit">__CREDIT_usascites__</div></div>
+          </div>
+          <div class="fig-row">
+            <div class="fig"><img src="__IMG_paracentesis__" alt="Abdominal paracentesis technique"><div class="cap">Diagnostic paracentesis — the single test that establishes SBP. Left-lower-quadrant approach, lateral to the rectus.</div><div class="credit">__CREDIT_paracentesis__</div></div>
+            <div class="fig"><img src="__IMG_neutrophil__" alt="Neutrophils with intracellular bacteria"><div class="cap">Neutrophils with engulfed intracellular bacteria — the microscopic correlate of SBP (ascitic PMN ≥250/mm³).</div><div class="credit">__CREDIT_neutrophil__</div></div>
+          </div>
+          <div class="fig-row">
+            <div class="fig"><img src="__IMG_ctascites__" alt="CT abdomen showing ascites"><div class="cap">Axial CT — abdominal free fluid (arrows). Imaging is <em>not</em> needed to diagnose SBP but is ordered to hunt a surgical source when secondary peritonitis is suspected.</div><div class="credit">__CREDIT_ctascites__</div></div>
+            <div class="fig"><img src="__IMG_ecoli__" alt="Escherichia coli Gram stain"><div class="cap"><em>Escherichia coli</em> on Gram stain — the single most common SBP isolate (Gram-negative rods).</div><div class="credit">__CREDIT_ecoli__</div></div>
+          </div>
+          <div class="fig-row">
+            <div class="fig"><img src="__IMG_cirrhosis__" alt="Micronodular cirrhosis, gross"><div class="cap">Micronodular cirrhosis (gross) — the architectural end-stage that generates portal hypertension and low-defense ascites.</div><div class="credit">__CREDIT_cirrhosis__</div></div>
+            <div class="fig"><img src="__IMG_liverhisto__" alt="Cirrhosis histology"><div class="cap">Cirrhosis histology — regenerative nodules encircled by fibrous bands distort sinusoidal flow → portal hypertension.</div><div class="credit">__CREDIT_liverhisto__</div></div>
+          </div>
+          <div class="fig-row">
+            <div class="fig"><img src="__IMG_jaundice__" alt="Scleral icterus"><div class="cap">Scleral icterus — a bedside stigma of the decompensated liver disease that underlies SBP risk.</div><div class="credit">__CREDIT_jaundice__</div></div>
+            <div class="fig"><img src="__IMG_spider__" alt="Spider angioma"><div class="cap">Spider angioma — cutaneous marker of chronic liver disease/portal hypertension.</div><div class="credit">__CREDIT_spider__</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CLINIC ============================================================ -->
+    <div class="ctx-panel active" data-context="clinic">
+      <div class="context-band">🩺 Clinic — prevention, prophylaxis &amp; the cirrhotic at risk</div>
+
+      <section class="sec" id="c-recognize">
+        <div class="sec-head"><span class="pill">Assess</span><h2>Who is at risk — and when to worry</h2></div>
+        <div class="module accent" style="--m:var(--assess)">
+          <div class="m-head" style="--m:var(--assess)"><span class="m-ico">🔍</span><h3>The at-risk outpatient</h3></div>
+          <div class="m-body">
+            <p>SBP is a disease of <strong>advanced cirrhosis with ascites</strong>. Roughly 1 in 10 cirrhotics with ascites develops SBP each year, and after a first episode the 1-year recurrence approaches 70% without prophylaxis. The clinic job is to identify the high-risk patient, keep them on the right prophylaxis, and know the moment outpatient management is no longer safe.</p>
+            <p><strong>Highest-risk phenotypes:</strong></p>
+            <ul>
+              <li><strong>Low-protein ascites</strong> (ascitic total protein &lt;1.5 g/dL) — poor opsonic defense.</li>
+              <li><strong>Prior SBP</strong> — the strongest single predictor of the next episode.</li>
+              <li><strong>Advanced liver failure</strong> — Child-Pugh ≥9 with bilirubin ≥3 mg/dL, or renal/circulatory impairment (Cr ≥1.2, BUN ≥25, or Na ≤130).</li>
+              <li><strong>Active or recent GI/variceal bleeding</strong> — translocation surges during a bleed.</li>
+              <li><strong>Chronic PPI use</strong> — gastric acid suppression promotes SIBO and is an independent, potentially modifiable risk factor.</li>
+            </ul>
+            <div class="redflag"><span class="lbl"></span>Tell every ascites patient: new fever, abdominal pain, confusion, or simply "feeling more unwell" = go to the ED for a tap. Waiting for the classic rigid abdomen loses the window.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-workup">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Workup</span><h2>What to order &amp; when</h2></div>
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>Outpatient labs, tap thresholds &amp; imaging</h3></div>
+          <div class="m-body">
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">Diagnostic paracentesis</span><span class="ord-when">Any ascites patient with fever, abdominal pain, encephalopathy, or unexplained clinical/renal decline → send to ED/day-unit for a tap the same day. New-onset ascites also warrants a diagnostic tap.</span><span class="ord-tag">Same-day</span></div>
+              <div class="order-row"><span class="ord-name">Ascitic protein</span><span class="ord-when">On the first diagnostic tap — &lt;1.5 g/dL identifies the patient who needs primary prophylaxis.</span><span class="ord-tag">Risk-stratify</span></div>
+              <div class="order-row"><span class="ord-name">CMP + INR + CBC</span><span class="ord-when">Every visit to compute Child-Pugh / MELD-Na, track renal function, and flag the high-risk prophylaxis group.</span><span class="ord-tag">Each visit</span></div>
+              <div class="order-row"><span class="ord-name">Liver ultrasound with Doppler</span><span class="ord-when">Every 6 months for HCC surveillance (AASLD); also confirms ascites and portal patency.</span><span class="ord-tag">q6 months</span></div>
+              <div class="order-row"><span class="ord-name">EGD for varices</span><span class="ord-when">At diagnosis of cirrhosis and per surveillance interval — variceal bleeding is a major SBP trigger.</span><span class="ord-tag">Screening</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-manage">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Antibiotic prophylaxis — first-line → escalation</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">💊</span><h3>Who gets prophylaxis, with what, and for how long</h3></div>
+          <div class="m-body">
+            <div class="ladder">
+              <div class="rung first open"><div class="r-head" onclick="toggleRung(this)"><span class="step">1</span><div><div class="r-title">Secondary prophylaxis — after any SBP episode (indefinite)</div><div class="r-sub">Highest-yield indication: recurrence is ~70%/yr without it.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <div class="why"><span class="lbl"></span>continuous low-dose quinolone selectively decontaminates gut Gram-negatives, cutting the translocation that reseeds the ascites (Ginès 1990: 1-year SBP recurrence 20% vs 68%). Continue until transplant, or durable resolution of ascites.</div>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Drug</th><th>Start</th><th>Target / Duration</th><th>Why it works</th><th>If allergic / intolerant</th></tr></thead>
+                    <tbody>
+                      <tr><td>Norfloxacin</td><td>400 mg PO daily</td><td>Continue indefinitely (until transplant/ascites resolves)</td><td class="why">Gut-selective fluoroquinolone → decontaminates Enterobacterales</td><td class="alt">Ciprofloxacin 500 mg PO daily (norfloxacin is off the US market)</td></tr>
+                      <tr><td>Ciprofloxacin</td><td>500 mg PO daily</td><td>Indefinite</td><td class="why">Systemic fluoroquinolone; the practical US first choice</td><td class="alt">TMP-SMX DS if quinolone-intolerant</td></tr>
+                      <tr><td>TMP-SMX (DS 160/800)</td><td>1 tab PO daily</td><td>Indefinite</td><td class="why">Alternative gut coverage where quinolones fail/are not tolerated</td><td class="alt">Sulfa allergy → back to a quinolone</td></tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </div>
+              <div class="rung second"><div class="r-head" onclick="toggleRung(this)"><span class="step">2</span><div><div class="r-title">Primary prophylaxis — low-protein ascites + advanced disease</div><div class="r-sub">Never had SBP, but high-risk fluid/physiology.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>Offer continuous prophylaxis when ascitic protein is <strong>&lt;1.5 g/dL</strong> <em>and</em> there is advanced disease: <strong>Child-Pugh ≥9 with bilirubin ≥3 mg/dL</strong>, or renal/circulatory impairment (<strong>Cr ≥1.2, BUN ≥25, or Na ≤130</strong>).</p>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Drug</th><th>Start</th><th>Target</th><th>Why it works</th><th>If allergic / intolerant</th></tr></thead>
+                    <tbody>
+                      <tr><td>Norfloxacin</td><td>400 mg PO daily</td><td>Continuous while criteria persist</td><td class="why">Reduces first SBP and delays hepatorenal syndrome (Fernández 2007)</td><td class="alt">Ciprofloxacin 500 mg PO daily</td></tr>
+                      <tr><td>Ciprofloxacin</td><td>500 mg PO daily</td><td>Continuous</td><td class="why">Equivalent gut decontamination; US-available</td><td class="alt">TMP-SMX DS daily</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="decision"><span class="lbl"></span>Weigh prophylaxis against driving <strong>quinolone-resistant</strong> flora — reserve it for the criteria above rather than every low-protein ascites, and reassess if the patient improves (e.g., ascites resolves).</div>
+                </div>
+              </div>
+              <div class="rung third"><div class="r-head" onclick="toggleRung(this)"><span class="step">3</span><div><div class="r-title">GI-bleed prophylaxis — the acute 7-day course</div><div class="r-sub">Every cirrhotic with an acute upper-GI bleed.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>All cirrhotics with acute GI hemorrhage get antibiotics regardless of ascites — it reduces infection, rebleeding, and mortality.</p>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Drug</th><th>Start</th><th>Duration</th><th>Why it works</th><th>If allergic / intolerant</th></tr></thead>
+                    <tbody>
+                      <tr><td>Ceftriaxone</td><td>1 g IV q24h</td><td>Up to 7 days (preferred in advanced cirrhosis / high quinolone-resistance settings)</td><td class="why">Covers the translocation surge during a bleed</td><td class="alt">Norfloxacin 400 mg PO BID ×7 d if IV not feasible and low resistance</td></tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </div>
+            </div>
+            <div class="pearl"><span class="lbl"></span>Prophylaxis is not disease-modifying for the liver — the definitive treatment for recurrent SBP and end-stage cirrhosis is <strong>liver transplantation</strong>. An episode of SBP is itself an indication to refer/relist for transplant evaluation.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-comorbid">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Comorbidities</span><h2>How comorbidities change SBP</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">🔗</span><h3>The company cirrhosis keeps</h3></div>
+          <div class="m-body">
+            <p>SBP never occurs in isolation — it is one facet of decompensated cirrhosis, and each companion condition bends both the risk and the plan.</p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Comorbidity</th><th>How it interacts</th><th>What changes</th></tr></thead>
+              <tbody>
+                <tr><td>Hepatorenal syndrome / AKI</td><td>SBP is the classic trigger of type-1 HRS via circulatory collapse.</td><td><strong>Give albumin</strong> (1.5 g/kg d1, 1 g/kg d3); avoid nephrotoxins; escalate to terlipressin/norepinephrine + albumin if HRS-AKI develops.</td></tr>
+                <tr><td>Hepatic encephalopathy</td><td>Infection is a leading HE precipitant; HE may be the only sign of SBP.</td><td>Treat the SBP <em>and</em> the HE (lactulose ± rifaximin); a new/worse HE mandates a tap.</td></tr>
+                <tr><td>Variceal / GI bleeding</td><td>Bleeding surges translocation and infection risk.</td><td>7-day ceftriaxone prophylaxis with every bleed; restart/continue non-selective β-blocker only once hemodynamically safe.</td></tr>
+                <tr><td>Chronic PPI use</td><td>Acid suppression → SIBO → more translocation (independent SBP risk).</td><td><strong>Deprescribe PPIs without a clear indication</strong> — one of the few modifiable risks.</td></tr>
+                <tr><td>Diabetes mellitus</td><td>Impairs neutrophil function; associated with more SBP and worse outcomes.</td><td>Optimize glycemia; heightened suspicion for infection.</td></tr>
+                <tr><td>Alcohol-associated hepatitis</td><td>Severe inflammation + immunoparesis; steroids add infection risk.</td><td>Screen aggressively for SBP before/while on steroids; alcohol cessation is disease-modifying.</td></tr>
+                <tr><td>Heart failure</td><td>Can also cause high-SAAG ascites; shared use of diuretics and β-blockers.</td><td>Distinguish cardiac from cirrhotic ascites (echo, BNP); manage volume without tipping renal perfusion.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="redflag"><span class="lbl"></span><strong>Drugs to avoid / use with caution in the SBP-prone cirrhotic:</strong> <strong>NSAIDs</strong> (blunt renal prostaglandins → AKI/HRS, promote bleeding), <strong>aminoglycosides</strong> (nephrotoxic — avoid for SBP), <strong>IV contrast</strong> in the AKI-prone (weigh carefully), <strong>ACE inhibitors / ARBs</strong> (worsen the low arterial pressure → renal hypoperfusion), <strong>non-selective β-blockers</strong> in refractory ascites / SBP with hypotension or AKI (the "window" — hold when MAP is low or Cr rising), and <strong>routine chronic PPIs</strong> without indication.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-scores">
+        <div class="sec-head"><span class="pill" style="background:var(--dx)">Scores</span><h2>Risk calculators</h2></div>
+
+        <div class="module accent" style="--m:var(--dx)"><div class="m-head" style="--m:var(--dx)"><span class="m-ico">🧮</span><h3>Child-Pugh score — severity of cirrhosis &amp; prophylaxis gating</h3></div>
+          <div class="m-body">
+            <p>Child-Turcotte-Pugh grades cirrhosis severity from five variables. It feeds the primary-prophylaxis rule (Child-Pugh ≥9 with bilirubin ≥3) and predicts perioperative and overall mortality. Pick one option per row.</p>
+            <div class="calc" data-interp="interpChildPugh">
+              <div class="calc-grid">
+                <div>
+                  <div style="font-size:11.5px;color:var(--muted);margin:2px 0 6px;text-transform:uppercase;letter-spacing:.6px">Total bilirubin (mg/dL)</div>
+                  <div class="calc-opt sel" data-pts="1" data-group="bili" onclick="scoreToggle(this)">&lt;2 <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="2" data-group="bili" onclick="scoreToggle(this)">2–3 <span style="margin-left:auto;font-weight:700">+2</span></div>
+                  <div class="calc-opt" data-pts="3" data-group="bili" onclick="scoreToggle(this)">&gt;3 <span style="margin-left:auto;font-weight:700">+3</span></div>
+                  <div style="font-size:11.5px;color:var(--muted);margin:10px 0 6px;text-transform:uppercase;letter-spacing:.6px">Albumin (g/dL)</div>
+                  <div class="calc-opt sel" data-pts="1" data-group="alb" onclick="scoreToggle(this)">&gt;3.5 <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="2" data-group="alb" onclick="scoreToggle(this)">2.8–3.5 <span style="margin-left:auto;font-weight:700">+2</span></div>
+                  <div class="calc-opt" data-pts="3" data-group="alb" onclick="scoreToggle(this)">&lt;2.8 <span style="margin-left:auto;font-weight:700">+3</span></div>
+                  <div style="font-size:11.5px;color:var(--muted);margin:10px 0 6px;text-transform:uppercase;letter-spacing:.6px">INR</div>
+                  <div class="calc-opt sel" data-pts="1" data-group="inr" onclick="scoreToggle(this)">&lt;1.7 <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="2" data-group="inr" onclick="scoreToggle(this)">1.7–2.3 <span style="margin-left:auto;font-weight:700">+2</span></div>
+                  <div class="calc-opt" data-pts="3" data-group="inr" onclick="scoreToggle(this)">&gt;2.3 <span style="margin-left:auto;font-weight:700">+3</span></div>
+                </div>
+                <div>
+                  <div style="font-size:11.5px;color:var(--muted);margin:2px 0 6px;text-transform:uppercase;letter-spacing:.6px">Ascites</div>
+                  <div class="calc-opt sel" data-pts="1" data-group="asc" onclick="scoreToggle(this)">None <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="2" data-group="asc" onclick="scoreToggle(this)">Mild–moderate (diuretic-responsive) <span style="margin-left:auto;font-weight:700">+2</span></div>
+                  <div class="calc-opt" data-pts="3" data-group="asc" onclick="scoreToggle(this)">Tense / refractory <span style="margin-left:auto;font-weight:700">+3</span></div>
+                  <div style="font-size:11.5px;color:var(--muted);margin:10px 0 6px;text-transform:uppercase;letter-spacing:.6px">Encephalopathy</div>
+                  <div class="calc-opt sel" data-pts="1" data-group="enc" onclick="scoreToggle(this)">None <span style="margin-left:auto;font-weight:700">+1</span></div>
+                  <div class="calc-opt" data-pts="2" data-group="enc" onclick="scoreToggle(this)">Grade 1–2 <span style="margin-left:auto;font-weight:700">+2</span></div>
+                  <div class="calc-opt" data-pts="3" data-group="enc" onclick="scoreToggle(this)">Grade 3–4 <span style="margin-left:auto;font-weight:700">+3</span></div>
+                </div>
+              </div>
+              <div class="calc-result">
+                <div class="calc-total score-total">5</div>
+                <div style="font-size:13px;margin-top:8px" class="score-interp"></div>
+              </div>
+            </div>
+            <div class="pearl"><span class="lbl"></span>Class A = 5–6, B = 7–9, C = 10–15. Child-Pugh ≥9 with bilirubin ≥3 mg/dL is one of the two AASLD primary-prophylaxis triggers for low-protein ascites.</div>
+          </div>
+        </div>
+
+        <div class="module accent" style="--m:var(--dx)"><div class="m-head" style="--m:var(--dx)"><span class="m-ico">🔗</span><h3>More validated scores (open on MDCalc)</h3></div>
+          <div class="m-body">
+            <ul>
+              <li><a href="https://www.mdcalc.com/calc/78/meld-na-unos-optn" target="_blank">MELD-Na (UNOS/OPTN)</a> — transplant priority &amp; short-term mortality; the continuous nomogram is best computed on MDCalc (bilirubin/INR/Cr floored at 1.0, Cr capped at 4.0, dialysis sets Cr = 4.0).</li>
+              <li><a href="https://www.mdcalc.com/calc/340/child-pugh-score-cirrhosis-mortality" target="_blank">Child-Pugh Score</a> — the same score above, with MDCalc's mortality/survival table.</li>
+              <li><a href="https://www.mdcalc.com/calc/10062/maddrey-discriminant-function-alcoholic-hepatitis" target="_blank">Maddrey Discriminant Function</a> — steroid decision in alcohol-associated hepatitis, a common SBP co-traveler.</li>
+            </ul>
+            <div class="callout"><span class="lbl" style="color:#38bdf8">Why link out</span>MELD-Na is a logarithmic formula with flooring/capping rules; a hand-built version risks silent errors, so we defer to the validated MDCalc implementation rather than approximate it.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-prevention">
+        <div class="sec-head"><span class="pill" style="background:var(--dispo)">Prevent</span><h2>USPSTF A/B &amp; whole-patient prevention</h2></div>
+        <div class="module accent" style="--m:var(--dispo)">
+          <div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🛡️</span><h3>Grade A &amp; B screening relevant to the cirrhotic</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table class="uspstf-table">
+              <thead><tr><th>Grade</th><th>Recommendation</th><th>Population</th></tr></thead>
+              <tbody>
+                <tr><td class="grade B">B</td><td>Screen for <strong>hepatitis C</strong> infection</td><td>All adults 18–79 — a leading cause of the underlying cirrhosis.</td></tr>
+                <tr><td class="grade A">A</td><td>Screen for <strong>hepatitis B</strong> in high-risk persons; screen all adults at least once</td><td>Persons at increased risk; treatable driver of cirrhosis.</td></tr>
+                <tr><td class="grade B">B</td><td><strong>Unhealthy alcohol use</strong> screening &amp; brief counseling</td><td>Adults ≥18 — alcohol is a top cause and accelerant of cirrhosis.</td></tr>
+                <tr><td class="grade B">B</td><td><strong>Obesity</strong> screening &amp; behavioral intervention</td><td>Adults — MASLD/MASH is now a major cirrhosis driver.</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>Vaccinate the cirrhotic (infection prevention):</strong> pneumococcal (PCV per current ACIP schedule), annual influenza, hepatitis A &amp; B, COVID-19, and the age-appropriate series. Prevent the infections that both decompensate the liver and compete with SBP for the deteriorating patient.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="c-escalate">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Escalate</span><h2>When clinic isn't enough</h2></div>
+        <div class="module accent" style="--m:var(--escalate)">
+          <div class="m-head" style="--m:var(--escalate)"><span class="m-ico">🚑</span><h3>Red flags → ED / admission</h3></div>
+          <div class="m-body">
+            <div class="redflag"><span class="lbl"></span>Send to the ED for a tap and admission for any of: <strong>fever, abdominal pain, or new/worsening confusion</strong> in an ascites patient; <strong>rising creatinine</strong> or reduced urine output; <strong>hypotension</strong> (SBP &lt;90 / MAP &lt;65); <strong>GI bleeding</strong>; or simply an unexplained clinical decline. SBP cannot be diagnosed or safely treated in clinic — it needs the tap and IV antibiotics.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================ WARDS ============================================================ -->
+    <div class="ctx-panel" data-context="wards">
+      <div class="context-band">🛏️ Wards — diagnosis, antibiotics &amp; albumin</div>
+
+      <section class="sec" id="w-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>Who to admit &amp; the diagnostic algorithm</h2></div>
+        <div class="module accent" style="--m:var(--assess)"><div class="m-head" style="--m:var(--assess)"><span class="m-ico">📋</span><h3>Admission &amp; the tap-first pathway</h3></div>
+          <div class="m-body">
+            <p><strong>Admit every confirmed or suspected SBP.</strong> Admit any cirrhotic with ascites plus fever, abdominal pain, encephalopathy, AKI, GI bleed, or hemodynamic change. The non-negotiable first move is a <strong>diagnostic paracentesis before antibiotics</strong> — antibiotics given first can sterilize the culture and blur the count.</p>
+            <div class="svg-wrap">
+              <div class="dia dia-dark">__SVG_sbpalgo_dark__</div>
+              <div class="dia dia-light">__SVG_sbpalgo_light__</div>
+              <div class="cap">The tap-first pathway: cell count decides SBP vs bacterascites vs no-SBP; Runyon criteria fork off secondary peritonitis; the 48-hour repeat tap confirms response.</div>
+            </div>
+          </div></div>
+      </section>
+
+      <section class="sec" id="w-orders">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Orders</span><h2>Admission order set</h2></div>
+        <div class="module accent" style="--m:var(--workup)"><div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>Labs, fluid studies, monitoring</h3></div>
+          <div class="m-body">
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">Diagnostic paracentesis</span><span class="ord-when">FIRST, before antibiotics: cell count + differential, culture in blood-culture bottles at bedside, total protein, albumin, glucose, LDH, Gram stain.</span><span class="ord-tag">STAT</span></div>
+              <div class="order-row"><span class="ord-name">Blood cultures ×2</span><span class="ord-when">Before antibiotics — SBP is frequently bacteremic.</span><span class="ord-tag">STAT</span></div>
+              <div class="order-row"><span class="ord-name">CBC, CMP, INR, LFTs</span><span class="ord-when">Baseline synthetic function, renal function (albumin trigger), Child-Pugh/MELD-Na.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Serum albumin</span><span class="ord-when">Paired with ascitic albumin for SAAG; and to dose albumin (1.5 g/kg d1).</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Lactate + VBG</span><span class="ord-when">If any hypotension/sepsis physiology.</span><span class="ord-tag">If unstable</span></div>
+              <div class="order-row"><span class="ord-name">Empiric antibiotics + albumin</span><span class="ord-when">Immediately AFTER the tap is obtained — do not wait for the cell count if suspicion is high.</span><span class="ord-tag">≤ hour 1</span></div>
+              <div class="order-row"><span class="ord-name">CT abdomen/pelvis</span><span class="ord-when">Only if Runyon criteria suggest secondary peritonitis, or no response at 48 h.</span><span class="ord-tag">Conditional</span></div>
+              <div class="order-row"><span class="ord-name">Strict I/O, daily weight, daily labs</span><span class="ord-when">Trend renal function and volume; hold nephrotoxins.</span><span class="ord-tag">Daily</span></div>
+            </div>
+          </div></div>
+      </section>
+
+      <!-- Ascitic fluid calculator -->
+      <section class="sec" id="w-calc">
+        <div class="sec-head"><span class="pill" style="background:var(--dx)">Tool</span><h2>Ascitic fluid analyzer — corrected PMN &amp; SAAG</h2></div>
+        <div class="module accent" style="--m:var(--dx)"><div class="m-head" style="--m:var(--dx)"><span class="m-ico">🧮</span><h3>Does this tap diagnose SBP?</h3></div>
+          <div class="m-body">
+            <p>Enter the fluid counts to compute the <strong>corrected PMN</strong> (RBC-adjusted) and the SAAG. PMN ≥250/mm³ = SBP; SAAG ≥1.1 g/dL = portal-hypertensive ascites.</p>
+            <div class="calc">
+              <div class="calc-grid">
+                <div>
+                  <label style="font-size:12.5px;color:var(--muted)">Total ascitic WBC (cells/mm³)</label>
+                  <input type="number" id="af_wbc" placeholder="e.g. 900" oninput="calcAscites()" min="0" style="width:100%;margin:4px 0 10px;padding:9px 12px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit">
+                  <label style="font-size:12.5px;color:var(--muted)">% neutrophils (PMN)</label>
+                  <input type="number" id="af_pct" placeholder="e.g. 70" oninput="calcAscites()" min="0" max="100" style="width:100%;margin:4px 0 10px;padding:9px 12px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit">
+                  <label style="font-size:12.5px;color:var(--muted)">Ascitic RBC (cells/mm³, optional — for bloody taps)</label>
+                  <input type="number" id="af_rbc" placeholder="e.g. 10000" oninput="calcAscites()" min="0" style="width:100%;margin:4px 0 10px;padding:9px 12px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit">
+                </div>
+                <div>
+                  <label style="font-size:12.5px;color:var(--muted)">Serum albumin (g/dL, optional)</label>
+                  <input type="number" step="0.1" id="af_salb" placeholder="e.g. 2.8" oninput="calcAscites()" min="0" style="width:100%;margin:4px 0 10px;padding:9px 12px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit">
+                  <label style="font-size:12.5px;color:var(--muted)">Ascitic albumin (g/dL, optional)</label>
+                  <input type="number" step="0.1" id="af_aalb" placeholder="e.g. 1.0" oninput="calcAscites()" min="0" style="width:100%;margin:4px 0 10px;padding:9px 12px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit">
+                </div>
+              </div>
+              <div class="calc-result">
+                <div class="calc-total" id="af_out" style="font-size:26px">—</div>
+                <div style="font-size:13px;margin-top:8px" id="af_detail">Corrected PMN = (WBC × %PMN/100) − (RBC ÷ 250). SBP if ≥250/mm³.</div>
+              </div>
+            </div>
+          </div></div>
+      </section>
+
+      <section class="sec" id="w-manage">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Acute management — antibiotics &amp; albumin</h2></div>
+        <div class="module accent" style="--m:var(--treat)"><div class="m-head" style="--m:var(--treat)"><span class="m-ico">💊</span><h3>Empiric therapy — first-line → escalation</h3></div>
+          <div class="m-body">
+            <div class="ladder">
+              <div class="rung first open"><div class="r-head" onclick="toggleRung(this)"><span class="step">1</span><div><div class="r-title">Community-acquired SBP — third-generation cephalosporin</div><div class="r-sub">Covers E. coli, Klebsiella, streptococci.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <div class="why"><span class="lbl"></span>third-generation cephalosporins inhibit bacterial cell-wall synthesis and penetrate ascitic fluid well, covering the gut Enterobacterales and streptococci that cause &gt;70% of community SBP.</div>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Drug</th><th>Start</th><th>Range / Duration</th><th>Why it works</th><th>If allergic / intolerant</th></tr></thead>
+                    <tbody>
+                      <tr><td>Cefotaxime</td><td>2 g IV q8h</td><td>q8h (q12h if less severe); total 5 days</td><td class="why">The most-studied SBP agent; excellent ascitic penetration</td><td class="alt">See severe-penicillin-allergy row below</td></tr>
+                      <tr><td>Ceftriaxone</td><td>1 g IV q12h <em>or</em> 2 g IV q24h</td><td>5 days (extend to ~7 if slow response)</td><td class="why">Once-daily convenience, equivalent efficacy</td><td class="alt">Ciprofloxacin 400 mg IV q12h (only if not on quinolone prophylaxis)</td></tr>
+                      <tr><td>Ceftazidime</td><td>2 g IV q8h</td><td>Alternative 3rd-gen</td><td class="why">Where local formulary favors it</td><td class="alt">Aztreonam ± vancomycin for severe β-lactam allergy</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="callout"><span class="lbl" style="color:#38bdf8">Albumin — give it with the antibiotic</span>Add <strong>IV albumin (25%) 1.5 g/kg within 6 h of diagnosis (day 1), then 1 g/kg on day 3</strong>. It prevents type-1 hepatorenal syndrome and cut in-hospital mortality 29%→10% (Sort 1999). AASLD targets the high-risk group — <strong>Cr &gt;1 mg/dL, BUN &gt;30, or bilirubin &gt;4</strong>. <em>Do not</em> give albumin merely to raise a low serum-albumin level — ATTIRE 2021 showed no benefit and more pulmonary edema.</div>
+                </div>
+              </div>
+              <div class="rung second"><div class="r-head" onclick="toggleRung(this)"><span class="step">2</span><div><div class="r-title">Nosocomial / healthcare-associated / high-resistance — broaden</div><div class="r-sub">Recent hospitalization, recent β-lactam, prior MDR, or failing quinolone prophylaxis.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <div class="why"><span class="lbl"></span>nosocomial SBP has a much higher rate of ESBL Enterobacterales, enterococci, and resistant organisms — empiric coverage must widen or the first 48 h are lost to an ineffective drug.</div>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Drug</th><th>Start</th><th>Range</th><th>Why it works</th><th>Add / adjust</th></tr></thead>
+                    <tbody>
+                      <tr><td>Piperacillin-tazobactam</td><td>4.5 g IV q6–8h</td><td>Broad Gram-neg + anaerobe + enterococcal cover</td><td class="why">For healthcare-associated disease at moderate resistance risk</td><td class="alt">Add vancomycin if MRSA/enterococcal concern</td></tr>
+                      <tr><td>Meropenem</td><td>1 g IV q8h</td><td>Carbapenem for high ESBL prevalence / severe sepsis</td><td class="why">Reliable against ESBL Enterobacterales</td><td class="alt">± daptomycin/linezolid or vancomycin for Gram-positive/VRE cover</td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="decision"><span class="lbl"></span>De-escalate to the narrowest effective agent once cultures and susceptibilities return; stop the extra Gram-positive/anaerobic cover if not needed.</div>
+                </div>
+              </div>
+              <div class="rung third"><div class="r-head" onclick="toggleRung(this)"><span class="step">3</span><div><div class="r-title">Non-response at 48 h / suspected secondary peritonitis</div><div class="r-sub">PMN not falling &gt;25%, or Runyon criteria met.</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>Repeat the paracentesis at 48 h. If the PMN has not fallen by <strong>&gt;25%</strong> from baseline, assume resistant organism or a <strong>secondary</strong> (surgical) source: broaden antibiotics, add anaerobic/enterococcal cover, obtain <strong>CT abdomen/pelvis</strong>, and consult surgery. Reserve routine surveillance-tap follow-up for uncertain cases; a clear responder does not always need a repeat tap.</p>
+                </div>
+              </div>
+            </div>
+          </div></div>
+      </section>
+
+      <section class="sec" id="w-daily">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Monitor</span><h2>What to trend each day</h2></div>
+        <div class="module accent" style="--m:var(--monitor)"><div class="m-head" style="--m:var(--monitor)"><span class="m-ico">📈</span><h3>Daily assessment targets</h3></div>
+          <div class="m-body">
+            <ul>
+              <li><strong>Renal function (Cr, BUN, urine output):</strong> the single most important trend — a rise means evolving HRS → ensure albumin given, remove nephrotoxins.</li>
+              <li><strong>Mental status:</strong> improving encephalopathy signals source control; worsening HE = treatment failure or another precipitant.</li>
+              <li><strong>Hemodynamics (MAP ≥65, HR, lactate clearance):</strong> the sepsis trajectory.</li>
+              <li><strong>Repeat paracentesis at 48 h</strong> in uncertain cases or non-responders → confirm &gt;25% PMN fall.</li>
+              <li><strong>Antibiotic day count &amp; de-escalation:</strong> narrow to culture; plan a 5-day (up to 7) total course.</li>
+              <li><strong>Start secondary prophylaxis</strong> (norfloxacin/ciprofloxacin daily) before discharge; refer for transplant evaluation.</li>
+            </ul>
+          </div></div>
+      </section>
+
+      <section class="sec" id="w-escalate">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Escalate</span><h2>When to call ICU</h2></div>
+        <div class="module accent" style="--m:var(--escalate)"><div class="m-head" style="--m:var(--escalate)"><span class="m-ico">⬆️</span><h3>Escalation triggers (numeric)</h3></div>
+          <div class="m-body">
+            <div class="decision"><span class="lbl"></span>Transfer to ICU for any of: <strong>MAP &lt;65</strong> despite a fluid/albumin challenge or any need for <strong>vasopressors</strong>; <strong>lactate &gt;2–4 mmol/L</strong> not clearing; <strong>grade 3–4 hepatic encephalopathy</strong> or airway compromise; <strong>type-1 HRS</strong> (doubling of Cr to &gt;2.5 mg/dL over &lt;2 weeks) or need for renal replacement; <strong>respiratory failure</strong> (SpO₂ &lt;90%, rising work of breathing, aspiration); active <strong>variceal bleeding</strong> with instability; or a rising lactate/worsening acidosis signalling refractory shock.</div>
+          </div></div>
+      </section>
+
+      <section class="sec" id="w-dispo">
+        <div class="sec-head"><span class="pill" style="background:var(--dispo)">Dispo</span><h2>Discharge &amp; disposition</h2></div>
+        <div class="module accent" style="--m:var(--dispo)"><div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🏠</span><h3>Readiness + where they go</h3></div>
+          <div class="m-body">
+            <p><strong>Discharge readiness:</strong> afebrile and hemodynamically stable, abdominal pain resolving, encephalopathy back to baseline, renal function stable/improving, tolerating oral intake, completed IV course (or converted to an appropriate oral step-down), <strong>secondary prophylaxis started</strong>, and a transplant-evaluation referral placed.</p>
+            <div class="dispo-grid">
+              <div class="dispo"><h4>Home</h4><div class="crit">Recovered, reliable support, can attend hepatology follow-up and adhere to prophylaxis.</div></div>
+              <div class="dispo"><h4>Home health</h4><div class="crit">Home + nursing for labs, albumin infusions, or diuretic/prophylaxis oversight.</div></div>
+              <div class="dispo"><h4>SNF</h4><div class="crit">Deconditioned or needs 24-h skilled nursing (e.g., persistent HE care) but &lt;3 h therapy/day.</div></div>
+              <div class="dispo"><h4>Acute rehab (IRF)</h4><div class="crit">Can tolerate ≥3 h therapy/day across ≥2 disciplines after a prolonged, complicated stay.</div></div>
+              <div class="dispo"><h4>LTAC</h4><div class="crit">Prolonged complex needs (e.g., ventilator weaning after ICU SBP-sepsis).</div></div>
+              <div class="dispo"><h4>Hospice / palliative</h4><div class="crit">Non-transplant candidate with recurrent SBP/HRS — median survival is poor; align goals of care.</div></div>
+            </div>
+            <div class="pearl"><span class="lbl"></span>An episode of SBP marks a prognostic inflection: 1-year mortality after a first SBP approaches 50–70%. Every survivor needs a transplant conversation and lifelong prophylaxis.</div>
+          </div></div>
+      </section>
+    </div>
+
+    <!-- ============================================================ ICU ============================================================ -->
+    <div class="ctx-panel" data-context="icu">
+      <div class="context-band">🫀 ICU — septic shock, HRS &amp; organ support</div>
+
+      <section class="sec" id="i-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>ICU triggers</h2></div>
+        <div class="module accent" style="--m:var(--assess)"><div class="m-head" style="--m:var(--assess)"><span class="m-ico">🚨</span><h3>When SBP belongs in the unit</h3></div>
+          <div class="m-body">
+            <p>SBP earns ICU care when it becomes <strong>septic shock or precipitates organ failure</strong> — the acute-on-chronic liver failure (ACLF) trajectory. Triggers:</p>
+            <ul>
+              <li><strong>Septic shock:</strong> MAP &lt;65 or vasopressor requirement after resuscitation; lactate &gt;2 mmol/L persisting.</li>
+              <li><strong>Type-1 HRS-AKI:</strong> rapidly rising creatinine despite albumin, especially if oliguric or needing RRT.</li>
+              <li><strong>Grade 3–4 hepatic encephalopathy</strong> with airway risk.</li>
+              <li><strong>Respiratory failure</strong> (aspiration, ARDS, hepatic hydrothorax) needing NIV or intubation.</li>
+              <li><strong>Concurrent variceal bleeding</strong> with instability.</li>
+            </ul>
+          </div></div>
+      </section>
+
+      <section class="sec" id="i-monitor">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Monitor</span><h2>Monitoring &amp; access</h2></div>
+        <div class="module accent" style="--m:var(--workup)"><div class="m-head" style="--m:var(--workup)"><span class="m-ico">🩸</span><h3>Lines, labs, targets</h3></div>
+          <div class="m-body">
+            <ul>
+              <li><strong>Arterial line</strong> for continuous MAP (target ≥65) and frequent lactate/ABG in shock.</li>
+              <li><strong>Central access</strong> for vasopressors and large-volume albumin.</li>
+              <li><strong>Dynamic fluid responsiveness</strong> (passive-leg-raise, POCUS/IVC, stroke-volume variation) — cirrhotics are vasodilated and easily over-resuscitated; crystalloid excess worsens ascites and tissue edema.</li>
+              <li><strong>Trend:</strong> lactate clearance, Cr/urine output, mentation/ammonia trend, ScvO₂ if available, and repeat ascitic PMN if not responding.</li>
+              <li><strong>Culture-driven de-escalation</strong> from broad empiric cover as susceptibilities return.</li>
+            </ul>
+          </div></div>
+      </section>
+
+      <section class="sec" id="i-pressors">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Support</span><h2>Vasopressors &amp; HRS agents</h2></div>
+        <div class="module accent" style="--m:var(--treat)"><div class="m-head" style="--m:var(--treat)"><span class="m-ico">💉</span><h3>Which drip, why, and the dose</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table class="pressor-table">
+              <thead><tr><th>Agent</th><th>Receptors / mechanism</th><th>Dose</th><th>Effect</th><th>When to pick</th></tr></thead>
+              <tbody>
+                <tr><td>Norepinephrine</td><td>α1 &gt; β1</td><td>0.05–3 mcg/kg/min, titrate to MAP ≥65</td><td>↑SVR, mild ↑CO</td><td>First-line pressor in septic shock (SSC).</td></tr>
+                <tr><td>Vasopressin</td><td>V1 (non-adrenergic)</td><td>Fixed 0.03 units/min (add-on, not titrated)</td><td>↑SVR; catecholamine-sparing</td><td>Add to norepinephrine when MAP still low.</td></tr>
+                <tr><td>Terlipressin</td><td>V1 splanchnic vasoconstrictor</td><td>1 mg IV q4–6h (or infusion 2 mg/day, up-titrate), <strong>with albumin</strong></td><td>↓splanchnic vasodilation → ↑effective arterial volume, ↑renal perfusion</td><td><strong>HRS-AKI</strong> reversal (CONFIRM 2021); watch for respiratory failure/ischemia.</td></tr>
+                <tr><td>Hydrocortisone</td><td>Glucocorticoid receptor</td><td>200 mg/day IV (50 mg q6h or infusion)</td><td>Restores vascular tone</td><td>Refractory shock on escalating pressors (relative adrenal insufficiency).</td></tr>
+              </tbody>
+            </table></div>
+            <div class="why"><span class="lbl"></span>the cirrhotic circulation is already maximally vasodilated (nitric-oxide–driven splanchnic pooling). Norepinephrine restores systemic tone at the α1 receptor; terlipressin works upstream by constricting the splanchnic bed specifically, which is why it reverses HRS while a pure systemic pressor may not. Albumin is the common denominator — it refills the effective arterial volume both are trying to defend.</div>
+            <div class="callout"><span class="lbl" style="color:#38bdf8">HRS-AKI bundle</span>Albumin 1 g/kg/day (max ~100 g) × up to 48 h + a vasoconstrictor (<strong>terlipressin</strong> where available, else norepinephrine, or midodrine + octreotide + albumin in non-ICU settings). Hold diuretics/β-blockers/nephrotoxins. Definitive therapy is transplant.</div>
+          </div></div>
+      </section>
+
+      <section class="sec" id="i-vent">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Airway</span><h2>Respiratory support</h2></div>
+        <div class="module accent" style="--m:var(--monitor)"><div class="m-head" style="--m:var(--monitor)"><span class="m-ico">🌬️</span><h3>When to protect the airway; initial settings</h3></div>
+          <div class="m-body">
+            <p>Intubate for grade 3–4 encephalopathy with airway compromise (aspiration risk), refractory hypoxemia, or exhaustion. Tense ascites and hepatic hydrothorax splint the diaphragm — a large-volume paracentesis can improve respiratory mechanics. Use lung-protective settings; keep the head up and consider it a full-stomach/aspiration-risk airway.</p>
+            <div class="vent-card">
+              <div class="vent-item"><div class="vk">Mode</div><div class="vv">AC/VC</div><div class="vn">volume-control assist-control</div></div>
+              <div class="vent-item"><div class="vk">Tidal volume</div><div class="vv">6 mL/kg IBW</div><div class="vn">lung-protective (ARDS/aspiration)</div></div>
+              <div class="vent-item"><div class="vk">PEEP</div><div class="vv">5–8</div><div class="vn">titrate to oxygenation; watch preload</div></div>
+              <div class="vent-item"><div class="vk">Target</div><div class="vv">SpO₂ 92–96%</div><div class="vn">avoid over-distension of splinted lungs</div></div>
+            </div>
+            <div class="pearl"><span class="lbl"></span>Sedation choices matter in liver failure — favor agents with hepatic-independent clearance and short duration; avoid long-acting benzodiazepines that deepen encephalopathy.</div>
+          </div></div>
+      </section>
+
+      <section class="sec" id="i-advanced">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Rescue</span><h2>Advanced / rescue therapies</h2></div>
+        <div class="module accent" style="--m:var(--escalate)"><div class="m-head" style="--m:var(--escalate)"><span class="m-ico">⚙️</span><h3>When first-line isn't enough</h3></div>
+          <div class="m-body">
+            <ul>
+              <li><strong>Renal replacement therapy (CRRT)</strong> for HRS/AKI with refractory volume, acidosis, or hyperkalemia — as a bridge to recovery or transplant (not a destination in a non-candidate).</li>
+              <li><strong>Terlipressin/norepinephrine + albumin</strong> escalation for HRS-AKI (see pressor table); reassess candidacy for TIPS/transplant.</li>
+              <li><strong>TIPS</strong> is <em>not</em> a treatment for acute SBP and is contraindicated during active infection/severe HE; consider later for refractory ascites once infection is controlled.</li>
+              <li><strong>Liver transplantation</strong> — the only definitive therapy for recurrent SBP / end-stage disease; SBP itself accelerates the transplant timeline.</li>
+              <li><strong>Broaden antimicrobials</strong> (carbapenem ± vancomycin/daptomycin/linezolid) guided by local MDR patterns and repeat cultures when failing.</li>
+            </ul>
+          </div></div>
+      </section>
+
+      <section class="sec" id="i-downgrade">
+        <div class="sec-head"><span class="pill" style="background:var(--dx)">Downgrade</span><h2>When to downgrade</h2></div>
+        <div class="module accent" style="--m:var(--dx)"><div class="m-head" style="--m:var(--dx)"><span class="m-ico">⬇️</span><h3>De-escalation to the floor</h3></div>
+          <div class="m-body">
+            <div class="decision"><span class="lbl"></span>Downgrade when: off vasopressors ≥12–24 h with <strong>MAP ≥65</strong>; <strong>lactate normalized</strong>; renal function stable or improving (no acute RRT need); mentation improving (HE ≤ grade 2, airway secure); respiratory status stable off NIV/extubated; and the antibiotic is narrowed to a culture-guided agent. <strong>Not yet if</strong> lactate is still rising, creatinine is climbing on albumin, HE remains grade 3–4, or pressors were weaned within the last few hours. For a non-transplant candidate with progressive multi-organ failure, shift the conversation to goals of care rather than repeated escalation.</div>
+          </div></div>
+      </section>
+    </div>
+
+    <!-- ===== MY NOTES (shared) ===== -->
+    <section class="sec" id="notes" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:#eab308">Notes</span><h2>My notes</h2></div>
+      <div class="module accent" style="--m:#eab308">
+        <div class="m-head" style="--m:#eab308"><span class="m-ico">&#128221;</span><h3>Personal notes — auto-saved on this device, timestamped</h3></div>
+        <div class="m-body">
+          <textarea id="noteInput" class="note-input" placeholder="Add a note — attending pearls, your own reminders, things to look up..."></textarea>
+          <div style="display:flex;gap:10px;margin-top:8px;align-items:center;flex-wrap:wrap">
+            <button class="note-btn" onclick="addNote()">&#65291; Add note</button>
+            <span style="font-size:11.5px;color:var(--muted)">Saved in this browser only &middot; each note stamped with date &amp; time</span>
+          </div>
+          <div id="noteList" class="note-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REFERENCES (shared) ===== -->
+    <section class="sec refs" id="references">
+      <div class="sec-head"><span class="pill" style="background:#64748b">Refs</span><h2>Sources, trials &amp; media</h2></div>
+      <h4>Guidelines</h4>
+      <ul>
+        <li>AASLD 2021 Practice Guidance — Diagnosis, Evaluation &amp; Management of Ascites, SBP &amp; Hepatorenal Syndrome (Biggins et al., <em>Hepatology</em> 2021) — <a href="https://journals.lww.com/hep/fulltext/2021/08000/diagnosis,_evaluation,_and_management_of_ascites,.25.aspx" target="_blank">Hepatology</a></li>
+        <li>EASL 2018 Clinical Practice Guidelines — decompensated cirrhosis — <a href="https://www.journal-of-hepatology.eu/article/S0168-8278(18)31966-4/fulltext" target="_blank">J Hepatol</a></li>
+        <li>USPSTF — <a href="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hepatitis-c-screening" target="_blank">HCV screening</a> · <a href="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hepatitis-b-virus-infection-screening" target="_blank">HBV screening</a> · <a href="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/unhealthy-alcohol-use-in-adolescents-and-adults-screening-and-behavioral-counseling-interventions" target="_blank">Alcohol use</a></li>
+        <li>Surviving Sepsis Campaign 2021 — vasopressors &amp; septic-shock resuscitation — <a href="https://www.sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-guidelines-2021" target="_blank">SCCM</a></li>
+      </ul>
+      <h4>Key trials</h4>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Trial</th><th>Result</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://pubmed.ncbi.nlm.nih.gov/10432325/" target="_blank">Sort et al. (NEJM 1999)</a></td><td>Cefotaxime + albumin (1.5 g/kg d1, 1 g/kg d3): in-hospital mortality 29%→10%, renal impairment 33%→10%, 3-mo mortality 41%→22%</td><td>Established IV albumin as standard of care in SBP</td></tr>
+          <tr><td><a href="https://www.hepatitisc.uw.edu/go/management-cirrhosis-related-complications/spontaneous-bacterial-peritonitis-recognition-management/core-concept/all" target="_blank">Runyon et al. (Gastro 1991)</a></td><td>5-day cefotaxime 2 g q8h = 10-day therapy (equal resolution, recurrence, mortality)</td><td>Short course is adequate — stop at 5 days if responding</td></tr>
+          <tr><td><a href="https://pubmed.ncbi.nlm.nih.gov/17854593/" target="_blank">Fernández et al. (Gastro 2007)</a></td><td>Norfloxacin primary prophylaxis (low-protein ascites + advanced disease): 1-yr SBP 7% vs 61%, ↓HRS, ↑survival</td><td>Basis for primary-prophylaxis criteria</td></tr>
+          <tr><td><a href="https://pubmed.ncbi.nlm.nih.gov/2210673/" target="_blank">Ginès et al. (Hepatology 1990)</a></td><td>Norfloxacin secondary prophylaxis: 1-yr SBP recurrence 20% vs 68% (Gram-neg recurrence 3% vs 60%)</td><td>Basis for lifelong secondary prophylaxis</td></tr>
+          <tr><td><a href="https://pubmed.ncbi.nlm.nih.gov/26084406/" target="_blank">Piano/Fernández (Hepatology 2016)</a></td><td>Nosocomial SBP: meropenem + daptomycin 87% vs ceftazidime 25% resolution</td><td>Broaden empiric cover in nosocomial/MDR-risk SBP</td></tr>
+          <tr><td><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2022166" target="_blank">ATTIRE (NEJM 2021)</a></td><td>Albumin targeting serum level ≥30 g/L: no benefit (infection/AKI/death), more pulmonary edema</td><td>Don't give albumin merely to raise the serum level</td></tr>
+          <tr><td><a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673618308407" target="_blank">ANSWER (Lancet 2018)</a></td><td>Long-term albumin for uncomplicated ascites: 18-mo survival 77% vs 66%</td><td>Long-term albumin helps persistent ascites (distinct from acute SBP)</td></tr>
+          <tr><td><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2008290" target="_blank">CONFIRM (NEJM 2021)</a></td><td>Terlipressin + albumin reversed HRS-1 more than placebo; more respiratory failure</td><td>FDA-approved terlipressin for HRS-AKI (use with caution)</td></tr>
+          <tr><td><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa0907118" target="_blank">SOAP II (NEJM 2010)</a></td><td>Norepinephrine &lt; dopamine for arrhythmia/mortality</td><td>Norepinephrine first-line pressor in septic shock</td></tr>
+        </tbody>
+      </table></div>
+      <h4>Watch on Osmosis (login: 🔑 button, top-right)</h4>
+      <ul>
+        <li><a href="https://www.osmosis.org/learn/Spontaneous_bacterial_peritonitis" target="_blank">Spontaneous bacterial peritonitis — overview</a></li>
+        <li><a href="https://www.osmosis.org/learn/Cirrhosis" target="_blank">Cirrhosis &amp; portal hypertension</a></li>
+        <li><a href="https://www.osmosis.org/learn/Ascites" target="_blank">Ascites — pathophysiology</a></li>
+      </ul>
+      <h4>Image credits</h4>
+      <ul>
+        __CREDITS_LIST__
+      </ul>
+      <p style="font-size:11.5px;color:var(--muted);margin-top:14px">Educational reference for an incoming IM resident. Verify every dose against your institution's formulary, local antibiogram, and the current guideline before acting on any individual patient. Diagnostic threshold, doses, and albumin regimen per AASLD 2021 and Sort et al. 1999.</p>
+    </section>
