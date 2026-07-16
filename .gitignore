@@ -12,3 +12,9 @@ builder_server.out
 # text, part files and screenshots. The finished guide inlines everything.
 _*_build/
 _*_img_candidates.json
+# extracted full text of copyrighted guidelines/papers used only as build input
+# (e.g. _icr2019.txt, _iwg2009.txt, _acog_pb207.txt) and other scratch:
+_*.txt
+_imgcheck/
+*_check.png
+*_search_raw.json
