@@ -60,9 +60,40 @@ def ensure_published(name):
         return False
 
 
+
+# Detailed per-guide requirements. When a queued name matches a key, build_prompt appends it.
+SPECS = {
+ "Antibiotics":
+   "This is an ANTIBIOTIC REFERENCE, not a single disease. Repurpose the 3 contexts as: Clinic = OUTPATIENT infections & ORAL regimens + when outpatient/discharge is safe; Wards = INPATIENT empiric IV regimens by organ system + IV->PO switch + de-escalation; ICU = broad-spectrum / severe sepsis / MRSA / Pseudomonas / ESBL-CRE coverage + source control. Use the shared pathophysiology section for the cross-cutting reference tables. REQUIRED content: "
+   "(1) COVERAGE-BY-PATHOGEN table: for each key organism (MSSA, MRSA, Strep pyogenes/pneumoniae, Enterococcus incl VRE, E. coli, Klebsiella, Proteus, Pseudomonas, ESBL & CRE, anaerobes incl B. fragilis, atypicals Mycoplasma/Legionella/Chlamydia, H. influenzae, N. meningitidis, Listeria) list which antibiotics reliably cover it and note resistance rates/odds and caveats. "
+   "(2) A SPECTRUM GRID (antibiotic vs Gram+/Gram-/anaerobe/atypical/Pseudomonas/MRSA/enterococcus coverage), color-coded. "
+   "(3) CEPHALOSPORIN GENERATIONS memorization aid: 1st-5th generation agents and how coverage shifts (Gram+ -> more Gram- -> Pseudomonas -> MRSA/ceftaroline), with a mnemonic and a color-coded table. "
+   "(4) SYSTEM-BASED EMPIRIC THERAPY sections for: cellulitis/SSTI (incl purulent vs non-purulent, diabetic foot, nec fasc), CAP, HAP/VAP, cystitis vs pyelonephritis/complicated UTI, intra-abdominal, bacterial meningitis, bone & joint/septic arthritis, endocarditis, and sepsis/neutropenic fever. For EACH give PREFERRED and ALTERNATIVE regimens/combinations, the TARGET PATHOGENS and WHY each drug is chosen, exact DOSE + FREQUENCY + DURATION for BOTH IV and PO where applicable, and SPECIAL-CASE modifications (e.g., diabetic foot -> add anaerobic +/- Pseudomonas +/- MRSA; explicitly state how DIABETES and other comorbidities change coverage; penicillin allergy alternatives; MDRO risk factors like recent hospitalization/abx; immunocompromise). "
+   "(5) IV-to-PO CONVERSION: the switch criteria (afebrile ~24h, hemodynamically stable, tolerating PO & functioning gut, clinically improving, suitable oral agent with good bioavailability) AND a table of specific IV->PO equivalents (e.g., ceftriaxone -> cefpodoxime/cefdinir or amox-clav or cephalexin; and note fluoroquinolones, metronidazole, linezolid, clindamycin, doxycycline, TMP-SMX, fluconazole are ~1:1 IV:PO). "
+   "(6) WHEN OUTPATIENT/DISCHARGE IS SAFE: from a CLINICAL standpoint (defervescence, hemodynamic stability, oral tolerance, source controlled, reliable follow-up) AND from a PROCALCITONIN standpoint (baseline + trend; consider stopping when <0.25 ng/mL or >=80% drop from peak; where PCT is unreliable). "
+   "(7) ANTIBIOTIC-CLASS overview (penicillins, cephalosporins, carbapenems, aztreonam, vancomycin, lipoglycopeptides, linezolid, daptomycin, fluoroquinolones, macrolides, tetracyclines, aminoglycosides, metronidazole, TMP-SMX) with mechanism, spectrum, and key toxicities/monitoring (vancomycin AUC/trough, aminoglycoside levels, QT, tendinopathy, etc.). "
+   "(8) SPECIAL CONSIDERATIONS: penicillin-allergy cross-reactivity and choosing alternatives, renal dose adjustment, C. difficile risk by agent, major drug interactions, pregnancy-unsafe agents, and stewardship/de-escalation. "
+   "EVERY antibiotic mentioned MUST have a dose, frequency, and (where relevant) duration for IV and PO. Base regimens on current IDSA guidance and cite sources. The coverage/spectrum/cephalosporin tables are the core teaching artifact.",
+
+ "Inpatient Diabetes Management":
+   "This is an INPATIENT HYPERGLYCEMIA / DIABETES MANAGEMENT guide. Contexts: Clinic = home-regimen basics + admission med reconciliation (which home agents to hold and why) + discharge regimen & follow-up; Wards = the CORE inpatient glucose management; ICU = IV insulin infusion protocols & critical-care targets. REQUIRED content: "
+   "(1) INPATIENT GLUCOSE TARGETS (non-critical ward ~140-180 mg/dL; ICU ~140-180 on IV insulin; when to individualize) per ADA inpatient Standards of Care. "
+   "(2) BASAL-BOLUS (SCHEDULED) INSULIN from scratch: estimate total daily dose (TDD) by weight (~0.3-0.5 U/kg/day; lower for elderly/CKD/insulin-naive/thin, higher for obese/steroids/insulin-resistant), split ~50% basal / 50% prandial divided across meals, PLUS a correction (supplemental) scale on top. Include a fully worked dosing example. "
+   "(3) PATIENT ALREADY ON HOME INSULIN (basal +/- prandial): how to continue/convert on admission, when to reduce TDD (~20-25% if reduced intake/NPO/AKI/renal), and daily titration from fingerstick patterns. "
+   "(4) NEW-ONSET diabetes / marked hyperglycemia and STEROID-INDUCED hyperglycemia: weight-based starting regimen + titration; NPH timed to the steroid. "
+   "(5) SLIDING SCALE vs SCHEDULED - the key teaching point with a decision box: correction ('sliding-scale') insulin is a SUPPLEMENT to scheduled basal-bolus, NOT sole therapy (sliding-scale-alone is reactive and inferior - cite RABBIT-2). State the few times correction-only is acceptable (very short stay, mild/diet-controlled, good monitoring) vs when scheduled basal-bolus is required. "
+   "(6) NPO / ENTERAL FEEDS / TPN: continue basal (often reduced), hold prandial when not eating, correction q4-6h; dosing with continuous tube feeds and with steroids. "
+   "(7) INSULIN PHARMACOLOGY table: rapid (lispro/aspart/glulisine), short (regular), intermediate (NPH), long/basal (glargine/detemir/degludec) with onset/peak/duration. "
+   "(8) TRANSITIONS: IV insulin infusion -> subcutaneous (give basal ~2 h before stopping the drip; estimate TDD from the stable drip rate) and hospital -> home regimen at discharge; when/how to safely resume home oral agents. "
+   "(9) HYPOGLYCEMIA protocol (thresholds, 15-15 rule, D50/glucagon, and adjusting the regimen after an event). "
+   "(10) NON-INSULIN agents inpatient: why most are held (metformin - AKI/contrast/lactic acidosis; SGLT2i - euglycemic DKA; sulfonylureas - hypoglycemia) and where DPP-4/GLP-1 fit. "
+   "Give specific doses and worked examples throughout; cite the ADA Standards of Care (inpatient/hospital) and the RABBIT-2 evidence.",
+}
+
+
 def build_prompt(name):
     n = name.replace('"', "")
-    return (
+    base = (
         "AUTHORIZED AUTOMATED BATCH BUILD — proceed fully autonomously through every step "
         "below without pausing for confirmation. Do NOT email anyone, do NOT generate MP3 audio, "
         "do NOT ask questions. You are building one educational Internal Medicine clinical-reference "
@@ -91,6 +122,10 @@ def build_prompt(name):
         "5. git add -A && git commit -m \"Add " + n + " clinical reference (Clinic/Wards/ICU)\" && git push origin HEAD:main\n"
         "Then stop. One guide only."
     )
+    spec = SPECS.get(name, "")
+    if spec:
+        base += "\n\n=== ADDITIONAL GUIDE-SPECIFIC REQUIREMENTS (this guide MUST cover ALL of these) ===\n" + spec
+    return base
 
 DEFAULT_50 = [
     "Sepsis and Septic Shock", "Acute Kidney Injury", "Diabetic Ketoacidosis",
