@@ -35,6 +35,57 @@ GRADIENT_COLORS = [
     "#3b82f6", "#ef4444", "#f59e0b", "#8b5cf6", "#10b981", "#06b6d4", "#ec4899"
 ]
 
+# Body-system tagging (a guide can belong to several). Keyword-matched against title+content.
+BODY_SYSTEMS = {
+    "cardiology": ["heart failure", "cardiogenic", "coronary", "stemi", "nstemi", "myocardial",
+                   "atrial fibrillation", "arrhythmia", "bradycard", "tachycard", "heart block",
+                   "pericard", "tamponade", "aortic dissection", "endocarditis", "hypertensive emergency",
+                   "valv", "supraventricular"],
+    "pulmonary": ["copd", "asthma", "pneumonia", "pulmonary embolism", "ards", "respiratory failure",
+                  "pneumothorax", "pleural effusion", "tuberculosis", "hemoptysis", "aspiration"],
+    "renal": ["kidney injury", "chronic kidney", "aki", "ckd", "hyperkalemia", "hypokalemia",
+              "hyponatremia", "hypernatremia", "hypercalcemia", "hypocalcemia", "hypomagnesemia",
+              "siadh", "acid base", "metabolic acidosis", "nephrolithiasis", "glomerulonephritis",
+              "nephrotic", "pyelonephritis", "rhabdomyolysis"],
+    "gastroenterology": ["gi bleed", "gastrointestinal bleed", "cirrhosis", "hepatic encephalopathy",
+                         "pancreatitis", "peritonitis", "sbp", "liver failure", "peptic ulcer",
+                         "inflammatory bowel", "diverticulitis", "cholecystitis", "cholangitis",
+                         "bowel obstruction", "hepatitis", "ascites"],
+    "endocrine": ["diabet", "ketoacidosis", "dka", "hyperosmolar", "hhs", "thyroid", "hyperthyroid",
+                  "hypothyroid", "myxedema", "adrenal", "insulin", "glucose"],
+    "hematology": ["anemia", "thrombocytopenia", "ttp", "itp", "sickle cell", "coagul", "platelet",
+                   "neutropenic", "transfusion"],
+    "infectious": ["sepsis", "septic", "cellulitis", "soft tissue infection", "pyelonephritis", "uti",
+                   "meningitis", "clostridioides", "c. difficile", "endocarditis", "osteomyelitis",
+                   "septic arthritis", "tuberculosis", "antibiotic", "pneumonia", "peritonitis",
+                   "abscess", "infection"],
+    "neurology": ["stroke", "ischemic", "seizure", "epilepticus", "delirium", "encephalopathy",
+                  "withdrawal", "wernicke", "meningitis", "traumatic brain", "tbi", "hemorrhage",
+                  "neuro"],
+    "rheum_msk": ["gout", "rhabdomyolysis", "osteomyelitis", "septic arthritis", "arthritis", "vasculitis"],
+    "tox_allergy": ["overdose", "toxidrome", "toxicity", "anaphylaxis", "withdrawal", "poisoning", "envenom"],
+    "vascular": ["deep vein thrombosis", "vte", "pulmonary embolism", "aortic dissection",
+                 "limb ischemia", "thrombosis"],
+}
+SYSTEM_LABELS = {
+    "cardiology": "Cardiology", "pulmonary": "Pulmonary", "renal": "Renal/GU",
+    "gastroenterology": "GI/Hepatic", "endocrine": "Endocrine", "hematology": "Heme/Onc",
+    "infectious": "Infectious", "neurology": "Neurology", "rheum_msk": "Rheum/MSK",
+    "tox_allergy": "Tox/Allergy", "vascular": "Vascular",
+}
+
+
+def get_systems(title, content):
+    """Return body systems for a guide. Match against the TITLE only — scanning full
+    content over-tags (every guide mentions kidney/diabetes/anemia in comorbidities).
+    The title reflects the core topic; the category (added later) guarantees the primary system."""
+    hay = title.lower()
+    sys_found = []
+    for key, kws in BODY_SYSTEMS.items():
+        if any(k in hay for k in kws):
+            sys_found.append(key)
+    return sys_found
+
 
 def extract_metadata(filepath):
     """Extract title, sections, image count, video count, and keywords from a study guide HTML."""
@@ -196,6 +247,7 @@ def extract_metadata(filepath):
         "video_count": video_count,
         "section_count": section_count,
         "contexts": contexts,
+        "systems": get_systems(title, content),
     }
 
 
@@ -209,6 +261,19 @@ def build_card_html(meta):
         f'          <span class="guide-tag">{escape(t)}</span>' for t in meta["tags"]
     )
 
+    # Body systems: keyword-derived, plus a guaranteed one from the category
+    CAT_TO_SYS = {
+        "cardiology": "cardiology", "pulmonology": "pulmonary", "nephrology": "renal",
+        "gastroenterology": "gastroenterology", "endocrinology": "endocrine",
+        "hematology": "hematology", "oncology": "hematology", "infectious": "infectious",
+        "neurology": "neurology", "neurosurgery": "neurology", "rheumatology": "rheum_msk",
+    }
+    systems = list(meta.get("systems", []))
+    cat_sys = CAT_TO_SYS.get(meta.get("category", "").strip().lower())
+    if cat_sys and cat_sys not in systems:
+        systems.insert(0, cat_sys)
+    sys_attr = " ".join(systems)
+
     contexts = meta.get("contexts", [])
     ctx_attr = " ".join(contexts)
     if contexts:
@@ -221,7 +286,7 @@ def build_card_html(meta):
         ctx_html = ""
 
     return f"""
-    <a href="{escape(meta['filename'])}" class="guide-card" data-contexts="{ctx_attr}" data-keywords="{escape(meta['keywords'])}">
+    <a href="{escape(meta['filename'])}" class="guide-card" data-contexts="{ctx_attr}" data-systems="{sys_attr}" data-keywords="{escape(meta['keywords'])}">
       <div class="guide-color-bar" style="background:{meta['gradient']}"></div>
       <div class="guide-content">
         <div class="guide-category" style="color:{meta['category_color']}">{escape(meta['category'])}</div>
