@@ -1,0 +1,270 @@
+
+    <!-- ============================================================ WARDS ============================================================ -->
+    <div class="ctx-panel" data-context="wards">
+      <div class="context-band">🛏️ Wards — the floor is a waiting room for this disease, not a destination</div>
+
+      <section class="sec" id="w-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>Who goes where — and why the floor is usually wrong</h2></div>
+        <div class="module accent" style="--m:var(--assess)">
+          <div class="m-head" style="--m:var(--assess)"><span class="m-ico">📋</span><h3>Admission triage</h3></div>
+          <div class="m-body">
+            <div class="emergency"><span class="lbl"></span><strong>Established cardiogenic shock (SCAI Stage C or worse) does not belong on a medical floor.</strong> It belongs in a CICU/ICU, at a PCI-capable centre, with a shock team activated. If you are admitting a Stage C patient to the floor because "the unit is full," you have made a decision with a mortality attached to it — escalate to the intensivist and the bed manager rather than accepting the bed. The honest role of the ward in this disease is (1) the <strong>Stage A/B patient at risk</strong>, and (2) the <strong>patient who has recovered</strong> and come back down.</div>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Patient</th><th>SCAI stage</th><th>Destination</th><th>Reasoning</th></tr></thead>
+              <tbody>
+                <tr><td>Large MI or acute HF, perfusing, normal lactate, normotensive</td><td style="color:#34d399;font-weight:700">A — at risk</td><td><strong>Telemetry floor / step-down</strong></td><td>Appropriate for the ward — but they earn <em>frequent</em> reassessment. Stage A is not "fine," it's "not yet."</td></tr>
+                <tr><td>Hypotensive or tachycardic, perfusion still intact (normal lactate, warm, making urine)</td><td style="color:#38bdf8;font-weight:700">B — beginning</td><td><strong>Step-down / CICU</strong>; low threshold for the unit</td><td>Pre-shock. This is the last stage at which you can intervene cheaply. Mortality is 7.1% here vs 40.4% at Stage D — the whole game is stopping the progression.</td></tr>
+                <tr><td>Hypoperfusion needing <em>one</em> vasoactive drug or device</td><td style="color:#f59e0b;font-weight:700">C — classic</td><td style="color:#f43f5e"><strong>CICU/ICU — not the floor</strong></td><td>By definition on a vasoactive infusion. Requires an arterial line and hourly reassessment; most floors cannot titrate norepinephrine.</td></tr>
+                <tr><td>Failing that first therapy — escalating doses, second agent, or a device added</td><td style="color:#f43f5e;font-weight:700">D — deteriorating</td><td style="color:#f43f5e"><strong>ICU at a shock hub — transfer now</strong></td><td>SCAI's explicit referral trigger: spokes transfer <strong>at Stage D, before Stage E.</strong> Mortality 40.4%. Waiting for extremis is waiting too long.</td></tr>
+                <tr><td>Circulatory collapse / refractory despite maximal support</td><td style="color:#f43f5e;font-weight:700">E — extremis</td><td style="color:#f43f5e"><strong>ICU + immediate MCS/ECMO decision</strong></td><td>Mortality 67%. Transferring a Stage E patient is often futile and consumes capacity — which is precisely the argument for having moved at Stage D.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span>Two ward patients deserve special suspicion. <strong>(1) The "ADHF" admission who isn't responding to diuresis.</strong> If their creatinine is climbing and their pressure is drifting down as you diurese, they are not diuretic-resistant — they are <strong>cold, and you are unloading a patient who needed output first.</strong> Reassess the profile before you double the Lasix. <strong>(2) The post-MI patient on day 2–7 who suddenly deteriorates with a new murmur.</strong> That is a mechanical complication until an echo says otherwise, and it is a surgical emergency, not a "worsening heart failure" problem.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-orders">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Orders</span><h2>Admission order set</h2></div>
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>What to order on admission — and when each repeats</h3></div>
+          <div class="m-body">
+            <h4>Monitoring &amp; access</h4>
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">Continuous telemetry</span><span class="ord-when">All patients. Arrhythmia is both a cause and a consequence — and in a marginal ventricle, new AF with RVR can precipitate shock on its own by removing the atrial kick.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Strict I/O + daily weight</span><span class="ord-when">Same scale, same time, after voiding. <strong>Urine output is a perfusion monitor, not a fluid-balance chore</strong> — &lt;30 mL/h is a SCAI Stage C criterion. Hourly UOP if there's any concern.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Vitals q4h minimum (q1h if Stage B)</span><span class="ord-when">Including a <strong>documented baseline BP</strong> to compare against — a &gt;30 mmHg drop from baseline is a staging criterion and is meaningless without the baseline.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Continuous pulse oximetry</span><span class="ord-when">All patients. Target SpO₂ 92–96%. <strong>Do not give supplemental O₂ to a non-hypoxic patient</strong> — hyperoxia causes coronary vasoconstriction and was harmful in AVOID/DETO2X-AMI.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Peripheral IV ×2 (large bore)</span><span class="ord-when">Before you need them. If there's any chance of escalation, get central access early rather than at 3am during a crash.</span><span class="ord-tag">Admit</span></div>
+            </div>
+            <h4>Labs</h4>
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">Lactate</span><span class="ord-when"><strong>On admission, then q2–6h until it's falling.</strong> The single most important number on the chart. A rising lactate on a stable blood pressure means your plan is failing.</span><span class="ord-tag">STAT + serial</span></div>
+              <div class="order-row"><span class="ord-name">Troponin (serial)</span><span class="ord-when">On arrival and at 1–3 h. Looking at the <em>delta</em> and magnitude — a big rise means AMI-CS and a cath lab; a plateau in a CKD patient means baseline elevation.</span><span class="ord-tag">Serial</span></div>
+              <div class="order-row"><span class="ord-name">BMP + Mg</span><span class="ord-when">On admission then <strong>at least daily</strong>; q12h if diuresing hard or on an MRA. Watching Cr trend, K⁺ (loop vs MRA), and Na⁺ as a severity marker.</span><span class="ord-tag">Daily+</span></div>
+              <div class="order-row"><span class="ord-name">CBC</span><span class="ord-when">Admission and daily. Anaemia is a modifiable O₂-delivery lever; the platelet count matters enormously if MCS is on the table.</span><span class="ord-tag">Daily</span></div>
+              <div class="order-row"><span class="ord-name">LFTs + bilirubin, INR</span><span class="ord-when">Admission, then daily if abnormal. Distinguish cholestatic congestion (backward) from a transaminase explosion = shock liver (forward, and a severity marker).</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">NT-proBNP</span><span class="ord-when">On admission for confirmation and baseline. A <em>rising</em> level is a SCAI Stage D marker. Use NT-proBNP if they're on an ARNI.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">VBG/ABG</span><span class="ord-when">If any shock suspicion. <strong>pH &lt;7.2 or base deficit &gt;10 are Stage E criteria</strong> — and severe acidosis blunts catecholamine response, so it changes what your drugs will do.</span><span class="ord-tag">If unstable</span></div>
+              <div class="order-row"><span class="ord-name">TSH, iron studies, HbA1c</span><span class="ord-when">Once during the admission. Thyrotoxicosis, iron deficiency and undiagnosed diabetes are all reversible contributors that get missed in the acute chaos.</span><span class="ord-tag">Once</span></div>
+              <div class="order-row"><span class="ord-name">Type &amp; screen</span><span class="ord-when">On any patient who might get MCS or go to the OR. Bleeding is the dominant complication of every device.</span><span class="ord-tag">If escalating</span></div>
+            </div>
+            <h4>Imaging &amp; studies</h4>
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">12-lead ECG</span><span class="ord-when"><strong>Within 10 min of arrival</strong>, repeated with any change. Right-sided leads on any inferior pattern; posterior leads for V1–V3 depression.</span><span class="ord-tag">STAT</span></div>
+              <div class="order-row"><span class="ord-name">TTE</span><span class="ord-when"><strong>Within the first hour — this is the test that changes management.</strong> EF, RV size/function, valves, pericardium. It separates plain pump failure from the four "fix-it-now" diagnoses.</span><span class="ord-tag">STAT</span></div>
+              <div class="order-row"><span class="ord-name">Portable CXR</span><span class="ord-when">On arrival. Congestion, heart size, and line/tube positions. Remember it lags the haemodynamics — a clear film does not exclude shock.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Coronary angiography</span><span class="ord-when"><strong>Emergently if AMI-CS — regardless of time from symptom onset, and regardless of STEMI vs NSTEMI.</strong> The usual time windows do not apply in shock.</span><span class="ord-tag">If ischaemic</span></div>
+            </div>
+            <h4>Medication orders — including the ones you stop</h4>
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">HOLD β-blockers</span><span class="ord-when"><strong>In anyone hypotensive, congested, or hypoperfused.</strong> Negative inotropy in a marginal ventricle precipitates frank shock. Restart only once they are warm, dry and off pressors — then start low and go slow.</span><span class="ord-tag" style="background:rgba(244,63,94,.14);color:var(--danger)">Hold</span></div>
+              <div class="order-row"><span class="ord-name">HOLD ACEi/ARNI/ARB and MRA</span><span class="ord-when">While hypotensive or with an acutely rising creatinine. Resume as they stabilise — <strong>and do resume:</strong> failure to restart GDMT before discharge is one of the commonest and most consequential ward errors.</span><span class="ord-tag" style="background:rgba(244,63,94,.14);color:var(--danger)">Hold</span></div>
+              <div class="order-row"><span class="ord-name">HOLD SGLT2i</span><span class="ord-when">If NPO, peri-procedural, or acutely ill — euglycaemic DKA risk. Restart before discharge.</span><span class="ord-tag" style="background:rgba(244,63,94,.14);color:var(--danger)">Hold</span></div>
+              <div class="order-row"><span class="ord-name">Dual antiplatelet + anticoagulation</span><span class="ord-when">If AMI-CS, per ACS pathway. Note absorption of oral P2Y12 inhibitors is <strong>unreliable in shock</strong> (gut hypoperfusion, opiates, vomiting) — a reason IV cangrelor or GPIIb/IIIa is sometimes used peri-PCI.</span><span class="ord-tag">If ACS</span></div>
+              <div class="order-row"><span class="ord-name">VTE prophylaxis</span><span class="ord-when">All patients unless actively bleeding or going to the OR imminently. Low-output states are prothrombotic.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Statin, high-intensity</span><span class="ord-when">If ischaemic aetiology — continue/start per ACS pathway.</span><span class="ord-tag">If ACS</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-manage">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Acute management — perfusion before decongestion</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">💊</span><h3>The stepwise approach on the floor</h3></div>
+          <div class="m-body">
+            <div class="why"><span class="lbl"></span>the sequencing rule from the pathophysiology section is the whole of ward management: <strong>(1) perfusion pressure → (2) flow → (3) fix the cause → (4) decongest → (5) wean.</strong> Almost every ward mistake in this disease is doing step 4 before steps 1–2.</div>
+            <div class="ladder">
+              <div class="rung first open"><div class="r-head" onclick="toggleRung(this)"><span class="step">1</span><div><div class="r-title">Recognise, stage, and call for help</div><div class="r-sub">The first 10 minutes decide the next 10 days</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <ul>
+                    <li><strong>Stage them (SCAI A–E)</strong> and say the stage out loud in your escalation call. It is a shared language for exactly this moment.</li>
+                    <li><strong>ECG, lactate, echo</strong> — the 2025 ACC guidance wants all three as soon as CS is suspected. The echo is the one that changes what you do next.</li>
+                    <li><strong>Activate the shock team</strong> if your hospital has one. A standardised team-based approach is associated with improved outcomes and is the central recommendation of the 2025 ACC guidance. If you don't have one, call the intensivist and the interventional cardiologist yourself — <em>in parallel, not in sequence.</em></li>
+                    <li><strong>Find the precipitant.</strong> Ischaemia, arrhythmia, mechanical complication, infection, non-adherence, NSAIDs, a new negative inotrope, thyrotoxicosis, anaemia, PE. Some of these are fixed in minutes.</li>
+                  </ul>
+                  <div class="decision"><span class="lbl"></span>Before any drug: <strong>is this actually cardiogenic?</strong> Tamponade, massive PE, RV infarct and acute valve rupture all present as "shock with a high JVP" and each has a specific fix that no vasopressor substitutes for. This is why the echo comes first.</div>
+                </div>
+              </div>
+              <div class="rung second"><div class="r-head" onclick="toggleRung(this)"><span class="step">2</span><div><div class="r-title">Fluid — a small, deliberate challenge, or none at all</div><div class="r-sub">The most misused intervention in this disease</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>The reflex "hypotension → bolus" is <strong>wrong by default here</strong>, because PCWP &gt;15 is part of the definition — the tank is already full. Look again at the function curve: on a flat Starling relationship, added preload buys almost no stroke volume and plenty of alveolar oedema.</p>
+                  <div class="tbl-wrap"><table>
+                    <thead><tr><th>Profile</th><th>Fluid?</th><th>Why</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Cold &amp; wet</strong> (JVD, rales, oedema, cool)</td><td style="color:#f43f5e;font-weight:700">No</td><td>Already congested. Fluid worsens Loop 2 and buys nothing. They need output, then decongestion.</td></tr>
+                      <tr><td><strong>Cold &amp; dry</strong> (hypoperfused, flat JVP, clear lungs)</td><td style="color:#f59e0b;font-weight:700">A cautious 250 mL challenge, then reassess</td><td>The one CS profile where preload may genuinely be low. <strong>Reassess immediately</strong> — if there's no response, stop and move to inotropy. Do not repeat a bolus that didn't work.</td></tr>
+                      <tr><td><strong>RV infarct / RV-predominant</strong> (high JVP, clear lungs, inferior STEMI, PAPi &lt;0.9)</td><td style="color:#34d399;font-weight:700">Yes — this is the exception</td><td class="why"><strong>Management inverts.</strong> The stiff, infarcted RV needs preload to push blood across to a starved LV. Give fluid, avoid nitrates and diuretics entirely, and preserve AV synchrony (pace AV-sequentially if you must). Diuresing an RV infarct is a classic, lethal error.</td></tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </div>
+              <div class="rung second"><div class="r-head" onclick="toggleRung(this)"><span class="step">3</span><div><div class="r-title">Restore perfusion pressure — norepinephrine</div><div class="r-sub">Buys the myocardium back its own blood supply</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>If MAP is &lt;65 with hypoperfusion, start <strong>norepinephrine</strong> — and start it through a good peripheral line while central access is being obtained rather than waiting. Full dosing, receptor pharmacology and the alternatives are in the <strong>ICU → Pressors &amp; inotropes</strong> table; on the floor the essential points are:</p>
+                  <ul>
+                    <li><strong>Norepinephrine is first-line</strong> (start ~0.05 mcg/kg/min; titrate q2–5 min to MAP ≥65).</li>
+                    <li><strong>Not dopamine.</strong> SOAP II found roughly double the arrhythmia rate (24.1% vs 12.4%, p&lt;0.001) and a mortality signal in the prespecified cardiogenic shock subgroup.</li>
+                    <li><strong>Not phenylephrine</strong> — pure α₁ with no inotropy raises afterload against a failing ventricle and can drop cardiac output outright.</li>
+                    <li>A patient on norepinephrine needs an <strong>arterial line and an ICU</strong> — which is the point: starting this drug <em>is</em> the escalation decision.</li>
+                  </ul>
+                  <div class="why"><span class="lbl"></span>this looks paradoxical — why constrict a ventricle that's already struggling against afterload? Because of <strong>Loop 1</strong>. Coronary perfusion is driven by aortic diastolic pressure minus LVEDP. Restore that gradient and the ischaemic myocardium gets blood; leave it collapsed and nothing else you do can work. You accept an afterload cost to stop the heart from starving itself.</div>
+                </div>
+              </div>
+              <div class="rung third"><div class="r-head" onclick="toggleRung(this)"><span class="step">4</span><div><div class="r-title">Restore flow — add an inotrope</div><div class="r-sub">Once the pressure is adequate but the organs still aren't perfused</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>If the MAP is ≥65 but the lactate is still rising, urine still low and extremities still cool, the problem is <strong>flow, not pressure</strong> — add <strong>dobutamine</strong> or <strong>milrinone</strong>. DOREMI found no difference between them in the primary composite (49% vs 54%, p=0.47), so choose on physiology: milrinone if they're β-blocked or have pulmonary hypertension; dobutamine if renal function is poor or the blood pressure is marginal. Full dose ladders in the ICU panel.</p>
+                  <div class="pearl"><span class="lbl"></span><strong>Adding a second vasoactive agent moves the patient to SCAI Stage D by definition</strong> — and Stage D is SCAI's explicit trigger to transfer to a shock hub. If you find yourself reaching for drug number two on a medical floor, the real decision isn't which drug. It's that this patient needed to leave your floor some time ago.</div>
+                </div>
+              </div>
+              <div class="rung third"><div class="r-head" onclick="toggleRung(this)"><span class="step">5</span><div><div class="r-title">Decongest — last, not first</div><div class="r-sub">Only once they're warm and perfusing</div></div><span class="chev">▾</span></div>
+                <div class="r-body">
+                  <p>Once perfusion is restored, offload the congestion that's drowning the lungs and choking the kidneys.</p>
+                  <div class="tbl-wrap"><table class="drug-table">
+                    <thead><tr><th>Agent</th><th>Start → titration → max</th><th>Notes</th></tr></thead>
+                    <tbody>
+                      <tr><td>Furosemide IV</td><td>If loop-naïve: 20–40 mg IV. If on a home dose: <strong>1–2.5× the total daily oral dose, given IV</strong> → double the dose (not the frequency) if UOP is inadequate at 2 h → up to ~200 mg per dose</td><td class="why">DOSE trial: bolus = continuous infusion; high-dose (2.5× home) gave better symptom relief with a transient, benign creatinine bump. <span class="alt">Sulfa allergy → ethacrynic acid 25–50 mg IV</span></td></tr>
+                      <tr><td>Bumetanide IV</td><td>0.5–1 mg IV → 1 → 2 → max ~10 mg/day</td><td class="why">1 mg ≈ 40 mg IV furosemide. Useful when furosemide absorption/response is erratic</td></tr>
+                      <tr><td>Chlorothiazide IV / metolazone PO</td><td>Chlorothiazide 250–500 mg IV, or metolazone 2.5–5 mg PO, <strong>given 30 min before the loop dose</strong></td><td class="why">Sequential nephron blockade for loop resistance — blocks the distal tubule's compensatory Na⁺ reabsorption. <strong>Watch K⁺ and Mg²⁺ closely; these cause profound electrolyte losses</strong></td></tr>
+                      <tr><td>Acetazolamide IV</td><td>500 mg IV daily × 3 days, added to the loop</td><td class="why">ADVOR: added to IV loop therapy, improved successful decongestion. Proximal tubule Na⁺ blockade</td></tr>
+                      <tr><td>Nitroglycerin IV</td><td>10–20 mcg/min → ↑ by 10–20 mcg/min q5 min → up to ~200 mcg/min</td><td class="why">Venodilator → drops preload fast in flash oedema. <span class="alt"><strong>Contraindicated</strong> in RV infarct, severe AS, and within 24–48 h of a PDE5 inhibitor</span></td></tr>
+                    </tbody>
+                  </table></div>
+                  <div class="redflag"><span class="lbl"></span>If diuresis makes the blood pressure fall or the creatinine climb, <strong>stop and re-profile — do not double the dose.</strong> You are probably decongesting a cold patient. Fix the output first; the kidneys will follow. This exact error — escalating diuretics in a patient who needed inotropy — is one of the most common ways a Stage B/C patient is converted into a Stage D one on a medical floor.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-daily">
+        <div class="sec-head"><span class="pill" style="background:var(--monitor)">Monitor</span><h2>Daily management</h2></div>
+        <div class="module accent" style="--m:var(--monitor)">
+          <div class="m-head" style="--m:var(--monitor)"><span class="m-ico">📈</span><h3>What to trend every morning</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>What</th><th>Target / trajectory</th><th>What a bad trend means</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Lactate</strong></td><td>Falling; normalised within 24 h</td><td style="color:#f43f5e">A rising or plateaued lactate <strong>on a "fixed" blood pressure means you're losing.</strong> This overrides every reassuring vital sign on the chart.</td></tr>
+                <tr><td><strong>Urine output</strong></td><td>&gt;0.5 mL/kg/h (&gt;30 mL/h)</td><td style="color:#f43f5e">Falling UOP = falling renal perfusion. It's the earliest organ to complain and the easiest to measure.</td></tr>
+                <tr><td><strong>SCAI stage</strong></td><td>Improving, or at least static</td><td style="color:#f43f5e">Re-stage daily <em>and after every intervention</em>. Improving by one stage is a powerful favourable prognostic marker; a rising stage is a potent negative one.</td></tr>
+                <tr><td><strong>Extremities &amp; mentation</strong></td><td>Warming; clearing</td><td style="color:#f59e0b">Free, instant, and more honest than the monitor. Cold hands with a normal MAP means the pressure is bought, not earned.</td></tr>
+                <tr><td><strong>Vasoactive requirement</strong></td><td>Falling</td><td style="color:#f43f5e">Escalating dose or a second agent = <strong>SCAI Stage D by definition</strong> → escalate care and consider transfer.</td></tr>
+                <tr><td><strong>Creatinine &amp; BUN</strong></td><td>Stable or improving</td><td style="color:#f59e0b">Distinguish: a small rise during <em>effective</em> decongestion (haemoconcentration) is usually benign; a rise with <em>falling</em> BP and rising lactate is cardiorenal failure from low output.</td></tr>
+                <tr><td><strong>Weight &amp; net I/O</strong></td><td>Net negative once perfusing; ~1–2 kg/day</td><td style="color:#f59e0b">Weight is more truthful than the recorded I/O, which is almost always wrong. Chase the scale.</td></tr>
+                <tr><td><strong>K⁺ and Mg²⁺</strong></td><td>K⁺ 4.0–5.0; Mg²⁺ &gt;2.0</td><td style="color:#f59e0b">The daily tug-of-war: loops waste both (arrhythmia risk in an irritable ischaemic myocardium) while MRAs and falling GFR push K⁺ up. Replete aggressively.</td></tr>
+                <tr><td><strong>LFTs</strong></td><td>Improving</td><td style="color:#f59e0b">A transaminase spike = shock liver = you missed a period of hypoperfusion. Rising bilirubin/alk phos = ongoing right-sided congestion.</td></tr>
+                <tr><td><strong>Telemetry</strong></td><td>Sinus, rate-controlled</td><td style="color:#f43f5e">New AF removes the atrial kick — worth up to ~20–30% of filling in a stiff ventricle. In a marginal patient that alone can precipitate shock. Rate-control gently or cardiovert.</td></tr>
+                <tr><td><strong>GDMT restart</strong></td><td>Restarted before discharge</td><td style="color:#f59e0b">The commonest quiet ward failure. Held drugs that never get restarted are how a patient leaves worse than they arrived. Put it on the daily checklist.</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-comorbid">
+        <div class="sec-head"><span class="pill" style="background:var(--dx)">Context</span><h2>How comorbidities change this disease</h2></div>
+        <div class="module accent" style="--m:var(--dx)">
+          <div class="m-head" style="--m:var(--dx)"><span class="m-ico">🔗</span><h3>The company cardiogenic shock keeps</h3></div>
+          <div class="m-body">
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Comorbidity</th><th>How it changes the course</th><th>How it changes management</th></tr></thead>
+              <tbody>
+                <tr><td><strong>CKD / AKI</strong></td><td>Bidirectional and vicious: low output plus venous congestion injures kidneys, and the failing kidney retains salt and water, worsening congestion. Renal dysfunction is embedded in both SCAI Stage C and the IABP-SHOCK II score. AKI independently worsens mortality <em>across every SCAI stage.</em></td><td><strong>Avoid milrinone</strong> — ~90% renally excreted, half-life 2–2.5 h that prolongs dramatically; the 2022 AHA/ACC/HFSA guideline notes accumulation in renal failure. Use dobutamine instead, or dose-reduce milrinone (CrCl 30 → ~0.33; CrCl 10 → ~0.23 mcg/kg/min). Minimise contrast; do not withhold life-saving angiography over contrast fear in AMI-CS. Consider early CRRT for refractory congestion.</td></tr>
+                <tr><td><strong>Diabetes</strong></td><td>Silent ischaemia (autonomic neuropathy) means the warning chest pain never comes — they present <em>later</em> and sicker. Diffuse multivessel disease makes revascularisation harder. Admission glucose &gt;191 mg/dL scores in IABP-SHOCK II.</td><td>Hold SGLT2i while acutely ill/NPO (euglycaemic DKA). Insulin infusion rather than orals. Have a lower threshold to suspect ischaemia in an atypical presentation — "no chest pain" means nothing here.</td></tr>
+                <tr><td><strong>Atrial fibrillation</strong></td><td>Loses the atrial kick — up to ~20–30% of ventricular filling in a stiff or ischaemic ventricle. In a marginal patient, new AF with RVR alone can precipitate shock. Rapid rates also shorten diastole → less filling <em>and</em> less coronary perfusion.</td><td><strong>If AF is causing the shock, cardiovert — don't titrate drugs.</strong> Rate control with β-blockers or diltiazem is <em>contraindicated</em> in decompensated low output (negative inotropy). Amiodarone is the safest agent here. Anticoagulate.</td></tr>
+                <tr><td><strong>Chronic HFrEF (HF-CS)</strong></td><td>The largest group in contemporary registries. They've <em>adapted</em> to low output and low BP, so they under-declare severity — SCAI explicitly warns they may display a falsely reassuring picture despite dire haemodynamics. No artery to open.</td><td>Judge against <em>their</em> baseline, not population norms. The AMI-CS trial evidence (SHOCK, DanGer) doesn't transfer. The real questions become recovery vs durable LVAD vs transplant vs palliation — decided by advanced HF, ideally before now.</td></tr>
+                <tr><td><strong>COPD</strong></td><td>Muddies everything: dyspnoea is attributed to the lungs, β-blockers get withheld, and hypoxia + hypercapnia raise pulmonary vascular resistance → RV strain.</td><td>Use <strong>bisoprolol</strong> (β₁-selective) rather than carvedilol once stable. Treat hypoxia and hypercapnia — they're a reversible RV afterload. Beware β₂-agonist nebs driving tachycardia and hypokalaemia in an irritable myocardium.</td></tr>
+                <tr><td><strong>RV dysfunction / pulmonary hypertension</strong></td><td>Changes the physiology completely. The RV is a volume pump that fails against pressure; once it dilates, the septum bows left and <em>reduces</em> LV filling (ventricular interdependence). PAPi &lt;0.9 flags it.</td><td>Preload-dependent: fluids, not diuresis. <strong>Avoid nitrates.</strong> Maintain AV synchrony. Avoid hypoxia/hypercapnia/acidosis (all raise PVR). Milrinone is attractive (lowers PVR); consider inhaled pulmonary vasodilators. An LV-only device (Impella CP) in an RV-failure patient can make things <em>worse</em>.</td></tr>
+                <tr><td><strong>Prior stroke</strong></td><td>Strongest single predictor in IABP-SHOCK II (<strong>2 points</strong>). Marks diffuse vascular disease and constrains anticoagulation choices.</td><td>Weighs heavily against MCS candidacy (all devices need anticoagulation; all bleed). Factor into goals-of-care discussions early.</td></tr>
+                <tr><td><strong>Advanced age / frailty</strong></td><td>One of the strongest and most consistent mortality modifiers across every SCAI stage. Age &gt;73 scores in IABP-SHOCK II. SCAI considered making it a formal modifier but declined — no clean binary threshold exists.</td><td>SCAI's framing is the honest one: age functions as a marker of comorbidity, frailty and <em>candidacy for (or futility of) intervention</em>. It should inform the conversation, not be a rule. Transfers for futile care in unrecoverable patients don't change outcomes and consume capacity that another patient needs.</td></tr>
+                <tr><td><strong>Anaemia</strong></td><td>DO₂ = CO × Hb × SaO₂ × 1.34 — with a fixed low CO, haemoglobin is one of the few remaining levers on oxygen delivery.</td><td>No trial-defined transfusion threshold specific to CS; most use a restrictive strategy (~7–8 g/dL) with a higher threshold in active ischaemia. <strong>Correct iron deficiency</strong>. If MCS is coming, haemolysis will drop the haemoglobin further — plan ahead.</td></tr>
+                <tr><td><strong>Infection / sepsis</strong></td><td>The commonest precipitant of HF decompensation, and it creates a genuinely <strong>mixed shock</strong> — the septic vasodilation layers onto Loop 4's inflammatory vasodilation, and the SVR read becomes uninterpretable.</td><td>Treat both. This is a setting where a <strong>PA catheter earns its keep</strong>: it tells you whether you're fighting a flow problem or a resistance problem, which completely changes the drug.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="redflag"><span class="lbl"></span><strong>Drugs to avoid or use with real caution in cardiogenic shock</strong>
+              <div class="tbl-wrap" style="margin-top:10px"><table>
+                <thead><tr><th>Drug</th><th>Why it hurts here</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>β-blockers (acutely)</strong></td><td>Negative inotropy in a ventricle with no reserve → precipitates or deepens shock. Hold in anyone hypotensive, congested or hypoperfused. Restart only when warm, dry and off pressors — but <em>do</em> restart, because chronically they're a mortality-reducing pillar.</td></tr>
+                  <tr><td><strong>Non-dihydropyridine CCBs</strong> (verapamil, diltiazem)</td><td>Potent negative inotropes. Contraindicated in decompensated HFrEF and in shock. A common trap when someone reaches for rate control in AF with RVR — <strong>use amiodarone or cardiovert instead.</strong></td></tr>
+                  <tr><td><strong>Dopamine</strong></td><td>SOAP II: ~2× the arrhythmia rate vs norepinephrine (24.1% vs 12.4%, p&lt;0.001) and a mortality signal in the prespecified cardiogenic shock subgroup. There is no scenario in CS where it is the best available drug.</td></tr>
+                  <tr><td><strong>Phenylephrine</strong></td><td>Pure α₁ with no inotropic support — raises afterload against a failing ventricle and can drop cardiac output outright. Reserve for the narrow case of LVOT obstruction (e.g. HOCM), where you actually want more afterload and a slower heart.</td></tr>
+                  <tr><td><strong>NSAIDs</strong></td><td>Prostaglandin inhibition → Na⁺/water retention, blunted diuretic response, worsened renal perfusion when the kidney is already prostaglandin-dependent. A classic outpatient precipitant.</td></tr>
+                  <tr><td><strong>Thiazolidinediones</strong> (pioglitazone)</td><td>Cause fluid retention and precipitate HF. Contraindicated in NYHA III–IV.</td></tr>
+                  <tr><td><strong>Class I antiarrhythmics &amp; most Class III</strong> (flecainide, sotalol, dronedarone)</td><td>Proarrhythmic and negatively inotropic in structural heart disease (the CAST lesson). Dronedarone increases mortality in decompensated HF. <strong>Amiodarone is the antiarrhythmic of choice</strong> in this population.</td></tr>
+                  <tr><td><strong>Nitrates &amp; morphine in RV infarct</strong></td><td>Both drop preload — and the infarcted RV is entirely preload-dependent. Can cause abrupt, profound hypotension. Also avoid nitrates within 24–48 h of a PDE5 inhibitor.</td></tr>
+                  <tr><td><strong>Over-diuresis in a cold patient</strong></td><td>Not a drug so much as a reflex, and one of the commonest iatrogenic escalations to Stage D on a medical floor. Fix output before you unload volume.</td></tr>
+                  <tr><td><strong>Excess supplemental O₂</strong></td><td>Hyperoxia causes coronary vasoconstriction and increased infarct size (AVOID, DETO2X-AMI). <strong>Target SpO₂ 92–96%</strong>; do not give O₂ to a non-hypoxic patient.</td></tr>
+                  <tr><td><strong>Milrinone in AKI/ESRD</strong></td><td>~90% renal clearance; accumulates, causing prolonged hypotension you cannot turn off (half-life 2–2.5 h, much longer in renal failure vs dobutamine's ~2 min). Use dobutamine or dose-reduce.</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-escalate">
+        <div class="sec-head"><span class="pill" style="background:var(--escalate)">Escalate</span><h2>When to call the ICU — the numbers</h2></div>
+        <div class="module accent" style="--m:var(--escalate)">
+          <div class="m-head" style="--m:var(--escalate)"><span class="m-ico">⬆️</span><h3>Concrete triggers, not "if unstable"</h3></div>
+          <div class="m-body">
+            <div class="decision"><span class="lbl"></span><strong>Call the ICU / shock team immediately for ANY of:</strong>
+              <div class="tbl-wrap" style="margin-top:10px"><table>
+                <thead><tr><th>Trigger</th><th>Threshold</th><th>Why this number</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Any vasoactive requirement</strong></td><td style="color:#f43f5e;font-weight:700">Starting <em>any</em> pressor or inotrope</td><td>This is SCAI Stage C by definition. Requires an arterial line and hourly titration — a level of care most floors cannot provide.</td></tr>
+                  <tr><td><strong>Second vasoactive agent, or escalating dose</strong></td><td style="color:#f43f5e;font-weight:700">Adding drug #2, or a device</td><td><strong>SCAI Stage D by definition.</strong> Mortality steps from 12.4% → 40.4%. This is SCAI's explicit trigger to transfer to a shock hub.</td></tr>
+                  <tr><td><strong>MAP</strong></td><td style="color:#f43f5e;font-weight:700">&lt;65 mmHg despite initial measures</td><td>Below the autoregulatory floor for brain, kidney and coronary beds.</td></tr>
+                  <tr><td><strong>SBP</strong></td><td style="color:#f43f5e;font-weight:700">&lt;90 for &gt;30 min, or &gt;30 mmHg below baseline</td><td>The definitional threshold; the "drop from baseline" clause catches the chronic hypertensive who looks deceptively fine at 110.</td></tr>
+                  <tr><td><strong>Lactate</strong></td><td style="color:#f43f5e;font-weight:700">≥2 mmol/L, or <em>not falling</em> after 2–4 h of therapy</td><td>≥2 = at least SCAI Stage C. <strong>A lactate that won't fall is the earliest reliable sign your plan has failed</strong>, and it precedes the blood pressure by hours.</td></tr>
+                  <tr><td><strong>Urine output</strong></td><td style="color:#f43f5e;font-weight:700">&lt;30 mL/h (&lt;0.5 mL/kg/h) for 2 consecutive hours</td><td>SCAI Stage C criterion. Renal hypoperfusion despite what you've done.</td></tr>
+                  <tr><td><strong>Mental status</strong></td><td style="color:#f43f5e;font-weight:700">Any new confusion/agitation/somnolence</td><td>Cerebral hypoperfusion — an organ failure, and a warning that autoregulation has been exceeded.</td></tr>
+                  <tr><td><strong>Respiratory</strong></td><td style="color:#f43f5e;font-weight:700">RR &gt;30, SpO₂ &lt;90% on ≥6 L, or needing NIV</td><td>Work of breathing can consume 20%+ of a cardiac output the patient cannot spare. NIV needs a monitored setting; failure means intubation.</td></tr>
+                  <tr><td><strong>Arterial pH / base deficit</strong></td><td style="color:#f43f5e;font-weight:700">pH &lt;7.2 or base deficit &gt;10 mEq/L</td><td>SCAI Stage E criteria. Severe acidosis blunts catecholamine responsiveness — your drugs are about to stop working.</td></tr>
+                  <tr><td><strong>Rhythm</strong></td><td style="color:#f43f5e;font-weight:700">Sustained VT/VF, new complete heart block, or AF with RVR causing hypotension</td><td>Arrhythmia in an ischaemic ventricle is both cause and consequence; may need immediate cardioversion or pacing.</td></tr>
+                  <tr><td><strong>Mechanical complication suspected</strong></td><td style="color:#f43f5e;font-weight:700">New murmur + deterioration, days 2–7 post-MI</td><td>Papillary muscle or septal rupture. <strong>Surgical emergency</strong> — call CT surgery and the ICU simultaneously.</td></tr>
+                  <tr><td><strong>Cardiac arrest</strong></td><td style="color:#f43f5e;font-weight:700">Any</td><td>Automatic ICU. Add the A-modifier if they aren't following commands / GCS &lt;9.</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+            <div class="pearl"><span class="lbl"></span>The trigger residents miss is the <strong>quiet one</strong>: a patient whose MAP you've held at 68 by steadily walking the norepinephrine up from 0.05 to 0.25 mcg/kg/min over six hours, while the lactate crept from 2.4 to 3.8. Every individual vital sign looks acceptable. <strong>The trajectory is Stage D and the patient is dying slowly enough that nobody calls.</strong> Escalate on <em>trend and requirement</em>, not on the current number.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-dispo">
+        <div class="sec-head"><span class="pill" style="background:var(--dispo)">Dispo</span><h2>Discharge &amp; disposition</h2></div>
+        <div class="module accent" style="--m:var(--dispo)">
+          <div class="m-head" style="--m:var(--dispo)"><span class="m-ico">🏠</span><h3>Readiness criteria + where they go</h3></div>
+          <div class="m-body">
+            <h4>Discharge readiness — all of these, not most</h4>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Domain</th><th>Criterion</th></tr></thead>
+              <tbody>
+                <tr><td>Haemodynamics</td><td><strong>Off all vasoactive support for ≥24–48 h</strong> with a stable MAP; no orthostatic drop that limits ambulation</td></tr>
+                <tr><td>Perfusion</td><td>Lactate normalised; warm extremities; mentation at baseline; <strong>UOP &gt;0.5 mL/kg/h off inotropes</strong></td></tr>
+                <tr><td>Volume</td><td>Near-euvolaemic on exam; <strong>transitioned to oral diuretics for ≥24 h with a stable weight and creatinine</strong></td></tr>
+                <tr><td>Renal &amp; electrolytes</td><td>Creatinine stable/improving for ≥24 h; K⁺ 4.0–5.0; Mg²⁺ &gt;2.0</td></tr>
+                <tr><td>Cause addressed</td><td>Revascularised if AMI-CS; arrhythmia treated; valve plan made; precipitant identified and fixed</td></tr>
+                <tr><td><strong>GDMT restarted</strong></td><td><strong>The one people miss.</strong> Held pillars restarted and up-titrated as tolerated. STRONG-HF showed rapid pre-discharge optimisation with close follow-up reduces events (ARR 8.1%) — this is a therapy, not paperwork</td></tr>
+                <tr><td>Devices &amp; referrals</td><td>ICD/CRT candidacy assessed (repeat EF ≥3 months after optimised GDMT); advanced-HF referral made if I-NEED-HELP criteria are met</td></tr>
+                <tr><td>Education &amp; follow-up</td><td>Daily weights with a <strong>written action plan</strong> (+2 kg/3 days → call); sodium/fluid counselling; <strong>phone call within 3 days, clinic within 7 days</strong>; cardiac rehab referred</td></tr>
+                <tr><td>Goals of care</td><td>Documented — especially if they were on MCS, are not a transplant/LVAD candidate, or had a prolonged arrest</td></tr>
+              </tbody>
+            </table></div>
+            <div class="dispo-grid">
+              <div class="dispo"><h4>Home</h4><div class="crit">Independent, back to baseline function, reliable, has support and transport. Off inotropes ≥48 h, stable on oral regimen. <strong>Follow-up already booked</strong> — not "will be called."</div></div>
+              <div class="dispo"><h4>Home health</h4><div class="crit">Home-safe but needs skilled nursing for weights/labs/med reconciliation, or IV diuretic bridging. Ideal for the newly optimised, complex GDMT patient who needs eyes on them weekly.</div></div>
+              <div class="dispo"><h4>SNF</h4><div class="crit">Needs 24-hour skilled nursing but &lt;3 h therapy/day. Common after a prolonged ICU stay with deconditioning, delirium, or new dialysis needs.</div></div>
+              <div class="dispo"><h4>Acute rehab (IRF)</h4><div class="crit">Can tolerate <strong>≥3 h therapy/day across ≥2 disciplines</strong> and has rehab potential. Typical after a long ICU course with ICU-acquired weakness in an otherwise recoverable patient.</div></div>
+              <div class="dispo"><h4>LTAC</h4><div class="crit">Prolonged complex care expected &gt;25 days — chronic vent weaning, complex wounds, long-term IV access. The post-ECMO/post-arrest patient who survived but didn't recover.</div></div>
+              <div class="dispo"><h4>Hospice / palliative</h4><div class="crit">Refractory Stage D HF, not an LVAD/transplant candidate, or inotrope-dependent with goals favouring comfort. <strong>Palliative inotropes at home are a legitimate, guideline-recognised option</strong> — a symptom therapy, not a failure.</div></div>
+            </div>
+            <div class="pearl"><span class="lbl"></span>A patient who survives cardiogenic shock has just been given the most reliable prognostic information of their life, and it is a good moment to use it. This is <strong>the</strong> window for the advanced-HF referral, the ICD/CRT decision, the transplant/LVAD evaluation, and the goals-of-care conversation — while they're awake, lucid, and have seen what the disease can do. The version of this conversation that happens at 3am on two pressors with a surrogate decision-maker is far worse for everyone.</div>
+          </div>
+        </div>
+      </section>
+    </div>

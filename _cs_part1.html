@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- data-contexts:clinic,wards,icu | category:Cardiology / Critical Care | Guideline-accurate: 2025 ACC Concise Clinical Guidance (JACC) + SCAI SHOCK 2022 Expert Consensus Update + 2023 ESC ACS + 2022 AHA/ACC/HFSA HF -->
+<title>Cardiogenic Shock — Clinical Reference (Clinic · Wards · ICU)</title>
+<style>
+/* ============================================================
+   THEME TOKENS
+   ============================================================ */
+:root{
+  --bg:#0b1220; --bg2:#0f172a;
+  --card:#131c30; --card2:#18233b;
+  --border:rgba(255,255,255,.08);
+  --border-strong:rgba(255,255,255,.14);
+  --text:#dbe4f0; --muted:#93a3ba; --heading:#f3f7fc;
+  --clinic:#14b8a6; --wards:#3b82f6; --icu:#f43f5e;
+  --assess:#38bdf8; --workup:#22d3ee; --dx:#818cf8; --treat:#34d399;
+  --monitor:#f59e0b; --escalate:#fb7185; --dispo:#a78bfa; --path:#f472b6;
+  --ok:#34d399; --warn:#f59e0b; --danger:#f43f5e; --info:#38bdf8;
+  --ctx:#14b8a6; --ctx-soft:rgba(20,184,166,.14);
+  --radius:14px; --tr:.28s ease; --rail:250px;
+  --maxw:1080px;
+  /* Diagram palette (dark defaults) — inline SVGs use these so they adapt to theme. */
+  --d-bg:#0f1a2e; --d-neutral:#18233b; --d-line:#94a3b8; --d-text:#dbe4f0; --d-muted:#93a3ba;
+  --d-red:#f43f5e; --d-green:#34d399; --d-purple:#a78bfa; --d-blue:#38bdf8; --d-amber:#f59e0b;
+  --d-red-bg:rgba(244,63,94,.16); --d-green-bg:rgba(52,211,153,.16); --d-purple-bg:rgba(167,139,250,.16); --d-blue-bg:rgba(56,189,248,.16); --d-amber-bg:rgba(245,158,11,.16);
+}
+.light{
+  --bg:#eef2f7; --bg2:#e6ecf3; --card:#ffffff; --card2:#f6f9fc;
+  --border:rgba(15,23,42,.10); --border-strong:rgba(15,23,42,.18);
+  --text:#1e293b; --muted:#55627a; --heading:#0b1220;
+  --d-bg:#f6f9fc; --d-neutral:#eef2f7; --d-line:#64748b; --d-text:#1e293b; --d-muted:#475569;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,.10), transparent 60%),
+    radial-gradient(1000px 500px at -10% 10%, rgba(244,63,94,.08), transparent 55%),
+    var(--bg);
+  color:var(--text); font-size:15px; line-height:1.65;
+  -webkit-text-size-adjust:100%;
+  transition:background var(--tr),color var(--tr);
+  padding-bottom:60px;
+}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(148,163,184,.35);border-radius:6px}
+a{color:#7dd3fc;text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--heading)}
+h2,h3,h4{color:var(--heading);letter-spacing:.2px}
+h3{font-size:17px;margin:16px 0 8px}
+h4{font-size:14.5px;margin:12px 0 6px}
+p{margin:7px 0}
+ul,ol{margin:7px 0 7px 20px}
+li{margin:4px 0}
+/* ============================================================ TOP APP BAR ============================================================ */
+.appbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; gap:12px;
+  padding:10px 16px; padding-top:max(10px,env(safe-area-inset-top));
+  background:rgba(11,18,32,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.light .appbar{background:rgba(238,242,247,.85)}
+.iconbtn{
+  width:40px;height:40px;flex:0 0 auto;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--border);color:var(--text);
+  cursor:pointer;font-size:19px;transition:var(--tr);text-decoration:none;
+}
+.iconbtn:hover{border-color:var(--ctx);color:var(--ctx);transform:translateY(-1px)}
+.appbar .titlewrap{flex:1 1 auto;min-width:0}
+.appbar .kicker{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.appbar h1{
+  font-size:19px;font-weight:800;line-height:1.15;color:var(--heading);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+/* ============================================================ CONTEXT SWITCHER ============================================================ */
+.ctx-switch{
+  position:sticky; top:60px; z-index:45;
+  background:rgba(11,18,32,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:10px 16px;
+}
+.light .ctx-switch{background:rgba(238,242,247,.85)}
+.ctx-seg{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+  max-width:var(--maxw); margin:0 auto;
+  background:var(--card); border:1px solid var(--border);
+  padding:6px; border-radius:16px;
+}
+.ctx-btn{
+  border:1px solid transparent; background:transparent; color:var(--muted);
+  border-radius:11px; padding:9px 8px; cursor:pointer; font-family:inherit;
+  font-weight:700; font-size:14px; transition:var(--tr);
+  display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.1;
+}
+.ctx-btn .sub{font-size:10.5px;font-weight:600;opacity:.8;letter-spacing:.3px}
+.ctx-btn .ico{font-size:18px}
+.ctx-btn:hover{color:var(--text)}
+.ctx-btn[data-ctx="clinic"].active{background:rgba(20,184,166,.16);border-color:var(--clinic);color:var(--clinic)}
+.ctx-btn[data-ctx="wards"].active{background:rgba(59,130,246,.16);border-color:var(--wards);color:var(--wards)}
+.ctx-btn[data-ctx="icu"].active{background:rgba(244,63,94,.16);border-color:var(--icu);color:var(--icu)}
+/* ============================================================ LAYOUT ============================================================ */
+.shell{display:flex;gap:26px;max-width:var(--maxw);margin:0 auto;padding:0 16px}
+.rail{
+  position:sticky; top:132px; align-self:flex-start;
+  width:var(--rail); flex:0 0 var(--rail); max-height:calc(100vh - 150px);
+  overflow-y:auto; padding:14px 0 30px;
+}
+.rail .rail-h{font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);padding:0 10px 8px}
+.rail a{
+  display:flex;align-items:center;gap:9px;padding:7px 12px;border-radius:9px;
+  color:var(--muted);font-size:12.8px;font-weight:600;border-left:2px solid transparent;
+  transition:var(--tr);
+}
+.rail a:hover{color:var(--text);background:var(--ctx-soft);text-decoration:none}
+.rail a.active{color:var(--heading);background:var(--ctx-soft);border-left-color:var(--ctx)}
+.rail a .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 auto;opacity:.85}
+.rail a.shared{border-left-color:var(--path)}
+.content{flex:1 1 auto;min-width:0;padding:16px 0 40px}
+/* ============================================================ SNAPSHOT ============================================================ */
+.snapshot{
+  background:linear-gradient(135deg,var(--card),var(--card2));
+  border:1px solid var(--border-strong); border-radius:var(--radius);
+  padding:18px 20px; margin:8px 0 20px;
+}
+.snapshot .one-liner{font-size:16px;color:var(--heading);font-weight:600}
+.snapshot .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{
+  padding:5px 11px;border-radius:8px;font-size:12px;font-weight:700;
+  background:var(--ctx-soft);color:var(--ctx);border:1px solid var(--border-strong);
+  white-space:nowrap;
+}
+.badge.danger{background:rgba(244,63,94,.14);color:var(--danger);border-color:rgba(244,63,94,.3)}
+.badge.warn{background:rgba(245,158,11,.14);color:var(--warn);border-color:rgba(245,158,11,.3)}
+.badge.ok{background:rgba(52,211,153,.14);color:var(--ok);border-color:rgba(52,211,153,.3)}
+/* ============================================================ SECTION HEADINGS ============================================================ */
+.sec{scroll-margin-top:150px;margin:26px 0}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.sec-head .pill{
+  font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;color:#03121a;background:var(--ctx);
+}
+.sec-head h2{font-size:22px;font-weight:800}
+.context-band{
+  display:inline-flex;align-items:center;gap:7px;margin:2px 0 18px;
+  font-size:12px;font-weight:700;color:var(--ctx);
+  padding:5px 12px;border-radius:999px;background:var(--ctx-soft);border:1px solid var(--border-strong);
+}
+/* ============================================================ MODULE CARD ============================================================ */
+.module{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  margin:14px 0; overflow:hidden; box-shadow:0 6px 22px rgba(0,0,0,.18);
+}
+.module > .m-head{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(90deg,var(--m,var(--ctx)),transparent 70%);
+  background-color:rgba(255,255,255,.02);
+}
+.module > .m-head .m-ico{font-size:18px}
+.module > .m-head h3{margin:0;font-size:15.5px;color:var(--heading)}
+.module > .m-head .m-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--muted)}
+.module > .m-body{padding:14px 16px}
+.module.accent{border-left:4px solid var(--m,var(--ctx))}
+/* ============================================================ TABLES ============================================================ */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+th{background:rgba(255,255,255,.05);text-align:left;padding:9px 12px;font-size:12px;color:var(--heading);
+  font-weight:700;border-bottom:1px solid var(--border-strong);position:sticky;top:0}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.light th{background:rgba(15,23,42,.05)}
+.drug-table td:nth-child(1){font-weight:700;color:var(--heading);white-space:nowrap}
+.drug-table .why{color:var(--treat)}
+.drug-table .alt{color:var(--warn)}
+/* ============================================================ MED LADDER ============================================================ */
+.ladder{margin:12px 0}
+.rung{border:1px solid var(--border);border-radius:11px;margin:8px 0;overflow:hidden;background:var(--card2)}
+.rung > .r-head{display:flex;align-items:center;gap:11px;padding:12px 14px;cursor:pointer;user-select:none}
+.rung > .r-head:hover{background:rgba(255,255,255,.03)}
+.rung .step{
+  width:30px;height:30px;flex:0 0 auto;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;color:#03121a;background:var(--ctx);
+}
+.rung.first .step{background:var(--ok)}
+.rung.second .step{background:var(--warn)}
+.rung.third .step{background:var(--danger);color:#fff}
+.rung .r-title{font-weight:700;color:var(--heading);font-size:14.5px}
+.rung .r-sub{font-size:12px;color:var(--muted)}
+.rung .chev{margin-left:auto;transition:transform var(--tr);color:var(--muted)}
+.rung.open .chev{transform:rotate(180deg)}
+.rung .r-body{display:none;padding:0 14px 14px 55px}
+.rung.open .r-body{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+/* ============================================================ CALLOUTS ============================================================ */
+.callout{border-radius:0 11px 11px 0;padding:12px 15px;margin:12px 0;border-left:4px solid var(--info);
+  background:rgba(56,189,248,.08);font-size:13.5px}
+.callout .lbl{font-weight:800;display:block;margin-bottom:3px;font-size:12px;letter-spacing:.4px;text-transform:uppercase}
+.why{border-left-color:var(--treat);background:rgba(52,211,153,.08)}
+.why .lbl{color:var(--treat)}
+.why .lbl::before{content:"⚙  Why it works — "}
+.analogy{border-left-color:#c084fc;background:rgba(192,132,252,.09)}
+.analogy .lbl{color:#c084fc}
+.analogy .lbl::before{content:"🔗  Think of it like — "}
+.pearl{border-left-color:var(--warn);background:rgba(245,158,11,.09)}
+.pearl .lbl{color:var(--warn)}
+.pearl .lbl::before{content:"💡  Clinical pearl — "}
+.redflag{border-left-color:var(--danger);background:rgba(244,63,94,.10)}
+.redflag .lbl{color:var(--danger)}
+.redflag .lbl::before{content:"🚩  Red flag — "}
+.emergency{border-left-color:var(--danger);background:rgba(244,63,94,.14)}
+.emergency .lbl{color:var(--danger)}
+.emergency .lbl::before{content:"⛑  Emergency — "}
+.decision{border-left-color:var(--dx);background:rgba(129,140,248,.10)}
+.decision .lbl{color:var(--dx)}
+.decision .lbl::before{content:"🔀  Decision point — "}
+/* ============================================================ ORDER SET ============================================================ */
+.orderset{display:grid;gap:8px;margin:10px 0}
+.order-row{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--border);
+  border-radius:10px;background:var(--card2)}
+.order-row .ord-name{font-weight:700;color:var(--heading);min-width:130px;flex:0 0 auto}
+.order-row .ord-when{color:var(--muted);font-size:12.5px}
+.order-row .ord-tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;
+  background:var(--ctx-soft);color:var(--ctx);flex:0 0 auto;align-self:center}
+/* ============================================================ DISPOSITION GRID ============================================================ */
+.dispo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:12px 0}
+.dispo{border:1px solid var(--border);border-top:3px solid var(--dispo);border-radius:11px;padding:12px 14px;background:var(--card2)}
+.dispo h4{margin:0 0 4px;color:var(--dispo)}
+.dispo .crit{font-size:12.5px;color:var(--muted)}
+/* ============================================================ VENT CARD ============================================================ */
+.vent-card{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.vent-item{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--card2)}
+.vent-item .vk{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+.vent-item .vv{font-size:15px;font-weight:800;color:var(--heading);margin-top:2px}
+.vent-item .vn{font-size:11.5px;color:var(--muted);margin-top:3px}
+/* ============================================================ USPSTF TABLE ============================================================ */
+.uspstf-table .grade{font-weight:800;text-align:center;white-space:nowrap}
+.uspstf-table .grade.A{color:var(--ok)}
+.uspstf-table .grade.B{color:var(--info)}
+/* ============================================================ FIGURES + LIGHTBOX ============================================================ */
+.fig-row{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}
+.fig{flex:1 1 300px;min-width:0}
+.fig img{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,.3);cursor:zoom-in;display:block}
+.fig .cap{font-size:12px;color:var(--muted);margin-top:6px}
+.fig .credit{font-size:10.5px;color:var(--muted);margin-top:2px}
+video{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(3,7,18,.94);
+  align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox.on{display:flex}
+.lightbox img{max-width:94vw;max-height:92vh;border-radius:8px;object-fit:contain}
+.lightbox .x{position:fixed;top:14px;right:20px;font-size:34px;color:#fff;opacity:.8;cursor:pointer}
+/* ============================================================ CALCULATOR ============================================================ */
+.calc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin:12px 0}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.calc-opt{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid var(--border);
+  border-radius:9px;margin:6px 0;cursor:pointer;background:var(--card2);transition:var(--tr);font-size:13px}
+.calc-opt:hover{border-color:var(--ctx)}
+.calc-opt.sel{border-color:var(--ctx);background:var(--ctx-soft)}
+.calc-result{text-align:center;margin-top:14px;padding:16px;border:1px solid var(--border);border-radius:11px;background:var(--card2)}
+.calc-total{font-size:40px;font-weight:800;color:var(--ctx)}
+/* ============================================================ SVG diagram wrapper ============================================================ */
+/* Diagram panel is theme-adaptive. Mermaid is embedded TWICE (dark + light) and
+   toggled by .dia-dark/.dia-light; inline SVGs use the --d-* variables. */
+.svg-wrap{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0;overflow-x:auto}
+.dia-dark{display:block}.dia-light{display:none}
+.light .dia-dark{display:none}.light .dia-light{display:block}
+.svg-wrap .cap{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
+.svg-wrap svg{display:block;margin:0 auto;max-width:100%;height:auto}
+/* Notes widget */
+.note-input{width:100%;min-height:72px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:14px}
+.note-btn{padding:8px 16px;border-radius:9px;border:1px solid #eab308;background:rgba(234,179,8,.14);color:#eab308;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}
+.note-btn:hover{background:rgba(234,179,8,.22)}
+.note-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.note-card{border:1px solid var(--border);border-left:3px solid #eab308;border-radius:9px;padding:9px 12px;background:var(--card2)}
+.note-meta{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-bottom:4px}
+.note-del{cursor:pointer;color:var(--danger);font-weight:700}
+.note-text{font-size:13.5px;white-space:pre-wrap;word-break:break-word}
+/* ============================================================ REFERENCES ============================================================ */
+.refs{margin-top:34px;padding-top:18px;border-top:1px solid var(--border)}
+.refs li{font-size:12.5px;color:var(--muted)}
+/* ============================================================ CONTEXT PANEL VISIBILITY ============================================================ */
+.ctx-panel{display:none}
+.ctx-panel.active{display:block}
+/* ============================================================ FLOATING "sections" BUTTON ============================================================ */
+.toc-fab{display:none;position:fixed;right:16px;bottom:18px;z-index:60;
+  width:52px;height:52px;border-radius:16px;background:var(--ctx);color:#03121a;border:none;
+  font-size:22px;box-shadow:0 8px 24px rgba(0,0,0,.4);cursor:pointer}
+/* ============================================================ RESPONSIVE ============================================================ */
+@media(max-width:920px){
+  .rail{display:none}
+  .shell{padding:0 12px}
+  .toc-fab{display:flex;align-items:center;justify-content:center}
+  .ctx-btn .sub{display:none}
+  .appbar h1{font-size:17px}
+  .sec-head h2{font-size:19px}
+  .rail.sheet{display:block;position:fixed;inset:auto 0 0 0;top:auto;width:100%;max-height:66vh;
+    background:var(--card);border-top:1px solid var(--border-strong);border-radius:18px 18px 0 0;
+    padding:16px;z-index:70;box-shadow:0 -10px 40px rgba(0,0,0,.5);flex:none}
+  .rail.sheet .rail-h{display:flex;justify-content:space-between;align-items:center}
+}
+@media(max-width:520px){
+  body{font-size:14.5px}
+  .snapshot{padding:15px}
+  .order-row{flex-direction:column;gap:4px}
+  .order-row .ord-name{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== APP BAR ============================== -->
+<header class="appbar">
+  <a class="iconbtn" href="https://xxddosingdosaxx.github.io/study-guides/" title="Library home">&#8962;</a>
+  <div class="titlewrap">
+    <div class="kicker">Clinical Reference</div>
+    <h1>Cardiogenic Shock</h1>
+  </div>
+  <button class="iconbtn" onclick="copyOsmo(this)" title="Copy Osmosis login (horoy31882@flownue.com / Skanda123!)">&#128273;</button>
+  <button class="iconbtn" onclick="toggleTheme()" title="Theme">&#9789;</button>
+</header>
+
+<!-- ============================== CONTEXT SWITCHER ============================== -->
+<div class="ctx-switch">
+  <div class="ctx-seg" role="tablist" aria-label="Care setting">
+    <button class="ctx-btn active" data-ctx="clinic" onclick="setCtx('clinic')"><span class="ico">🩺</span>Clinic<span class="sub">Recognize &amp; triage</span></button>
+    <button class="ctx-btn" data-ctx="wards" onclick="setCtx('wards')"><span class="ico">🛏️</span>Wards<span class="sub">Inpatient floor</span></button>
+    <button class="ctx-btn" data-ctx="icu" onclick="setCtx('icu')"><span class="ico">🫀</span>ICU<span class="sub">Critical care</span></button>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="rail" id="rail">
+    <div class="rail-h" id="railHead">On this page</div>
+    <div id="railLinks"><!-- rebuilt by JS per context --></div>
+  </nav>
+
+  <main class="content">
+
+    <!-- ===== SNAPSHOT ===== -->
+    <section class="snapshot" id="snapshot">
+      <div class="one-liner">A pump so weak it can no longer perfuse the body — sustained hypotension (SBP &lt;90 for &gt;30 min, or vasopressors needed to hold it there) <em>plus</em> end-organ hypoperfusion, caused by cardiac dysfunction rather than volume loss or vasodilation. The compensations that save you in hemorrhage make this one worse.</div>
+      <div class="badges">
+        <span class="badge">CI &lt;2.2 L/min/m² · PCWP &gt;15 · lactate ≥2</span>
+        <span class="badge warn">SCAI stages A→E: at risk → extremis</span>
+        <span class="badge danger">In-hospital mortality still 30–50%</span>
+        <span class="badge ok">Norepinephrine first · culprit-only PCI · shock team</span>
+      </div>
+    </section>
+
+    <!-- ===== SHARED: PATHOPHYSIOLOGY ===== -->
+    <section class="sec" id="pathophys" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>Pathophysiology &amp; classification</h2></div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🧬</span><h3>The downward spiral — why this disease accelerates</h3></div>
+        <div class="m-body">
+          <p>Every other shock state has a fix that matches the problem: give blood for hemorrhage, give antibiotics and pressors for sepsis. Cardiogenic shock is different, and harder, for one reason — <strong>the body's own compensatory response makes it worse.</strong> Understanding that single fact explains essentially every treatment decision below.</p>
+
+          <p>Start with the insult. A large anterior MI wipes out a critical mass of left ventricle (classically ~40%); or a fulminant myocarditis stuns the whole myocardium; or a chronically dilated heart finally decompensates. <strong>Stroke volume falls, so cardiac output falls.</strong> From there, four vicious loops open at once.</p>
+
+          <h4>Loop 1 — the heart starves itself</h4>
+          <p>Falling output means a falling mean arterial pressure. But remember <em>where coronary perfusion comes from</em>: the left coronary fills in <strong>diastole</strong>, driven by the gradient between aortic diastolic pressure and LV end-diastolic pressure. Cardiogenic shock attacks both ends of that gradient simultaneously — MAP (and therefore aortic diastolic pressure) falls, while LVEDP rises because the failing ventricle can't empty. The gradient collapses. <strong>The ischemic myocardium becomes more ischemic, more muscle stuns, and stroke volume falls further.</strong> This is the loop that kills fastest, and it is the reason we give a vasoconstrictor to a heart that is already struggling against afterload — a myocardium with no blood supply cannot recover no matter how good the rest of your plan is.</p>
+
+          <h4>Loop 2 — the lungs drown</h4>
+          <p>Blood the ventricle can't eject backs up. LVEDP rises into the left atrium and pulmonary veins; PCWP climbs past 15, then past 25, and fluid transudates into the alveoli. Now the patient is <strong>hypoxemic</strong> — and hypoxemic blood arriving at an already-ischemic myocardium deepens the ischemia, feeding straight back into Loop 1.</p>
+
+          <h4>Loop 3 — the compensations betray you</h4>
+          <p>The baroreceptors cannot tell the difference between "the pump has failed" and "you are bleeding to death." They read low output the same way, and turn on the same two ancient rescue systems: the <strong>sympathetic nervous system</strong> (catecholamine surge → tachycardia, vasoconstriction) and <strong>RAAS</strong> (angiotensin II → vasoconstriction; aldosterone → salt and water retention). In hemorrhage this is brilliant. Here it is a catastrophe:</p>
+          <ul>
+            <li><strong>Vasoconstriction raises afterload</strong> — the failing ventricle must now eject against a higher wall of resistance, so stroke volume falls further.</li>
+            <li><strong>Tachycardia shortens diastole</strong> — which is both when the ventricle fills <em>and</em> when the coronaries perfuse. You lose preload and coronary flow in one move.</li>
+            <li><strong>Salt and water retention</strong> adds volume to a ventricle that is already over-filled, worsening Loop 2.</li>
+            <li>All of it <strong>raises myocardial oxygen demand</strong> while Loop 1 is cutting supply.</li>
+          </ul>
+
+          <h4>Loop 4 — the inflammatory arm (why some shock patients look "warm")</h4>
+          <p>In a substantial minority, prolonged hypoperfusion triggers a systemic inflammatory response: <strong>inducible nitric oxide synthase (iNOS)</strong> is switched on, flooding the circulation with nitric oxide and peroxynitrite, alongside IL-6 and TNF-α. Nitric oxide is both a potent vasodilator <em>and</em> a direct myocardial depressant. So a patient who began cold and clamped-down can become <strong>inappropriately vasodilated</strong> — SVR falls, the picture turns "mixed," and pressor requirements escalate for reasons that have nothing to do with the original infarct. This is why a cardiogenic shock patient can look deceptively septic, and why the SHOCK trial registry found many patients had a normal or low SVR.</p>
+
+          <p>Left alone the loops converge: AKI, congestive hepatopathy and shock liver, bowel ischemia, and death. Despite four decades of trials, <strong>in-hospital mortality remains roughly 30–50%</strong> (<a href="https://www.jacc.org/doi/10.1016/j.jacc.2025.02.018" target="_blank">2025 ACC Concise Clinical Guidance</a>). <strong>Every therapy below exists to break one of these four loops.</strong></p>
+
+          <div class="analogy"><span class="lbl"></span>a failing bilge pump on a boat that's taking on water. The crew's instinct is to scream "pump harder!" while <em>narrowing the outlet pipe</em> so the water sprays further away — that's your sympathetic surge raising afterload. But the pump is already dying, and now it's straining against a narrower pipe while the water keeps rising. Worse, the rising water shorts out the pump's own power supply — that's coronary perfusion collapsing. Every instinct the crew has accelerates the sinking. Your job is exactly three things: <strong>plug the hole</strong> (revascularize), <strong>take over the pumping or widen the pipe</strong> (inotropes, unloading, mechanical support), and <strong>keep just enough pressure in the system to keep the pump's own power supply live</strong> (norepinephrine to a MAP of 65) — without cranking the resistance so high you finish the pump off.</div>
+
+          <div class="svg-wrap">
+            <div class="dia dia-dark">__MM_SPIRAL_DARK__</div>
+            <div class="dia dia-light">__MM_SPIRAL_LIGHT__</div>
+            <div class="cap">The four loops of cardiogenic shock. Note that hypoperfusion (red) feeds <em>three</em> separate cycles back into ischaemia — the ischaemic loop, the compensatory loop, and the inflammatory loop. Therapy is aimed at cutting these arrows.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">📐</span><h3>The hemodynamic definition — what the numbers actually mean</h3></div>
+        <div class="m-body">
+          <p>Cardiogenic shock is defined by a <strong>combination</strong> of a pressure problem, a flow problem, and a perfusion problem. Any one alone is not shock.</p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Criterion</th><th>Threshold</th><th>What it's telling you</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Sustained hypotension</strong></td><td style="color:#f43f5e;font-weight:700">SBP &lt;90 mmHg for &gt;30 min<br><span style="font-weight:400;color:var(--muted)">or vasopressors/MCS required to keep SBP ≥90</span></td><td>The perfusion pressure driving every organ bed — <em>including the coronaries</em> — has failed. The "or pressors" clause matters: a patient at SBP 105 <em>on norepinephrine</em> is still in shock. Never let a treated number reassure you.</td></tr>
+              <tr><td><strong>Low cardiac index</strong></td><td style="color:#f43f5e;font-weight:700">CI &lt;2.2 L/min/m²<br><span style="font-weight:400;color:var(--muted)">(&lt;1.8 without support)</span></td><td>The flow problem — this is what makes it <em>cardiogenic</em>. Normal CI is 2.5–4.0. This is the number that separates cardiogenic from septic shock, where CI is typically high.</td></tr>
+              <tr><td><strong>Elevated filling pressure</strong></td><td style="color:#f59e0b;font-weight:700">PCWP &gt;15 mmHg</td><td>Proves the low output is <em>not</em> hypovolemia — the tank is full and the pump still isn't moving it. This is the criterion that stops you reflexively giving fluid.</td></tr>
+              <tr><td><strong>End-organ hypoperfusion</strong></td><td style="color:#f43f5e;font-weight:700">Lactate ≥2 mmol/L<br>UOP &lt;30 mL/h · AMS · cool, mottled skin</td><td>The consequence — and the thing you actually treat. Per SCAI 2022, <strong>lactate &gt;2 mmol/L is consistent with at least Stage C.</strong> Hypoperfusion without hypotension carries a <em>higher</em> mortality than hypotension with preserved perfusion.</td></tr>
+            </tbody>
+          </table></div>
+          <p style="font-size:12.5px;color:var(--muted)">Hemodynamic criteria follow the <a href="https://www.nejm.org/doi/full/10.1056/NEJM199908263410901" target="_blank">SHOCK trial</a> entry definition (CI ≤2.2, PCWP ≥15) and the <a href="https://www.jscai.org/article/S2772-9303(21)00008-9/fulltext" target="_blank">SCAI SHOCK 2022 Expert Consensus Update</a>.</p>
+
+          <div class="pearl"><span class="lbl"></span><strong>Normotensive cardiogenic shock is real and it is dangerous.</strong> Roughly 5–10% of patients in the SHOCK trial registry had a preserved SBP but a cardiac index in the shock range and clear hypoperfusion. SCAI explicitly notes that in Stage C, <em>"hypotension is not required."</em> If the lactate is up, the urine has stopped, and the extremities are cool — the patient is in shock, whatever the cuff says. Chronic HF patients are the classic trap: they have adapted to a low output and a low baseline BP, so they look falsely reassuring while their hemodynamics are dire.</div>
+
+          <h4>Two numbers worth knowing cold</h4>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Metric</th><th>Formula</th><th>Threshold &amp; meaning</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Cardiac power output (CPO)</strong></td><td>CPO (W) = MAP × CO / 451</td><td>Normal 0.8–1.1 W. <strong style="color:#f43f5e">&lt;0.6 W</strong> = the single strongest independent hemodynamic predictor of in-hospital mortality in cardiogenic shock. It multiplies pressure by flow, so it captures what MAP or CO alone miss — a patient can hold a MAP of 70 on maximal pressors while their CPO is dismal. <em>(Fincke, <a href="https://www.jacc.org/doi/10.1016/j.jacc.2004.03.060" target="_blank">SHOCK trial registry, JACC 2004</a>)</em></td></tr>
+              <tr><td><strong>PA pulsatility index (PAPi)</strong></td><td>PAPi = (PASP − PADP) / RAP</td><td><strong style="color:#f43f5e">&lt;0.9</strong> suggests the RV cannot generate pulsatile flow against its load → <strong>RV failure; consider RV support.</strong> Originally derived in RV infarction. This is the number that tells you the problem is on the <em>right</em> — which completely changes management (fluids, not diuresis; an RV device, not an LV one). <em>(<a href="https://onlinelibrary.wiley.com/doi/full/10.1002/ejhf.1679" target="_blank">Lim, Eur J Heart Fail 2020</a>)</em></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">📉</span><h3>Why the failing heart can't be fixed with fluid — the function curve</h3></div>
+        <div class="m-body">
+          <p>The Frank–Starling relationship says stroke volume rises with filling pressure. On a <strong>normal</strong> curve that's steep and useful: give fluid, get output. On the <strong>cardiogenic shock</strong> curve it is nearly flat — you can push the filling pressure from 18 to 30 and gain almost no stroke volume, while guaranteeing pulmonary edema. This one picture explains why "the patient is hypotensive, give a bolus" is the wrong reflex here.</p>
+          <div class="svg-wrap">
+            <svg viewBox="0 0 660 350" role="img" aria-label="Frank-Starling curves in normal heart versus cardiogenic shock, showing how inotropes shift the curve up and vasodilators/diuretics move the patient along it">
+              <!-- axes -->
+              <line x1="70" y1="300" x2="620" y2="300" stroke="var(--d-line)" stroke-width="1.6"/>
+              <line x1="70" y1="300" x2="70" y2="30" stroke="var(--d-line)" stroke-width="1.6"/>
+              <text x="345" y="335" fill="var(--d-muted)" font-size="12.5" text-anchor="middle">LV filling pressure (PCWP, mmHg)  →</text>
+              <text x="24" y="165" fill="var(--d-muted)" font-size="12.5" text-anchor="middle" transform="rotate(-90 24 165)">Stroke volume / CI  →</text>
+              <!-- x ticks -->
+              <text x="70"  y="316" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">0</text>
+              <text x="180" y="316" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">10</text>
+              <text x="290" y="316" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">15</text>
+              <text x="400" y="316" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">20</text>
+              <text x="510" y="316" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">25</text>
+              <text x="612" y="316" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">30</text>
+              <!-- congestion zone -->
+              <rect x="290" y="30" width="330" height="270" fill="var(--d-blue-bg)"/>
+              <text x="596" y="48" fill="var(--d-blue)" font-size="11" text-anchor="end" font-weight="700">PCWP &gt;15 → congestion</text>
+              <!-- shock zone -->
+              <rect x="70" y="228" width="550" height="72" fill="var(--d-red-bg)"/>
+              <text x="82" y="292" fill="var(--d-red)" font-size="11" font-weight="700">CI &lt;2.2 → cardiogenic shock</text>
+              <!-- normal curve -->
+              <path d="M70,300 C130,150 210,80 340,66 C450,56 540,54 620,52" fill="none" stroke="var(--d-green)" stroke-width="2.6"/>
+              <text x="470" y="44" fill="var(--d-green)" font-size="12" font-weight="700">Normal ventricle</text>
+              <!-- moderate dysfunction -->
+              <path d="M70,300 C150,235 240,196 350,186 C450,178 540,175 620,173" fill="none" stroke="var(--d-amber)" stroke-width="2.2" stroke-dasharray="6 4"/>
+              <text x="470" y="166" fill="var(--d-amber)" font-size="12" font-weight="700">On an inotrope</text>
+              <!-- CS curve -->
+              <path d="M70,300 C160,283 250,270 350,265 C450,261 540,259 620,258" fill="none" stroke="var(--d-red)" stroke-width="2.6"/>
+              <text x="470" y="278" fill="var(--d-red)" font-size="12" font-weight="700">Cardiogenic shock — nearly flat</text>
+              <!-- patient dot on CS curve at high PCWP -->
+              <circle cx="470" cy="260" r="7" fill="var(--d-red)" stroke="var(--d-text)" stroke-width="1.5"/>
+              <text x="470" y="243" fill="var(--d-text)" font-size="11.5" text-anchor="middle" font-weight="700">Your patient: wet &amp; cold</text>
+              <!-- inotrope arrow: up -->
+              <line x1="470" y1="252" x2="470" y2="196" stroke="var(--d-amber)" stroke-width="2.4" marker-end="url(#csarrowA)"/>
+              <text x="482" y="222" fill="var(--d-amber)" font-size="11" font-weight="700">inotrope</text>
+              <!-- diuretic arrow: left along curve -->
+              <line x1="458" y1="266" x2="330" y2="270" stroke="var(--d-blue)" stroke-width="2.4" marker-end="url(#csarrowB)"/>
+              <text x="352" y="288" fill="var(--d-blue)" font-size="11" font-weight="700">diurese / vasodilate</text>
+              <!-- futile fluid arrow -->
+              <line x1="482" y1="258" x2="600" y2="257" stroke="var(--d-muted)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#csarrowC)"/>
+              <text x="592" y="246" fill="var(--d-muted)" font-size="10.5" text-anchor="end">fluid: no gain, more oedema</text>
+              <defs>
+                <marker id="csarrowA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="var(--d-amber)"/></marker>
+                <marker id="csarrowB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="var(--d-blue)"/></marker>
+                <marker id="csarrowC" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="var(--d-muted)"/></marker>
+              </defs>
+            </svg>
+            <div class="cap">On the flat shock curve, adding preload buys almost no stroke volume but plenty of pulmonary oedema. Only an <strong>inotrope (or mechanical support) lifts the curve itself</strong>; diuresis and vasodilation move the patient <em>left</em> out of congestion. This is the whole logic of the Stevenson profiles below.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🗂️</span><h3>Classification — the three questions you must answer</h3></div>
+        <div class="m-body">
+          <p>On rounds you will be asked three separate questions about a shock patient, and they are genuinely independent: <strong>what caused it</strong>, <strong>how sick is it</strong>, and <strong>what's the hemodynamic profile</strong>. Answer all three.</p>
+
+          <h4>1. What caused it? (etiology drives the fix)</h4>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Category</th><th>~Share of CS</th><th>Examples</th><th>What it changes</th></tr></thead>
+            <tbody>
+              <tr><td><strong>AMI-CS</strong> (acute MI)</td><td style="color:#f59e0b;font-weight:700">&lt;⅓ and falling</td><td>Large anterior STEMI; occlusive NSTEMI; left main / proximal LAD</td><td><strong>Emergent revascularization of the culprit vessel</strong> — the only intervention with a durable mortality benefit (SHOCK). Everything else is support while the muscle recovers.</td></tr>
+              <tr><td><strong>HF-CS</strong> (decompensated heart failure)</td><td style="color:#f43f5e;font-weight:700">The largest group</td><td>End-stage HFrEF; acute-on-chronic decompensation</td><td>No artery to open. The question becomes <strong>recovery vs durable LVAD vs transplant vs palliation</strong>. These patients have adapted to low output — they under-declare their severity.</td></tr>
+              <tr><td><strong>Mechanical complications</strong></td><td style="color:#a78bfa;font-weight:700">&lt;5%</td><td>Papillary muscle rupture → acute MR; ventricular septal rupture; free-wall rupture/tamponade</td><td><strong>Surgical emergency.</strong> Drugs will not fix a hole. Suspect on day 2–7 post-MI with a new murmur and sudden collapse. MCS is a bridge to the OR, not a destination.</td></tr>
+              <tr><td><strong>RV-predominant</strong></td><td style="color:#38bdf8;font-weight:700">~5–15%</td><td>RV infarction (inferior STEMI + RCA); massive PE; RV failure post-LVAD</td><td><strong>Management inverts:</strong> these patients need <em>preload</em> (fluids), not diuresis; they are exquisitely sensitive to nitrates, and they need AV synchrony. Check PAPi and RAP:PCWP.</td></tr>
+              <tr><td><strong>Non-ischemic myocardial</strong></td><td style="color:#38bdf8;font-weight:700">~5–10%</td><td>Fulminant myocarditis; Takotsubo; peripartum CM; drug toxicity</td><td>Often <strong>fully recoverable</strong> if you can bridge them. Fulminant myocarditis is the classic "sickest patient who walks out of hospital" — a strong argument for aggressive early MCS.</td></tr>
+              <tr><td><strong>Valvular / obstructive</strong></td><td style="color:#a78bfa;font-weight:700">&lt;5%</td><td>Critical AS; acute AR (endocarditis, dissection); prosthetic valve thrombosis; tamponade</td><td>Fix the lesion. <strong>Tamponade is the one you cannot afford to miss</strong> — it's reversible in minutes with a needle.</td></tr>
+              <tr><td><strong>Arrhythmic</strong></td><td style="color:#a78bfa;font-weight:700">&lt;5%</td><td>Incessant VT/VF; complete heart block; rapid AF in a stiff ventricle</td><td>Fix the rhythm first — cardiovert or pace. No amount of inotrope beats restoring the rhythm.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="pearl"><span class="lbl"></span>The historical teaching that cardiogenic shock is an MI disease is now <strong>out of date</strong>. In contemporary cardiac ICU registries — including the <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11032172/" target="_blank">Critical Care Cardiology Trials Network</a> — <strong>AMI-CS accounts for less than one third of cases</strong>; more than two thirds are non-ischaemic, predominantly heart-failure-related, and their outcomes are at least as poor. That matters enormously, because the entire randomised evidence base — SHOCK, IABP-SHOCK II, CULPRIT-SHOCK, DanGer Shock, ECLS-SHOCK — was built in AMI-CS. <strong>Every time you apply those trials to your end-stage HFrEF patient, you are extrapolating beyond the data.</strong> Do it consciously.</div>
+
+          <h4>2. How sick is it? (SCAI SHOCK stage drives escalation)</h4>
+          <p>The <a href="https://www.jscai.org/article/S2772-9303(21)00008-9/fulltext" target="_blank">SCAI SHOCK classification (2019, updated 2022)</a> replaced the old binary "in shock / not in shock" with a five-stage ladder, endorsed by ACC, AHA, ESC-ACVC, SCCM, STS and ISHLT. Its value is less about prognosis than about <strong>communication and trajectory</strong> — everyone from the paramedic to the transplant surgeon says the same word and means the same thing, and a stage that <em>changes</em> is more informative than a stage that sits still.</p>
+          <div class="svg-wrap">
+            <svg viewBox="0 0 700 300" role="img" aria-label="SCAI SHOCK stage ladder A through E with in-hospital mortality">
+              <!-- steps ascending -->
+              <g>
+                <rect x="20"  y="216" width="126" height="44"  rx="6" fill="var(--d-green-bg)"  stroke="var(--d-green)"  stroke-width="1.8"/>
+                <rect x="156" y="188" width="126" height="72"  rx="6" fill="var(--d-blue-bg)"   stroke="var(--d-blue)"   stroke-width="1.8"/>
+                <rect x="292" y="148" width="126" height="112" rx="6" fill="var(--d-amber-bg)"  stroke="var(--d-amber)"  stroke-width="1.8"/>
+                <rect x="428" y="96"  width="126" height="164" rx="6" fill="var(--d-red-bg)"    stroke="var(--d-red)"    stroke-width="1.8"/>
+                <rect x="564" y="42"  width="118" height="218" rx="6" fill="var(--d-red-bg)"    stroke="var(--d-red)"    stroke-width="2.6"/>
+              </g>
+              <!-- letters -->
+              <text x="83"  y="240" fill="var(--d-green)" font-size="22" font-weight="800" text-anchor="middle">A</text>
+              <text x="219" y="215" fill="var(--d-blue)"  font-size="22" font-weight="800" text-anchor="middle">B</text>
+              <text x="355" y="176" fill="var(--d-amber)" font-size="22" font-weight="800" text-anchor="middle">C</text>
+              <text x="491" y="124" fill="var(--d-red)"   font-size="22" font-weight="800" text-anchor="middle">D</text>
+              <text x="623" y="70"  fill="var(--d-red)"   font-size="22" font-weight="800" text-anchor="middle">E</text>
+              <!-- names -->
+              <text x="83"  y="256" fill="var(--d-text)" font-size="11" font-weight="700" text-anchor="middle">At risk</text>
+              <text x="219" y="231" fill="var(--d-text)" font-size="11" font-weight="700" text-anchor="middle">Beginning</text>
+              <text x="355" y="192" fill="var(--d-text)" font-size="11" font-weight="700" text-anchor="middle">Classic</text>
+              <text x="491" y="140" fill="var(--d-text)" font-size="11" font-weight="700" text-anchor="middle">Deteriorating</text>
+              <text x="623" y="86"  fill="var(--d-text)" font-size="11" font-weight="700" text-anchor="middle">Extremis</text>
+              <!-- one-line criteria -->
+              <text x="83"  y="272" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">normal lactate</text>
+              <text x="219" y="247" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">SBP&lt;90 or HR≥100</text>
+              <text x="219" y="258" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">perfusion intact</text>
+              <text x="355" y="208" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">lactate ≥2, needs</text>
+              <text x="355" y="219" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">1 intervention</text>
+              <text x="491" y="156" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">failing that trial:</text>
+              <text x="491" y="167" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">+2nd drug/device</text>
+              <text x="623" y="102" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">lactate ≥8, pH&lt;7.2</text>
+              <text x="623" y="113" fill="var(--d-muted)" font-size="9.5" text-anchor="middle">collapse / CPR</text>
+              <!-- mortality figures -->
+              <text x="83"  y="206" fill="var(--d-green)" font-size="14" font-weight="800" text-anchor="middle">3.0%</text>
+              <text x="219" y="178" fill="var(--d-blue)"  font-size="14" font-weight="800" text-anchor="middle">7.1%</text>
+              <text x="355" y="138" fill="var(--d-amber)" font-size="14" font-weight="800" text-anchor="middle">12.4%</text>
+              <text x="491" y="86"  fill="var(--d-red)"   font-size="16" font-weight="800" text-anchor="middle">40.4%</text>
+              <text x="623" y="32"  fill="var(--d-red)"   font-size="16" font-weight="800" text-anchor="middle">67.0%</text>
+              <!-- baseline -->
+              <line x1="20" y1="260" x2="682" y2="260" stroke="var(--d-line)" stroke-width="1.6"/>
+              <text x="20" y="284" fill="var(--d-muted)" font-size="10.5">In-hospital mortality — Jentzer et al., JACC 2019 (Mayo CICU, n=10,004)</text>
+              <!-- referral trigger marker -->
+              <line x1="428" y1="96" x2="428" y2="24" stroke="var(--d-purple)" stroke-width="1.6" stroke-dasharray="4 3"/>
+              <text x="424" y="18" fill="var(--d-purple)" font-size="10.5" text-anchor="end" font-weight="700">SCAI: refer to a shock hub HERE — at D, before E</text>
+            </svg>
+            <div class="cap">The mortality cliff sits between <strong>C and D</strong> (12.4% → 40.4%). That is exactly why SCAI advises spoke centres to trigger transfer <strong>on progression to Stage D — before Stage E</strong>. Waiting for extremis is waiting too long.</div>
+          </div>
+
+          <h4>3. What's the profile? (Stevenson quadrants drive the immediate move)</h4>
+          <p>Two bedside questions — <strong>is there congestion (wet or dry)</strong> and <strong>is there hypoperfusion (warm or cold)</strong> — sort every patient into four boxes. Cardiogenic shock lives in the bottom two.</p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Profile</th><th>Findings</th><th>Hemodynamics</th><th>The move</th></tr></thead>
+            <tbody>
+              <tr><td><strong>A — Warm &amp; dry</strong></td><td>Compensated; no congestion, perfusing</td><td>PCWP normal, CI normal</td><td>Not shock. Optimize GDMT and find the precipitant.</td></tr>
+              <tr><td><strong>B — Warm &amp; wet</strong></td><td>Congested but perfusing: orthopnea, JVD, rales, warm extremities</td><td>PCWP ↑, CI adequate</td><td>Classic ADHF, <em>not</em> shock. <strong>Diurese</strong> ± vasodilate. If you reach for an inotrope here you are causing harm.</td></tr>
+              <tr><td style="color:#f43f5e"><strong>C — Cold &amp; wet</strong></td><td style="color:#f43f5e;font-weight:700">The commonest CS profile (~2/3)</td><td>PCWP ↑ <em>and</em> CI ↓</td><td><strong>Both problems at once.</strong> Restore perfusion first (norepinephrine ± inotrope), then decongest. Diuresing a cold patient before you fix the output just drops their pressure further.</td></tr>
+              <tr><td style="color:#38bdf8"><strong>L — Cold &amp; dry</strong></td><td>Hypoperfused without congestion; the "euvolemic-cold" patient</td><td>PCWP normal/low, CI ↓</td><td>The one profile where <strong>a cautious fluid challenge (250 mL) is reasonable</strong> — but reassess immediately. If no response, they need inotropy, not more volume.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="callout"><span class="lbl" style="color:#38bdf8">Read the pattern</span>Congestion signs (JVD, S3, orthopnea, rales, oedema) say <strong>wet</strong>. Low-output signs (cool extremities, narrow pulse pressure, oliguria, AMS, hyponatraemia, rising lactate) say <strong>cold</strong>. <strong>Cold is what makes it shock; wet only tells you where the volume is.</strong> A patient can be cold and dry and still be dying.</div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🔬</span><h3>What it looks like — the substrate</h3></div>
+        <div class="m-body">
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_coronary_anat__" alt="Coronary artery disease — atherosclerotic plaque occluding a coronary artery">
+              <div class="cap"><strong>Where it starts.</strong> An occlusive plaque in a proximal vessel puts a large territory of myocardium at risk. Lose enough contractile mass — classically ~40% of the LV — and the pump fails outright.</div>
+              <div class="credit">__CRED_coronary_anat__</div>
+            </div>
+            <div class="fig">
+              <img src="__IMG_mi_gross__" alt="Gross pathology of a one-week-old myocardial infarction with focal rupture">
+              <div class="cap"><strong>A one-week-old infarct with focal rupture.</strong> The pale infarcted zone is where the muscle died; the rupture is the mechanical complication that turns a survivable MI into sudden tamponade and shock. This is the day-2-to-7 catastrophe you're watching for.</div>
+              <div class="credit">__CRED_mi_gross__</div>
+            </div>
+          </div>
+          <div class="fig-row">
+            <div class="fig">
+              <img src="__IMG_mi_histo__" alt="Histological features of myocardial infarction at different stages">
+              <div class="cap"><strong>The infarct under the microscope, staged.</strong> Myofibre waviness → interstitial oedema → hypereosinophilia and coagulative necrosis → neutrophil infiltration. The timeline matters clinically: the mechanical complications cluster when the necrotic wall is at its weakest, days 2–7, as macrophages digest the scaffolding before fibrosis sets in.</div>
+              <div class="credit">__CRED_mi_histo__</div>
+            </div>
+            <div class="fig">
+              <img src="__IMG_cardiomyopathy__" alt="Dilated cardiomyopathy compared with a normal heart">
+              <div class="cap"><strong>Dilated cardiomyopathy — the other road in.</strong> No culprit artery to open. The ventricle has remodelled into a thin-walled sphere: poor geometry, high wall stress, low output. When this heart decompensates into shock the question is not "which vessel" but "recover, LVAD, transplant, or palliate."</div>
+              <div class="credit">__CRED_cardiomyopathy__</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module accent" style="--m:var(--treat)">
+        <div class="m-head" style="--m:var(--treat)"><span class="m-ico">⚙️</span><h3>Why each therapy works — the through-line of this whole guide</h3></div>
+        <div class="m-body">
+          <p>Every drug and device below interrupts a <strong>named step</strong> in the spiral. If you can say which arrow you're cutting, you understand the treatment. If you can't, you're pattern-matching.</p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Therapy</th><th>Molecular mechanism</th><th>Which loop it cuts</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Norepinephrine</strong></td><td>α₁-adrenergic agonist (≫β₁) → Gq → phospholipase C → IP₃ → vascular smooth-muscle Ca²⁺ → vasoconstriction</td><td class="why"><strong>Loop 1.</strong> Raises aortic diastolic pressure, restoring the DBP−LVEDP gradient that perfuses the coronaries. It doesn't fix the pump — it buys the pump back its own blood supply. This is why we accept the afterload cost.</td></tr>
+              <tr><td><strong>Dobutamine</strong></td><td>β₁-agonist → Gs → adenylyl cyclase → ↑cAMP → PKA → phosphorylates L-type Ca²⁺ channels &amp; phospholamban → ↑Ca²⁺ transient</td><td class="why"><strong>Loop 1 (flow arm).</strong> Directly raises contractility → stroke volume → cardiac output. Lifts the Starling curve itself rather than sliding along it.</td></tr>
+              <tr><td><strong>Milrinone</strong></td><td>Phosphodiesterase-3 inhibitor → blocks cAMP <em>breakdown</em> → same ↑cAMP/PKA endpoint, but <strong>downstream of the β-receptor</strong></td><td class="why"><strong>Loop 1 + Loop 3.</strong> Works when the β-receptor is blocked (β-blocker on board) or downregulated (chronic HF) — dobutamine can't. Also vasodilates arterial and pulmonary beds ("inodilator"), so it <em>lowers</em> the afterload that Loop 3 raised.</td></tr>
+              <tr><td><strong>Emergent PCI</strong></td><td>Restores epicardial flow to the culprit territory (TIMI 3)</td><td class="why"><strong>The insult itself.</strong> The only therapy that removes the cause rather than supporting around it — and the only one with a durable mortality benefit in AMI-CS (SHOCK, benefit at 6 months and persisting to 6 years).</td></tr>
+              <tr><td><strong>Mechanical support</strong> (Impella / ECMO)</td><td>Trans-valvular axial pump or extracorporeal circuit generating forward flow independent of native contraction</td><td class="why"><strong>Loops 1, 2 and 3 at once</strong> — the reason MCS is conceptually so attractive. It unloads the LV (↓LVEDP → widens the coronary gradient <em>and</em> cuts wall stress/O₂ demand), provides forward flow (↑MAP, ↑perfusion), and lets you back off catecholamines.</td></tr>
+              <tr><td><strong>Diuretics / vasodilators</strong></td><td>Loop-of-Henle Na-K-2Cl blockade; NO-donor venodilation</td><td class="why"><strong>Loop 2.</strong> Lowers PCWP → clears the alveoli → improves oxygenation. <strong>Sequencing rule: perfusion before decongestion.</strong> Diuresing a cold patient drops preload on a flat curve and buys you hypotension for nothing.</td></tr>
+              <tr><td><strong>Revascularization of culprit only</strong></td><td>Avoids contrast load, procedure time and no-reflow in non-culprit territories</td><td class="why"><strong>Iatrogenic loop.</strong> CULPRIT-SHOCK: opening everything at once <em>increased</em> death/renal failure. Restraint is the intervention.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="why"><span class="lbl"></span>the sequence is always the same and it is worth memorising: <strong>(1) perfusion pressure</strong> so the heart and brain stay alive → <strong>(2) flow</strong> so the organs recover → <strong>(3) fix the cause</strong> → <strong>(4) decongest</strong> → <strong>(5) wean</strong>. Doing (4) before (1) is the most common way residents make a shock patient worse.</div>
+        </div>
+      </div>
+    </section>
