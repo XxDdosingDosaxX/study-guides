@@ -1730,20 +1730,52 @@ applyTheme();
 
 // ===== Local "Add a disease" builder (only active when served by add_disease_builder.py) =====
 var BUILDER = false;
+var REMOTE = false;   // true when using Firestore (hosted site, no local builder)
+function showRemoteHint(){
+  document.getElementById('builderHint').textContent =
+    'Cloud queue — your request is saved and builds when the home laptop is on.';
+}
 function detectBuilder() {
   fetch('/api/queue').then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
-    BUILDER = true;
+    BUILDER = true; REMOTE = false;
     document.getElementById('builder').style.display = 'block';
     document.getElementById('builderOff').style.display = 'none';
     renderQueue(d.items || []);
   }).catch(function(){
-    document.getElementById('builder').style.display = 'none';
-    document.getElementById('builderOff').style.display = 'block';
+    // No local builder: use Firestore cloud queue if sync is configured.
+    if (window.SGSync && window.SGSync.ready) { enableRemote(); }
+    else {
+      document.addEventListener('sgsync-ready', enableRemote, { once:true });
+      // if sync never comes up (offline / not configured), show the local-builder note
+      setTimeout(function(){ if(!REMOTE){
+        document.getElementById('builder').style.display = 'none';
+        document.getElementById('builderOff').style.display = 'block';
+      }}, 3500);
+    }
   });
+}
+function enableRemote(){
+  REMOTE = true;
+  document.getElementById('builder').style.display = 'block';
+  document.getElementById('builderOff').style.display = 'none';
+  showRemoteHint();
+  try {
+    window.SGSync.watchBuilds(function(reqs){
+      // map cloud build requests to the queue UI shape
+      renderQueue(reqs.map(function(r){ return { disease:r.disease, status:(r.status==='requested'?'pending':r.status) }; }), true);
+    });
+  } catch(e){}
 }
 function enqueueDisease() {
   var i = document.getElementById('newDisease'), v = i.value.trim();
   if (!v) return;
+  if (REMOTE || (!BUILDER && window.SGSync && window.SGSync.ready)) {
+    window.SGSync.requestBuild(v).then(function(){
+      i.value = '';
+      document.getElementById('builderHint').textContent = 'Requested (cloud): ' + v + ' — builds when the laptop is on.';
+    }).catch(function(){ document.getElementById('builderHint').textContent = 'Could not reach cloud queue.'; });
+    return;
+  }
   fetch('/api/enqueue', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({disease:v}) })
     .then(function(r){ return r.json(); }).then(function(d){
       i.value = '';
@@ -1751,7 +1783,7 @@ function enqueueDisease() {
       pollQueue();
     }).catch(function(){ document.getElementById('builderHint').textContent = 'Builder not reachable.'; });
 }
-function renderQueue(items) {
+function renderQueue(items, remote) {
   var el = document.getElementById('builderQueue');
   var order = { building:0, pending:1, error:2, done:3 };
   var sorted = items.slice().sort(function(a,b){ return (order[a.status]-order[b.status]); });
@@ -1759,7 +1791,8 @@ function renderQueue(items) {
   var pend = items.filter(function(x){ return x.status==='pending'; }).length;
   var bld = items.filter(function(x){ return x.status==='building'; }).length;
   document.getElementById('builderHint').textContent =
-    bld + ' building · ' + pend + ' queued · ' + done + ' done. One at a time — keep the laptop on.';
+    bld + ' building · ' + pend + ' queued · ' + done + ' done. ' +
+    (remote ? 'Cloud queue — builds when the home laptop is on.' : 'One at a time — keep the laptop on.');
   el.innerHTML = '';
   sorted.filter(function(x){ return x.status!=='done'; }).slice(0, 20).forEach(function(x){
     var row = document.createElement('div'); row.className = 'bq-item';
@@ -1814,6 +1847,48 @@ function filterGuides() {
 
   document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
 }
+</script>
+<!-- SG_FB_SYNC: cross-device notes + build requests via Firestore -->
+<script>window.SG_FB_CONFIG = {};</script>
+<script>
+(function(){
+  var cfg = window.SG_FB_CONFIG || {};
+  if(!cfg || !cfg.apiKey){ return; }            // sync disabled -> localStorage only
+  function load(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+  var V='10.12.2', B='https://www.gstatic.com/firebasejs/'+V+'/';
+  load(B+'firebase-app-compat.js')
+    .then(function(){return load(B+'firebase-auth-compat.js');})
+    .then(function(){return load(B+'firebase-firestore-compat.js');})
+    .then(function(){
+      if(!firebase.apps.length) firebase.initializeApp(cfg);
+      var db=firebase.firestore(), auth=firebase.auth();
+      window.SGSync={ready:false,db:db};
+      auth.signInAnonymously().catch(function(e){console.warn('SG anon auth',e);});
+      auth.onAuthStateChanged(function(u){
+        if(!u) return;
+        window.SGSync.ready=true;
+        window.SGSync.requestBuild=function(name){return db.collection('buildRequests').add({disease:name,status:'requested',createdAt:firebase.firestore.FieldValue.serverTimestamp(),source:'web'});};
+        window.SGSync.watchBuilds=function(cb){return db.collection('buildRequests').orderBy('createdAt','desc').limit(40).onSnapshot(function(s){var r=[];s.forEach(function(x){var o=x.data();o.id=x.id;r.push(o);});cb(r);});};
+        if(document.dispatchEvent) document.dispatchEvent(new Event('sgsync-ready'));
+        // ---- per-disease notes sync (only on guide pages that have a notes widget) ----
+        var key='sgnotes_'+(location.pathname.split('/').pop()||'guide');
+        if(typeof window.saveNotes!=='function' && !document.getElementById('noteList')) return;
+        var ref=db.collection('notes').doc(key);
+        var origSave=window.saveNotes;
+        window.saveNotes=function(a){ if(origSave) origSave(a); try{ref.set({items:a,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),device:(navigator.platform||'')});}catch(e){} };
+        ref.get().then(function(doc){
+          var local=[]; try{local=JSON.parse(localStorage.getItem(key)||'[]');}catch(e){}
+          var remote=(doc.exists && doc.data().items)||[];
+          var seen={}, merged=[];
+          remote.concat(local).forEach(function(n){var k=(n.ts||'')+'|'+(n.text||'');if(!seen[k]){seen[k]=1;merged.push(n);}});
+          if(merged.length!==remote.length){ try{ref.set({items:merged,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});}catch(e){} }
+          try{localStorage.setItem(key,JSON.stringify(merged));}catch(e){}
+          if(window.renderNotes) renderNotes();
+          ref.onSnapshot(function(d){ if(!d.exists) return; var dd=d.data(); if(!dd||!dd.items) return; try{localStorage.setItem(key,JSON.stringify(dd.items));}catch(e){} if(window.renderNotes) renderNotes(); });
+        }).catch(function(e){console.warn('SG notes sync',e);});
+      });
+    }).catch(function(e){console.warn('SG firebase load failed (offline?)',e);});
+})();
 </script>
 </body>
 </html>

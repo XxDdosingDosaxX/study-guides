@@ -1395,5 +1395,47 @@ function initNotes(){var ni=document.getElementById('noteInput');if(ni){try{ni.v
   initNotes();
 })();
 </script>
+<!-- SG_FB_SYNC: cross-device notes + build requests via Firestore -->
+<script>window.SG_FB_CONFIG = {};</script>
+<script>
+(function(){
+  var cfg = window.SG_FB_CONFIG || {};
+  if(!cfg || !cfg.apiKey){ return; }            // sync disabled -> localStorage only
+  function load(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+  var V='10.12.2', B='https://www.gstatic.com/firebasejs/'+V+'/';
+  load(B+'firebase-app-compat.js')
+    .then(function(){return load(B+'firebase-auth-compat.js');})
+    .then(function(){return load(B+'firebase-firestore-compat.js');})
+    .then(function(){
+      if(!firebase.apps.length) firebase.initializeApp(cfg);
+      var db=firebase.firestore(), auth=firebase.auth();
+      window.SGSync={ready:false,db:db};
+      auth.signInAnonymously().catch(function(e){console.warn('SG anon auth',e);});
+      auth.onAuthStateChanged(function(u){
+        if(!u) return;
+        window.SGSync.ready=true;
+        window.SGSync.requestBuild=function(name){return db.collection('buildRequests').add({disease:name,status:'requested',createdAt:firebase.firestore.FieldValue.serverTimestamp(),source:'web'});};
+        window.SGSync.watchBuilds=function(cb){return db.collection('buildRequests').orderBy('createdAt','desc').limit(40).onSnapshot(function(s){var r=[];s.forEach(function(x){var o=x.data();o.id=x.id;r.push(o);});cb(r);});};
+        if(document.dispatchEvent) document.dispatchEvent(new Event('sgsync-ready'));
+        // ---- per-disease notes sync (only on guide pages that have a notes widget) ----
+        var key='sgnotes_'+(location.pathname.split('/').pop()||'guide');
+        if(typeof window.saveNotes!=='function' && !document.getElementById('noteList')) return;
+        var ref=db.collection('notes').doc(key);
+        var origSave=window.saveNotes;
+        window.saveNotes=function(a){ if(origSave) origSave(a); try{ref.set({items:a,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),device:(navigator.platform||'')});}catch(e){} };
+        ref.get().then(function(doc){
+          var local=[]; try{local=JSON.parse(localStorage.getItem(key)||'[]');}catch(e){}
+          var remote=(doc.exists && doc.data().items)||[];
+          var seen={}, merged=[];
+          remote.concat(local).forEach(function(n){var k=(n.ts||'')+'|'+(n.text||'');if(!seen[k]){seen[k]=1;merged.push(n);}});
+          if(merged.length!==remote.length){ try{ref.set({items:merged,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});}catch(e){} }
+          try{localStorage.setItem(key,JSON.stringify(merged));}catch(e){}
+          if(window.renderNotes) renderNotes();
+          ref.onSnapshot(function(d){ if(!d.exists) return; var dd=d.data(); if(!dd||!dd.items) return; try{localStorage.setItem(key,JSON.stringify(dd.items));}catch(e){} if(window.renderNotes) renderNotes(); });
+        }).catch(function(e){console.warn('SG notes sync',e);});
+      });
+    }).catch(function(e){console.warn('SG firebase load failed (offline?)',e);});
+})();
+</script>
 </body>
 </html>

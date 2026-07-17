@@ -21,6 +21,10 @@ Seed the 50 common diagnoses once with:  python add_disease_builder.py --seed
 import json, os, sys, time, threading, subprocess, datetime
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
+try:
+    import firestore_sync as fb
+except Exception:
+    fb = None
 
 REPO = os.path.dirname(os.path.abspath(__file__))
 QUEUE_FILE = os.path.join(REPO, "builder_queue.json")
@@ -168,16 +172,36 @@ def save_queue(q):
             json.dump(q, f, indent=1)
 
 
-def enqueue(name):
+def enqueue(name, fb_id=None):
     name = (name or "").strip()
     if not name:
         return False, "empty"
     q = load_queue()
     if any(i["disease"].lower() == name.lower() and i["status"] in ("pending", "building", "done") for i in q):
         return False, "already queued"
-    q.append({"disease": name, "status": "pending", "added": now(), "started": None, "finished": None})
+    q.append({"disease": name, "status": "pending", "added": now(), "started": None,
+              "finished": None, "fb_id": fb_id})
     save_queue(q)
     return True, "queued"
+
+
+def firestore_poller():
+    """Pull diagnoses requested on the hosted site (Firestore buildRequests) into the local queue."""
+    if not (fb and fb.available()):
+        print("[%s] cloud queue: disabled (no fb_config.json) — local builder only" % now())
+        return
+    print("[%s] cloud queue: watching Firestore buildRequests" % now())
+    while True:
+        try:
+            for req in fb.fetch_requested():
+                ok, msg = enqueue(req["disease"], fb_id=req["id"])
+                # Mark it 'queued' so it isn't re-fetched; if it was a dup, mark done to clear it.
+                fb.set_status(req["id"], "queued" if ok else "done")
+                if ok:
+                    print("[%s] cloud request queued: %s" % (now(), req["disease"]))
+        except Exception as e:
+            print("[%s] cloud poller error: %s" % (now(), str(e)[:150]))
+        time.sleep(30)
 
 
 def worker():
@@ -190,6 +214,9 @@ def worker():
             continue
         nxt["status"] = "building"; nxt["started"] = now()
         save_queue(q)
+        if fb and nxt.get("fb_id"):
+            try: fb.set_status(nxt["fb_id"], "building")
+            except Exception: pass
         slug = "".join(c if c.isalnum() else "_" for c in nxt["disease"])[:60]
         logpath = os.path.join(LOG_DIR, slug + ".log")
         promptfile = os.path.join(LOG_DIR, slug + "_prompt.txt")
@@ -250,14 +277,18 @@ def worker():
         published = ensure_published(nxt["disease"])
         # reload (queue may have changed via API) and update this item
         q = load_queue()
+        final = "done" if (rc == 0 or published) else "error"
         for i in q:
             if i["disease"] == nxt["disease"] and i["status"] == "building":
-                i["status"] = "done" if (rc == 0 or published) else "error"
+                i["status"] = final
                 i["finished"] = now()
                 i["rc"] = rc
                 i["published"] = published
                 break
         save_queue(q)
+        if fb and nxt.get("fb_id"):
+            try: fb.set_status(nxt["fb_id"], final)
+            except Exception: pass
         print("[%s] %s -> %s (rc=%s)" % (now(), nxt["disease"], "done" if rc == 0 else "error", rc))
         time.sleep(3)
 
@@ -317,6 +348,7 @@ def main():
         if "--serve" not in sys.argv:
             return
     threading.Thread(target=worker, daemon=True).start()
+    threading.Thread(target=firestore_poller, daemon=True).start()
     srv = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     print("Builder running: http://localhost:%d/  (worker active; laptop must stay on)" % PORT)
     print("Queue file: %s" % QUEUE_FILE)
