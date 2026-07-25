@@ -2358,15 +2358,27 @@ function calcTDD(){
   if(!(bg>0)) bg=200;
 
   var why=[], ukg;
-  if(renal==='yes'){ ukg=0.30; why.push('Age ≥70, eGFR &lt;45, Cr ≥2.0 or dialysis → start at <b>0.3 U/kg</b> (the RABBIT-2 Surgery reduction rule).'); }
-  else if(bg<=200){ ukg=0.40; why.push('Glucose ≤200 mg/dL → <b>0.4 U/kg</b> (RABBIT-2 band for BG 140–200).'); }
-  else { ukg=0.50; why.push('Glucose &gt;200 mg/dL → <b>0.5 U/kg</b> (RABBIT-2 band for BG 201–400).'); }
+  // Two independent anchors, take the higher rather than stacking them:
+  //  (a) glucose-banded RABBIT-2 dose, (b) habitus-based dose (AAFP inpatient review).
+  var bgUkg, habUkg;
+  if(renal==='yes'){ bgUkg=0.30; why.push('Age ≥70, eGFR &lt;45, Cr ≥2.0 or dialysis → <b>0.3 U/kg</b> (the RABBIT-2 Surgery reduction rule) — this caps the dose regardless of habitus.'); }
+  else if(bg<=200){ bgUkg=0.40; why.push('Glucose ≤200 mg/dL → <b>0.4 U/kg</b> (RABBIT-2 band for BG 140–200).'); }
+  else { bgUkg=0.50; why.push('Glucose &gt;200 mg/dL → <b>0.5 U/kg</b> (RABBIT-2 band for BG 201–400).'); }
 
-  if(body==='lean'){ ukg-=0.05; why.push('Lean / underweight → −0.05 U/kg (less muscle mass, less reserve against a low).'); }
-  if(body==='obese'){ ukg+=0.10; why.push('Obese / insulin-resistant → +0.10 U/kg (receptor-level resistance).'); }
+  if(body==='lean'){ habUkg=0.30; }
+  else if(body==='obese'){ habUkg=0.50; }
+  else { habUkg=0.40; }
+  ukg = Math.max(bgUkg, habUkg);
+  if(body==='obese' && habUkg>bgUkg) why.push('Obese / insulin-resistant → habitus-based <b>0.5 U/kg</b> (AAFP) is the higher anchor, so it governs.');
+  else if(body==='obese') why.push('Obese / insulin-resistant — the glucose-based dose already sits at the resistant end, so it is not increased further; titrate up tomorrow if needed.');
+  if(body==='lean' && bgUkg>habUkg) why.push('Lean / underweight — the glucose-based dose governs, but stay alert for hypoglycemia and consider rounding down.');
+  else if(body==='lean') why.push('Lean / underweight → habitus-based <b>0.3 U/kg</b> (less muscle mass, less reserve against a low).');
   if(steroid==='yes'){ ukg+=0.10; why.push('On glucocorticoids → +0.10 U/kg; steroids typically raise requirements ~50%, and you may also need a separate NPH dose timed to the steroid.'); }
   if(eat==='poor'){ ukg-=0.05; why.push('Poor / unreliable intake → −0.05 U/kg, and hold prandial doses for missed meals.'); }
-  if(renal==='yes') ukg=Math.min(ukg,0.40);
+  if(renal==='yes'){
+    var cap = (steroid==='yes') ? 0.40 : 0.30;   // renal/age reduction is a CAP, not a competing anchor
+    if(ukg>cap){ ukg=cap; why.push('Renal impairment / age ≥70 <b>caps</b> the starting dose at '+cap.toFixed(2)+' U/kg regardless of habitus — insulin is renally cleared and kidney failure is an independent risk factor for inpatient hypoglycemia.'); }
+  }
   ukg=Math.max(0.25, Math.min(0.60, ukg));
   ukg=Math.round(ukg*100)/100;
 
