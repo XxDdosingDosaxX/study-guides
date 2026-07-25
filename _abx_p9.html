@@ -1,0 +1,256 @@
+
+    <!-- ============================================================ WARDS ============================================================ -->
+    <div class="ctx-panel" data-context="wards">
+      <div class="context-band">🛏️ Wards — empiric IV therapy by organ system, IV→PO switch &amp; de-escalation</div>
+
+      <section class="sec" id="w-admit">
+        <div class="sec-head"><span class="pill" style="background:var(--assess)">Admit</span><h2>Who needs IV antibiotics</h2></div>
+        <div class="module accent" style="--m:var(--assess)">
+          <div class="m-head" style="--m:var(--assess)"><span class="m-ico">📋</span><h3>The route decision is separate from the admission decision</h3></div>
+          <div class="m-body">
+            <p>Residents routinely conflate two different questions. <strong>"Does this patient need to be in hospital?"</strong> is about physiology, monitoring, and social support. <strong>"Does this patient need intravenous antibiotics?"</strong> is about absorption and achievable concentration at the site of infection. Plenty of admitted patients should be on oral drugs, and a few outpatients genuinely need parenteral therapy.</p>
+
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>IV is genuinely required</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Haemodynamic instability / septic shock</td><td>Splanchnic hypoperfusion makes enteral absorption unpredictable, and the volume of distribution is deranged.</td></tr>
+                <tr><td>Cannot swallow, vomiting, ileus, malabsorption, NPO, NG suction</td><td>No absorption, no drug.</td></tr>
+                <tr><td>Meningitis and other CNS infection</td><td>Requires bactericidal CSF concentrations that oral agents cannot reliably produce.</td></tr>
+                <tr><td>Endocarditis (at least the initial phase)</td><td>Bacteria in an avascular vegetation need sustained high bactericidal levels.</td></tr>
+                <tr><td><em>S. aureus</em> bacteraemia</td><td>High complication and metastatic-seeding rate; needs source hunting, repeat cultures and ID involvement.</td></tr>
+                <tr><td>Profound neutropenia</td><td>Mucositis makes absorption erratic and the consequences of failure are severe.</td></tr>
+                <tr><td>No adequate oral option exists for the organism</td><td>E.g. Pseudomonas outside ciprofloxacin/levofloxacin susceptibility; most ESBL and CRE.</td></tr>
+                <tr><td>Prosthetic material, undrained collection, or uncontrolled source</td><td>The route is not the problem — the source is. Drain it.</td></tr>
+              </tbody>
+            </table></div>
+
+            <div class="pearl"><span class="lbl"></span>Being on a hospital ward is not, by itself, an indication for intravenous antibiotics. If the patient is stable, improving, and eating, and a bioavailable oral agent covers the organism, the IV line is adding phlebitis, thrombosis and line-infection risk with no benefit. Across the oral-versus-IV literature in <em>stable</em> patients, no randomised trial has shown intravenous administration superior to an equivalent oral agent.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-orders">
+        <div class="sec-head"><span class="pill" style="background:var(--workup)">Orders</span><h2>Admission order set</h2></div>
+        <div class="module accent" style="--m:var(--workup)">
+          <div class="m-head" style="--m:var(--workup)"><span class="m-ico">🧪</span><h3>What to send before the first dose — and what to trend</h3></div>
+          <div class="m-body">
+            <div class="orderset">
+              <div class="order-row"><span class="ord-name">Blood cultures ×2</span><span class="ord-when">Two sets from two separate venipuncture sites, adequate volume (10 mL per bottle), <strong>before</strong> the first dose. This is what makes de-escalation on day 3 possible. Do not delay antibiotics in septic shock to obtain them.</span><span class="ord-tag">Before abx</span></div>
+              <div class="order-row"><span class="ord-name">Site-specific cultures</span><span class="ord-when">Urine, sputum or a lower respiratory sample, wound or abscess aspirate, CSF, joint or pleural fluid — whatever matches the suspected source. Aspirate <em>before</em> antibiotics wherever it is safe to do so.</span><span class="ord-tag">Before abx</span></div>
+              <div class="order-row"><span class="ord-name">Lactate</span><span class="ord-when">At presentation if sepsis is suspected; repeat within 2–4 h if the initial value is &gt;2 mmol/L. A rising lactate on adequate resuscitation means the source is not controlled.</span><span class="ord-tag">Sepsis</span></div>
+              <div class="order-row"><span class="ord-name">CBC with differential, CMP, magnesium, phosphate</span><span class="ord-when">Baseline renal and hepatic function before dosing; establishes the creatinine you will dose from and the potassium you will watch on TMP-SMX.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">Calculate CrCl</span><span class="ord-when">Cockcroft-Gault, not the reported eGFR. Every β-lactam dose adjustment, and the cefepime neurotoxicity you are trying to avoid, depends on this number.</span><span class="ord-tag">Admit</span></div>
+              <div class="order-row"><span class="ord-name">MRSA nasal PCR</span><span class="ord-when">Order it on <em>every</em> patient started on empiric vancomycin for pneumonia. A negative swab has a negative predictive value of about <strong>96.5% overall and 98.1% in community-acquired pneumonia</strong> for MRSA pneumonia — it is your licence to stop vancomycin in 24 hours.</span><span class="ord-tag">If on vanc</span></div>
+              <div class="order-row"><span class="ord-name">Procalcitonin (baseline)</span><span class="ord-when">Only if you intend to trend it and act on the result. A baseline is required for the ≥80%-drop stopping rule to be usable.</span><span class="ord-tag">Optional</span></div>
+              <div class="order-row"><span class="ord-name">Imaging for source</span><span class="ord-when">CXR for respiratory symptoms; CT abdomen/pelvis with contrast for an abdominal source; renal ultrasound or CT for pyelonephritis not improving at 48–72 h (looking for obstruction or abscess); echocardiography for bacteraemia. <strong>Undrained source is the commonest cause of "antibiotic failure."</strong></span><span class="ord-tag">Source hunt</span></div>
+              <div class="order-row"><span class="ord-name">Vancomycin level / AUC monitoring</span><span class="ord-when">Order pharmacy AUC-guided dosing at initiation. Level at steady state (typically before the 4th dose), creatinine at least twice weekly.</span><span class="ord-tag">If on vanc</span></div>
+              <div class="order-row"><span class="ord-name">Antibiotic stop/review date</span><span class="ord-when">Write the intended duration and a <strong>48–72 h review date</strong> in the order at the time you prescribe. An antibiotic without a planned end date will run until someone notices.</span><span class="ord-tag">Every time</span></div>
+              <div class="order-row"><span class="ord-name">Allergy reconciliation</span><span class="ord-when">Document what actually happened, when, and whether treatment was required — that is exactly the information PEN-FAST needs. Every admission is a delabelling opportunity.</span><span class="ord-tag">Admit</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="w-empiric">
+        <div class="sec-head"><span class="pill" style="background:var(--treat)">Treat</span><h2>Empiric IV therapy by organ system</h2></div>
+        <div class="module accent" style="--m:var(--treat)">
+          <div class="m-head" style="--m:var(--treat)"><span class="m-ico">💉</span><h3>Preferred · alternative · allergy · special cases — with doses and durations</h3></div>
+          <div class="tabs">
+            <button class="tab active" data-panel="e-skin">Skin</button>
+            <button class="tab" data-panel="e-lung">Lung</button>
+            <button class="tab" data-panel="e-urine">Urinary</button>
+            <button class="tab" data-panel="e-abd">Abdomen</button>
+            <button class="tab" data-panel="e-cns">CNS</button>
+            <button class="tab" data-panel="e-bone">Bone &amp; joint</button>
+            <button class="tab" data-panel="e-heart">Endocarditis</button>
+          </div>
+
+          <div class="panel active" id="e-skin">
+            <h4>Cellulitis requiring admission</h4>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Scenario</th><th>Preferred</th><th>Alternative / allergy</th><th>Target pathogens &amp; why</th><th>Duration</th></tr></thead>
+              <tbody>
+                <tr><td>Non-purulent, moderate–severe</td><td><strong>Cefazolin 1–2 g IV q8h</strong></td><td>Penicillin G 2–4 MU IV q4h · nafcillin 2 g IV q4h · <em>allergy:</em> clindamycin 600–900 mg IV q8h, vancomycin, or linezolid 600 mg q12h</td><td class="why">β-haemolytic streptococci ± MSSA. MRSA coverage is <strong>not</strong> routinely indicated in non-purulent disease.</td><td>5–7 days total (IV then PO once improving)</td></tr>
+                <tr><td>Purulent / abscess / known MRSA</td><td><strong>Vancomycin 15–20 mg/kg IV q8–12h</strong> (AUC-guided) plus drainage</td><td>Daptomycin 4 mg/kg IV q24h · linezolid 600 mg IV/PO q12h · ceftaroline 600 mg IV q12h</td><td class="why">MRSA. <strong>Drainage is the treatment</strong> — antibiotics alone will not cure an undrained abscess.</td><td>5–10 days</td></tr>
+                <tr><td>Severe with systemic toxicity / unclear</td><td><strong>Vancomycin + piperacillin-tazobactam 4.5 g IV q6h</strong></td><td>Vancomycin + meropenem 1 g q8h · vancomycin + cefepime 2 g q8h + metronidazole</td><td class="why">Broad cover while you decide whether this is necrotising, then narrow fast.</td><td>Reassess at 48–72 h</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4>Diabetic foot infection (IWGDF/IDSA)</h4>
+            <div class="why"><span class="lbl"></span>Diabetes changes the microbiology as well as the severity. Acute, previously untreated, mild infection is still mostly gram-positive and can be treated narrowly. <strong>Chronic, previously treated, ischaemic, deep or severe infection is polymicrobial</strong> — aerobic gram-positives, Enterobacterales and anaerobes together — and needs broader cover. Always <strong>probe to bone</strong>: a positive probe-to-bone test in a patient with a high pre-test probability substantially raises the likelihood of osteomyelitis and changes the duration from days to weeks.</div>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Severity</th><th>Regimen</th><th>Modifiers</th><th>Duration</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Mild</strong> — superficial, &lt;2 cm erythema, no systemic signs</td><td><strong>Oral:</strong> cephalexin 500 mg QID · amox-clav 875 mg BID · TMP-SMX 1–2 DS BID · doxycycline 100 mg BID · clindamycin 300–450 mg QID</td><td class="alt">Cover MRSA only if prior MRSA, high local prevalence, or severe presentation.</td><td>1–2 weeks</td></tr>
+                <tr><td><strong>Moderate</strong> — deeper, &gt;2 cm erythema, lymphangitis, fascia/muscle/bone involvement, no systemic toxicity</td><td><strong>Ampicillin-sulbactam 3 g IV q6h</strong> · <strong>ertapenem 1 g IV q24h</strong> · ceftriaxone 1–2 g IV q24h <strong>+ metronidazole 500 mg IV q8h</strong> · moxifloxacin 400 mg daily</td><td class="alt">Add <strong>vancomycin</strong> for MRSA risk. Add <strong>Pseudomonas</strong> cover (pip-tazo 4.5 g q6h, cefepime 2 g q8h) for macerated/water-exposed wounds, warm climates, failed therapy, or prior Pseudomonas.</td><td>1–3 weeks (soft tissue)</td></tr>
+                <tr><td><strong>Severe</strong> — systemic toxicity or metabolic instability</td><td><strong>Piperacillin-tazobactam 4.5 g IV q6h + vancomycin</strong> · or meropenem 1 g IV q8h + vancomycin</td><td class="alt">Urgent surgical assessment for debridement, drainage or revascularisation. Vascular studies for ischaemia.</td><td>2–4 weeks (soft tissue)</td></tr>
+                <tr><td><strong>Osteomyelitis present</strong></td><td>Culture-directed — bone biopsy where possible, not a superficial swab</td><td class="alt">Superficial swabs correlate poorly with bone culture and lead to wrong therapy.</td><td><strong>~6 weeks</strong> if bone is retained; <strong>~1–3 weeks</strong> if all infected bone is resected</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4>Necrotising soft-tissue infection — a surgical emergency</h4>
+            <div class="emergency"><span class="lbl"></span><strong>Antibiotics do not treat this disease; the operating room does.</strong> Mortality rises with every hour of delay to debridement. Do not let imaging, a score, or a consultant's availability delay surgical consultation. Give antibiotics on the way to theatre.</div>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Component</th><th>Dose</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Broad gram-negative + anaerobic backbone</td><td><strong>Piperacillin-tazobactam 4.5 g IV q6h</strong> or <strong>meropenem 1 g IV q8h</strong></td><td class="why">Type I (polymicrobial) disease — Enterobacterales, anaerobes, streptococci — is the more common form, especially in diabetics and post-operative patients.</td></tr>
+                <tr><td>MRSA cover</td><td><strong>Vancomycin 15–20 mg/kg IV q8–12h</strong> (or linezolid 600 mg q12h)</td><td class="why">MRSA is a documented cause of monomicrobial necrotising fasciitis.</td></tr>
+                <tr><td><strong>Clindamycin</strong></td><td><strong>900 mg IV q8h</strong></td><td class="why">Added regardless of susceptibility for <strong>ribosomal toxin suppression</strong> in streptococcal and clostridial disease. β-lactams lose potency at high inoculum because organisms are not dividing (the <em>Eagle effect</em>); clindamycin works independent of growth phase. Linezolid can substitute.</td></tr>
+                <tr><td>Adjuncts</td><td colspan="2">Repeat debridement at 12–24 h and until there is no further necrosis. IVIG is sometimes used in streptococcal toxic shock syndrome but the evidence is weak and it must never delay surgery.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span>The <strong>LRINEC score</strong> (CRP, WBC, haemoglobin, sodium, creatinine, glucose) was derived to help distinguish necrotising infection from severe cellulitis, but subsequent validation studies found sensitivity too low to rule the diagnosis out. <strong>A low LRINEC does not exclude necrotising fasciitis.</strong> If the clinical picture fits, operate.</div>
+          </div>
+
+          <div class="panel" id="e-lung">
+            <div class="fig-row">
+              <div class="fig" style="flex:1 1 340px">
+                <img src="__IMG_cxr_pneumonia__" alt="Chest radiograph showing lobar pneumonia">
+                <div class="cap"><strong>Lobar consolidation.</strong> A radiograph is required to diagnose pneumonia — treating a clinical impression alone substantially over-treats viral bronchitis.</div>
+                <div class="credit">__CREDIT_cxr_pneumonia__</div>
+              </div>
+              <div class="fig" style="flex:1 1 340px">
+                <img src="__IMG_gram_pus_gpc__" alt="Gram stain of pus showing gram-positive cocci">
+                <div class="cap"><strong>Purulent sputum Gram stain</strong> with abundant neutrophils and gram-positive cocci. A good-quality specimen (&gt;25 PMNs and &lt;10 epithelial cells per low-power field) can direct therapy on day one.</div>
+                <div class="credit">__CREDIT_gram_pus_gpc__</div>
+              </div>
+            </div>
+
+            <h4>Community-acquired pneumonia — inpatient (ATS/IDSA 2019)</h4>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Severity</th><th>Preferred</th><th>Alternative</th><th>Why</th><th>Duration</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Non-severe</strong> inpatient</td><td><strong>Ceftriaxone 1–2 g IV q24h + azithromycin 500 mg IV/PO daily</strong></td><td>Respiratory fluoroquinolone monotherapy: levofloxacin 750 mg IV/PO daily or moxifloxacin 400 mg IV/PO daily. β-lactam alternatives: cefotaxime 1–2 g q8h, ceftaroline 600 mg q12h, ampicillin-sulbactam 3 g q6h. Doxycycline 100 mg BID may substitute for the macrolide.</td><td class="why">The β-lactam covers pneumococcus, <em>H. influenzae</em> and MSSA; the macrolide covers <em>Legionella, Mycoplasma, Chlamydia</em> — and macrolide combination therapy is associated with better outcomes in severe disease, possibly through immunomodulation.</td><td><strong>5 days minimum</strong>, and until clinically stable</td></tr>
+                <tr><td><strong>Severe</strong> (see criteria below)</td><td><strong>Ceftriaxone (or cefotaxime/ampicillin-sulbactam/ceftaroline) + azithromycin</strong></td><td>β-lactam + respiratory fluoroquinolone (levofloxacin 750 mg daily). Fluoroquinolone monotherapy is <strong>not</strong> adequate for severe CAP.</td><td class="why">Combination therapy only. Consider hydrocortisone for severe CAP requiring high-flow oxygen or ventilation — the CAPE-COD trial showed a mortality benefit in severe CAP.</td><td>5–7 days</td></tr>
+                <tr><td>Add <strong>MRSA</strong> cover</td><td><strong>Vancomycin 15–20 mg/kg IV q8–12h</strong> or <strong>linezolid 600 mg IV/PO q12h</strong></td><td>Ceftaroline 600 mg q12h</td><td class="why">Only for prior MRSA respiratory isolation, or hospitalisation with parenteral antibiotics in the last 90 days plus locally validated risk factors. <strong>Send a nasal MRSA PCR and stop it in 24–48 h if negative.</strong> Linezolid has better lung penetration than vancomycin; daptomycin must never be used.</td><td>Reassess daily</td></tr>
+                <tr><td>Add <strong>Pseudomonas</strong> cover</td><td><strong>Piperacillin-tazobactam 4.5 g IV q6h</strong> · <strong>cefepime 2 g IV q8h</strong> · meropenem 1 g IV q8h</td><td>Ceftazidime 2 g q8h; add an antipseudomonal fluoroquinolone or aminoglycoside only if the patient is critically ill with high MDR risk</td><td class="why">Only for prior Pseudomonas isolation, structural lung disease (bronchiectasis, cystic fibrosis), or recent hospitalisation with IV antibiotics plus local risk factors.</td><td>Reassess daily</td></tr>
+              </tbody>
+            </table></div>
+
+            <div class="decision"><span class="lbl"></span><strong>ATS/IDSA severe CAP</strong> = <strong>1 major</strong> criterion — mechanical ventilation, or septic shock requiring vasopressors — <strong>or ≥3 minor</strong> criteria: respiratory rate ≥30/min · PaO₂/FiO₂ ≤250 · multilobar infiltrates · confusion/disorientation · uraemia (BUN ≥20 mg/dL) · leukopenia (WBC &lt;4,000/µL) · thrombocytopenia (platelets &lt;100,000/µL) · hypothermia (&lt;36 °C) · hypotension requiring aggressive fluid resuscitation.</div>
+
+            <h4>Hospital-acquired and ventilator-associated pneumonia (IDSA/ATS 2016)</h4>
+            <p><strong>HAP</strong> = pneumonia occurring ≥48 h after admission and not incubating at admission. <strong>VAP</strong> = pneumonia occurring &gt;48 h after intubation. Cover MSSA, Pseudomonas and other gram-negative bacilli in everyone; add MRSA and a second antipseudomonal agent by risk.</p>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Component</th><th>Agents &amp; doses</th><th>When to include</th></tr></thead>
+              <tbody>
+                <tr><td>Antipseudomonal backbone (always)</td><td><strong>Piperacillin-tazobactam 4.5 g IV q6h</strong> (extended infusion 4.5 g over 4 h q8h) · <strong>cefepime 2 g IV q8h</strong> · ceftazidime 2 g IV q8h · <strong>meropenem 1 g IV q8h</strong> · imipenem 500 mg IV q6h · levofloxacin 750 mg IV daily</td><td>All patients. Note these also cover MSSA.</td></tr>
+                <tr><td>MRSA cover</td><td><strong>Vancomycin 15 mg/kg IV q8–12h</strong> (AUC-guided) or <strong>linezolid 600 mg IV q12h</strong></td><td>IV antibiotics in the last 90 days, ward MRSA prevalence &gt;10–20% (or unknown), prior MRSA isolation, or high mortality risk (ventilatory support or septic shock).</td></tr>
+                <tr><td>Second antipseudomonal agent (double cover)</td><td>Add from a <em>different class</em>: <strong>tobramycin 5–7 mg/kg IV q24h</strong> · amikacin 15–20 mg/kg q24h · ciprofloxacin 400 mg IV q8h · levofloxacin 750 mg daily · aztreonam 2 g q8h</td><td>High mortality risk (ventilation or septic shock), IV antibiotics in the last 90 days, structural lung disease, or a unit where &gt;10% of gram-negative isolates are resistant to the chosen monotherapy.</td></tr>
+                <tr><td>Severe β-lactam allergy</td><td><strong>Aztreonam 2 g IV q8h</strong> + vancomycin or linezolid ± an aminoglycoside</td><td>Aztreonam has no gram-positive activity — it always needs a partner.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span><strong>Seven days is the answer for HAP/VAP</strong> — equivalent outcomes to 15 days with less resistance emergence, and the 2016 guideline extends this even to non-fermenting gram-negative rods. Do not use two antipseudomonal agents beyond the point at which susceptibilities return; de-escalate to a single agent.</div>
+            <div class="decision"><span class="lbl"></span><strong>Aspiration.</strong> Most aspiration pneumonia does <em>not</em> need routine anaerobic coverage — ceftriaxone or ampicillin-sulbactam is adequate. Add dedicated anaerobic cover (metronidazole, or use ampicillin-sulbactam/pip-tazo which already have it) only for <strong>lung abscess, necrotising pneumonia, empyema, or severe periodontal disease</strong>. Aspiration <em>pneumonitis</em> — a chemical injury within hours of a witnessed aspiration, often afebrile with rapid radiographic improvement — needs no antibiotics at all.</div>
+          </div>
+
+          <div class="panel" id="e-urine">
+            <h4>Pyelonephritis and complicated UTI — inpatient</h4>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Scenario</th><th>Preferred</th><th>Alternative / allergy</th><th>Why</th><th>Duration</th></tr></thead>
+              <tbody>
+                <tr><td>Uncomplicated pyelonephritis needing admission</td><td><strong>Ceftriaxone 1 g IV q24h</strong></td><td>Ciprofloxacin 400 mg IV q12h · gentamicin 5–7 mg/kg IV q24h · ampicillin + gentamicin</td><td class="why">Covers the great majority of community <em>E. coli</em>; once-daily and no renal adjustment.</td><td><strong>7 days</strong> total (IV then PO); 5 days if switching to levofloxacin 750 mg</td></tr>
+                <tr><td>Complicated / healthcare-associated / recent antibiotics</td><td><strong>Cefepime 2 g IV q8–12h</strong> or <strong>piperacillin-tazobactam 4.5 g IV q6h</strong></td><td>Meropenem 1 g IV q8h if critically ill or prior ESBL</td><td class="why">Adds Pseudomonas and AmpC cover for the patient with hardware, recent instrumentation, or prior resistant isolates.</td><td>7–14 days depending on source control</td></tr>
+                <tr><td>Known or suspected <strong>ESBL</strong></td><td><strong>Ertapenem 1 g IV q24h</strong> (stable) or <strong>meropenem 1 g IV q8h</strong> (septic)</td><td>Aminoglycoside or, for cystitis only, nitrofurantoin/fosfomycin</td><td class="why"><strong>Do not use piperacillin-tazobactam for ESBL bacteraemia</strong> — the MERINO trial found 30-day mortality of 12.3% with pip-tazo versus 3.7% with meropenem.</td><td>7–14 days</td></tr>
+                <tr><td>Enterococcal or catheter-associated</td><td><strong>Ampicillin 2 g IV q4–6h</strong> (or vancomycin if resistant/allergic)</td><td>Linezolid or daptomycin for VRE</td><td class="why">No cephalosporin covers enterococcus. <strong>Remove or exchange the catheter</strong> — you cannot treat a biofilm you leave in place.</td><td>7 days if prompt response; 10–14 if delayed</td></tr>
+              </tbody>
+            </table></div>
+            <div class="redflag"><span class="lbl"></span>Pyelonephritis not improving by 48–72 h needs <strong>imaging</strong>, not a broader antibiotic. You are looking for obstruction, a perinephric or renal abscess, emphysematous pyelonephritis, or a stone. An obstructed infected system is a urological emergency requiring decompression — nephrostomy or stent — and no antibiotic regimen substitutes for it.</div>
+            <div class="pearl"><span class="lbl"></span><strong>Do not treat asymptomatic bacteriuria in the hospital either.</strong> A positive urine culture in a patient with delirium and no urinary symptoms is one of the commonest sources of unnecessary inpatient antibiotics. Look for another cause of the delirium first. The exceptions remain pregnancy and pre-urologic-procedure.</div>
+          </div>
+
+          <div class="panel" id="e-abd">
+            <h4>Complicated intra-abdominal infection</h4>
+            <div class="why"><span class="lbl"></span>Every intra-abdominal regimen must cover <strong>gram-negative Enterobacterales plus anaerobes</strong>. Either use a single agent that does both (pip-tazo, a carbapenem, a cephamycin) <em>or</em> combine a cephalosporin/fluoroquinolone with metronidazole. Adding metronidazole to pip-tazo or a carbapenem is redundant. <strong>Source control — drainage, resection, diversion — outranks every antibiotic decision here.</strong></div>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Risk stratum</th><th>Preferred</th><th>Alternative</th><th>Add-ons</th><th>Duration</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Community-acquired, mild–moderate</strong></td><td><strong>Ceftriaxone 1–2 g IV q24h + metronidazole 500 mg IV q8h</strong> · <strong>ertapenem 1 g IV q24h</strong></td><td>Cefoxitin 2 g IV q6h · ciprofloxacin 400 mg IV q12h + metronidazole (allergy) · moxifloxacin 400 mg daily</td><td class="alt">No routine enterococcal or antifungal cover.</td><td><strong>4 days after adequate source control</strong> (STOP-IT)</td></tr>
+                <tr><td><strong>High-risk / healthcare-associated / severe physiologic derangement</strong></td><td><strong>Piperacillin-tazobactam 4.5 g IV q6h</strong> · <strong>meropenem 1 g IV q8h</strong></td><td>Cefepime 2 g IV q8h + metronidazole 500 mg q8h</td><td class="alt">Add <strong>vancomycin</strong> for MRSA risk. Add <strong>enterococcal</strong> cover (ampicillin, or vancomycin/linezolid) for postoperative, immunocompromised, valvular, or prior-cephalosporin patients. Add an <strong>echinocandin</strong> for upper-GI perforation, recurrent leak, or <em>Candida</em> on culture.</td><td>4–7 days after source control</td></tr>
+                <tr><td><strong>Acute cholangitis</strong> (Tokyo Guidelines 2018)</td><td>Grade I/II: <strong>ceftriaxone 1–2 g IV q24h + metronidazole</strong> or <strong>ertapenem 1 g q24h</strong>. Grade III / healthcare-associated: <strong>piperacillin-tazobactam 4.5 g q6h</strong> or <strong>cefepime 2 g q8h ± metronidazole</strong> or a carbapenem</td><td>Aztreonam ± metronidazole in severe β-lactam allergy · ciprofloxacin + metronidazole for Grade I–II if susceptibility known</td><td class="alt">Add <strong>vancomycin</strong> for enterococcal cover in Grade III and healthcare-associated disease. Add metronidazole if a biliary-enteric anastomosis is present.</td><td><strong>4–7 days after source control.</strong> If gram-positive cocci (<em>Enterococcus</em>, <em>Streptococcus</em>) are in the blood, extend to <strong>a minimum of 2 weeks</strong> because of endocarditis risk.</td></tr>
+                <tr><td><strong>Acute cholecystitis</strong> (TG18)</td><td>As for Grade-matched cholangitis</td><td>—</td><td class="alt">—</td><td>Grade I–II: antibiotics can be <strong>stopped within 24 h of cholecystectomy</strong>. Extend to 4–7 days if there is perforation, emphysematous change, or gangrene.</td></tr>
+                <tr><td><strong>Spontaneous bacterial peritonitis</strong></td><td><strong>Ceftriaxone 2 g IV q24h</strong></td><td>Cefotaxime 2 g IV q8h · pip-tazo if healthcare-associated or recent antibiotic exposure</td><td class="alt"><strong>Albumin 1.5 g/kg on day 1 and 1 g/kg on day 3</strong> reduces hepatorenal syndrome and mortality. Diagnose on ascitic PMN ≥250/µL.</td><td>5 days</td></tr>
+              </tbody>
+            </table></div>
+            <div class="decision"><span class="lbl"></span><strong>Timing of biliary drainage in cholangitis.</strong> Grade I (mild) usually responds to antibiotics alone — drain if there is no response within 24 h. Grade II (moderate) needs <strong>early endoscopic or percutaneous drainage</strong>; in the international validation cohort, drainage within 24 h was associated with lower 30-day mortality than later or no drainage (1.7% vs 3.4%). Grade III (severe) needs organ support first, then drainage as soon as the patient can tolerate it.</div>
+          </div>
+
+          <div class="panel" id="e-cns">
+            <h4>Bacterial meningitis — the most time-critical antibiotic decision in medicine</h4>
+            <div class="emergency"><span class="lbl"></span>Give <strong>dexamethasone plus antibiotics immediately</strong>. If a CT is needed before LP, draw blood cultures, give dexamethasone and antibiotics <em>first</em>, and do the LP afterwards — CSF cell counts, protein and glucose remain interpretable for hours, and Gram stain and PCR often still yield the organism.</div>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Population</th><th>Empiric regimen (full CNS doses)</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Age 1 month–50 years, immunocompetent</td><td><strong>Vancomycin 15–20 mg/kg IV q8–12h + ceftriaxone 2 g IV q12h</strong></td><td class="why">Pneumococcus and meningococcus. Vancomycin is added because CSF pneumococcal breakpoints are far stricter than non-CNS ones — a "susceptible" pneumococcus may still fail ceftriaxone in the CSF.</td></tr>
+                <tr><td><strong>Age &gt;50</strong>, pregnancy, alcohol use disorder, or immunocompromise</td><td><strong>Add ampicillin 2 g IV q4h</strong></td><td class="why"><em>Listeria monocytogenes</em> — intrinsically resistant to every cephalosporin. Missing this is the classic and lethal error.</td></tr>
+                <tr><td>Post-neurosurgical, penetrating head trauma, CSF shunt/drain</td><td><strong>Vancomycin + cefepime 2 g IV q8h</strong> (or meropenem 2 g IV q8h, or ceftazidime 2 g IV q8h)</td><td class="why">Adds Pseudomonas and nosocomial gram-negatives; staphylococci (including coagulase-negative) are covered by vancomycin. Usually also requires hardware removal.</td></tr>
+                <tr><td>Severe β-lactam allergy</td><td>Vancomycin + moxifloxacin 400 mg IV daily; TMP-SMX 10–20 mg/kg/day of TMP divided q6–12h replaces ampicillin for <em>Listeria</em>; meropenem 2 g q8h is usually tolerated</td><td class="why">Aztreonam covers gram-negatives but nothing else — it needs partners.</td></tr>
+                <tr><td><strong>Dexamethasone</strong></td><td><strong>0.15 mg/kg IV q6h for 4 days</strong>, first dose <strong>10–20 minutes before or concurrent with</strong> the first antibiotic dose</td><td class="why">Reduces unfavourable outcome and mortality, driven by the pneumococcal subgroup. Stop it if the organism turns out not to be pneumococcus. Given <em>after</em> antibiotics it loses benefit — the mechanism is blunting the inflammatory burst caused by bacterial lysis.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Organism</th><th>Directed therapy</th><th>Duration</th></tr></thead>
+              <tbody>
+                <tr><td><em>N. meningitidis</em></td><td>Ceftriaxone 2 g q12h (or penicillin G 4 MU q4h if susceptible)</td><td>7 days</td></tr>
+                <tr><td><em>H. influenzae</em></td><td>Ceftriaxone 2 g q12h</td><td>7 days</td></tr>
+                <tr><td><em>S. pneumoniae</em></td><td>Ceftriaxone ± vancomycin by MIC</td><td>10–14 days</td></tr>
+                <tr><td><em>L. monocytogenes</em></td><td>Ampicillin 2 g q4h ± gentamicin</td><td>≥21 days</td></tr>
+                <tr><td>Aerobic gram-negative bacilli</td><td>Cefepime or meropenem 2 g q8h</td><td>21 days</td></tr>
+              </tbody>
+            </table></div>
+            <div class="decision"><span class="lbl"></span><strong>CT head before LP</strong> is indicated for: immunocompromise, known CNS disease (mass, stroke, focal infection), new-onset seizure within the preceding week, papilloedema, abnormal level of consciousness, or a focal neurological deficit. In everyone else, LP first — and in <em>everyone</em>, antibiotics and steroids first if there is any delay.</div>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>CSF parameter</th><th>Bacterial</th><th>Viral</th><th>TB / fungal</th></tr></thead>
+              <tbody>
+                <tr><td>Opening pressure</td><td>Elevated</td><td>Normal or mildly elevated</td><td>Markedly elevated</td></tr>
+                <tr><td>WBC</td><td>&gt;1,000/µL, neutrophil-predominant</td><td>10–500/µL, lymphocyte-predominant</td><td>50–500/µL, lymphocyte-predominant</td></tr>
+                <tr><td>Glucose</td><td>&lt;40 mg/dL, CSF:serum ratio &lt;0.4</td><td>Normal</td><td>Low</td></tr>
+                <tr><td>Protein</td><td>&gt;200 mg/dL</td><td>&lt;150 mg/dL</td><td>Very high</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+
+          <div class="panel" id="e-bone">
+            <h4>Septic arthritis</h4>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Scenario</th><th>Regimen</th><th>Why</th><th>Duration</th></tr></thead>
+              <tbody>
+                <tr><td>Native joint, empiric</td><td><strong>Vancomycin 15–20 mg/kg IV q8–12h</strong> ± <strong>ceftriaxone 2 g IV q24h</strong> (or cefepime 2 g q8h if gram-negative/nosocomial risk)</td><td class="why"><em>S. aureus</em> is the commonest cause; add gram-negative cover for the elderly, immunocompromised, IV drug use, or gram-negative rods on Gram stain.</td><td><strong>2–4 weeks</strong>, guided by organism and response</td></tr>
+                <tr><td>Suspected gonococcal (young, sexually active, tenosynovitis + dermatitis + migratory polyarthralgia)</td><td><strong>Ceftriaxone 1 g IV/IM q24h</strong>, plus doxycycline 100 mg BID ×7 d for chlamydia</td><td class="why">Disseminated gonococcal infection behaves differently — it responds fast and often does not need washout.</td><td>7 days (at least 24–48 h of clinical improvement before oral step-down)</td></tr>
+                <tr><td>Always</td><td colspan="3"><strong>Aspirate the joint before antibiotics</strong> and send cell count, Gram stain, culture and crystals. Synovial WBC &gt;50,000/µL with &gt;90% neutrophils strongly suggests septic arthritis (though lower counts do not exclude it, especially in prosthetic joints and immunocompromise). <strong>Drainage — repeated aspiration, arthroscopic or open washout — is part of the treatment, not optional.</strong></td></tr>
+              </tbody>
+            </table></div>
+
+            <h4>Osteomyelitis</h4>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Scenario</th><th>Regimen</th><th>Duration</th><th>Key point</th></tr></thead>
+              <tbody>
+                <tr><td>Native, empiric pending culture</td><td><strong>Vancomycin + ceftriaxone 2 g q24h</strong> (or cefepime 2 g q8h)</td><td>—</td><td class="alt">Whenever the patient is stable, <strong>hold antibiotics and get a bone biopsy first.</strong> Superficial swabs mislead.</td></tr>
+                <tr><td>MSSA</td><td><strong>Cefazolin 2 g IV q8h</strong> or nafcillin 2 g IV q4h</td><td><strong>6 weeks</strong> from the start of definitive therapy (or last debridement)</td><td class="alt">—</td></tr>
+                <tr><td>MRSA</td><td>Vancomycin (AUC-guided) · daptomycin 6–10 mg/kg q24h · linezolid 600 mg q12h</td><td>6 weeks</td><td class="alt">Linezolid beyond 4 weeks requires weekly CBC and neuropathy screening.</td></tr>
+                <tr><td>Vertebral osteomyelitis (IDSA 2015)</td><td>Culture-directed after image-guided biopsy</td><td><strong>6 weeks</strong></td><td class="alt">Get an MRI. Follow ESR/CRP. Urgent surgery for cord compression, epidural abscess with deficit, or instability.</td></tr>
+                <tr><td>Prosthetic joint infection</td><td>Culture-directed IV, <strong>plus rifampin 300–450 mg PO BID</strong> for staphylococcal infection with retained hardware</td><td>Typically 2–6 weeks IV then prolonged oral suppression, per surgical strategy</td><td class="alt">Rifampin penetrates biofilm but must <em>never</em> be given alone. Surgical strategy — debridement with implant retention versus one- or two-stage exchange — drives the whole plan.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pearl"><span class="lbl"></span><strong>Oral therapy works for bone and joint infection.</strong> The OVIVA trial randomised 1,054 patients to oral versus IV therapy for the first 6 weeks of bone and joint infection and found oral non-inferior (treatment failure 13.2% oral vs 14.6% IV), with far fewer catheter complications (1.0% vs 9.4%) and a shorter stay. This was ID-supervised with highly bioavailable oral regimens — it is a specialist decision, not a reflexive floor switch, but it has ended the automatic "6 weeks of IV" reflex.</div>
+          </div>
+
+          <div class="panel" id="e-heart">
+            <h4>Infective endocarditis</h4>
+            <div class="tbl-wrap"><table class="drug-table">
+              <thead><tr><th>Scenario</th><th>Regimen</th><th>Duration</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Native valve, empiric</strong> (acutely ill, awaiting cultures)</td><td><strong>Vancomycin 15–20 mg/kg IV q8–12h + ceftriaxone 2 g IV q24h</strong></td><td>Until cultures direct therapy</td><td class="why">Covers staphylococci (including MRSA), streptococci and the HACEK organisms. Send <strong>three sets</strong> of blood cultures from separate sites before starting.</td></tr>
+                <tr><td><strong>MSSA</strong>, native valve</td><td><strong>Nafcillin or oxacillin 12 g/24 h IV divided q4–6h</strong>, or <strong>cefazolin 2 g IV q8h</strong></td><td><strong>6 weeks</strong></td><td class="why">Cefazolin is equivalent with better tolerability. Do <em>not</em> use vancomycin for MSSA.</td></tr>
+                <tr><td><strong>MRSA</strong>, native valve</td><td><strong>Vancomycin</strong> (AUC-guided) or <strong>daptomycin ≥8 mg/kg IV q24h</strong></td><td>6 weeks</td><td class="why">Higher daptomycin doses are used in endocarditis than the 6 mg/kg label dose. Weekly CPK.</td></tr>
+                <tr><td><strong>Viridans strep / <em>S. gallolyticus</em></strong>, highly penicillin-susceptible</td><td><strong>Penicillin G 12–18 MU/24 h IV</strong> (continuous or divided q4–6h) or <strong>ceftriaxone 2 g IV q24h</strong></td><td><strong>4 weeks</strong>; 2 weeks if combined with gentamicin 3 mg/kg q24h in uncomplicated native-valve disease</td><td class="why"><em>S. gallolyticus</em> (formerly <em>S. bovis</em>) endocarditis mandates a colonoscopy — it is strongly associated with colonic neoplasia.</td></tr>
+                <tr><td><strong>Enterococcus</strong></td><td><strong>Ampicillin 2 g IV q4h + ceftriaxone 2 g IV q12h</strong></td><td>6 weeks</td><td class="why">The double-β-lactam regimen saturates complementary PBPs and has replaced ampicillin + gentamicin — equal efficacy, far less nephrotoxicity, and it works against high-level-gentamicin-resistant strains.</td></tr>
+                <tr><td><strong>Prosthetic valve, staphylococcal</strong></td><td>Vancomycin (or nafcillin if MSSA) <strong>+ rifampin 300 mg IV/PO q8h + gentamicin 3 mg/kg/24 h</strong></td><td>≥6 weeks (gentamicin for the first 2 weeks)</td><td class="why">Rifampin for biofilm on the prosthetic material — added only after bacteraemia has cleared, and never alone.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="decision"><span class="lbl"></span><strong>Surgical indications</strong> — do not delay the surgical conversation: heart failure from valvular dysfunction; uncontrolled infection (abscess, fistula, enlarging vegetation on therapy); persistent bacteraemia beyond 5–7 days of appropriate therapy; prosthetic valve endocarditis; fungal or highly resistant organisms; recurrent emboli or a large mobile vegetation (&gt;10 mm) with prior embolism.</div>
+            <div class="pearl"><span class="lbl"></span><strong>POET</strong> randomised 400 patients with stabilised left-sided endocarditis, after at least 10 days of IV therapy, to partial oral versus continued IV therapy and found the oral strategy non-inferior (composite event 9.0% vs 12.1%), with post-randomisation stay of 3 days versus 19. It is an ID-directed decision in a highly selected, stabilised patient — not a routine floor manoeuvre.</div>
+            <div class="redflag"><span class="lbl"></span><strong><em>Staphylococcus aureus</em> bacteraemia is never a "contaminant" and never a short course.</strong> Every case needs: repeat blood cultures every 48–72 h until clearance, echocardiography (TOE if prosthetic material, persistent bacteraemia, or a high-risk picture), a source hunt for metastatic foci, removal of any infected line, and ID consultation — which is independently associated with lower mortality. Minimum 14 days from the first negative culture for genuinely uncomplicated disease; 4–6 weeks if complicated.</div>
+          </div>
+        </div>
+      </section>

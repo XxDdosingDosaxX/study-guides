@@ -1,0 +1,191 @@
+
+    <!-- ===== SHARED: SPECTRUM GRID ===== -->
+    <section class="sec" id="spectrum" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>The spectrum grid</h2></div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🗺️</span><h3>Antibiotic × organism — the single most useful table in this guide</h3></div>
+        <div class="m-body">
+          <p>Learn this grid and empiric therapy becomes arithmetic. You pick the syndrome, you list the organisms you must not miss, and then you choose the smallest box on this grid that contains all of them. Everything wider than that box is collateral damage: <em>C. difficile</em>, resistance selection, and a patient who gets an antibiotic allergy label they will carry for forty years.</p>
+
+          <div class="legend">
+            <span><b class="y" style="background:rgba(52,211,153,.2);color:#34d399">✓</b>Reliable — appropriate as monotherapy for that organism</span>
+            <span><b class="p" style="background:rgba(245,158,11,.2);color:#f59e0b">~</b>Partial / unreliable — depends on susceptibility, site, or subspecies</span>
+            <span><b class="n" style="background:rgba(244,63,94,.12);color:#f43f5e">✗</b>No meaningful activity — do not count on it</span>
+          </div>
+
+          <div class="tbl-wrap"><table class="grid-tbl" style="min-width:880px">
+            <thead><tr>
+              <th>Agent</th>
+              <th title="Strep pyogenes, S. pneumoniae, viridans">Strep</th>
+              <th title="Methicillin-susceptible S. aureus">MSSA</th>
+              <th title="Methicillin-resistant S. aureus">MRSA</th>
+              <th title="E. faecalis / E. faecium">Entero-<br>coccus</th>
+              <th title="E. coli, Klebsiella, Proteus, Enterobacter">Entero-<br>bacterales</th>
+              <th title="Pseudomonas aeruginosa">Pseudo-<br>monas</th>
+              <th title="Extended-spectrum beta-lactamase producers">ESBL</th>
+              <th title="Bacteroides fragilis and oral anaerobes">Anaer-<br>obes</th>
+              <th title="Mycoplasma, Legionella, Chlamydia">Atyp-<br>icals</th>
+            </tr></thead>
+            <tbody>
+              <tr class="klass"><td colspan="10">Penicillins</td></tr>
+              <tr><td>Penicillin G / VK</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr><td>Nafcillin / oxacillin / dicloxacillin</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Ampicillin / amoxicillin</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr><td>Amox-clav / amp-sulbactam</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td></tr>
+              <tr><td>Piperacillin-tazobactam</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="y">✓</td><td class="n">✗</td></tr>
+              <tr class="klass"><td colspan="10">Cephalosporins</td></tr>
+              <tr><td>Cefazolin / cephalexin <span class="g1">(1st)</span></td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Cefuroxime <span class="g2">(2nd)</span></td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Cefoxitin / cefotetan <span class="g2">(2nd, cephamycin)</span></td><td class="p">~</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td></tr>
+              <tr><td>Ceftriaxone / cefotaxime <span class="g3">(3rd)</span></td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr><td>Ceftazidime <span class="g3">(3rd, antipseudomonal)</span></td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Cefepime <span class="g4">(4th)</span></td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Ceftaroline <span class="g5">(5th)</span></td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr><td>Ceftolozane-tazobactam</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Ceftazidime-avibactam</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr class="klass"><td colspan="10">Carbapenems &amp; monobactam</td></tr>
+              <tr><td>Ertapenem</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td></tr>
+              <tr><td>Meropenem / imipenem</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="p">~</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td></tr>
+              <tr><td>Aztreonam</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr class="klass"><td colspan="10">Anti–gram-positive agents</td></tr>
+              <tr><td>Vancomycin (IV)</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr><td>Daptomycin</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr><td>Linezolid / tedizolid</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr><td>Dalbavancin / oritavancin</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr><td>Clindamycin</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td></tr>
+              <tr class="klass"><td colspan="10">Broad oral / miscellaneous</td></tr>
+              <tr><td>TMP-SMX</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Doxycycline / minocycline</td><td class="p">~</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="y">✓</td></tr>
+              <tr><td>Azithromycin / clarithromycin</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td><td class="p">~</td><td class="y">✓</td></tr>
+              <tr><td>Ciprofloxacin</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="p">~</td></tr>
+              <tr><td>Levofloxacin</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="p">~</td><td class="y">✓</td><td class="p">~</td><td class="p">~</td><td class="n">✗</td><td class="y">✓</td></tr>
+              <tr><td>Moxifloxacin</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="p">~</td><td class="y">✓</td><td class="n">✗</td><td class="p">~</td><td class="p">~</td><td class="y">✓</td></tr>
+              <tr><td>Metronidazole</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td></tr>
+              <tr><td>Gentamicin / tobramycin</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="p">~</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Amikacin</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Nitrofurantoin <span style="font-weight:600;color:var(--muted)">(urine only)</span></td><td class="n">✗</td><td class="p">~</td><td class="p">~</td><td class="y">✓</td><td class="p">~</td><td class="n">✗</td><td class="p">~</td><td class="n">✗</td><td class="n">✗</td></tr>
+              <tr><td>Tigecycline</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Colistin / polymyxin B</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td></tr>
+            </tbody>
+          </table></div>
+
+          <h4>The caveats that turn a "✓" into a treatment failure</h4>
+          <ul>
+            <li><strong>Ertapenem has no antipseudomonal activity and no enterococcal activity.</strong> It is the once-daily, outpatient-friendly carbapenem for ESBL infections — never the carbapenem for the septic ICU patient.</li>
+            <li><strong>Ceftriaxone's anaerobic "~" means oral anaerobes only.</strong> It does not cover <em>B. fragilis</em>, which is why intra-abdominal regimens built on ceftriaxone must add metronidazole.</li>
+            <li><strong>Piperacillin-tazobactam's ESBL "~" is a real clinical failure.</strong> The MERINO trial randomised ESBL bloodstream infection to pip-tazo vs meropenem and found <em>higher</em> 30-day mortality with pip-tazo (12.3% vs 3.7%) — it did not meet non-inferiority. Treat proven ESBL bacteraemia with a carbapenem.</li>
+            <li><strong>Daptomycin is inactivated by pulmonary surfactant.</strong> Every column above is true except in the lung, where it does not work at all.</li>
+            <li><strong>Vancomycin's enterococcal "✓" excludes VRE</strong> (vanA/vanB alter the D-Ala-D-Ala target to D-Ala-D-Lac). For VRE use linezolid or daptomycin (high dose).</li>
+            <li><strong>Cefepime's ESBL "✗"</strong> is because ESBLs hydrolyse it despite in-vitro susceptibility at low inocula; cefepime <em>is</em> the right answer for AmpC organisms (Enterobacter, Serratia, Citrobacter), where ceftriaxone will select for resistance mid-treatment.</li>
+            <li><strong>Tigecycline covers everything and is right for almost nothing systemic</strong> — it achieves very low serum concentrations, carries an FDA boxed warning for increased all-cause mortality, and must not be used for bacteraemia, pneumonia, or urinary infection.</li>
+            <li><strong>Nitrofurantoin only works in urine.</strong> It concentrates in bladder urine and achieves no meaningful tissue or serum levels — so it is right for cystitis and wrong for pyelonephritis, prostatitis, or any bacteraemia.</li>
+            <li><strong>Ciprofloxacin is not a strep drug.</strong> Using it for cellulitis or pneumonia is a classic error; if you need a quinolone for a respiratory pathogen, you need levofloxacin or moxifloxacin.</li>
+            <li><strong>Moxifloxacin does not achieve therapeutic urine concentrations</strong> and is not antipseudomonal — never use it for UTI.</li>
+          </ul>
+
+          <div class="pearl"><span class="lbl"></span><strong>The three "holes" worth memorising cold.</strong> Ask of any regimen: <em>does it cover MRSA? does it cover Pseudomonas? does it cover anaerobes?</em> Almost every empiric-therapy question in medicine reduces to plugging one of those three holes. Ceftriaxone has all three holes. Cefepime plugs Pseudomonas only. Pip-tazo plugs Pseudomonas and anaerobes. Nothing but vancomycin/linezolid/daptomycin/ceftaroline plugs MRSA.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SHARED: CEPHALOSPORIN GENERATIONS ===== -->
+    <section class="sec" id="cephs" data-shared="1">
+      <div class="sec-head"><span class="pill" style="background:var(--path)">Shared</span><h2>Cephalosporin generations</h2></div>
+
+      <div class="module accent" style="--m:var(--path)">
+        <div class="m-head" style="--m:var(--path)"><span class="m-ico">🪜</span><h3>The staircase — how coverage shifts from gram-positive to gram-negative and back</h3></div>
+        <div class="m-body">
+          <p>The generations are not a ranking of "strength." They are a description of a <strong>trade</strong>: as you climb from 1st to 4th generation the molecule gains gram-negative reach — better outer-membrane penetration and increasing stability against gram-negative β-lactamases — and, until the 4th generation, gradually gives up gram-positive potency. The 5th generation breaks the pattern by adding the one thing no other β-lactam has: activity against MRSA's altered PBP2a.</p>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 720 400" role="img" aria-label="Cephalosporin generations coverage chart">
+              <text x="360" y="22" fill="var(--d-text)" font-size="14.5" font-weight="800" text-anchor="middle">Coverage across the five generations</text>
+              <!-- axis -->
+              <line x1="60" y1="270" x2="700" y2="270" stroke="var(--d-line)" stroke-width="1.4"/>
+              <text x="46" y="180" fill="var(--d-muted)" font-size="11" text-anchor="middle" transform="rotate(-90 46 180)">relative coverage</text>
+
+              <!-- gen 1 -->
+              <rect x="80" y="88" width="42" height="182" rx="4" fill="var(--d-green-bg)" stroke="var(--d-green)"/>
+              <rect x="126" y="234" width="42" height="36" rx="4" fill="var(--d-blue-bg)" stroke="var(--d-blue)"/>
+              <text x="124" y="288" fill="var(--d-text)" font-size="12.5" font-weight="800" text-anchor="middle">1st</text>
+              <text x="124" y="305" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">cefazolin</text>
+              <text x="124" y="319" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">cephalexin</text>
+              <text x="124" y="337" fill="var(--d-green)" font-size="10.5" font-weight="700" text-anchor="middle">MSSA + strep</text>
+              <text x="124" y="351" fill="var(--d-muted)" font-size="10" text-anchor="middle">"PEcK" GN only</text>
+
+              <!-- gen 2 -->
+              <rect x="204" y="128" width="42" height="142" rx="4" fill="var(--d-green-bg)" stroke="var(--d-green)"/>
+              <rect x="250" y="180" width="42" height="90" rx="4" fill="var(--d-blue-bg)" stroke="var(--d-blue)"/>
+              <text x="248" y="288" fill="var(--d-text)" font-size="12.5" font-weight="800" text-anchor="middle">2nd</text>
+              <text x="248" y="305" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">cefuroxime</text>
+              <text x="248" y="319" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">cefoxitin*</text>
+              <text x="248" y="337" fill="var(--d-blue)" font-size="10.5" font-weight="700" text-anchor="middle">+H. influenzae</text>
+              <text x="248" y="351" fill="var(--d-amber)" font-size="10" font-weight="700" text-anchor="middle">*cephamycins: anaerobes</text>
+
+              <!-- gen 3 -->
+              <rect x="328" y="158" width="42" height="112" rx="4" fill="var(--d-green-bg)" stroke="var(--d-green)"/>
+              <rect x="374" y="112" width="42" height="158" rx="4" fill="var(--d-blue-bg)" stroke="var(--d-blue)"/>
+              <text x="372" y="288" fill="var(--d-text)" font-size="12.5" font-weight="800" text-anchor="middle">3rd</text>
+              <text x="372" y="305" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">ceftriaxone</text>
+              <text x="372" y="319" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">ceftazidime†</text>
+              <text x="372" y="337" fill="var(--d-blue)" font-size="10.5" font-weight="700" text-anchor="middle">crosses into CSF</text>
+              <text x="372" y="351" fill="var(--d-amber)" font-size="10" font-weight="700" text-anchor="middle">†ceftaz: Pseudomonas</text>
+
+              <!-- gen 4 -->
+              <rect x="452" y="138" width="42" height="132" rx="4" fill="var(--d-green-bg)" stroke="var(--d-green)"/>
+              <rect x="498" y="88" width="42" height="182" rx="4" fill="var(--d-blue-bg)" stroke="var(--d-blue)"/>
+              <text x="496" y="288" fill="var(--d-text)" font-size="12.5" font-weight="800" text-anchor="middle">4th</text>
+              <text x="496" y="305" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">cefepime</text>
+              <text x="496" y="323" fill="var(--d-blue)" font-size="10.5" font-weight="700" text-anchor="middle">Pseudomonas</text>
+              <text x="496" y="337" fill="var(--d-blue)" font-size="10.5" font-weight="700" text-anchor="middle">+ AmpC-stable</text>
+              <text x="496" y="351" fill="var(--d-muted)" font-size="10" text-anchor="middle">regains gram-positive</text>
+
+              <!-- gen 5 -->
+              <rect x="576" y="72" width="42" height="198" rx="4" fill="var(--d-green-bg)" stroke="var(--d-green)"/>
+              <rect x="622" y="158" width="42" height="112" rx="4" fill="var(--d-blue-bg)" stroke="var(--d-blue)"/>
+              <text x="620" y="288" fill="var(--d-text)" font-size="12.5" font-weight="800" text-anchor="middle">5th</text>
+              <text x="620" y="305" fill="var(--d-muted)" font-size="10.5" text-anchor="middle">ceftaroline</text>
+              <text x="620" y="323" fill="var(--d-red)" font-size="10.5" font-weight="800" text-anchor="middle">MRSA</text>
+              <text x="620" y="340" fill="var(--d-muted)" font-size="10" text-anchor="middle">no Pseudomonas</text>
+
+              <!-- legend -->
+              <rect x="240" y="42" width="14" height="14" rx="3" fill="var(--d-green-bg)" stroke="var(--d-green)"/>
+              <text x="260" y="54" fill="var(--d-text)" font-size="11.5">Gram-positive</text>
+              <rect x="380" y="42" width="14" height="14" rx="3" fill="var(--d-blue-bg)" stroke="var(--d-blue)"/>
+              <text x="400" y="54" fill="var(--d-text)" font-size="11.5">Gram-negative</text>
+
+              <text x="360" y="382" fill="var(--d-muted)" font-size="11" text-anchor="middle">Constant across ALL generations: no Enterococcus · no Listeria · no atypicals · no MRSA (except 5th gen)</text>
+            </svg>
+            <div class="cap">Gram-positive potency dips through the 3rd generation and recovers at the 4th and 5th; gram-negative reach climbs to a peak at the 4th generation. The gaps at the bottom never close.</div>
+          </div>
+
+          <div class="tbl-wrap"><table class="gen-tbl">
+            <thead><tr><th>Gen</th><th>Agents (IV · PO)</th><th>What it adds</th><th>What it loses / never had</th><th>Where you actually use it</th></tr></thead>
+            <tbody>
+              <tr><td class="g1">1st</td><td><strong>IV</strong> cefazolin · <strong>PO</strong> cephalexin, cefadroxil</td><td>Excellent MSSA and streptococcal killing — cefazolin is the <em>best</em> MSSA drug alongside nafcillin. Narrow gram-negative: <strong>P·E·cK</strong> — <em>Proteus mirabilis, E. coli, Klebsiella pneumoniae</em>.</td><td>No H. influenzae, no Pseudomonas, no anaerobes below the diaphragm, no CNS penetration.</td><td>Surgical prophylaxis, cellulitis, MSSA bacteraemia and endocarditis, uncomplicated cystitis, IV→PO step-down to cephalexin.</td></tr>
+              <tr><td class="g2">2nd</td><td><strong>IV</strong> cefuroxime, cefoxitin, cefotetan · <strong>PO</strong> cefuroxime axetil, cefaclor, cefprozil</td><td><strong>HENS-PEcK</strong> — adds <em>H. influenzae, Enterobacter, Neisseria, Serratia</em>. The <strong>cephamycins</strong> (cefoxitin, cefotetan) uniquely add <em>B. fragilis</em> anaerobic coverage.</td><td>Loses some gram-positive potency vs 1st gen. Still no Pseudomonas, no reliable CNS penetration. Cefotetan carries an NMTT side chain → hypoprothrombinaemia and a disulfiram-like reaction.</td><td>Cefuroxime: outpatient respiratory/sinus. Cefoxitin/cefotetan: colorectal and gynaecologic surgical prophylaxis, mild community-acquired intra-abdominal infection.</td></tr>
+              <tr><td class="g3">3rd</td><td><strong>IV</strong> ceftriaxone, cefotaxime, ceftazidime · <strong>PO</strong> cefpodoxime, cefdinir, cefixime</td><td>Broad Enterobacterales coverage and — for ceftriaxone/cefotaxime — <strong>reliable CSF penetration</strong>. Ceftriaxone needs no renal adjustment (biliary excretion). <em>Ceftazidime</em> is the outlier: it trades gram-positive activity for <strong>Pseudomonas</strong>.</td><td>No Pseudomonas (except ceftazidime). No <em>B. fragilis</em>. Ceftriaxone drives AmpC de-repression in Enterobacter/Serratia/Citrobacter. Ceftriaxone causes biliary sludging and is contraindicated in neonates with calcium-containing IV fluids.</td><td>Ceftriaxone is the workhorse: CAP, pyelonephritis, meningitis (2 g q12h), gonorrhoea, SBP, cellulitis with gram-negative risk. Ceftazidime: pseudomonal infection when you want to spare gram-positive flora.</td></tr>
+              <tr><td class="g4">4th</td><td><strong>IV</strong> cefepime</td><td>Zwitterion — penetrates the gram-negative outer membrane fast and has <strong>low affinity for AmpC β-lactamases</strong>. Covers <strong>Pseudomonas</strong> and regains 1st-generation-level gram-positive activity. Penetrates CSF.</td><td>Not stable to ESBLs. No <em>B. fragilis</em>, no enterococcus, no MRSA. <strong>Cefepime neurotoxicity</strong> (encephalopathy, myoclonus, non-convulsive status) in renal impairment when the dose is not adjusted.</td><td>Febrile neutropenia monotherapy, HAP/VAP, nosocomial sepsis, AmpC organisms, healthcare-associated meningitis.</td></tr>
+              <tr><td class="g5">5th</td><td><strong>IV</strong> ceftaroline (ceftobiprole where available)</td><td>The only β-lactam that binds <strong>PBP2a</strong> → covers <strong>MRSA</strong>, plus penicillin-nonsusceptible pneumococcus and <em>E. faecalis</em>.</td><td><strong>No Pseudomonas</strong>, no <em>E. faecium</em>/VRE, no ESBL. Can cause neutropenia with prolonged use.</td><td>MRSA SSTI and CAP; salvage for MRSA bacteraemia failing vancomycin (often combined with daptomycin).</td></tr>
+            </tbody>
+          </table></div>
+
+          <div class="analogy"><span class="lbl"></span>a camera lens. The 1st generation is a portrait lens — beautifully sharp on one subject (gram-positive cocci), no peripheral vision. Each generation zooms out, taking in more of the gram-negative landscape but softening the centre. The 4th generation is the wide-angle that somehow keeps the centre sharp. The 5th generation is a specialty lens built to photograph exactly one thing nobody else can: MRSA.</div>
+
+          <h4>Mnemonics that actually survive call</h4>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Mnemonic</th><th>Expansion</th><th>What it locks in</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1st gen: "PEcK"</strong></td><td><strong>P</strong>roteus mirabilis · <strong>E</strong>. <strong>c</strong>oli · <strong>K</strong>lebsiella pneumoniae</td><td>The entire gram-negative reach of cefazolin/cephalexin. If the organism is not one of these three, a 1st generation will not cover it.</td></tr>
+              <tr><td><strong>2nd gen: "HENS-PEcK"</strong></td><td><strong>H</strong>. influenzae · <strong>E</strong>nterobacter · <strong>N</strong>eisseria · <strong>S</strong>erratia — plus the 1st-gen PEcK</td><td>The 2nd generation is the 1st generation "pecked at by hens" — same core, four more gram-negatives.</td></tr>
+              <tr><td><strong>Cephamycins: "FOX and TAN fight the anaerobes"</strong></td><td>Cefo<strong>x</strong>itin and cefo<strong>t</strong>e<strong>tan</strong> are the only cephalosporins with real <em>B. fragilis</em> activity</td><td>Stops you from adding metronidazole unnecessarily to cefoxitin — and reminds you every <em>other</em> cephalosporin needs metronidazole for an intra-abdominal source.</td></tr>
+              <tr><td><strong>The gaps: "LAME"</strong></td><td><strong>L</strong>isteria · <strong>A</strong>typicals (Mycoplasma, Legionella, Chlamydia) · <strong>M</strong>RSA · <strong>E</strong>nterococcus</td><td>What <em>no</em> cephalosporin covers (except ceftaroline for the M). This is why meningitis in a patient ≥50 needs ampicillin added, and why CAP needs a macrolide or doxycycline alongside ceftriaxone.</td></tr>
+              <tr><td><strong>Antipseudomonal cephs: "the TAZ and the PIME"</strong></td><td>Cef<strong>taz</strong>idime · cefe<strong>pime</strong> · cef<strong>tolozane</strong>-tazobactam</td><td>The only three cephalosporins you can hang for Pseudomonas. Ceftriaxone never covers Pseudomonas — a very common and very dangerous assumption.</td></tr>
+            </tbody>
+          </table></div>
+
+          <div class="redflag"><span class="lbl"></span>Two cephalosporin errors that harm patients: <strong>(1)</strong> using ceftriaxone for an <em>Enterobacter, Serratia or Citrobacter</em> isolate — even when the lab reports it susceptible, inducible AmpC β-lactamase emerges on treatment and the patient relapses with a resistant organism; use cefepime or a carbapenem. <strong>(2)</strong> using cefazolin for a CNS infection — it does not cross the blood–brain barrier at any dose.</div>
+        </div>
+      </div>
+    </section>

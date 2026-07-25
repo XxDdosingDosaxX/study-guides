@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- data-contexts:clinic,wards,icu | category:Infectious Disease -->
+<title>Antibiotics — Clinical Reference (Clinic · Wards · ICU)</title>
+<style>
+/* ============================================================
+   THEME TOKENS
+   ============================================================ */
+:root{
+  --bg:#0b1220; --bg2:#0f172a;
+  --card:#131c30; --card2:#18233b;
+  --border:rgba(255,255,255,.08);
+  --border-strong:rgba(255,255,255,.14);
+  --text:#dbe4f0; --muted:#93a3ba; --heading:#f3f7fc;
+  --clinic:#14b8a6; --wards:#3b82f6; --icu:#f43f5e;
+  --assess:#38bdf8; --workup:#22d3ee; --dx:#818cf8; --treat:#34d399;
+  --monitor:#f59e0b; --escalate:#fb7185; --dispo:#a78bfa; --path:#f472b6;
+  --ok:#34d399; --warn:#f59e0b; --danger:#f43f5e; --info:#38bdf8;
+  --ctx:#14b8a6; --ctx-soft:rgba(20,184,166,.14);
+  --radius:14px; --tr:.28s ease; --rail:250px;
+  --maxw:1080px;
+  --d-bg:#0f1a2e; --d-neutral:#18233b; --d-line:#94a3b8; --d-text:#dbe4f0; --d-muted:#93a3ba;
+  --d-red:#f43f5e; --d-green:#34d399; --d-purple:#a78bfa; --d-blue:#38bdf8; --d-amber:#f59e0b;
+  --d-red-bg:rgba(244,63,94,.16); --d-green-bg:rgba(52,211,153,.16); --d-purple-bg:rgba(167,139,250,.16); --d-blue-bg:rgba(56,189,248,.16); --d-amber-bg:rgba(245,158,11,.16);
+}
+.light{
+  --bg:#eef2f7; --bg2:#e6ecf3; --card:#ffffff; --card2:#f6f9fc;
+  --border:rgba(15,23,42,.10); --border-strong:rgba(15,23,42,.18);
+  --text:#1e293b; --muted:#55627a; --heading:#0b1220;
+  --d-bg:#f6f9fc; --d-neutral:#eef2f7; --d-line:#64748b; --d-text:#1e293b; --d-muted:#475569;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,.10), transparent 60%),
+    radial-gradient(1000px 500px at -10% 10%, rgba(244,63,94,.08), transparent 55%),
+    var(--bg);
+  color:var(--text); font-size:15px; line-height:1.65;
+  -webkit-text-size-adjust:100%;
+  transition:background var(--tr),color var(--tr);
+  padding-bottom:60px;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(148,163,184,.35);border-radius:6px}
+
+a{color:#7dd3fc;text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--heading)}
+h2,h3,h4{color:var(--heading);letter-spacing:.2px}
+h3{font-size:17px;margin:16px 0 8px}
+h4{font-size:14.5px;margin:12px 0 6px}
+p{margin:7px 0}
+ul,ol{margin:7px 0 7px 20px}
+li{margin:4px 0}
+
+/* ============================================================ TOP APP BAR ============================================================ */
+.appbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; gap:12px;
+  padding:10px 16px; padding-top:max(10px,env(safe-area-inset-top));
+  background:rgba(11,18,32,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.light .appbar{background:rgba(238,242,247,.85)}
+.iconbtn{
+  width:40px;height:40px;flex:0 0 auto;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--border);color:var(--text);
+  cursor:pointer;font-size:19px;transition:var(--tr);text-decoration:none;
+}
+.iconbtn:hover{border-color:var(--ctx);color:var(--ctx);transform:translateY(-1px)}
+.appbar .titlewrap{flex:1 1 auto;min-width:0}
+.appbar .kicker{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.appbar h1{
+  font-size:19px;font-weight:800;line-height:1.15;color:var(--heading);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+/* ============================================================ CONTEXT SWITCHER ============================================================ */
+.ctx-switch{
+  position:sticky; top:60px; z-index:45;
+  background:rgba(11,18,32,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:10px 16px;
+}
+.light .ctx-switch{background:rgba(238,242,247,.85)}
+.ctx-seg{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+  max-width:var(--maxw); margin:0 auto;
+  background:var(--card); border:1px solid var(--border);
+  padding:6px; border-radius:16px;
+}
+.ctx-btn{
+  border:1px solid transparent; background:transparent; color:var(--muted);
+  border-radius:11px; padding:9px 8px; cursor:pointer; font-family:inherit;
+  font-weight:700; font-size:14px; transition:var(--tr);
+  display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.1;
+}
+.ctx-btn .sub{font-size:10.5px;font-weight:600;opacity:.8;letter-spacing:.3px}
+.ctx-btn .ico{font-size:18px}
+.ctx-btn:hover{color:var(--text)}
+.ctx-btn[data-ctx="clinic"].active{background:rgba(20,184,166,.16);border-color:var(--clinic);color:var(--clinic)}
+.ctx-btn[data-ctx="wards"].active{background:rgba(59,130,246,.16);border-color:var(--wards);color:var(--wards)}
+.ctx-btn[data-ctx="icu"].active{background:rgba(244,63,94,.16);border-color:var(--icu);color:var(--icu)}
+
+/* ============================================================ LAYOUT ============================================================ */
+.shell{display:flex;gap:26px;max-width:var(--maxw);margin:0 auto;padding:0 16px}
+.rail{
+  position:sticky; top:132px; align-self:flex-start;
+  width:var(--rail); flex:0 0 var(--rail); max-height:calc(100vh - 150px);
+  overflow-y:auto; padding:14px 0 30px;
+}
+.rail .rail-h{font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);padding:0 10px 8px}
+.rail a{
+  display:flex;align-items:center;gap:9px;padding:7px 12px;border-radius:9px;
+  color:var(--muted);font-size:12.8px;font-weight:600;border-left:2px solid transparent;
+  transition:var(--tr);
+}
+.rail a:hover{color:var(--text);background:var(--ctx-soft);text-decoration:none}
+.rail a.active{color:var(--heading);background:var(--ctx-soft);border-left-color:var(--ctx)}
+.rail a .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 auto;opacity:.85}
+.rail a.shared{border-left-color:var(--path)}
+.content{flex:1 1 auto;min-width:0;padding:16px 0 40px}
+
+/* ============================================================ SNAPSHOT ============================================================ */
+.snapshot{
+  background:linear-gradient(135deg,var(--card),var(--card2));
+  border:1px solid var(--border-strong); border-radius:var(--radius);
+  padding:18px 20px; margin:8px 0 20px;
+}
+.snapshot .one-liner{font-size:16px;color:var(--heading);font-weight:600}
+.snapshot .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{
+  padding:5px 11px;border-radius:8px;font-size:12px;font-weight:700;
+  background:var(--ctx-soft);color:var(--ctx);border:1px solid var(--border-strong);
+  white-space:nowrap;
+}
+.badge.danger{background:rgba(244,63,94,.14);color:var(--danger);border-color:rgba(244,63,94,.3)}
+.badge.warn{background:rgba(245,158,11,.14);color:var(--warn);border-color:rgba(245,158,11,.3)}
+.badge.ok{background:rgba(52,211,153,.14);color:var(--ok);border-color:rgba(52,211,153,.3)}
+
+/* ============================================================ SECTION HEADINGS ============================================================ */
+.sec{scroll-margin-top:150px;margin:26px 0}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.sec-head .pill{
+  font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;color:#03121a;background:var(--ctx);
+}
+.sec-head h2{font-size:22px;font-weight:800}
+.context-band{
+  display:inline-flex;align-items:center;gap:7px;margin:2px 0 18px;
+  font-size:12px;font-weight:700;color:var(--ctx);
+  padding:5px 12px;border-radius:999px;background:var(--ctx-soft);border:1px solid var(--border-strong);
+}
+
+/* ============================================================ MODULE CARD ============================================================ */
+.module{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  margin:14px 0; overflow:hidden; box-shadow:0 6px 22px rgba(0,0,0,.18);
+}
+.module > .m-head{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(90deg,var(--m,var(--ctx)),transparent 70%);
+  background-color:rgba(255,255,255,.02);
+}
+.module > .m-head .m-ico{font-size:18px}
+.module > .m-head h3{margin:0;font-size:15.5px;color:var(--heading)}
+.module > .m-head .m-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--muted)}
+.module > .m-body{padding:14px 16px}
+.module.accent{border-left:4px solid var(--m,var(--ctx))}
+
+/* ============================================================ TABS ============================================================ */
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--border);padding:0 8px;background:rgba(255,255,255,.02)}
+.tab{padding:10px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);
+  font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;font-family:inherit;transition:var(--tr)}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--heading);border-bottom-color:var(--ctx)}
+.panel{display:none;padding:14px 16px;animation:fade .3s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ============================================================ TABLES ============================================================ */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:10px;border:1px solid var(--border);max-width:100%}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+th{background:rgba(255,255,255,.05);text-align:left;padding:9px 12px;font-size:12px;color:var(--heading);
+  font-weight:700;border-bottom:1px solid var(--border-strong);position:sticky;top:0}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.light th{background:rgba(15,23,42,.05)}
+.drug-table td:nth-child(1){font-weight:700;color:var(--heading);white-space:nowrap}
+.drug-table .why{color:var(--treat)}
+.drug-table .alt{color:var(--warn)}
+
+/* ---- SPECTRUM GRID (antibiotic vs organism coverage) ---- */
+.grid-tbl{font-size:12px;min-width:760px}
+.grid-tbl th{font-size:11px;padding:8px 6px;text-align:center;vertical-align:bottom;line-height:1.2}
+.grid-tbl th:first-child{text-align:left;min-width:170px}
+.grid-tbl td{padding:6px 5px;text-align:center;font-weight:800;font-size:12.5px}
+.grid-tbl td:first-child{text-align:left;font-weight:700;color:var(--heading);white-space:nowrap;font-size:12.5px}
+.grid-tbl td.y{background:rgba(52,211,153,.20);color:#34d399}
+.grid-tbl td.p{background:rgba(245,158,11,.20);color:#f59e0b}
+.grid-tbl td.n{background:rgba(244,63,94,.12);color:rgba(244,63,94,.75)}
+.light .grid-tbl td.y{background:rgba(5,150,105,.16);color:#047857}
+.light .grid-tbl td.p{background:rgba(217,119,6,.16);color:#b45309}
+.light .grid-tbl td.n{background:rgba(225,29,72,.10);color:#be123c}
+.grid-tbl tr.klass td{background:rgba(255,255,255,.06);font-weight:800;color:var(--heading);text-align:left;
+  font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.light .grid-tbl tr.klass td{background:rgba(15,23,42,.06)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin:8px 0 2px}
+.legend span b{display:inline-block;width:20px;text-align:center;border-radius:4px;margin-right:5px;font-weight:800}
+
+/* ---- CEPHALOSPORIN GENERATION COLORS ---- */
+.gen-tbl td:first-child{white-space:nowrap;font-weight:800}
+.g1{color:#34d399}.g2{color:#38bdf8}.g3{color:#a78bfa}.g4{color:#f59e0b}.g5{color:#f43f5e}
+.light .g1{color:#047857}.light .g2{color:#0369a1}.light .g3{color:#6d28d9}.light .g4{color:#b45309}.light .g5{color:#be123c}
+
+/* ============================================================ MED LADDER ============================================================ */
+.ladder{margin:12px 0}
+.rung{border:1px solid var(--border);border-radius:11px;margin:8px 0;overflow:hidden;background:var(--card2)}
+.rung > .r-head{display:flex;align-items:center;gap:11px;padding:12px 14px;cursor:pointer;user-select:none}
+.rung > .r-head:hover{background:rgba(255,255,255,.03)}
+.rung .step{
+  width:30px;height:30px;flex:0 0 auto;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;color:#03121a;background:var(--ctx);
+}
+.rung.first .step{background:var(--ok)}
+.rung.second .step{background:var(--warn)}
+.rung.third .step{background:var(--danger);color:#fff}
+.rung .r-title{font-weight:700;color:var(--heading);font-size:14.5px}
+.rung .r-sub{font-size:12px;color:var(--muted)}
+.rung .chev{margin-left:auto;transition:transform var(--tr);color:var(--muted)}
+.rung.open .chev{transform:rotate(180deg)}
+.rung .r-body{display:none;padding:0 14px 14px 14px}
+.rung.open .r-body{display:block;animation:fade .3s ease}
+@media(min-width:560px){.rung .r-body{padding-left:55px}}
+
+/* ============================================================ CALLOUTS ============================================================ */
+.callout{border-radius:0 11px 11px 0;padding:12px 15px;margin:12px 0;border-left:4px solid var(--info);
+  background:rgba(56,189,248,.08);font-size:13.5px}
+.callout .lbl{font-weight:800;display:block;margin-bottom:3px;font-size:12px;letter-spacing:.4px;text-transform:uppercase}
+.why{border-left-color:var(--treat);background:rgba(52,211,153,.08)}
+.why .lbl{color:var(--treat)}
+.why .lbl::before{content:"⚙  Why it works — "}
+.analogy{border-left-color:#c084fc;background:rgba(192,132,252,.09)}
+.analogy .lbl{color:#c084fc}
+.analogy .lbl::before{content:"🔗  Think of it like — "}
+.pearl{border-left-color:var(--warn);background:rgba(245,158,11,.09)}
+.pearl .lbl{color:var(--warn)}
+.pearl .lbl::before{content:"💡  Clinical pearl — "}
+.redflag{border-left-color:var(--danger);background:rgba(244,63,94,.10)}
+.redflag .lbl{color:var(--danger)}
+.redflag .lbl::before{content:"🚩  Red flag — "}
+.emergency{border-left-color:var(--danger);background:rgba(244,63,94,.14)}
+.emergency .lbl{color:var(--danger)}
+.emergency .lbl::before{content:"⛑  Emergency — "}
+.decision{border-left-color:var(--dx);background:rgba(129,140,248,.10)}
+.decision .lbl{color:var(--dx)}
+.decision .lbl::before{content:"🔀  Decision point — "}
+
+/* ============================================================ ORDER SET ============================================================ */
+.orderset{display:grid;gap:8px;margin:10px 0}
+.order-row{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--border);
+  border-radius:10px;background:var(--card2)}
+.order-row .ord-name{font-weight:700;color:var(--heading);min-width:130px;flex:0 0 auto}
+.order-row .ord-when{color:var(--muted);font-size:12.5px}
+.order-row .ord-tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;
+  background:var(--ctx-soft);color:var(--ctx);flex:0 0 auto;align-self:center}
+
+/* ============================================================ DISPOSITION GRID ============================================================ */
+.dispo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:12px 0}
+.dispo{border:1px solid var(--border);border-top:3px solid var(--dispo);border-radius:11px;padding:12px 14px;background:var(--card2)}
+.dispo h4{margin:0 0 4px;color:var(--dispo)}
+.dispo .crit{font-size:12.5px;color:var(--muted)}
+
+/* ============================================================ VENT / STAT CARD ============================================================ */
+.vent-card{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.vent-item{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--card2)}
+.vent-item .vk{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+.vent-item .vv{font-size:15px;font-weight:800;color:var(--heading);margin-top:2px}
+.vent-item .vn{font-size:11.5px;color:var(--muted);margin-top:3px}
+
+/* ============================================================ USPSTF TABLE ============================================================ */
+.uspstf-table .grade{font-weight:800;text-align:center;white-space:nowrap}
+.uspstf-table .grade.A{color:var(--ok)}
+.uspstf-table .grade.B{color:var(--info)}
+
+/* ============================================================ FIGURES + LIGHTBOX ============================================================ */
+.fig-row{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}
+.fig{flex:1 1 300px;min-width:0}
+.fig img{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,.3);cursor:zoom-in;display:block}
+.fig .cap{font-size:12px;color:var(--muted);margin-top:6px}
+.fig .credit{font-size:10.5px;color:var(--muted);margin-top:2px}
+video{width:100%;border-radius:11px;border:1px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(3,7,18,.94);
+  align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox.on{display:flex}
+.lightbox img{max-width:94vw;max-height:92vh;border-radius:8px;object-fit:contain}
+.lightbox .x{position:fixed;top:14px;right:20px;font-size:34px;color:#fff;opacity:.8;cursor:pointer}
+
+/* ============================================================ CALCULATOR ============================================================ */
+.calc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin:12px 0}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.calc-opt{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid var(--border);
+  border-radius:9px;margin:6px 0;cursor:pointer;background:var(--card2);transition:var(--tr);font-size:13px}
+.calc-opt:hover{border-color:var(--ctx)}
+.calc-opt.sel{border-color:var(--ctx);background:var(--ctx-soft)}
+.calc-result{text-align:center;margin-top:14px;padding:16px;border:1px solid var(--border);border-radius:11px;background:var(--card2)}
+.calc-total{font-size:40px;font-weight:800;color:var(--ctx);line-height:1.1}
+.calc input,.calc select{padding:9px 12px;border-radius:9px;border:1px solid var(--border);background:var(--card2);
+  color:var(--text);font-family:inherit;font-size:14px;width:100%;max-width:230px}
+.calc label{font-size:12px;color:var(--muted);display:block;margin-bottom:3px;font-weight:600}
+.inp-row{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0}
+
+/* ============================================================ SVG diagram wrapper ============================================================ */
+.svg-wrap{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0;overflow-x:auto}
+.dia-dark{display:block}.dia-light{display:none}
+.light .dia-dark{display:none}.light .dia-light{display:block}
+.svg-wrap .cap{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
+.svg-wrap svg{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* Notes widget */
+.note-input{width:100%;min-height:72px;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:14px}
+.note-btn{padding:8px 16px;border-radius:9px;border:1px solid #eab308;background:rgba(234,179,8,.14);color:#eab308;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}
+.note-btn:hover{background:rgba(234,179,8,.22)}
+.note-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.note-card{border:1px solid var(--border);border-left:3px solid #eab308;border-radius:9px;padding:9px 12px;background:var(--card2)}
+.note-meta{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-bottom:4px}
+.note-del{cursor:pointer;color:var(--danger);font-weight:700}
+.note-text{font-size:13.5px;white-space:pre-wrap;word-break:break-word}
+
+/* ============================================================ REFERENCES ============================================================ */
+.refs{margin-top:34px;padding-top:18px;border-top:1px solid var(--border)}
+.refs li{font-size:12.5px;color:var(--muted)}
+
+/* ============================================================ CONTEXT PANEL VISIBILITY ============================================================ */
+.ctx-panel{display:none}
+.ctx-panel.active{display:block}
+
+/* ============================================================ FLOATING TOC BUTTON ============================================================ */
+.toc-fab{display:none;position:fixed;right:16px;bottom:18px;z-index:60;
+  width:52px;height:52px;border-radius:16px;background:var(--ctx);color:#03121a;border:none;
+  font-size:22px;box-shadow:0 8px 24px rgba(0,0,0,.4);cursor:pointer}
+
+/* ============================================================ RESPONSIVE ============================================================ */
+@media(max-width:920px){
+  .rail{display:none}
+  .shell{padding:0 12px}
+  .toc-fab{display:flex;align-items:center;justify-content:center}
+  .ctx-btn .sub{display:none}
+  .appbar h1{font-size:17px}
+  .sec-head h2{font-size:19px}
+  .rail.sheet{display:block;position:fixed;inset:auto 0 0 0;top:auto;width:100%;max-height:66vh;
+    background:var(--card);border-top:1px solid var(--border-strong);border-radius:18px 18px 0 0;
+    padding:16px;z-index:70;box-shadow:0 -10px 40px rgba(0,0,0,.5);flex:none;overflow-y:auto}
+  .rail.sheet .rail-h{display:flex;justify-content:space-between;align-items:center}
+}
+@media(max-width:520px){
+  body{font-size:14.5px}
+  .snapshot{padding:15px}
+  .order-row{flex-direction:column;gap:4px}
+  .order-row .ord-name{min-width:0}
+  /* long snapshot badges must wrap on narrow phones rather than push the page wide */
+  .badge{white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== APP BAR ============================== -->
+<header class="appbar">
+  <a class="iconbtn" href="https://xxddosingdosaxx.github.io/study-guides/" title="Library home">&#8962;</a>
+  <div class="titlewrap">
+    <div class="kicker">Clinical Reference</div>
+    <h1>Antibiotics</h1>
+  </div>
+  <button class="iconbtn" onclick="copyOsmo(this)" title="Copy Osmosis login (horoy31882@flownue.com / Skanda123!)">&#128273;</button>
+  <button class="iconbtn" onclick="toggleTheme()" title="Theme">&#9789;</button>
+</header>
+
+<!-- ============================== CONTEXT SWITCHER ============================== -->
+<div class="ctx-switch">
+  <div class="ctx-seg" role="tablist" aria-label="Care setting">
+    <button class="ctx-btn active" data-ctx="clinic" onclick="setCtx('clinic')"><span class="ico">🩺</span>Clinic<span class="sub">Oral / outpatient</span></button>
+    <button class="ctx-btn" data-ctx="wards" onclick="setCtx('wards')"><span class="ico">🛏️</span>Wards<span class="sub">Empiric IV · IV→PO</span></button>
+    <button class="ctx-btn" data-ctx="icu" onclick="setCtx('icu')"><span class="ico">🫀</span>ICU<span class="sub">Broad-spectrum · MDRO</span></button>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="rail" id="rail">
+    <div class="rail-h" id="railHead">On this page</div>
+    <div id="railLinks"></div>
+  </nav>
+
+  <main class="content">

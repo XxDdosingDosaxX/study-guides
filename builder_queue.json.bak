@@ -1,0 +1,610 @@
+[
+ {
+  "disease": "Sepsis and Septic Shock",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Acute Kidney Injury",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Diabetic Ketoacidosis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hyperglycemic Hyperosmolar State",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Atrial Fibrillation",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Acute Coronary Syndrome",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "STEMI",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Pulmonary Embolism",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Upper GI Bleed",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Lower GI Bleed",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Decompensated Cirrhosis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hepatic Encephalopathy",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Acute Pancreatitis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Cellulitis and Skin/Soft Tissue Infection",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Pyelonephritis and Complicated UTI",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hyponatremia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hyperkalemia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hypercalcemia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "SIADH",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Type 2 Diabetes Mellitus",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hypertensive Emergency",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Asthma Exacerbation",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "COPD Exacerbation",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Community-Acquired Pneumonia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hospital-Acquired Pneumonia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Aspiration Pneumonia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Acute Ischemic Stroke",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Alcohol Withdrawal",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Delirium",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Deep Vein Thrombosis and VTE",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Chronic Kidney Disease",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Thyroid Storm and Hyperthyroidism",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Myxedema and Hypothyroidism",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Adrenal Insufficiency",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Anemia Workup",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Clostridioides difficile Infection",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Bacterial Meningitis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Status Epilepticus",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Acute Respiratory Failure and ARDS",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Infective Endocarditis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Osteomyelitis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Gout",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Rhabdomyolysis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Pericarditis and Cardiac Tamponade",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Aortic Dissection",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Small Bowel Obstruction",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Diverticulitis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Acute Cholecystitis and Cholangitis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Spontaneous Pneumothorax",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Syncope",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hypokalemia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hypomagnesemia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Hypocalcemia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Metabolic Acidosis and Acid-Base Approach",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Spontaneous Bacterial Peritonitis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Acute Liver Failure",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Nephrolithiasis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Glomerulonephritis and Nephrotic Syndrome",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Peptic Ulcer Disease",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Inflammatory Bowel Disease Flare",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Sickle Cell Vaso-occlusive Crisis",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Immune Thrombocytopenia",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Cardiogenic Shock",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Bradyarrhythmia and Heart Block",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Pleural Effusion",
+  "status": "done",
+  "added": "recovered",
+  "started": null,
+  "finished": "recovered",
+  "fb_id": null
+ },
+ {
+  "disease": "Antibiotics",
+  "status": "building",
+  "added": "recovered",
+  "started": "2026-07-25 03:23:19",
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "Inpatient Diabetes Management",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "Hepatorenal Syndrome",
+  "status": "pending",
+  "added": "2026-07-17",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "Supraventricular Tachycardia",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "Anaphylaxis",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "Wernicke Encephalopathy",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "Opioid Overdose and Toxidromes",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "Septic Arthritis",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "Tuberculosis",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "TTP",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ },
+ {
+  "disease": "TBI",
+  "status": "pending",
+  "added": "recovered",
+  "started": null,
+  "finished": null,
+  "fb_id": null
+ }
+]
