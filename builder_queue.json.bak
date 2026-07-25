@@ -521,25 +521,29 @@
  },
  {
   "disease": "Antibiotics",
-  "status": "building",
+  "status": "done",
   "added": "recovered",
   "started": "2026-07-25 03:23:19",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-07-25 04:34:23",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "Inpatient Diabetes Management",
-  "status": "pending",
+  "status": "done",
   "added": "recovered",
-  "started": null,
-  "finished": null,
-  "fb_id": null
+  "started": "2026-07-25 04:34:26",
+  "finished": "2026-07-25 05:41:59",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "Hepatorenal Syndrome",
-  "status": "pending",
+  "status": "building",
   "added": "2026-07-17",
-  "started": null,
+  "started": "2026-07-25 17:44:26",
   "finished": null,
   "fb_id": null
  },

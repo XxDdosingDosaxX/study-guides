@@ -18,3 +18,16 @@ _*.txt
 _imgcheck/
 *_check.png
 *_search_raw.json
+
+# --- per-disease build scratch (added with the Hepatorenal Syndrome build) ---
+# The finished *_Study_Guide.html inlines every image, diagram and script, so none
+# of the following belong in the published repo.
+# Source guideline PDFs are copyrighted — never publish them.
+_*.pdf
+_*.out
+_*.html
+_*.js
+_*.png
+_*_images.json
+_*_candidates.json
+_hrsdia/
