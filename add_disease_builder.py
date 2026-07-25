@@ -156,20 +156,46 @@ def now():
 
 
 def load_queue():
+    """Load the queue; fall back to the .bak if the main file was truncated/corrupted."""
+    for path in (QUEUE_FILE, QUEUE_FILE + ".bak"):
+        try:
+            with open(path, encoding="utf-8") as f:
+                data = json.load(f)
+            if isinstance(data, list):
+                if path.endswith(".bak"):
+                    print("[%s] queue recovered from .bak" % now())
+                return data
+        except Exception:
+            continue
+    return []
+
+
+def free_gb():
     try:
-        with open(QUEUE_FILE, encoding="utf-8") as f:
-            return json.load(f)
+        import shutil
+        return shutil.disk_usage(REPO).free / (1024 ** 3)
     except Exception:
-        return []
+        return 99.0
 
 
 _lock = threading.Lock()
 
 
 def save_queue(q):
+    """Atomic write — a crash mid-write (e.g. disk full) previously truncated the queue to 0 bytes."""
     with _lock:
-        with open(QUEUE_FILE, "w", encoding="utf-8") as f:
+        tmp = QUEUE_FILE + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
             json.dump(q, f, indent=1)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, QUEUE_FILE)   # atomic on Windows + POSIX
+        # keep a rolling backup so the queue can always be recovered
+        try:
+            with open(QUEUE_FILE + ".bak", "w", encoding="utf-8") as b:
+                json.dump(q, b, indent=1)
+        except Exception:
+            pass
 
 
 def enqueue(name, fb_id=None):
@@ -205,12 +231,29 @@ def firestore_poller():
 
 
 def worker():
+    """Outer wrapper: an unhandled error (disk full, transient OSError) must never kill the
+    worker thread permanently — log it, wait, and resume the loop."""
     os.makedirs(LOG_DIR, exist_ok=True)
+    while True:
+        try:
+            _worker_loop()
+        except Exception as e:
+            print("[%s] WORKER ERROR (recovering in 120s): %s" % (now(), str(e)[:200]))
+            time.sleep(120)
+
+
+def _worker_loop():
     while True:
         q = load_queue()
         nxt = next((i for i in q if i["status"] == "pending"), None)
         if not nxt:
             time.sleep(5)
+            continue
+        # Disk guard: a build writes a multi-MB guide + image scratch. Running out of space
+        # mid-build corrupts state (this actually happened), so wait rather than start.
+        if free_gb() < 2.0:
+            print("[%s] LOW DISK (%.1f GB free) — pausing builds 10 min" % (now(), free_gb()))
+            time.sleep(600)
             continue
         nxt["status"] = "building"; nxt["started"] = now()
         save_queue(q)
