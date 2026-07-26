@@ -541,17 +541,19 @@
  },
  {
   "disease": "Hepatorenal Syndrome",
-  "status": "building",
+  "status": "done",
   "added": "2026-07-17",
   "started": "2026-07-25 17:44:26",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-07-25 18:41:28",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "Supraventricular Tachycardia",
-  "status": "pending",
+  "status": "building",
   "added": "recovered",
-  "started": null,
+  "started": "2026-07-25 18:41:31",
   "finished": null,
   "fb_id": null
  },
