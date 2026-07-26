@@ -33,3 +33,7 @@ _*_candidates.json
 _hrsdia/
 _svtdia/
 _anadia/
+
+# Wernicke build scratch
+_wedia/
+_webuild/
