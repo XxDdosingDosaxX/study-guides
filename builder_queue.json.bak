@@ -571,17 +571,19 @@
  },
  {
   "disease": "Wernicke Encephalopathy",
-  "status": "building",
+  "status": "done",
   "added": "recovered",
   "started": "2026-07-25 20:54:01",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-07-25 21:57:32",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "Opioid Overdose and Toxidromes",
-  "status": "pending",
+  "status": "building",
   "added": "recovered",
-  "started": null,
+  "started": "2026-07-25 23:14:15",
   "finished": null,
   "fb_id": null
  },

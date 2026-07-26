@@ -37,3 +37,10 @@ _anadia/
 # Wernicke build scratch
 _wedia/
 _webuild/
+
+# Opioid Overdose & Toxidromes build scratch
+_opibuild/
+_opidia/
+_opioid_pdfs/
+opidia-*.png
+*-lightmode-check.png
