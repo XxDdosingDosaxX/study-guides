@@ -47,3 +47,7 @@ opidia-*.png
 
 # Septic Arthritis build scratch
 _sa_dia/
+
+# Tuberculosis build scratch
+_tbdia/
+_tb_trials.json

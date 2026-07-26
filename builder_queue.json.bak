@@ -591,17 +591,19 @@
  },
  {
   "disease": "Septic Arthritis",
-  "status": "building",
+  "status": "done",
   "added": "recovered",
   "started": "2026-07-26 00:11:43",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-07-26 01:09:08",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "Tuberculosis",
-  "status": "pending",
+  "status": "building",
   "added": "recovered",
-  "started": null,
+  "started": "2026-07-26 04:38:29",
   "finished": null,
   "fb_id": null
  },
