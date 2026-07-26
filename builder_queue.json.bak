@@ -581,17 +581,19 @@
  },
  {
   "disease": "Opioid Overdose and Toxidromes",
-  "status": "building",
+  "status": "done",
   "added": "recovered",
   "started": "2026-07-25 23:14:15",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-07-26 00:11:40",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "Septic Arthritis",
-  "status": "pending",
+  "status": "building",
   "added": "recovered",
-  "started": null,
+  "started": "2026-07-26 00:11:43",
   "finished": null,
   "fb_id": null
  },

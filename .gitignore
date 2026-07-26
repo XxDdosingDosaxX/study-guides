@@ -44,3 +44,6 @@ _opidia/
 _opioid_pdfs/
 opidia-*.png
 *-lightmode-check.png
+
+# Septic Arthritis build scratch
+_sa_dia/
