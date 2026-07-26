@@ -551,17 +551,19 @@
  },
  {
   "disease": "Supraventricular Tachycardia",
-  "status": "building",
+  "status": "done",
   "added": "recovered",
   "started": "2026-07-25 18:41:31",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-07-25 20:07:51",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "Anaphylaxis",
-  "status": "pending",
+  "status": "building",
   "added": "recovered",
-  "started": null,
+  "started": "2026-07-25 20:07:54",
   "finished": null,
   "fb_id": null
  },
