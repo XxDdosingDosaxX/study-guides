@@ -51,3 +51,8 @@ _sa_dia/
 # Tuberculosis build scratch
 _tbdia/
 _tb_trials.json
+
+# TTP v2 build scratch — rendered Mermaid SVGs and image search results are
+# inlined into the finished guide, so the intermediates don't belong in the repo.
+_*_diagrams.json
+_*_candidates2.json

@@ -601,17 +601,19 @@
  },
  {
   "disease": "Tuberculosis",
-  "status": "building",
+  "status": "done",
   "added": "recovered",
   "started": "2026-07-26 04:38:29",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-07-26 05:45:21",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "TTP",
-  "status": "pending",
+  "status": "building",
   "added": "recovered",
-  "started": null,
+  "started": "2026-08-01 20:26:30",
   "finished": null,
   "fb_id": null
  },
