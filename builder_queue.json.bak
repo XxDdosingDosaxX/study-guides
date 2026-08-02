@@ -621,10 +621,12 @@
  },
  {
   "disease": "TBI",
-  "status": "building",
+  "status": "done",
   "added": "recovered",
   "started": "2026-08-01 22:24:32",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-08-01 23:09:15",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  }
 ]
