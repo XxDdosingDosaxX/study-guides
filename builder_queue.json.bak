@@ -611,17 +611,19 @@
  },
  {
   "disease": "TTP",
-  "status": "building",
+  "status": "done",
   "added": "recovered",
   "started": "2026-08-01 20:26:30",
-  "finished": null,
-  "fb_id": null
+  "finished": "2026-08-01 22:24:29",
+  "fb_id": null,
+  "rc": 0,
+  "published": false
  },
  {
   "disease": "TBI",
-  "status": "pending",
+  "status": "building",
   "added": "recovered",
-  "started": null,
+  "started": "2026-08-01 22:24:32",
   "finished": null,
   "fb_id": null
  }

@@ -56,3 +56,10 @@ _tb_trials.json
 # inlined into the finished guide, so the intermediates don't belong in the repo.
 _*_diagrams.json
 _*_candidates2.json
+
+# TBI v2 build scratch — rendered Mermaid SVG pairs and the decoded image files
+# used only to eyeball candidates. Both are inlined into the finished guide.
+# (note: distinct from the Tuberculosis build's _tbdia/ above)
+_tbidia/
+_tbiimg/
+tbi_*.jpeg
